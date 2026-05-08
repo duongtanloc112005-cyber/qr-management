@@ -1,0 +1,14 @@
+[
+  {
+    "username": "admin",
+    "password": "0124",
+    "role": "admin",
+    "display": "Quản lý"
+  },
+  {
+    "username": "hypo",
+    "password": "hp0124",
+    "role": "admin",
+    "display": "Quản lý"
+  }
+]

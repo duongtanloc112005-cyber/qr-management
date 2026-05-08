@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Management System - Hệ Thống Quản Lý Sản Xuất</title>
+    <link rel="stylesheet" href="assets/css/professional-ui.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .status-bar {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-connected {
+            background: #2ecc71;
+            animation: pulse 2s infinite;
+        }
+
+        .status-disconnected {
+            background: #e74c3c;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            background: #f8f9fa;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--card-color-1), var(--card-color-2));
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .module-card.donghang {
+            --card-color-1: #667eea;
+            --card-color-2: #764ba2;
+        }
+
+        .module-card.khophoi {
+            --card-color-1: #f093fb;
+            --card-color-2: #f5576c;
+        }
+
+        .module-card.sanxuat {
+            --card-color-1: #4facfe;
+            --card-color-2: #00f2fe;
+        }
+
+        .module-card.thanhpham {
+            --card-color-1: #43e97b;
+            --card-color-2: #38f9d7;
+        }
+
+        .module-card.baohanh {
+            --card-color-1: #fa709a;
+            --card-color-2: #fee140;
+        }
+
+        .module-card.vanchuyen {
+            --card-color-1: #a8edea;
+            --card-color-2: #fed6e3;
+        }
+
+        .module-card.hangsan {
+            --card-color-1: #ff9a56;
+            --card-color-2: #ffad56;
+        }
+
+        .module-card.hangton {
+            --card-color-1: #56c596;
+            --card-color-2: #7dd87d;
+        }
+
+        .module-card.tonghop {
+            --card-color-1: #9d50bb;
+            --card-color-2: #6e48aa;
+        }
+
+        .module-card.donhang {
+            --card-color-1: #ff6b6b;
+            --card-color-2: #ee5a6f;
+        }
+
+        .module-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .module-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .module-description {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .module-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--card-color-1);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--card-color-1), var(--card-color-2));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .system-info {
+            background: #34495e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .info-label {
+            font-weight: 600;
+        }
+
+        .info-value {
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .module-card {
+                padding: 20px;
+            }
+            
+            .module-icon {
+                font-size: 3em;
+            }
+            
+            .module-title {
+                font-size: 1.5em;
+            }
+        }
+
+        .new-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏭 QR Management System</h1>
+            <p>Hệ thống quản lý sản xuất thông minh với 8 module tích hợp</p>
+            <div class="status-bar">
+                <span class="status-indicator" id="connectionStatus"></span>
+                <span id="connectionText">Đang kết nối...</span>
+            </div>
+        </div>
+
+        <div class="modules-grid">
+            <!-- Module 1: Kho Phôi (KP) - Bước đầu dây chuyền chính -->
+            <div class="card module-card khophoi" onclick="openModule('khophoi')">
+                <div class="card-body">
+                    <div class="module-icon">🏭</div>
+                    <h3 class="module-title">Kho Phôi</h3>
+                    <p class="module-description">
+                        Quản lý nguyên liệu và phôi trong kho, theo dõi tồn kho
+                    </p>
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="khophoi-count">0</div>
+                            <div class="stat-label">Sản phẩm</div>
+                        </div>
+                    </div>
+                    <a href="Khophoi.html" class="btn btn-primary">Mở Module</a>
+                </div>
+            </div>
+
+            <!-- Module 2: Sản Xuất (SX) - Bước 2 dây chuyền chính -->
+            <div class="card module-card sanxuat" onclick="openModule('sanxuat')">
+                <div class="card-body">
+                    <div class="module-icon">⚙️</div>
+                    <h3 class="module-title">Sản Xuất</h3>
+                    <p class="module-description">
+                        Theo dõi quá trình sản xuất, kiểm soát chất lượng và tiến độ
+                    </p>
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="sanxuat-count">0</div>
+                            <div class="stat-label">Sản phẩm</div>
+                        </div>
+                    </div>
+                    <a href="Sanxuat.html" class="btn btn-primary">Mở Module</a>
+                </div>
+            </div>
+
+            <!-- Module 3: Thành Phẩm (TP) - Bước 3 dây chuyền chính -->
+            <div class="card module-card thanhpham" onclick="openModule('thanhpham')">
+                <div class="card-body">
+                    <div class="module-icon">✅</div>
+                    <h3 class="module-title">Thành Phẩm</h3>
+                    <p class="module-description">
+                        Quản lý sản phẩm hoàn thành, kiểm tra chất lượng cuối cùng
+                    </p>
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="thanhpham-count">0</div>
+                            <div class="stat-label">Sản phẩm</div>
+                        </div>
+                    </div>
+                    <a href="Thanhpham.html" class="btn btn-primary">Mở Module</a>
+                </div>
+            </div>
+
+            <!-- Module 4: Đóng Hàng (ĐH) - Bước cuối dây chuyền chính -->
+            <div class="card module-card donghang" onclick="openModule('donghang')">
+                <div class="card-body">
+                    <div class="module-icon">📦</div>
+                    <h3 class="module-title">Đóng Hàng</h3>
+                    <p class="module-description">
+                        Quản lý quá trình đóng gói và chuẩn bị hàng hóa để xuất kho
+                    </p>
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="donghang-count">0</div>
+                            <div class="stat-label">Sản phẩm</div>
+                        </div>
+                    </div>
+                    <a href="Donghang.html" class="btn btn-primary">Mở Module</a>
+                </div>
+            </div>
+
+            <!-- Module 5: Hàng Sẵn (HS) - Dây chuyền HS-ĐH -->
+            <div class="card module-card hangsan" onclick="openModule('hangsan')">
+                <span class="new-badge">MỚI</span>
+                <div class="card-body">
+                    <div class="module-icon">📋</div>
+                    <h3 class="module-title">Hàng Sẵn</h3>
+                    <p class="module-description">
+                        Quản lý hàng hóa sẵn có trong kho, theo dõi tồn kho nhanh
+                    </p>
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="hangsan-count">0</div>
+                            <div class="stat-label">Sản phẩm</div>
+                        </div>
+                    </div>
+                    <a href="HangSan.html" class="btn btn-primary">Mở Module</a>
+                </div>
+            </div>
+
+            <!-- Module 6: Hàng Tồn (HT) - Dây chuyền HT-ĐH -->
+            <div class="card module-card hangton" onclick="openModule('hangton')">
+                <span class="new-badge">MỚI</span>
+                <div class="card-body">
+                    <div class="module-icon">📊</div>
+                    <h3 class="module-title">Hàng Tồn</h3>
+                    <p class="module-description">
+                        Quản lý hàng tồn kho, kiểm kê và thống kê tồn kho
+                    </p>
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="hangton-count">0</div>
+                            <div class="stat-label">Sản phẩm</div>
+                        </div>
+                    </div>
+                    <a href="HangTon.html" class="btn btn-primary">Mở Module</a>
+                </div>
+            </div>
+
+            <!-- Module 7: Tổng Hợp - Tổng hợp và báo cáo -->
+            <div class="card module-card tonghop" onclick="openModule('tonghop')">
+                <span class="new-badge">MỚI</span>
+                <div class="card-body">
+                    <div class="module-icon">📈</div>
+                    <h3 class="module-title">Tổng Hợp</h3>
+                    <p class="module-description">
+                        Tổng hợp và báo cáo tổng quan về tất cả quy trình sản xuất
+                    </p>
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="tonghop-count">0</div>
+                            <div class="stat-label">Sản phẩm</div>
+                        </div>
+                    </div>
+                    <a href="TongHop.html" class="btn btn-primary">Mở Module</a>
+                </div>
+            </div>
+
+            <!-- Module 8: Đơn Hàng - Quản lý đơn hàng -->
+            <div class="card module-card donhang" onclick="openModule('donhang')">
+                <span class="new-badge">MỚI</span>
+                <div class="card-body">
+                    <div class="module-icon">🚚</div>
+                    <h3 class="module-title">Đơn Hàng</h3>
+                    <p class="module-description">
+                        Quản lý đơn hàng, kiểm soát vận chuyển và theo dõi trạng thái đơn hàng
+                    </p>
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="donhang-count">0</div>
+                            <div class="stat-label">Đơn hàng</div>
+                        </div>
+                    </div>
+                    <a href="Donhang.html" class="btn btn-primary">Mở Module</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <h3>🌐 Hệ Thống Kết Nối Đa Mạng</h3>
+            <p>Hệ thống hỗ trợ kết nối từ nhiều mạng LAN khác nhau</p>
+            
+            <div class="system-info">
+                <div class="info-item">
+                    <span class="info-label">🌍 Địa chỉ LAN:</span>
+                    <span class="info-value" id="lanAddress">Đang tải...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">🔗 WebSocket:</span>
+                    <span class="info-value" id="wsAddress">Đang tải...</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">📊 Tổng module:</span>
+                    <span class="info-value">8 module</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">💾 Chế độ:</span>
+                    <span class="info-value">Lưu trữ thủ công</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/modern-components.js"></script>
+    <script>
+        let websocket;
+        let moduleStats = {
+            donghang: 0,
+            khophoi: 0,
+            sanxuat: 0,
+            thanhpham: 0,
+            hangsan: 0,
+            hangton: 0,
+            tonghop: 0,
+            donhang: 0
+        };
+
+        // Kết nối WebSocket
+        function connectWebSocket() {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//${window.location.host}`;
+            
+            websocket = new WebSocket(wsUrl);
+
+            websocket.onopen = function() {
+                console.log('Connected to server');
+                updateConnectionStatus(true);
+                updateSystemInfo();
+                
+                // Yêu cầu thống kê từ tất cả module
+                requestAllStats();
+            };
+
+            websocket.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                
+                if (data.type === 'stats') {
+                    updateModuleStats(data);
+                } else if (data.type === 'error') {
+                    console.error('Server error:', data.message);
+                }
+            };
+
+            websocket.onclose = function() {
+                console.log('Disconnected from server');
+                updateConnectionStatus(false);
+                // Thử kết nối lại sau 3 giây
+                setTimeout(connectWebSocket, 3000);
+            };
+
+            websocket.onerror = function(error) {
+                console.error('WebSocket error:', error);
+                updateConnectionStatus(false);
+            };
+        }
+
+        // Cập nhật trạng thái kết nối
+        function updateConnectionStatus(connected) {
+            const status = document.getElementById('connectionStatus');
+            const text = document.getElementById('connectionText');
+            
+            if (connected) {
+                status.className = 'status-indicator status-connected';
+                text.textContent = 'Đã kết nối';
+            } else {
+                status.className = 'status-indicator status-disconnected';
+                text.textContent = 'Mất kết nối';
+            }
+        }
+
+        // Yêu cầu thống kê từ tất cả module (theo thứ tự dây chuyền)
+        function requestAllStats() {
+            const modules = ['khophoi', 'sanxuat', 'thanhpham', 'donghang', 'hangsan', 'hangton', 'tonghop', 'donhang'];
+            modules.forEach(module => {
+                websocket.send(JSON.stringify({
+                    type: 'get_stats',
+                    module: module
+                }));
+            });
+        }
+
+        // Cập nhật thống kê module
+        function updateModuleStats(data) {
+            if (data.module && data.stats) {
+                moduleStats[data.module] = data.stats.totalItems || 0;
+                document.getElementById(`${data.module}-count`).textContent = moduleStats[data.module];
+            }
+        }
+
+        // Mở module
+        function openModule(module) {
+            const moduleUrls = {
+                'donghang': 'Donghang.html',
+                'khophoi': 'Khophoi.html',
+                'sanxuat': 'Sanxuat.html',
+                'thanhpham': 'Thanhpham.html',
+                'hangsan': 'HangSan.html',
+                'hangton': 'HangTon.html',
+                'tonghop': 'TongHop.html',
+                'donhang': 'Donhang.html'
+            };
+            
+            if (moduleUrls[module]) {
+                window.open(moduleUrls[module], '_blank');
+            }
+        }
+
+        // Cập nhật thông tin hệ thống
+        function updateSystemInfo() {
+            const host = window.location.host;
+            const protocol = window.location.protocol;
+            const wsProtocol = protocol === 'https:' ? 'wss:' : 'ws:';
+            
+            document.getElementById('lanAddress').textContent = `${protocol}//${host}`;
+            document.getElementById('wsAddress').textContent = `${wsProtocol}//${host}`;
+        }
+
+        // Khởi tạo khi trang load
+        document.addEventListener('DOMContentLoaded', function() {
+            connectWebSocket();
+            
+            // Cập nhật thống kê mỗi 30 giây
+            setInterval(requestAllStats, 30000);
+            
+            // Thêm trạng thái kết nối vào header
+            const header = document.querySelector('.header');
+            if (header) {
+                const connectionStatus = document.createElement('div');
+                connectionStatus.id = 'connection-status';
+                connectionStatus.style.cssText = `
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    padding: 8px 16px;
+                    background: rgba(255,255,255,0.2);
+                    border-radius: 20px;
+                    font-size: 14px;
+                    font-weight: 500;
+                `;
+                header.appendChild(connectionStatus);
+            }
+        });
+    </script>
+    
+    <!-- Tính năng offline và khôi phục dữ liệu -->
+    <script src="offline-storage.js"></script>
+    <script src="data-recovery.js"></script>
+    <script src="offline-integration.js"></script>
+</body>
+</html>
+

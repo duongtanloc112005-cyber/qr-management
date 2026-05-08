@@ -1,0 +1,4109 @@
+{
+  "timestamp": "2026-04-10T10:37:25.605Z",
+  "data": [
+    {
+      "maGoc": "sp1=tee-in|ST 152, den M  [1] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 152, den M  [1] | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:20:50 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:20:50 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp2=tee-in|BALEN 114, den M  | 08:23:05 10/04/2026",
+      "ma": "tee-in|BALEN 114, den M  | 08:23:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp2=tee-in|POP 07, den M  | 08:23:05 10/04/2026",
+      "ma": "tee-in|POP 07, den M  | 08:23:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp2=tee-theu|CHAM 014, den XL  | 08:23:44 10/04/2026",
+      "ma": "tee-theu|CHAM 014, den XL  | 08:23:44 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp2",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp1=tee-in|BAPE MOI, den M  | 08:22:36 10/04/2026",
+      "ma": "tee-in|BAPE MOI, den M  | 08:22:36 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp1=tee-in|LON XON AA02, den S  | 08:22:36 10/04/2026",
+      "ma": "tee-in|LON XON AA02, den S  | 08:22:36 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp1=tee-in|MLB 055, hongn M  | 08:22:36 10/04/2026",
+      "ma": "tee-in|MLB 055, hongn M  | 08:22:36 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "hongn",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp1=tee-in|ADI 022, xam XXL  | 08:22:36 10/04/2026",
+      "ma": "tee-in|ADI 022, xam XXL  | 08:22:36 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "xam",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp1=tee-in|ST DAULAU, trang L  | 08:22:36 10/04/2026",
+      "ma": "tee-in|ST DAULAU, trang L  | 08:22:36 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp2=tee-in|ADLV BASIC, dodo L  | 08:23:05 10/04/2026",
+      "ma": "tee-in|ADLV BASIC, dodo L  | 08:23:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "dodo",
+      "size": "L",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp2=tee-in|CAOSU 02, tieu L  | 08:23:05 10/04/2026",
+      "ma": "tee-in|CAOSU 02, tieu L  | 08:23:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "L",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp2=tee-in|CH 04, trang M  | 08:23:05 10/04/2026",
+      "ma": "tee-in|CH 04, trang M  | 08:23:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp2=tee-in|DREW CUOI, trang XXL  | 08:23:05 10/04/2026",
+      "ma": "tee-in|DREW CUOI, trang XXL  | 08:23:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp2=tee-in|ADI 022, xam M  | 08:23:05 10/04/2026",
+      "ma": "tee-in|ADI 022, xam M  | 08:23:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "xam",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp2=tee-in|ADI 1B, den L  | 08:23:05 10/04/2026",
+      "ma": "tee-in|ADI 1B, den L  | 08:23:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp1=tee-in|POP 010, den M  | 08:22:36 10/04/2026",
+      "ma": "tee-in|POP 010, den M  | 08:22:36 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp1=tee-kt|STRESS 011, trang XXL  | 08:22:15 10/04/2026",
+      "ma": "tee-kt|STRESS 011, trang XXL  | 08:22:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp1",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "trang",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 8:41:10 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:10 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI Ngang, trang M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI Ngang, trang M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:41:33 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:33 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp2=boxy-in|TDN 047, den XXL  | 08:23:27 10/04/2026",
+      "ma": "boxy-in|TDN 047, den XXL  | 08:23:27 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp2",
+      "loaiHang": "boxy",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 8:41:57 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:41:57 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-theu|CHAM , trang S  | 08:13:44 10/04/2026",
+      "ma": "tee-theu|CHAM , trang S  | 08:13:44 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "S",
+      "thoiGian": "4/10/2026, 8:43:37 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:43:37 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 061, den XL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 061, den XL  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 8:43:37 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:43:37 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|ADLV 03, navy S  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADLV 03, navy S  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "S",
+      "thoiGian": "4/10/2026, 8:43:37 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:43:37 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=scc-in| Ct1, tieu XL  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Ct1, tieu XL  | 07:51:27 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 8:43:37 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:43:37 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=scc-in| Bu, trang M  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Bu, trang M  | 07:51:27 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:43:37 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:43:37 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=skk-theu| Bapemoi, den M  | 07:53:21 10/04/2026",
+      "ma": "skk-theu| Bapemoi, den M  | 07:53:21 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "skk",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:43:37 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:43:37 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=scc-in| Bu, be XL  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Bu, be XL  | 07:51:27 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "be",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 8:43:37 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:43:37 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=scc-in| Wt, trang XL  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Wt, trang XL  | 07:51:27 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 8:43:37 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:43:37 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE 064, trang S  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE 064, trang S  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "S",
+      "thoiGian": "4/10/2026, 8:53:37 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:53:37 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|DREW Cuoi, hongd L  | 07:54:33 10/04/2026",
+      "ma": "tee-in|DREW Cuoi, hongd L  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "hongd",
+      "size": "L",
+      "thoiGian": "4/10/2026, 8:53:52 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:53:52 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|GC Ngang, dodo XXL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|GC Ngang, dodo XXL  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "dodo",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 8:53:52 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:53:52 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ADI 1B, do S  | 07:54:33 10/04/2026",
+      "ma": "tee-in|ADI 1B, do S  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "do",
+      "size": "S",
+      "thoiGian": "4/10/2026, 8:53:52 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:53:52 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-kt|NGOISAO 012, den S  | 08:14:06 10/04/2026",
+      "ma": "tee-kt|NGOISAO 012, den S  | 08:14:06 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "4/10/2026, 8:53:52 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:53:52 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|MLB 055, den M  | 07:54:33 10/04/2026",
+      "ma": "tee-in|MLB 055, den M  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:54:04 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:54:04 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 049, den XXL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 049, den XXL  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 8:54:04 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:54:04 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=scc-in| Cham, den M  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Cham, den M  | 07:51:27 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:54:04 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:54:04 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=scc-in| Wt, trang L  | 08:11:05 10/04/2026",
+      "ma": "scc-in| Wt, trang L  | 08:11:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 8:54:04 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:54:04 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE Moi, den L  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den L  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 8:55:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE Moi, den XXL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den XXL  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 8:55:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI Doc, trang L  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI Doc, trang L  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 8:55:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BALEN Wave, trang M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BALEN Wave, trang M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:55:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|DREW Bu, nau S  | 07:54:33 10/04/2026",
+      "ma": "tee-in|DREW Bu, nau S  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "nau",
+      "size": "S",
+      "thoiGian": "4/10/2026, 8:55:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|DREW Cuoi, trang M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|DREW Cuoi, trang M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:55:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 039, tieu S  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 039, tieu S  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "S",
+      "thoiGian": "4/10/2026, 8:55:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|LON XON Lee, den XXL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|LON XON Lee, den XXL  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 8:55:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 064, trang S  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 064, trang S  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "S",
+      "thoiGian": "4/10/2026, 8:55:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 06, be xam XL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 06, be xam XL  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "be",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 8:55:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=scc-in| Drewchu, den L  | 08:11:05 10/04/2026",
+      "ma": "scc-in| Drewchu, den L  | 08:11:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 8:55:33 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:33 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=scc-in| Chicago, den XXL  | 08:11:05 10/04/2026",
+      "ma": "scc-in| Chicago, den XXL  | 08:11:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 8:55:33 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:33 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=skk-theu| Bapemoi, trang M  | 07:53:21 10/04/2026",
+      "ma": "skk-theu| Bapemoi, trang M  | 07:53:21 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "skk",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:55:33 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:33 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=scc-in| Adi03, den trang XL  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Adi03, den trang XL  | 07:51:27 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 8:55:33 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:33 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI Ngang, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI Ngang, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 8:55:33 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:33 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|LON XON Lee, den XL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|LON XON Lee, den XL  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 8:55:33 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 8:55:33 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|CAOSU 04, trang M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|CAOSU 04, trang M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:05:47 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:05:47 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=boxy-in|TDN 033, navy M  | 07:55:02 10/04/2026",
+      "ma": "boxy-in|TDN 033, navy M  | 07:55:02 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "boxy",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:05:47 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:05:47 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 152, den M  [2] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 152, den M  [2] | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:13:41 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:13:41 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE 066, trang XXL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE 066, trang XXL  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 9:13:41 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:13:41 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 172, trang XL  [1] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 172, trang XL  [1] | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 9:17:30 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:17:30 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 172, trang XL  [2] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 172, trang XL  [2] | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 9:17:30 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:17:30 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=boxy-in|TDN 030, den M  | 08:12:28 10/04/2026",
+      "ma": "boxy-in|TDN 030, den M  | 08:12:28 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "boxy",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:17:30 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:17:30 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ADI Ngang, trang hong M  | 07:54:33 10/04/2026",
+      "ma": "tee-in|ADI Ngang, trang hong M  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:17:30 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:17:30 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "pethu=tee-in|ADI ngang, trang M  | 08:52:08 10/04/2026",
+      "ma": "tee-in|ADI ngang, trang M  | 08:52:08 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "pethu",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:17:30 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:17:30 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 152, den XL  [1] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 152, den XL  [1] | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 9:17:30 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:17:30 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST Hoaheo, trang L  [1] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST Hoaheo, trang L  [1] | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 9:17:30 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:17:30 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST Hoaheo, trang L  [2] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST Hoaheo, trang L  [2] | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 9:17:30 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:17:30 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-theu|CHAM , den S  | 08:13:44 10/04/2026",
+      "ma": "tee-theu|CHAM , den S  | 08:13:44 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "4/10/2026, 9:21:19 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:21:19 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|MLB 111, den XXL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|MLB 111, den XXL  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 9:21:19 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:21:19 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE 052, den XL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE 052, den XL  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 9:29:29 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:29:29 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|CH 023, den XL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|CH 023, den XL  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 9:29:29 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:29:29 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-kt|DIOR 07, trang bac M  | 08:14:06 10/04/2026",
+      "ma": "tee-kt|DIOR 07, trang bac M  | 08:14:06 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:30:22 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:30:22 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE 064, den M  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE 064, den M  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:30:22 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:30:22 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-kt|03 , den XL  | 07:55:23 10/04/2026",
+      "ma": "tee-kt|03 , den XL  | 07:55:23 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 9:30:22 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:30:22 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|JD 06, dodo L  | 08:11:48 10/04/2026",
+      "ma": "tee-in|JD 06, dodo L  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "dodo",
+      "size": "L",
+      "thoiGian": "4/10/2026, 9:37:25 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:37:25 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE 079, den hong S  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE 079, den hong S  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "4/10/2026, 9:37:25 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:37:25 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE Moi, den M  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den M  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:37:25 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:37:25 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|MLB 112, navy M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|MLB 112, navy M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:37:25 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:37:25 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|CHUOT 04, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|CHUOT 04, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:37:25 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:37:25 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 03, den xanh L  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 03, den xanh L  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 9:37:25 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:37:25 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=atd-in|CH 032, den M  | 08:13:24 10/04/2026",
+      "ma": "atd-in|CH 032, den M  | 08:13:24 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:37:25 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:37:25 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|CH 04, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|CH 04, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:43:02 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:43:02 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|CH 03, den XXL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|CH 03, den XXL  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 9:43:02 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:43:02 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|MLB 110, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|MLB 110, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:43:02 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:43:02 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI 020, trang M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI 020, trang M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:43:02 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:43:02 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 06, trang do M  [1] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 06, trang do M  [1] | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:43:02 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:43:02 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 06, trang do M  [2] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 06, trang do M  [2] | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:43:02 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:43:02 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 06, be xam S  | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 06, be xam S  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "be",
+      "size": "S",
+      "thoiGian": "4/10/2026, 9:47:51 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:47:51 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|LON XON Lvs01, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|LON XON Lvs01, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:47:51 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:47:51 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 039, tieu L  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 039, tieu L  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "L",
+      "thoiGian": "4/10/2026, 9:51:51 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:51:51 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI Ngang, hongd M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI Ngang, hongd M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "hongd",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:51:51 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:51:51 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|CHUOT 04, trang M  | 07:54:33 10/04/2026",
+      "ma": "tee-in|CHUOT 04, trang M  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:51:51 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:51:51 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST Daulau, trang L  | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST Daulau, trang L  | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 9:51:51 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:51:51 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BALEN 114, navy M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BALEN 114, navy M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:51:51 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:51:51 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-kt|02 , den M  | 08:14:06 10/04/2026",
+      "ma": "tee-kt|02 , den M  | 08:14:06 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 9:51:51 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 9:51:51 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE Moi, den M  [1] | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den M  [1] | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 10:13:44 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:13:44 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE Moi, den XL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den XL  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 10:13:44 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:13:44 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE Moi, den L  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den L  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 10:13:44 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:13:44 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 01, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 01, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 10:17:46 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:17:46 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 039, den XXL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 039, den XXL  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 10:26:40 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:26:40 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI 021, den do XXL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI 021, den do XXL  | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 10:27:37 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:27:37 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "spht=tee-in|NGUAV3 , den M  | 09:51:56 10/04/2026",
+      "ma": "tee-in|NGUAV3 , den M  | 09:51:56 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 10:34:03 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:34:03 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=scc-in| Dsq01, den XL  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Dsq01, den XL  | 07:51:27 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 10:34:03 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:34:03 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=scc-in| Cham, den L  [3] | 08:11:05 10/04/2026",
+      "ma": "scc-in| Cham, den L  [3] | 08:11:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 10:37:57 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:37:57 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=scc-in| Stress01, den L  | 08:11:05 10/04/2026",
+      "ma": "scc-in| Stress01, den L  | 08:11:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 10:37:57 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:37:57 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=scc-in| Adi021, den trang L  | 08:11:05 10/04/2026",
+      "ma": "scc-in| Adi021, den trang L  | 08:11:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 10:37:57 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:37:57 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=scc-in| Cham, den L  [1] | 08:11:05 10/04/2026",
+      "ma": "scc-in| Cham, den L  [1] | 08:11:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 10:38:09 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:38:09 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=scc-in| Cham, den L  [2] | 08:11:05 10/04/2026",
+      "ma": "scc-in| Cham, den L  [2] | 08:11:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 10:39:25 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:39:25 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=scc-in| Nyvien, den L  | 10:38:28 10/04/2026",
+      "ma": "scc-in| Nyvien, den L  | 10:38:28 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 10:46:18 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:46:18 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=tee-kt|STRESS 011, trang M  | 10:40:05 10/04/2026",
+      "ma": "tee-kt|STRESS 011, trang M  | 10:40:05 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 10:50:08 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:50:08 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "spht=tee-in|BAPE 078, trang xanh L  | 10:32:31 10/04/2026",
+      "ma": "tee-in|BAPE 078, trang xanh L  | 10:32:31 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 10:55:17 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:55:17 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE Moi, den M  [2] | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den M  [2] | 08:11:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 10:55:17 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:55:17 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 152, den XL  [2] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 152, den XL  [2] | 07:54:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 10:58:07 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:58:07 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=atd-in|CN05 , den XL  [1] | 10:17:47 10/04/2026",
+      "ma": "atd-in|CN05 , den XL  [1] | 10:17:47 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 11:01:21 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 11:01:21 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=tee-in|CAOSU 02, xam L  | 10:38:45 10/04/2026",
+      "ma": "tee-in|CAOSU 02, xam L  | 10:38:45 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "xam",
+      "size": "L",
+      "thoiGian": "4/10/2026, 11:08:36 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 11:08:36 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=atd-in|CN05 , den M  | 10:17:47 10/04/2026",
+      "ma": "atd-in|CN05 , den M  | 10:17:47 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 11:08:36 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 11:08:36 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp2=boxy-in|TDN 047, den S  | 08:12:28 10/04/2026",
+      "ma": "boxy-in|TDN 047, den S  | 08:12:28 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp2",
+      "loaiHang": "boxy",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "4/10/2026, 11:08:36 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 11:08:36 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=atd-in|CN05 , den XL  [2] | 10:17:47 10/04/2026",
+      "ma": "atd-in|CN05 , den XL  [2] | 10:17:47 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 11:08:36 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 11:08:36 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=tee-in|MLB 055, den XL  | 10:38:45 10/04/2026",
+      "ma": "tee-in|MLB 055, den XL  | 10:38:45 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 11:08:36 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 11:08:36 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=tee-in|LON XON Fogair, den L  | 10:38:45 10/04/2026",
+      "ma": "tee-in|LON XON Fogair, den L  | 10:38:45 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 11:08:36 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 11:08:36 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=tee-in|ADI Ngang, trang XXL  | 10:38:45 10/04/2026",
+      "ma": "tee-in|ADI Ngang, trang XXL  | 10:38:45 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 11:09:47 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 11:09:47 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=tee-in|ADI Doc, den XL  | 10:38:45 10/04/2026",
+      "ma": "tee-in|ADI Doc, den XL  | 10:38:45 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 11:18:03 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 11:18:03 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=tee-in|CAOSU 02, hongn S  | 10:38:45 10/04/2026",
+      "ma": "tee-in|CAOSU 02, hongn S  | 10:38:45 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "hongn",
+      "size": "S",
+      "thoiGian": "4/10/2026, 11:21:25 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 11:21:25 AM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=boxy-in|WHEN 05, trang M  | 10:39:09 10/04/2026",
+      "ma": "boxy-in|WHEN 05, trang M  | 10:39:09 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "boxy",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 1:10:21 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 1:10:21 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=atd-in|TRAFFY , trang M  | 10:39:35 10/04/2026",
+      "ma": "atd-in|TRAFFY , trang M  | 10:39:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 1:10:21 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 1:10:21 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "spht=tee-theu|CHAM , trang M  | 13:14:09 10/04/2026",
+      "ma": "tee-theu|CHAM , trang M  | 13:14:09 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 1:23:16 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 1:23:16 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp3=tee-in|ADI Doc, trang hong S  | 10:38:45 10/04/2026",
+      "ma": "tee-in|ADI Doc, trang hong S  | 10:38:45 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "S",
+      "thoiGian": "4/10/2026, 1:29:14 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 1:29:14 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "spht=tee-in|LON XON Nguav3, dodo M  | 13:14:39 10/04/2026",
+      "ma": "tee-in|LON XON Nguav3, dodo M  | 13:14:39 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "dodo",
+      "size": "M",
+      "thoiGian": "4/10/2026, 1:31:42 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 1:31:42 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "spht=tee-in|CAOSU 02, tieu M | 07:57:29 10/04/2026",
+      "ma": "tee-in|CAOSU 02, tieu M | 07:57:29 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "M",
+      "thoiGian": "4/10/2026, 2:28:09 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:28:09 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "spht=atd-in| 032, trang XL | 07:56:57 10/04/2026",
+      "ma": "atd-in| 032, trang XL | 07:56:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "spht",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 2:28:09 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:28:09 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "spht=skk-theu| Ralph, den XL | 07:56:38 10/04/2026",
+      "ma": "skk-theu| Ralph, den XL | 07:56:38 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "spht",
+      "loaiHang": "skk",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 2:28:09 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:28:09 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "spht=tee-theu|CHAM , trang L  | 07:57:19 10/04/2026",
+      "ma": "tee-theu|CHAM , trang L  | 07:57:19 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 2:28:54 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:28:54 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|CN 05, den L  [2] | 13:28:37 10/04/2026",
+      "ma": "tee-in|CN 05, den L  [2] | 13:28:37 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 2:29:05 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:29:05 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|CN 05, den L  [1] | 13:28:37 10/04/2026",
+      "ma": "tee-in|CN 05, den L  [1] | 13:28:37 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 2:29:05 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:29:05 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp4=tee-theu|CHAM , trang XL  | 14:31:45 10/04/2026",
+      "ma": "tee-theu|CHAM , trang XL  | 14:31:45 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp4",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 2:32:52 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:32:52 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp4=tee-in|CHUOT 04, trang XL  | 14:31:30 10/04/2026",
+      "ma": "tee-in|CHUOT 04, trang XL  | 14:31:30 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 2:32:52 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:32:52 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp4=tee-in|BALEN 114, dodo XL  | 14:31:30 10/04/2026",
+      "ma": "tee-in|BALEN 114, dodo XL  | 14:31:30 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "dodo",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 2:32:52 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:32:52 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp4=tee-in|MLB 114, navy M  | 14:31:30 10/04/2026",
+      "ma": "tee-in|MLB 114, navy M  | 14:31:30 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "M",
+      "thoiGian": "4/10/2026, 2:32:52 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:32:52 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp4=tee-in|BAPE 051, den M  | 14:31:30 10/04/2026",
+      "ma": "tee-in|BAPE 051, den M  | 14:31:30 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 2:32:52 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:32:52 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp4=tee-in|BAPE 057, trang L  | 14:31:30 10/04/2026",
+      "ma": "tee-in|BAPE 057, trang L  | 14:31:30 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 2:32:52 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:32:52 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp4=tee-in|MLB 099, navy L  | 14:31:30 10/04/2026",
+      "ma": "tee-in|MLB 099, navy L  | 14:31:30 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "L",
+      "thoiGian": "4/10/2026, 2:32:52 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:32:52 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "htsp4=tee-in|MLB 099, navy S  | 14:31:30 10/04/2026",
+      "ma": "tee-in|MLB 099, navy S  | 14:31:30 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "htsp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "S",
+      "thoiGian": "4/10/2026, 2:32:52 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:32:52 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=scc-in| Cham, den L  [1] | 14:14:32 10/04/2026",
+      "ma": "scc-in| Cham, den L  [1] | 14:14:32 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 2:41:47 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:41:47 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=scc-in| Cham, tieu L  | 14:14:32 10/04/2026",
+      "ma": "scc-in| Cham, tieu L  | 14:14:32 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "L",
+      "thoiGian": "4/10/2026, 2:41:47 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:41:47 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|BAPE 064, trang M  | 14:15:35 10/04/2026",
+      "ma": "tee-in|BAPE 064, trang M  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 2:41:47 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:41:47 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|ST Ct2, den XL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|ST Ct2, den XL  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 2:41:47 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:41:47 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-kt|NGOISAO 012, den S  | 14:18:04 10/04/2026",
+      "ma": "tee-kt|NGOISAO 012, den S  | 14:18:04 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "4/10/2026, 3:25:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:25:55 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=skk-theu| Rlaph, den XL  | 14:15:06 10/04/2026",
+      "ma": "skk-theu| Rlaph, den XL  | 14:15:06 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "skk",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 3:25:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:25:55 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=atd-in|CH 01, den XL  | 14:16:04 10/04/2026",
+      "ma": "atd-in|CH 01, den XL  | 14:16:04 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 3:25:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:25:55 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|ADI ngang, den M  [2] | 14:15:35 10/04/2026",
+      "ma": "tee-in|ADI ngang, den M  [2] | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 3:25:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:25:55 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-theu|CK , den S  | 14:17:34 10/04/2026",
+      "ma": "tee-theu|CK , den S  | 14:17:34 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "4/10/2026, 3:25:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:25:55 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|ADI ngang, den M  [1] | 14:15:35 10/04/2026",
+      "ma": "tee-in|ADI ngang, den M  [1] | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 3:25:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:25:55 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=atd-in|CH 01, den M  | 14:16:04 10/04/2026",
+      "ma": "atd-in|CH 01, den M  | 14:16:04 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 3:25:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:25:55 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-theu|CK , den XL  | 14:17:34 10/04/2026",
+      "ma": "tee-theu|CK , den XL  | 14:17:34 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 3:25:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:25:55 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-theu|CHAM , trang L  | 14:17:34 10/04/2026",
+      "ma": "tee-theu|CHAM , trang L  | 14:17:34 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 3:25:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:25:55 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=atd-kt|NGOISAO 012, trang M  | 14:16:56 10/04/2026",
+      "ma": "atd-kt|NGOISAO 012, trang M  | 14:16:56 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "atd",
+      "loaiSX": "kt",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 3:25:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:25:55 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|CH Thanhgia, trang XL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CH Thanhgia, trang XL  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 3:43:47 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:43:47 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|CH 018, den XXL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CH 018, den XXL  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 3:43:47 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:43:47 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|CH 017, den XXL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CH 017, den XXL  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 3:51:02 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:51:02 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|CH Hong, den L  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CH Hong, den L  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 3:51:02 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:51:02 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|BAPE 039, den XL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|BAPE 039, den XL  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 3:51:02 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:51:02 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|ADLV 03, be do XXL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|ADLV 03, be do XXL  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "be",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 3:51:02 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:51:02 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|LON XON Maison, trang XL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|LON XON Maison, trang XL  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 3:53:27 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 3:53:27 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "spht=tee-kt|DIOR 07, trang bac M  | 16:00:47 10/04/2026",
+      "ma": "tee-kt|DIOR 07, trang bac M  | 16:00:47 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:08:27 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:08:27 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-theu|NGUA , den L  | 16:16:06 10/04/2026",
+      "ma": "tee-theu|NGUA , den L  | 16:16:06 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 4:23:00 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:23:00 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=scc-in| BU, tieu L  | 16:15:43 10/04/2026",
+      "ma": "scc-in| BU, tieu L  | 16:15:43 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "L",
+      "thoiGian": "4/10/2026, 4:23:00 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:23:00 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|CAOSU 02, tieu XL  | 16:16:14 10/04/2026",
+      "ma": "tee-in|CAOSU 02, tieu XL  | 16:16:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 4:23:00 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:23:00 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=scc-in| Adi021, den vang M  | 16:13:48 10/04/2026",
+      "ma": "scc-in| Adi021, den vang M  | 16:13:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:38:08 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:38:08 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=scc-in| ADLV, den M  | 16:13:48 10/04/2026",
+      "ma": "scc-in| ADLV, den M  | 16:13:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:38:08 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:38:08 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=scc-in| Bu, tieu L  | 16:13:48 10/04/2026",
+      "ma": "scc-in| Bu, tieu L  | 16:13:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "L",
+      "thoiGian": "4/10/2026, 4:38:08 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:38:08 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=scc-in| Wt, den L  | 16:13:48 10/04/2026",
+      "ma": "scc-in| Wt, den L  | 16:13:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 4:38:08 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:38:08 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|ADI 021, navy M  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADI 021, navy M  | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:40:09 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:40:09 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|CHUOT 03, trang XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|CHUOT 03, trang XL  | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 4:40:09 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:40:09 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|ADLV Basic, den XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADLV Basic, den XL  | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 4:40:09 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:40:09 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|ADLV Basic, trang M  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADLV Basic, trang M  | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:40:09 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:40:09 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|ADLV Basic, trang XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADLV Basic, trang XL  | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 4:40:09 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:40:09 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "tonsoanlon=tee-theu|NGUA , den XL  | 16:30:28 10/04/2026",
+      "ma": "tee-theu|NGUA , den XL  | 16:30:28 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "tonsoanlon",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 4:41:56 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:41:56 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=scc-in| Adi021, trang xanh M  | 16:13:48 10/04/2026",
+      "ma": "scc-in| Adi021, trang xanh M  | 16:13:48 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:46:13 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:46:13 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [1] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [1] | 14:43:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [2] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [2] | 14:43:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [4] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [4] | 14:43:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [3] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [3] | 14:43:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [5] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [5] | 14:43:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [6] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [6] | 14:43:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [8] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [8] | 14:43:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [7] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [7] | 14:43:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [9] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [9] | 14:43:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [10] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [10] | 14:43:14 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=hd-in|1004 , red M  | 14:11:37 10/04/2026",
+      "ma": "hd-in|1004 , red M  | 14:11:37 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "hd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [1] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [1] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [2] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [2] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [4] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [4] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [3] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [3] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [5] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [5] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [6] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [6] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [8] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [8] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [7] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [7] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [9] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [9] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [10] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [10] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [12] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [12] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [11] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [11] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [13] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [13] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [14] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [14] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [16] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [16] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [15] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [15] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [17] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [17] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [18] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [18] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [20] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [20] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [19] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [19] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [21] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [21] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [22] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [22] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [24] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [24] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [23] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [23] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [25] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [25] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [26] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [26] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [28] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [28] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [27] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [27] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [29] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [29] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [30] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [30] | 14:11:57 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|CH 04, den M  | 16:14:15 10/04/2026",
+      "ma": "tee-in|CH 04, den M  | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:57:34 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:57:34 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|CH 020, den L  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CH 020, den L  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 4:57:34 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:57:34 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|ST 180, trang M  [1] | 16:14:15 10/04/2026",
+      "ma": "tee-in|ST 180, trang M  [1] | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:57:34 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:57:34 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|ST 180, trang M  [2] | 16:14:15 10/04/2026",
+      "ma": "tee-in|ST 180, trang M  [2] | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 5:01:46 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 5:01:46 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|CHUOT 03, navy XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|CHUOT 03, navy XL  | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 5:01:46 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 5:01:46 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-theu|CHAM 014, den XL  | 16:14:33 10/04/2026",
+      "ma": "tee-theu|CHAM 014, den XL  | 16:14:33 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 5:01:46 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 5:01:46 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-kt|NGOISAO 012, den XL  | 16:14:47 10/04/2026",
+      "ma": "tee-kt|NGOISAO 012, den XL  | 16:14:47 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 5:04:08 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 5:04:08 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|ADI 021, trang xanh M  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADI 021, trang xanh M  | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 5:04:08 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 5:04:08 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|CN 026, den XXL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CN 026, den XXL  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "4/10/2026, 5:04:08 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 5:04:08 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp5=tee-in|LON XON Kap01, trang L  | 16:14:15 10/04/2026",
+      "ma": "tee-in|LON XON Kap01, trang L  | 16:14:15 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 5:04:08 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 5:04:08 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=scc-in| Cham, den L  [2] | 14:14:32 10/04/2026",
+      "ma": "scc-in| Cham, den L  [2] | 14:14:32 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "4/10/2026, 5:04:54 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 5:04:54 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    },
+    {
+      "maGoc": "sp4=tee-in|BALEN Wave, den M  | 14:15:35 10/04/2026",
+      "ma": "tee-in|BALEN Wave, den M  | 14:15:35 10/04/2026",
+      "trangThai": "Nhận hàng",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 5:04:54 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 5:04:54 PM",
+          "trangThai": "Nhận hàng"
+        }
+      ]
+    }
+  ]
+}

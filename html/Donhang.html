@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>🚚 Quản lý đơn hàng</title>
+<style>
+body {font-family: Arial, sans-serif;background:#ffffff;margin:0;padding:20px;color:#000000;}
+h2 {margin-top:0;color:#1976D2;}
+textarea,select,button,input {margin:5px;padding:8px;border-radius:6px;border:1px solid #ccc;}
+button {background:#2196F3;color:#fff;border:none;cursor:pointer;}
+button:hover {background:#1976D2;}
+#btnXoaAll {background:#f44336;}
+#btnXoaAll:hover {background:#c62828;}
+input[type=text], textarea {width:240px;}
+#filterBar label {margin-right:5px;}
+#filterBar select {margin-right:15px;}
+.stat-block {background:#ffffff;padding:10px;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);margin-bottom:10px;border:1px solid #ddd;}
+.stat-block h4 {margin:0 0 5px 0;color:#2196F3;font-size:14px;}
+.stat-block ul {list-style:none;padding-left:0;margin:0;}
+.stat-block ul li {display:flex;justify-content:space-between;border-bottom:1px dotted #ddd;font-size:13px;padding:2px 0;color:#000000;}
+.stat-container {margin-bottom:15px;}
+table {width:100%;border-collapse:collapse;background:#ffffff;margin-top:10px;border:1px solid #ddd;}
+th,td {border:1px solid #ddd;padding:6px;text-align:left;font-size:14px;color:#000000;}
+th {background:#2196F3;color:#fff;position:sticky;top:0;}
+tr:nth-child(even) {background:#f8f8f8;}
+.status-cell {padding:2px 6px;border-radius:4px;font-weight:bold;}
+/* màu trạng thái */
+.status-Đơn\ đi {background:#4caf50;color:#fff;}
+.status-Đơn\ hủy {background:#ffeb3b;color:#000;}
+.status-Hết\ hàng {background:#f44336;color:#fff;}
+.status-Thiếu\ hàng {background:#e91e63;color:#fff;}
+.status-Đơn\ hoàn {background:#ff9800;color:#fff;}
+.status-Shipper\ chưa\ lấy {background:#607d8b;color:#fff;}
+
+
+
+/* --- Banner notification (larger) --- */
+.toast {
+  position: fixed; top:0; left:0; right:0;
+  background: rgba(50,50,50,.95); color:#fff;
+  padding:20px 30px; text-align:center; font-size:20px; font-weight:bold;
+  box-shadow:0 4px 8px rgba(0,0,0,.35);
+  opacity:0; transform: translateY(-100%);
+  transition: opacity .35s, transform .35s;
+  z-index: 9999;
+}
+.toast.show { opacity:1; transform: translateY(0); }
+.toast.info { background:#1976D2; }
+.toast.success { background:#2e7d32; }
+.toast.warn { background:#ef6c00; }
+.toast.error { background:#d32f2f; }
+
+
+
+</style>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+<script>
+function tinhTong(){
+  // Tính tổng từ 10 đợt hàng và cập nhật tongSoDon
+  let tong = 0;
+  for (let i = 1; i <= 10; i++) {
+    const el = document.getElementById("dot"+i);
+    if (el) tong += parseInt(el.value) || 0;
+  }
+  const tongEl = document.getElementById("tongSoDon");
+  if (tongEl) tongEl.value = tong;
+  // Chỉ gọi hienThi() nếu đã được định nghĩa để refresh dữ liệu
+  if (typeof hienThi === 'function') {
+    hienThi();
+  }
+}
+
+// --- Lưu & Tải số lượng 10 đợt vào localStorage ---
+function luuDotHang() {
+  let dots = {};
+  for (let i = 1; i <= 10; i++) {
+    dots["dot"+i] = document.getElementById("dot"+i)?.value || "";
+  }
+  localStorage.setItem("duLieuDotHang", JSON.stringify(dots));
+}
+
+function loadDotHang() {
+  const d = localStorage.getItem("duLieuDotHang");
+  if (d) {
+    try {
+      const dots = JSON.parse(d);
+      for (let i = 1; i <= 10; i++) {
+        if (dots["dot"+i] !== undefined) {
+          const element = document.getElementById("dot"+i);
+          if (element) {
+            element.value = dots["dot"+i];
+          }
+        }
+      }
+      tinhTong();
+    } catch(e){ console.error(e); }
+  }
+}
+
+// Gắn sự kiện và load dữ liệu khi DOM đã sẵn sàng
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    // Gắn sự kiện oninput để lưu luôn khi nhập
+    for (let i = 1; i <= 10; i++) {
+      const el = document.getElementById("dot"+i);
+      if (el) {
+        el.addEventListener("input", luuDotHang);
+      }
+    }
+    // Tải dữ liệu 10 đợt hàng từ localStorage
+    loadDotHang();
+  });
+} else {
+  // DOM đã sẵn sàng, gắn sự kiện và load ngay
+  for (let i = 1; i <= 10; i++) {
+    const el = document.getElementById("dot"+i);
+    if (el) {
+      el.addEventListener("input", luuDotHang);
+    }
+  }
+  loadDotHang();
+}
+
+</script>
+</head>
+<body>
+<h2>🚚 Quản lý đơn hàng - Kiểm soát vận chuyển</h2>
+
+<!-- Nhập liệu -->
+<div class="stat-block" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+  <input type="text" id="maVanDon" placeholder="Quét mã vận đơn..." autofocus>
+  <select id="trangThai">
+    <option>Đơn đi</option>
+    <option>Đơn hủy</option>
+    <option>Hết hàng</option>
+    <option>Thiếu hàng</option>
+    <option>Đơn hoàn</option>
+    <option>Shipper chưa lấy</option>
+  </select>
+  <button id="btnExport">📄 Xuất Excel</button>
+  <button id="btnXoaAll">🗑️ Xóa toàn bộ</button>
+  <button id="btnDonDep" style="background:#ff9800;display:none;" onclick="donDepDuLieuCu()">🧹 Dọn dẹp dữ liệu cũ</button>
+  <button id="btnRefresh" onclick="refreshData()">🔄 Tải lại từ file</button>
+</div>
+
+<!-- Khu vực hiển thị lỗi validation -->
+<div id="errorPanel" class="stat-block" style="display:none;background:#ffebee;border-left:4px solid #f44336;">
+  <h4 style="color:#d32f2f;margin:0 0 10px 0;">❌ Chi tiết lỗi validation</h4>
+  <div id="errorList" style="max-height:200px;overflow-y:auto;"></div>
+  <div style="margin-top:10px;display:flex;gap:10px;">
+    <button onclick="document.getElementById('errorPanel').style.display='none'" style="background:#f44336;">Đóng</button>
+    <button onclick="xoaLoiValidation()" style="background:#4caf50;">🗑️ Xóa lỗi</button>
+  </div>
+</div>
+
+<!-- Panel cấu hình server -->
+<div id="serverConfigPanel" class="stat-block" style="display:none;background:#e3f2fd;border-left:4px solid #2196F3;">
+  <h4 style="color:#1976D2;margin:0 0 15px 0;">⚙️ Cấu hình kết nối Server</h4>
+  
+  <div style="margin-bottom:15px;">
+    <label style="display:block;margin-bottom:5px;font-weight:bold;">🌐 Chọn phương thức kết nối:</label>
+    <select id="connectionMethod" onchange="thayDoiPhuongThucKetNoi()" style="width:100%;padding:8px;">
+      <option value="lan">🏠 Mạng LAN nội bộ (Khuyến nghị)</option>
+      <option value="firebase">🔥 Firebase</option>
+      <option value="googlesheets">📊 Google Sheets</option>
+      <option value="jsonbin">📦 JSONBin.io</option>
+      <option value="custom">🔧 Server tùy chỉnh</option>
+    </select>
+  </div>
+
+  <!-- LAN Config -->
+  <div id="lanConfig" class="config-section">
+    <h5 style="color:#1976D2;margin:10px 0 5px 0;">🏠 Mạng LAN nội bộ Configuration</h5>
+    <div style="background:#f5f5f5;padding:10px;border-radius:4px;margin:5px 0;">
+      <p style="margin:0;font-size:12px;color:#666;">💡 <strong>Hướng dẫn:</strong></p>
+      <p style="margin:5px 0;font-size:12px;color:#666;">1. Một máy làm Server: Chạy file <code>lan_server.html</code></p>
+      <p style="margin:5px 0;font-size:12px;color:#666;">2. Các máy khác: Nhập IP của máy Server</p>
+    </div>
+    <input type="text" id="lanServerIp" placeholder="IP máy Server (VD: 192.168.1.100)" style="width:100%;margin:5px 0;">
+    <input type="number" id="lanServerPort" placeholder="Port (mặc định: 8080)" value="8080" style="width:100%;margin:5px 0;">
+    <div style="display:flex;gap:10px;margin:5px 0;">
+      <button onclick="testLanConnection()" style="background:#ff9800;flex:1;">🧪 Test kết nối</button>
+      <button onclick="moLanServer()" style="background:#4caf50;flex:1;">🚀 Mở Server</button>
+    </div>
+    <div id="lanStatus" style="margin-top:10px;padding:8px;border-radius:4px;display:none;"></div>
+  </div>
+
+  <!-- Firebase Config -->
+  <div id="firebaseConfig" class="config-section" style="display:none;">
+    <h5 style="color:#1976D2;margin:10px 0 5px 0;">🔥 Firebase Configuration</h5>
+    <input type="text" id="firebaseApiKey" placeholder="API Key" style="width:100%;margin:5px 0;">
+    <input type="text" id="firebaseProjectId" placeholder="Project ID" style="width:100%;margin:5px 0;">
+    <input type="text" id="firebaseDatabaseUrl" placeholder="Database URL" style="width:100%;margin:5px 0;">
+    <button onclick="testFirebaseConnection()" style="background:#ff9800;margin:5px 0;">🧪 Test kết nối</button>
+  </div>
+
+  <!-- Google Sheets Config -->
+  <div id="googlesheetsConfig" class="config-section" style="display:none;">
+    <h5 style="color:#1976D2;margin:10px 0 5px 0;">📊 Google Sheets Configuration</h5>
+    <input type="text" id="googleSheetsUrl" placeholder="Google Sheets URL" style="width:100%;margin:5px 0;">
+    <input type="text" id="googleSheetsApiKey" placeholder="API Key (tùy chọn)" style="width:100%;margin:5px 0;">
+    <button onclick="testGoogleSheetsConnection()" style="background:#ff9800;margin:5px 0;">🧪 Test kết nối</button>
+  </div>
+
+  <!-- JSONBin Config -->
+  <div id="jsonbinConfig" class="config-section" style="display:none;">
+    <h5 style="color:#1976D2;margin:10px 0 5px 0;">📦 JSONBin.io Configuration</h5>
+    <input type="text" id="jsonbinApiKey" placeholder="JSONBin API Key" style="width:100%;margin:5px 0;">
+    <input type="text" id="jsonbinBinId" placeholder="Bin ID" style="width:100%;margin:5px 0;">
+    <button onclick="testJsonbinConnection()" style="background:#ff9800;margin:5px 0;">🧪 Test kết nối</button>
+  </div>
+
+  <!-- Custom Server Config -->
+  <div id="customConfig" class="config-section" style="display:none;">
+    <h5 style="color:#1976D2;margin:10px 0 5px 0;">🔧 Custom Server Configuration</h5>
+    <input type="text" id="customServerUrl" placeholder="Server URL (VD: https://yourserver.com/api)" style="width:100%;margin:5px 0;">
+    <input type="text" id="customApiKey" placeholder="API Key (nếu có)" style="width:100%;margin:5px 0;">
+    <button onclick="testCustomConnection()" style="background:#ff9800;margin:5px 0;">🧪 Test kết nối</button>
+  </div>
+
+  <div style="margin-top:15px;display:flex;gap:10px;">
+    <button onclick="luuCauHinhServer()" style="background:#4caf50;">💾 Lưu cấu hình</button>
+    <button onclick="dongBoDuLieuLenServer()" style="background:#2196F3;">☁️ Đồng bộ ngay</button>
+    <button onclick="document.getElementById('serverConfigPanel').style.display='none'" style="background:#f44336;">Đóng</button>
+  </div>
+
+  <div id="connectionStatus" style="margin-top:10px;padding:10px;border-radius:4px;display:none;"></div>
+</div>
+<!-- Tổng số đơn -->
+<!-- Nhập số lượng từng đợt hàng -->
+<div class="stat-block" style="font-size:16px;background:#e8f5e9;">
+  <label>📦 Nhập số lượng 10 đợt hàng:</label><br>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:5px;">
+    <input type="number" id="dot1" placeholder="Shopee 1" style="width:100px;" oninput="tinhTong()">
+    <input type="number" id="dot2" placeholder="Shopee 2" style="width:100px;" oninput="tinhTong()">
+    <input type="number" id="dot3" placeholder="Shopee 3" style="width:100px;" oninput="tinhTong()">
+    <input type="number" id="dot4" placeholder="Shopee 4" style="width:100px;" oninput="tinhTong()">
+    <input type="number" id="dot5" placeholder="Shopee 5" style="width:100px;" oninput="tinhTong()">
+    <input type="number" id="dot6" placeholder="Shopee 6" style="width:100px;" oninput="tinhTong()">
+    <input type="number" id="dot7" placeholder="MVD" style="width:100px;" oninput="tinhTong()">
+    <input type="number" id="dot8" placeholder="" style="width:100px;" oninput="tinhTong()">
+    <input type="number" id="dot9" placeholder="" style="width:100px;" oninput="tinhTong()">
+    <input type="number" id="dot10" placeholder="" style="width:100px;" oninput="tinhTong()">
+  </div>
+</div>
+
+<div class="stat-block" style="font-size:16px;background:#fff8e1;">
+  <div class="stat-block" style="font-size:16px;background:#fff8e1;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+  <label style="font-weight:bold;text-transform:uppercase;">TỔNG SỐ ĐƠN:</label>
+  <input type="number" id="tongSoDon" readonly style="width:120px;">
+
+  <label style="font-weight:bold;text-transform:uppercase;">ĐƠN ĐI:</label>
+  <input type="number" id="donDiCount" readonly style="width:120px;">
+
+  <label style="font-weight:bold;text-transform:uppercase;">ĐƠN HỦY:</label>
+  <input type="number" id="donHuyCount" readonly style="width:120px;">
+
+  <label style="font-weight:bold;text-transform:uppercase;">HẾT HÀNG:</label>
+  <input type="number" id="hetHangCount" readonly style="width:120px;">
+
+  <label style="font-weight:bold;text-transform:uppercase;">THIẾU HÀNG:</label>
+  <input type="number" id="thieuHangCount" readonly style="width:120px;">
+
+  <label style="font-weight:bold;text-transform:uppercase;">CHƯA LẤY:</label>
+  <input type="number" id="shipperChuaLayCount" readonly style="width:120px;">
+
+  <label style="font-weight:bold;text-transform:uppercase;">CÒN LẠI:</label>
+  <input type="number" id="conLaiCount" readonly style="width:120px;">
+</div>
+<!-- Thống kê -->
+<div id="thongKe" class="stat-container"></div>
+
+<!-- Bộ lọc và Bulk action -->
+<div id="filterBar" class="stat-block" style="display:flex;flex-wrap:wrap;gap:15px;align-items:center;">
+  <label>🔍 Lọc trạng thái:</label><select id="filterTrangThai"><option value="">-- Tất cả --</option></select>
+  <label>🚚 Đơn vị VC:</label><select id="filterShipper"><option value="">-- Tất cả --</option></select>
+  <input type="text" id="tuKhoa" placeholder="🔍 Tìm kiếm mã đơn...">
+  <button onclick="xoaDongChon()">🗑️ Xóa các dòng chọn</button>
+  
+</div>
+
+<!-- Bảng dữ liệu -->
+<table id="dataTable">
+  <thead>
+    <tr>
+      <th><input type="checkbox" id="selectAll" onclick="chonTatCa(this)"></th>
+      <th>#</th><th>Mã vận đơn</th><th>Đơn vị VC</th><th>Ngày quét</th><th>Trạng thái</th><th>Ghi chú</th><th>Lịch sử</th><th>Xóa</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<!-- Loading indicator -->
+<div id="loadingIndicator" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,255,255,0.95);padding:20px;border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,0.1);z-index:9999;text-align:center;">
+  <div class="loading-spinner" style="border:4px solid #f3f3f3;border-top:4px solid #2196F3;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite;margin:0 auto 10px;"></div>
+  <div>Đang tải dữ liệu...</div>
+</div>
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+<!-- <script src="/auth.js"></script> --> <!-- Đã tắt đăng nhập -->
+<script>
+let duLieu=[], shipperFilter="", trangThaiFilter="";
+let validationErrors = []; // Lưu trữ lỗi validation
+// ✅ Tối ưu: Map để tìm kiếm nhanh O(1) thay vì O(n)
+let duLieuMap = new Map(); // Map<ma, index> để tìm kiếm nhanh
+let saveTimeout = null; // Debounce cho luuLocal
+
+// Debounce function để tối ưu tìm kiếm
+let searchDebounceTimer = null;
+function debounce(func, wait) {
+  return function(...args) {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
+// WebSocket connection for sync
+let ws = null;
+let isConnected = false;
+const MODULE_NAME = 'donhang';
+
+// Flag để đảm bảo chỉ sync lên server một lần khi có dữ liệu local và server rỗng
+let hasTriedSyncToServer = false;
+let hasReceivedServerData = false;
+
+// Queue để retry sync nếu WebSocket chưa sẵn sàng
+let syncRetryCount = 0;
+const MAX_RETRY = 10;
+let syncRetryTimeout = null;
+
+// Đã tắt đăng nhập - không cần requireLogin nữa
+// if (typeof requireLogin === 'function') {
+//     if (document.readyState === 'loading') {
+//         document.addEventListener('DOMContentLoaded', () => {
+//             requireLogin(MODULE_NAME);
+//         });
+//     } else {
+//         requireLogin(MODULE_NAME);
+//     }
+// } else {
+//     setTimeout(() => {
+//         if (typeof requireLogin === 'function') {
+//             requireLogin(MODULE_NAME);
+//         } else {
+//             console.error('auth.js không tải được!');
+//             document.body.style.display = 'block';
+//         }
+//     }, 500);
+// }
+
+// WebSocket functions
+function initWebSocket() {
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const wsUrl = `${protocol}//${window.location.host}`;
+    
+    try {
+        ws = new WebSocket(wsUrl);
+        
+        ws.onopen = function() {
+            console.log('✅ WebSocket connected');
+            isConnected = true;
+            updateConnectionStatus('online');
+            syncRetryCount = 0;
+            hasReceivedServerData = false;
+            hasTriedSyncToServer = false;
+            
+            if (ws.readyState === WebSocket.OPEN) {
+                // Đăng ký module
+                ws.send(JSON.stringify({
+                    type: 'register',
+                    module: MODULE_NAME
+                }));
+                
+                // Yêu cầu dữ liệu từ server
+                function requestData() {
+                    if (ws && ws.readyState === WebSocket.OPEN) {
+                        ws.send(JSON.stringify({
+                            type: 'get_data',
+                            module: MODULE_NAME
+                        }));
+                        console.log('📥 Đã yêu cầu dữ liệu từ server (local có', duLieu.length, 'items)');
+                    }
+                }
+                
+                requestData();
+                
+                // Retry request nếu không nhận được phản hồi sau 3 giây
+                let dataRequestTimeout = setTimeout(() => {
+                    if (!hasReceivedServerData) {
+                        console.log('⚠️ Chưa nhận được dữ liệu từ server sau 3 giây, retry...');
+                        requestData();
+                    }
+                }, 3000);
+                
+                // Retry lại lần nữa sau 6 giây nếu vẫn chưa nhận được
+                let dataRequestTimeout2 = setTimeout(() => {
+                    if (!hasReceivedServerData) {
+                        console.log('⚠️ Chưa nhận được dữ liệu từ server sau 6 giây, retry lần 2...');
+                        requestData();
+                    }
+                }, 6000);
+                
+                // Lưu timeout để clear khi nhận được dữ liệu
+                window.clearDataRequestTimeouts = function() {
+                    clearTimeout(dataRequestTimeout);
+                    clearTimeout(dataRequestTimeout2);
+                };
+                
+                // NẾU CÓ DỮ LIỆU LOCAL, SYNC NGAY SAU 500ms
+                if (duLieu.length > 0) {
+                    console.log('📤 Local có dữ liệu (' + duLieu.length + ' items), sẽ sync sau 500ms...');
+                    setTimeout(() => {
+                        if (duLieu.length > 0 && ws && ws.readyState === WebSocket.OPEN) {
+                            console.log('🔄 Force syncing local data to server NOW...');
+                            syncToServer();
+                        }
+                    }, 500);
+                }
+            }
+        };
+        
+        ws.onmessage = function(event) {
+            try {
+                const data = JSON.parse(event.data);
+                
+                if (data.type === 'sync' && data.module === MODULE_NAME) {
+                    // Clear timeout retry khi nhận được dữ liệu
+                    if (window.clearDataRequestTimeouts) {
+                        window.clearDataRequestTimeouts();
+                    }
+                    
+                    const serverData = data.data || [];
+                    const localLengthBefore = duLieu.length;
+                    console.log('📥 Received sync from server:', serverData.length, 'items (local:', localLengthBefore, 'items)');
+                    
+                    hasReceivedServerData = true;
+                    
+                    if (serverData.length > 0) {
+                        // ✅ Sửa: Chỉ sync từ server nếu local rỗng (lần đầu load)
+                        // Nếu local đã có dữ liệu, ưu tiên local và sync lên server
+                        if (localLengthBefore === 0) {
+                            // Local rỗng → nhận dữ liệu từ server
+                            duLieu = serverData;
+                            // ✅ Cập nhật Map sau khi nhận từ server
+                            updateDuLieuMap();
+                            localStorage.setItem("duLieuShipper", JSON.stringify(duLieu));
+                            hienThi();
+                            console.log('✅ Data synced from server (local was empty):', duLieu.length, 'items');
+                        } else {
+                            // Local có dữ liệu → giữ nguyên local và sync lên server
+                            console.log('⚠️ Local có dữ liệu, giữ nguyên local và sync lên server');
+                            if (!hasTriedSyncToServer && duLieu.length > 0) {
+                                hasTriedSyncToServer = true;
+                                setTimeout(() => {
+                                    console.log('🔄 Syncing local data to server...');
+                                    syncToServer();
+                                }, 100);
+                            }
+                        }
+                        hasTriedSyncToServer = false;
+                    } else {
+                        // Server rỗng - kiểm tra lại file JSON trước khi quyết định
+                        if (localLengthBefore === 0) {
+                            console.log('ℹ️ Both server and local data are empty');
+                            hasTriedSyncToServer = false;
+                        } else {
+                            // Server rỗng nhưng local có dữ liệu - kiểm tra file JSON trước
+                            fetch('/data/donhang.json?' + Date.now())
+                                .then(response => response.ok ? response.json() : null)
+                                .then(fileData => {
+                                    if (fileData && fileData.data && Array.isArray(fileData.data)) {
+                                        if (fileData.data.length === 0) {
+                                            // File JSON rỗng - xóa local và không sync
+                                            console.log('⚠️ File JSON rỗng, xóa dữ liệu local');
+                                            duLieu = [];
+                                            updateDuLieuMap();
+                                            localStorage.setItem("duLieuShipper", JSON.stringify([]));
+                                            hienThi();
+                                            hasTriedSyncToServer = false;
+                                        } else {
+                                            // File JSON có dữ liệu - sync local lên server
+                                            console.log('⚠️ Server rỗng nhưng local có ' + localLengthBefore + ' items, sync local lên server NGAY...');
+                                            if (!hasTriedSyncToServer && duLieu.length > 0) {
+                                                hasTriedSyncToServer = true;
+                                                setTimeout(() => {
+                                                    console.log('🔄 Syncing local data to server NOW...');
+                                                    syncToServer();
+                                                }, 100);
+                                            }
+                                        }
+                                    }
+                                })
+                                .catch(error => {
+                                    console.warn('⚠️ Không thể kiểm tra file JSON:', error);
+                                    // Nếu không kiểm tra được file JSON, giữ nguyên logic cũ
+                                    if (!hasTriedSyncToServer && duLieu.length > 0) {
+                                        hasTriedSyncToServer = true;
+                                        setTimeout(() => {
+                                            console.log('🔄 Syncing local data to server NOW...');
+                                            syncToServer();
+                                        }, 100);
+                                    }
+                                });
+                        }
+                    }
+                } else if (data.type === 'pong') {
+                    console.log('Pong received');
+                }
+            } catch (error) {
+                console.error('Error parsing WebSocket message:', error);
+            }
+        };
+        
+        ws.onclose = function() {
+            console.log('❌ WebSocket disconnected');
+            isConnected = false;
+            updateConnectionStatus('offline');
+            localStorage.setItem("duLieuShipper", JSON.stringify(duLieu));
+            setTimeout(() => {
+                console.log('🔄 Reconnecting...');
+                initWebSocket();
+            }, 3000);
+        };
+        
+        ws.onerror = function(error) {
+            console.error('❌ WebSocket error:', error);
+            updateConnectionStatus('error');
+            localStorage.setItem("duLieuShipper", JSON.stringify(duLieu));
+            setTimeout(() => {
+                console.log('🔄 Reconnecting after error...');
+                initWebSocket();
+            }, 5000);
+        };
+        
+    } catch (error) {
+        console.error('❌ Failed to create WebSocket connection:', error);
+        updateConnectionStatus('error');
+        localStorage.setItem("duLieuShipper", JSON.stringify(duLieu));
+        setTimeout(() => {
+            console.log('🔄 Reconnecting...');
+            initWebSocket();
+        }, 10000);
+    }
+}
+
+function updateConnectionStatus(status) {
+    console.log(`Connection status: ${status}`);
+}
+
+function syncToServer() {
+    if (!Array.isArray(duLieu) || duLieu.length === 0) {
+        console.log('⚠️ Không sync vì dữ liệu rỗng');
+        return;
+    }
+    
+    if (ws && isConnected && ws.readyState === WebSocket.OPEN) {
+        try {
+            const payloadCopy = JSON.parse(JSON.stringify(duLieu));
+            ws.send(JSON.stringify({
+                type: 'update',
+                module: MODULE_NAME,
+                payload: payloadCopy
+            }));
+            console.log('📤 ✅ Data synced to server:', payloadCopy.length, 'items');
+            syncRetryCount = 0;
+            hasTriedSyncToServer = true;
+        } catch (error) {
+            console.error('❌ Error sending data to server:', error);
+            retrySync();
+        }
+    } else {
+        console.log('⚠️ WebSocket chưa sẵn sàng, sẽ retry...');
+        retrySync();
+    }
+}
+
+function retrySync() {
+    if (syncRetryTimeout) clearTimeout(syncRetryTimeout);
+    if (syncRetryCount >= MAX_RETRY) {
+        console.log('❌ Đã retry quá nhiều lần, dừng sync');
+        return;
+    }
+    syncRetryCount++;
+    syncRetryTimeout = setTimeout(() => {
+        console.log(`🔄 Retry sync lần ${syncRetryCount}/${MAX_RETRY}...`);
+        syncToServer();
+    }, 1000);
+}
+
+// Hàm định dạng thời gian 24h (giờ trước, ngày sau)
+function formatDateTime(date) {
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const seconds = date.getSeconds().toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear();
+  return `${hours}:${minutes}:${seconds} ${day}/${month}/${year}`;
+}
+
+function luuLocal(){
+    // ✅ Tối ưu: Debounce để tránh lưu quá nhiều lần
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => {
+        try {
+            // Kiểm tra kích thước dữ liệu trước khi lưu
+            const dataStr = JSON.stringify(duLieu);
+            const dataSize = new Blob([dataStr]).size; // Kích thước tính bằng bytes
+            const dataSizeMB = (dataSize / (1024 * 1024)).toFixed(2);
+            
+            // Tối ưu: Giới hạn lịch sử mỗi đơn hàng để giảm dung lượng (tự động khi cần)
+            let dataToSave = duLieu;
+            if (dataSize > 5 * 1024 * 1024) {
+              // Nếu dữ liệu >5MB, tự động tối ưu bằng cách giới hạn lịch sử
+              dataToSave = duLieu.map(item => {
+                const optimized = { ...item };
+                // Giữ lại tối đa 10 mục lịch sử gần nhất (tự động cắt bớt lịch sử cũ)
+                if (optimized.lichSu && optimized.lichSu.length > 10) {
+                  optimized.lichSu = optimized.lichSu.slice(-10);
+                }
+                return optimized;
+              });
+              
+              // Cập nhật duLieu với dữ liệu đã tối ưu (chỉ khi thực sự giảm được dung lượng)
+              const optimizedSize = new Blob([JSON.stringify(dataToSave)]).size;
+              if (optimizedSize < dataSize * 0.95) { // Nếu giảm được ít nhất 5%
+                duLieu = dataToSave;
+                updateDuLieuMap();
+                console.log(`✅ Đã tự động tối ưu dữ liệu: ${dataSizeMB}MB → ${(optimizedSize / (1024 * 1024)).toFixed(2)}MB`);
+              }
+            }
+            
+            // Hiển thị nút dọn dẹp nếu dữ liệu >7MB (không cảnh báo, chỉ hiện nút)
+            const finalSize = new Blob([JSON.stringify(dataToSave)]).size;
+            if (finalSize > 7 * 1024 * 1024) {
+              showCleanupButton();
+            }
+            
+            const finalDataStr = JSON.stringify(dataToSave);
+            
+            // Lưu dữ liệu (chỉ cảnh báo khi thực sự lỗi)
+            localStorage.setItem("duLieuShipper", finalDataStr);
+            syncToServer(); // Sync sau mỗi lần lưu
+        } catch (error) {
+            console.error('Error saving to localStorage:', error);
+            // ✅ Xử lý lỗi localStorage đầy - CHỈ cảnh báo khi thực sự lỗi
+            if (error.name === 'QuotaExceededError' || error.code === 22) {
+                // Thử tối ưu dữ liệu trước khi cảnh báo
+                try {
+                    // Tối ưu: Giới hạn lịch sử xuống 5 mục gần nhất
+                    const optimizedData = duLieu.map(item => {
+                        const optimized = { ...item };
+                        if (optimized.lichSu && optimized.lichSu.length > 5) {
+                            optimized.lichSu = optimized.lichSu.slice(-5);
+                        }
+                        return optimized;
+                    });
+                    
+                    const optimizedDataStr = JSON.stringify(optimizedData);
+                    const optimizedSize = new Blob([optimizedDataStr]).size;
+                    
+                    // Thử lưu lại với dữ liệu đã tối ưu
+                    if (optimizedSize < 9 * 1024 * 1024) { // Nếu sau tối ưu <9MB
+                        duLieu = optimizedData;
+                        updateDuLieuMap();
+                        localStorage.setItem("duLieuShipper", optimizedDataStr);
+                        notify(`✅ Đã tự động tối ưu và lưu dữ liệu (giảm lịch sử xuống 5 mục gần nhất)`, 'success', 4000);
+                        showCleanupButton();
+                        return; // Thoát, không cần cảnh báo nữa
+                    }
+                } catch (retryError) {
+                    console.error('Error retrying with optimized data:', retryError);
+                }
+                
+                // Nếu vẫn lỗi, mới cảnh báo người dùng
+                const dataSize = new Blob([JSON.stringify(duLieu)]).size;
+                const dataSizeMB = (dataSize / (1024 * 1024)).toFixed(2);
+                const message = `⚠️ LỖI: Bộ nhớ localStorage đã đầy!\n\n` +
+                    `📊 Dữ liệu hiện tại: ${duLieu.length} đơn hàng (khoảng ${dataSizeMB}MB)\n` +
+                    `💡 Giải pháp:\n` +
+                    `1. Nhấn nút "🧹 Dọn dẹp dữ liệu cũ" để xóa đơn cũ hơn 30 ngày\n` +
+                    `2. Xuất dữ liệu ra Excel và xóa một số đơn cũ\n` +
+                    `3. Xóa toàn bộ và bắt đầu lại (nếu cần)\n\n` +
+                    `⚠️ Lưu ý: Dữ liệu chưa được lưu, vui lòng xử lý ngay!`;
+                notify(message, 'error', 10000);
+                
+                // Hiển thị nút dọn dẹp dữ liệu cũ
+                showCleanupButton();
+            } else {
+                notify('❌ Lỗi khi lưu dữ liệu: ' + (error.message || error), 'error', 5000);
+            }
+        }
+    }, 500); // Chờ 500ms sau khi dừng thay đổi
+}
+
+// Hàm kiểm tra dữ liệu thiếu từ bước trước
+// Đóng hàng: Module cuối, kiểm tra thiếu ở các module trước (KP, SX, TP, HS, HT)
+// Đã bỏ chức năng phát hiện thiếu bước trước
+
+// Hàm kiểm tra xem có thể cập nhật trạng thái hoàn thành không
+function canUpdateToCompleted() {
+    return false; // Các bộ phận không thể tự cập nhật trạng thái hoàn thành
+}
+
+// Load dữ liệu từ file JSON thực tế
+async function loadLocal(){
+    try {
+        // Ưu tiên load từ file JSON thực tế
+        const response = await fetch('/data/donhang.json?' + Date.now()); // Thêm cache busting
+        if (response.ok) {
+            const fileData = await response.json();
+            if (fileData && fileData.data && Array.isArray(fileData.data)) {
+                duLieu = fileData.data;
+                // ✅ Cập nhật Map sau khi load
+                updateDuLieuMap();
+                // Luôn cập nhật localStorage theo file JSON (kể cả khi rỗng)
+                localStorage.setItem("duLieuShipper", JSON.stringify(duLieu));
+                if (duLieu.length === 0) {
+                    console.log('✅ Đã load dữ liệu từ file donhang.json: file rỗng, đã xóa localStorage');
+                } else {
+                    console.log('✅ Đã load dữ liệu từ file donhang.json:', duLieu.length, 'items');
+                }
+                return;
+            }
+        }
+    } catch (error) {
+        console.warn('⚠️ Không thể load từ file JSON, fallback về localStorage:', error);
+    }
+    
+    // Fallback: Load từ localStorage nếu không load được từ file
+    const d = localStorage.getItem("duLieuShipper");
+    if (d) {
+        try {
+            duLieu = JSON.parse(d);
+            // ✅ Cập nhật Map sau khi load
+            updateDuLieuMap();
+            console.log('✅ Đã load dữ liệu từ localStorage:', duLieu.length, 'items');
+        } catch (e) {
+            console.error('Error parsing localStorage data:', e);
+            duLieu = [];
+            updateDuLieuMap();
+        }
+    } else {
+        duLieu = [];
+        updateDuLieuMap();
+        console.log('ℹ️ Không có dữ liệu trong localStorage, khởi tạo mảng rỗng');
+    }
+}
+
+function layShipper(ma){
+  // Làm sạch mã vận đơn
+  const cleanMa = ma.trim().toUpperCase();
+  
+  // Kiểm tra các pattern phức tạp hơn
+  if(cleanMa.startsWith("SPX") || cleanMa.startsWith("SPE")) return "Shopee";
+  if(cleanMa.startsWith("GYC") || cleanMa.startsWith("GHN")) return "GHN";
+  if(cleanMa.startsWith("GY")) return "Giao hàng nhanh"; // ← Thêm nhận dạng Giao hàng nhanh
+  if(cleanMa.startsWith("EP") || cleanMa.startsWith("VNPOST")) return "VNPost";
+  if(cleanMa.startsWith("NINJA") || cleanMa.startsWith("NJ")) return "Ninja";
+  if(cleanMa.startsWith("SHOPEEVTP") || cleanMa.startsWith("VTP")) return "ViettelPost";
+  if(cleanMa.startsWith("GHTK") || /^GHTK\d+$/.test(cleanMa)) return "GHTK";
+  if(/^\d{9,}$/.test(cleanMa)) return "GHTK";
+  if(cleanMa.startsWith("J&T") || cleanMa.startsWith("JT")) return "J&T";
+  if(cleanMa.startsWith("BEST") || cleanMa.startsWith("BESTEXPRESS")) return "Best Express";
+  if(cleanMa.startsWith("GRAB") || cleanMa.startsWith("GRABEXPRESS")) return "Grab Express";
+  
+  return "Khác";
+}
+
+// Hàm validation mã vận đơn
+function validateMaVanDon(ma) {
+  const cleanMa = ma.trim();
+  
+  // Kiểm tra độ dài tối thiểu
+  if (cleanMa.length < 5) {
+    return { valid: false, error: "Mã vận đơn quá ngắn (tối thiểu 5 ký tự)" };
+  }
+  
+  // Kiểm tra ký tự không hợp lệ
+  if (!/^[A-Z0-9\-_]+$/i.test(cleanMa)) {
+    return { valid: false, error: "Mã vận đơn chứa ký tự không hợp lệ" };
+  }
+  
+  // Kiểm tra pattern đặc biệt
+  if (cleanMa.includes("  ") || cleanMa.startsWith(" ") || cleanMa.endsWith(" ")) {
+    return { valid: false, error: "Mã vận đơn có khoảng trắng không hợp lệ" };
+  }
+  
+  return { valid: true, cleaned: cleanMa.toUpperCase() };
+}
+
+function thongKe(){
+  let groupShipper={}, groupTT={};
+  duLieu.forEach(d=>{
+    groupShipper[d.shipper]=(groupShipper[d.shipper]||0)+1;
+    groupTT[d.trangThai]=(groupTT[d.trangThai]||0)+1;
+  });
+  
+  // Tạo thống kê chi tiết theo đơn vị vận chuyển
+  let html = `
+    <div style="display:flex;gap:12px;margin-top:10px;">
+      <!-- Đơn vị vận chuyển với chi tiết trạng thái -->
+      <div class='stat-block' style="flex:1.5;max-height:500px;overflow-x:auto;overflow-y:hidden;">
+        <h4 style="margin:0 0 8px 0;color:#2196F3;font-size:16px;font-weight:bold;text-align:center;background:linear-gradient(135deg, #1976d2, #42a5f5);color:white;padding:8px;border-radius:4px;position:sticky;top:0;z-index:10;">📦 Đơn vị vận chuyển (${Object.values(groupShipper).reduce((a,b)=>a+b,0)})</h4>
+        <div style="display:flex;gap:8px;padding:4px;min-width:max-content;">`;
+  
+  // Tạo chi tiết cho từng đơn vị vận chuyển
+  Object.keys(groupShipper).forEach(shipper=>{
+    const totalByShipper = groupShipper[shipper];
+    const donDi = duLieu.filter(d => d.shipper === shipper && d.trangThai === "Đơn đi").length;
+    const donHuy = duLieu.filter(d => d.shipper === shipper && d.trangThai === "Đơn hủy").length;
+    const hetHang = duLieu.filter(d => d.shipper === shipper && d.trangThai === "Hết hàng").length;
+    const thieuHang = duLieu.filter(d => d.shipper === shipper && d.trangThai === "Thiếu hàng").length;
+    const donHoan = duLieu.filter(d => d.shipper === shipper && d.trangThai === "Đơn hoàn").length;
+    const shipperChuaLay = duLieu.filter(d => d.shipper === shipper && d.trangThai === "Shipper chưa lấy").length;
+    
+    // Tính phần trăm cho biểu đồ thanh - dựa trên tổng số đơn
+    const getBarWidth = (value) => totalByShipper > 0 ? (value / totalByShipper) * 100 : 0;
+    
+    html += `
+      <div style="background:#ffffff;border-radius:8px;padding:12px;box-shadow:0 2px 4px rgba(0,0,0,0.1);border:1px solid #ddd;border-left:3px solid #1976d2;min-width:320px;flex-shrink:0;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <h3 style="margin:0;font-size:16px;font-weight:bold;color:#1976d2;display:flex;align-items:center;">
+            <span style="font-size:18px;margin-right:6px;">📦</span>
+            ${shipper}
+          </h3>
+          <div style="background:#1976d2;color:white;padding:4px 8px;border-radius:10px;font-size:14px;font-weight:bold;">
+            ${totalByShipper}
+          </div>
+        </div>
+        
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;">
+          <!-- Đơn đi -->
+          <div style="background:#ffffff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid #eee;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:12px;font-weight:600;color:#000000;">🚚 Đơn đi</span>
+              <b style="color:#4caf50;font-size:14px;">${donDi}</b>
+            </div>
+            <div style="background:#e8f5e8;height:4px;border-radius:2px;overflow:hidden;">
+              <div style="background:#4caf50;height:100%;width:${getBarWidth(donDi)}%;transition:width 0.3s ease;"></div>
+            </div>
+          </div>
+          
+          <!-- Đơn hủy -->
+          <div style="background:#ffffff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid #eee;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:12px;font-weight:600;color:#000000;">❌ Đơn hủy</span>
+              <b style="color:#f44336;font-size:14px;">${donHuy}</b>
+            </div>
+            <div style="background:#ffebee;height:4px;border-radius:2px;overflow:hidden;">
+              <div style="background:#f44336;height:100%;width:${getBarWidth(donHuy)}%;transition:width 0.3s ease;"></div>
+            </div>
+          </div>
+          
+          <!-- Hết hàng -->
+          <div style="background:#ffffff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid #eee;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:12px;font-weight:600;color:#000000;">📦 Hết hàng</span>
+              <b style="color:#ff9800;font-size:14px;">${hetHang}</b>
+            </div>
+            <div style="background:#fff3e0;height:4px;border-radius:2px;overflow:hidden;">
+              <div style="background:#ff9800;height:100%;width:${getBarWidth(hetHang)}%;transition:width 0.3s ease;"></div>
+            </div>
+          </div>
+          
+          <!-- Thiếu hàng -->
+          <div style="background:#ffffff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid #eee;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:12px;font-weight:600;color:#000000;">⚠️ Thiếu hàng</span>
+              <b style="color:#e91e63;font-size:14px;">${thieuHang}</b>
+            </div>
+            <div style="background:#fce4ec;height:4px;border-radius:2px;overflow:hidden;">
+              <div style="background:#e91e63;height:100%;width:${getBarWidth(thieuHang)}%;transition:width 0.3s ease;"></div>
+            </div>
+          </div>
+          
+          <!-- Đơn hoàn -->
+          <div style="background:#ffffff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid #eee;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:12px;font-weight:600;color:#000000;">🔄 Đơn hoàn</span>
+              <b style="color:#ff5722;font-size:14px;">${donHoan}</b>
+            </div>
+            <div style="background:#fff3e0;height:4px;border-radius:2px;overflow:hidden;">
+              <div style="background:#ff5722;height:100%;width:${getBarWidth(donHoan)}%;transition:width 0.3s ease;"></div>
+            </div>
+          </div>
+          
+          
+          <!-- Chưa lấy -->
+          <div style="background:#ffffff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid #eee;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:12px;font-weight:600;color:#000000;">⏳ Chưa lấy</span>
+              <b style="color:#607d8b;font-size:14px;">${shipperChuaLay}</b>
+            </div>
+            <div style="background:#eceff1;height:4px;border-radius:2px;overflow:hidden;">
+              <div style="background:#607d8b;height:100%;width:${getBarWidth(shipperChuaLay)}%;transition:width 0.3s ease;"></div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  });
+  
+  html += `
+        </div>
+      </div>
+      
+      <!-- Tổng trạng thái -->
+      <div class='stat-block' style="flex:0.5;max-height:500px;overflow-y:auto;">
+        <h4 style="margin:0 0 8px 0;color:#2196F3;font-size:16px;font-weight:bold;text-align:center;background:linear-gradient(135deg, #1976d2, #42a5f5);color:white;padding:8px;border-radius:4px;position:sticky;top:0;z-index:10;">📊 Tổng trạng thái (${Object.values(groupTT).reduce((a,b)=>a+b,0)})</h4>
+        <div style="background:#ffffff;border-radius:6px;padding:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid #ddd;">`;
+  
+  // Sắp xếp trạng thái theo thứ tự ưu tiên
+  const trangThaiOrder = ["Đơn đi", "Đơn hủy", "Hết hàng", "Thiếu hàng", "Đơn hoàn", "Shipper chưa lấy"];
+  const sortedTrangThai = trangThaiOrder.filter(tt => groupTT[tt] > 0);
+  
+  // Tính max value cho biểu đồ
+  const maxTrangThai = Math.max(...sortedTrangThai.map(tt => groupTT[tt]));
+  const getTrangThaiBarWidth = (value) => maxTrangThai > 0 ? (value / maxTrangThai) * 100 : 0;
+  
+  sortedTrangThai.forEach(k=>{
+    const iconMap = {
+      "Đơn đi": "🚚",
+      "Đơn hủy": "❌", 
+      "Hết hàng": "📦",
+      "Thiếu hàng": "⚠️",
+      "Đơn hoàn": "🔄",
+      "Shipper chưa lấy": "⏳"
+    };
+    const colorMap = {
+      "Đơn đi": "#4caf50",
+      "Đơn hủy": "#f44336",
+      "Hết hàng": "#ff9800", 
+      "Thiếu hàng": "#e91e63",
+      "Đơn hoàn": "#ff5722",
+      "Shipper chưa lấy": "#607d8b"
+    };
+    const bgColorMap = {
+      "Đơn đi": "#e8f5e8",
+      "Đơn hủy": "#ffebee",
+      "Hết hàng": "#fff3e0", 
+      "Thiếu hàng": "#fce4ec",
+      "Đơn hoàn": "#fff3e0",
+      "Shipper chưa lấy": "#eceff1"
+    };
+    
+    html += `
+      <div style="background:#ffffff;border-radius:4px;padding:6px;margin-bottom:4px;box-shadow:0 1px 2px rgba(0,0,0,0.1);border:1px solid #eee;border-left:2px solid ${colorMap[k]};">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <span style="font-size:14px;margin-right:4px;">${iconMap[k]}</span>
+          <span style="flex:1;font-size:12px;font-weight:600;color:#000000;">${k}</span>
+          <b style="font-size:14px;color:${colorMap[k]};min-width:25px;text-align:right;">${groupTT[k]}</b>
+        </div>
+        <div style="background:${bgColorMap[k]};height:4px;border-radius:2px;overflow:hidden;">
+          <div style="background:${colorMap[k]};height:100%;width:${getTrangThaiBarWidth(groupTT[k])}%;transition:width 0.5s ease;border-radius:2px;"></div>
+        </div>
+      </div>`;
+  });
+  
+  html += `
+        </div>
+      </div>
+    </div>`;
+  
+  document.getElementById("thongKe").innerHTML=html;
+}
+
+function hienThi(){
+  const tuKhoa=document.getElementById("tuKhoa").value.trim().toLowerCase();
+  // KHÔNG cập nhật tongSoDon từ duLieu.length
+  // tongSoDon chỉ được tính từ 10 đợt hàng (dot1-dot10) trong hàm tinhTong()
+  // Giữ nguyên giá trị tongSoDon hiện tại (từ 10 đợt hàng)
+  const tbody=document.getElementById("tbody");
+  tbody.innerHTML="";
+  
+  // ✅ Tối ưu: Sử dụng DocumentFragment để render nhanh hơn
+  const fragment = document.createDocumentFragment();
+  let setShipper=new Set(), setTT=new Set();
+  let stt=1;
+  
+  duLieu.forEach((item,i)=>{
+    setShipper.add(item.shipper);
+    setTT.add(item.trangThai);
+    
+    if(shipperFilter&&item.shipper!==shipperFilter)return;
+    if(trangThaiFilter) {
+      if(item.trangThai!==trangThaiFilter) return;
+    }
+    if(tuKhoa && !item.ma.toLowerCase().includes(tuKhoa)) return;
+    
+    const tr=document.createElement("tr");
+    
+    // Xác định trạng thái hiển thị
+    const displayStatus = item.trangThai;
+    const classTrangThai = "status-"+item.trangThai;
+    
+    tr.innerHTML=`<td><input type="checkbox" class="row-check" data-index="${i}"></td>
+    <td>${stt++}</td>
+    <td>${item.ma}</td>
+    <td>${item.shipper}</td>
+    <td>${item.ngayQuet}</td>
+    <td><span class="status-cell ${classTrangThai}">${displayStatus}</span><br>
+      <select onchange="capNhatTrangThai(${i},this.value)">
+        ${["Đơn đi","Đơn hủy","Hết hàng","Thiếu hàng","Đơn hoàn","Shipper chưa lấy"].map(tt=>
+          `<option ${item.trangThai===tt?'selected':''}>${tt}</option>`).join('')}
+      </select></td>
+    <td><input type="text" value="${item.ghiChu||''}" onchange="capNhatGhiChu(${i}, this.value)"></td>
+    <td><button onclick="xemLichSu(${i})">📜</button></td>
+    <td><button onclick="xoaDong(${i})">🗑️</button></td>`;
+    fragment.appendChild(tr);
+  });
+  
+  // ✅ Append tất cả một lần thay vì từng dòng
+  tbody.appendChild(fragment);
+  
+  document.getElementById("filterTrangThai").innerHTML='<option value="">-- Tất cả --</option>'+Array.from(setTT).map(o=>`<option ${o===trangThaiFilter?'selected':''}>${o}</option>`).join('');
+  document.getElementById("filterShipper").innerHTML='<option value="">-- Tất cả --</option>'+Array.from(setShipper).map(o=>`<option ${o===shipperFilter?'selected':''}>${o}</option>`).join('');
+  thongKe();
+  capNhatDonDiConLai(); // <- them dong nay de "Don di" & "Con lai" luon cap nhat
+}
+function capNhatDonDiConLai(){
+  // Lấy tổng số đơn từ tongSoDon (tính từ 10 đợt hàng)
+  const tongSoDonEl = document.getElementById("tongSoDon");
+  const tong = tongSoDonEl ? (parseInt(tongSoDonEl.value) || 0) : 0;
+  
+  // Đếm các trạng thái từ dữ liệu quét (duLieu)
+  const donDi = duLieu.filter(d => d.trangThai === "Đơn đi").length; // đếm theo trạng thái "Đơn đi"
+  const donHuy = duLieu.filter(d => d.trangThai === "Đơn hủy").length; // đếm theo trạng thái "Đơn hủy"
+  const hetHang = duLieu.filter(d => d.trangThai === "Hết hàng").length; // đếm theo trạng thái "Hết hàng"
+  const thieuHang = duLieu.filter(d => d.trangThai === "Thiếu hàng").length; // đếm theo trạng thái "Thiếu hàng"
+  const shipperChuaLay = duLieu.filter(d => d.trangThai === "Shipper chưa lấy").length; // đếm theo trạng thái "Shipper chưa lấy"
+  
+  // Còn lại = Tổng số đơn (từ 10 đợt hàng) - Đơn đi - Đơn hủy - Thiếu hàng - Hết hàng - Chưa lấy
+  const conLai = Math.max(0, tong - donDi - donHuy - thieuHang - hetHang - shipperChuaLay);
+
+  const donDiEl = document.getElementById("donDiCount");
+  const donHuyEl = document.getElementById("donHuyCount");
+  const hetHangEl = document.getElementById("hetHangCount");
+  const thieuHangEl = document.getElementById("thieuHangCount");
+  const shipperChuaLayEl = document.getElementById("shipperChuaLayCount");
+  const conLaiEl = document.getElementById("conLaiCount");
+  if (donDiEl) donDiEl.value = donDi;
+  if (donHuyEl) donHuyEl.value = donHuy;
+  if (hetHangEl) hetHangEl.value = hetHang;
+  if (thieuHangEl) thieuHangEl.value = thieuHang;
+  if (shipperChuaLayEl) shipperChuaLayEl.value = shipperChuaLay;
+  if (conLaiEl) conLaiEl.value = conLai;
+}
+
+function themNhieu(){
+  const text = document.getElementById("maVanDon").value.trim();
+  if(!text) return;
+  const trangThai = document.getElementById("trangThai").value;
+  const dong = text.split("\n");
+  let dupSame = 0, dupUpd = 0, added = 0, errors = 0;
+  let errorMessages = [];
+
+  // ✅ Tối ưu: Cập nhật Map trước khi xử lý
+  updateDuLieuMap();
+
+  dong.forEach(d=>{
+    const ma = d.trim();
+    if(!ma) return;
+    
+    // Validation mã vận đơn
+    const validation = validateMaVanDon(ma);
+    if (!validation.valid) {
+      errors++;
+      errorMessages.push(`${ma}: ${validation.error}`);
+      return;
+    }
+    
+    const cleanMa = validation.cleaned;
+    const shipper = layShipper(cleanMa);
+    // ✅ Tối ưu: Sử dụng Map để tìm kiếm O(1) thay vì O(n)
+    const existingIndex = duLieuMap.get(cleanMa);
+    const existing = existingIndex !== undefined ? duLieu[existingIndex] : null;
+
+    if (existing) {
+      if (existing.trangThai === trangThai) {
+        // 🔁 Trùng đơn & trùng trạng thái → không đổi
+        existing.lichSu.push({ thoiGian: formatDateTime(new Date()), trangThai });
+        dupSame++;
+      } else {
+        // 📝 Trùng đơn nhưng CẬP NHẬT trạng thái
+        existing.trangThai = trangThai;
+        existing.lichSu.push({ thoiGian: formatDateTime(new Date()), trangThai });
+        dupUpd++;
+      }
+    } else {
+      // ✅ Thêm mới nếu chưa có
+      const thoiGian = formatDateTime(new Date());
+      const newIndex = duLieu.length;
+      duLieu.push({
+        ma: cleanMa, 
+        shipper, 
+        ngayQuet: thoiGian, 
+        trangThai,
+        ghiChu: "", 
+        lichSu: [{ thoiGian, trangThai }]
+      });
+      // ✅ Cập nhật Map ngay
+      duLieuMap.set(cleanMa, newIndex);
+      added++;
+    }
+  });
+
+  // Hiển thị thông báo chi tiết
+  let message = "";
+  if (added > 0) message += `✅ ${added} đơn mới được thêm. `;
+  if (dupSame > 0) message += `🔁 ${dupSame} đơn trùng, trạng thái giữ nguyên. `;
+  if (dupUpd > 0) message += `📝 ${dupUpd} đơn đã cập nhật trạng thái. `;
+  if (errors > 0) message += `❌ ${errors} đơn lỗi validation.`;
+
+  if (message) {
+    notify(message, errors > 0 ? "error" : "success", 3000);
+  }
+  
+  // Lưu lỗi validation để hiển thị sau
+  if (errorMessages.length > 0) {
+    validationErrors = errorMessages;
+    console.warn("Chi tiết lỗi validation:", errorMessages);
+  }
+
+  document.getElementById("maVanDon").value="";
+  
+  // ✅ Kiểm tra kích thước dữ liệu (chỉ log, không cảnh báo người dùng)
+  // Chỉ cảnh báo khi thực sự gặp lỗi khi lưu (trong luuLocal)
+  try {
+    const testDataStr = JSON.stringify(duLieu);
+    const testDataSize = new Blob([testDataStr]).size;
+    
+    // Chỉ hiển thị nút dọn dẹp nếu cần, KHÔNG cảnh báo người dùng
+    if (testDataSize > 7 * 1024 * 1024) {
+      showCleanupButton();
+    }
+  } catch (testError) {
+    console.error('Error testing data size:', testError);
+    // Không hiển thị cảnh báo cho người dùng, chỉ log lỗi
+  }
+  
+  // ✅ Tối ưu: Sử dụng requestAnimationFrame để render không block UI
+  requestAnimationFrame(() => {
+    try {
+      hienThi();
+      luuLocal(); // LuuLocal sẽ tự động gọi syncToServer() và xử lý lỗi nếu có
+    } catch (error) {
+      console.error('Error in requestAnimationFrame:', error);
+      // Lỗi sẽ được xử lý trong luuLocal(), không cần xử lý lại ở đây
+      if (error.name === 'QuotaExceededError' || error.code === 22) {
+        showCleanupButton();
+      }
+    }
+  });
+}
+
+// ✅ Hàm cập nhật Map để tìm kiếm nhanh
+function updateDuLieuMap() {
+  duLieuMap.clear();
+  duLieu.forEach((item, index) => {
+    if (item && item.ma) {
+      duLieuMap.set(item.ma, index);
+    }
+  });
+}
+
+function xoaDong(i){
+  duLieu.splice(i,1);
+  // ✅ Cập nhật Map sau khi xóa
+  updateDuLieuMap();
+  hienThi();
+  luuLocal();
+}
+function capNhatTrangThai(i,v){
+  
+  duLieu[i].trangThai=v;
+  duLieu[i].lichSu.push({thoiGian:formatDateTime(new Date()),trangThai:v});
+  hienThi();
+  luuLocal();
+}
+function capNhatGhiChu(i,v){duLieu[i].ghiChu=v;luuLocal();}
+function xemLichSu(i){notify("📜 Lịch sử:\n"+duLieu[i].lichSu.map(l=>`${l.thoiGian}: ${l.trangThai}`).join("\n"), "warn", 2200);}
+
+// Hàm hiển thị lỗi validation
+function hienThiLoiValidation() {
+  const errorPanel = document.getElementById("errorPanel");
+  const errorList = document.getElementById("errorList");
+  
+  if (validationErrors.length === 0) {
+    errorList.innerHTML = "<p style='color:#4caf50;'>✅ Không có lỗi validation nào!</p>";
+  } else {
+    errorList.innerHTML = validationErrors.map((error, index) => 
+      `<div style="padding:8px;margin:4px 0;background:#fff;border-radius:4px;border-left:3px solid #f44336;">
+        <strong>${index + 1}.</strong> ${error}
+      </div>`
+    ).join("");
+  }
+  
+  errorPanel.style.display = errorPanel.style.display === "none" ? "block" : "none";
+}
+
+// Hàm xóa lỗi validation
+function xoaLoiValidation() {
+  validationErrors = [];
+  document.getElementById("errorPanel").style.display = "none";
+  notify("✅ Đã xóa tất cả lỗi validation", "success", 2000);
+}
+
+// ===== CÁC HÀM KẾT NỐI SERVER =====
+
+// Biến lưu cấu hình server
+let serverConfig = {
+  method: 'lan',
+  lan: { serverIp: '', port: 8080 },
+  firebase: { apiKey: '', projectId: '', databaseUrl: '' },
+  googlesheets: { url: '', apiKey: '' },
+  jsonbin: { apiKey: '', binId: '' },
+  custom: { url: '', apiKey: '' }
+};
+
+// Hàm hiển thị panel cấu hình server
+function hienThiCauHinhServer() {
+  const panel = document.getElementById('serverConfigPanel');
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  loadServerConfig();
+}
+
+// Hàm thay đổi phương thức kết nối
+function thayDoiPhuongThucKetNoi() {
+  const method = document.getElementById('connectionMethod').value;
+  
+  // Ẩn tất cả config sections
+  document.querySelectorAll('.config-section').forEach(section => {
+    section.style.display = 'none';
+  });
+  
+  // Hiển thị config section tương ứng
+  document.getElementById(method + 'Config').style.display = 'block';
+}
+
+// Hàm lưu cấu hình server
+function luuCauHinhServer() {
+  const method = document.getElementById('connectionMethod').value;
+  
+  serverConfig.method = method;
+  
+  if (method === 'lan') {
+    serverConfig.lan = {
+      serverIp: document.getElementById('lanServerIp').value,
+      port: parseInt(document.getElementById('lanServerPort').value) || 8080
+    };
+  } else if (method === 'firebase') {
+    serverConfig.firebase = {
+      apiKey: document.getElementById('firebaseApiKey').value,
+      projectId: document.getElementById('firebaseProjectId').value,
+      databaseUrl: document.getElementById('firebaseDatabaseUrl').value
+    };
+  } else if (method === 'googlesheets') {
+    serverConfig.googlesheets = {
+      url: document.getElementById('googleSheetsUrl').value,
+      apiKey: document.getElementById('googleSheetsApiKey').value
+    };
+  } else if (method === 'jsonbin') {
+    serverConfig.jsonbin = {
+      apiKey: document.getElementById('jsonbinApiKey').value,
+      binId: document.getElementById('jsonbinBinId').value
+    };
+  } else if (method === 'custom') {
+    serverConfig.custom = {
+      url: document.getElementById('customServerUrl').value,
+      apiKey: document.getElementById('customApiKey').value
+    };
+  }
+  
+  localStorage.setItem('serverConfig', JSON.stringify(serverConfig));
+  notify('✅ Đã lưu cấu hình server', 'success', 2000);
+}
+
+// Hàm tải cấu hình server
+function loadServerConfig() {
+  const saved = localStorage.getItem('serverConfig');
+  if (saved) {
+    serverConfig = JSON.parse(saved);
+    document.getElementById('connectionMethod').value = serverConfig.method;
+    thayDoiPhuongThucKetNoi();
+    
+    // Điền dữ liệu đã lưu
+    if (serverConfig.lan) {
+      document.getElementById('lanServerIp').value = serverConfig.lan.serverIp || '';
+      document.getElementById('lanServerPort').value = serverConfig.lan.port || 8080;
+    }
+    if (serverConfig.firebase) {
+      document.getElementById('firebaseApiKey').value = serverConfig.firebase.apiKey || '';
+      document.getElementById('firebaseProjectId').value = serverConfig.firebase.projectId || '';
+      document.getElementById('firebaseDatabaseUrl').value = serverConfig.firebase.databaseUrl || '';
+    }
+    if (serverConfig.googlesheets) {
+      document.getElementById('googleSheetsUrl').value = serverConfig.googlesheets.url || '';
+      document.getElementById('googleSheetsApiKey').value = serverConfig.googlesheets.apiKey || '';
+    }
+    if (serverConfig.jsonbin) {
+      document.getElementById('jsonbinApiKey').value = serverConfig.jsonbin.apiKey || '';
+      document.getElementById('jsonbinBinId').value = serverConfig.jsonbin.binId || '';
+    }
+    if (serverConfig.custom) {
+      document.getElementById('customServerUrl').value = serverConfig.custom.url || '';
+      document.getElementById('customApiKey').value = serverConfig.custom.apiKey || '';
+    }
+  }
+}
+
+// Hàm đồng bộ dữ liệu lên server
+async function dongBoDuLieuLenServer() {
+  if (duLieu.length === 0) {
+    notify('⚠️ Không có dữ liệu để đồng bộ!', 'warn', 2000);
+    return;
+  }
+  
+  const method = serverConfig.method;
+  let success = false;
+  
+  try {
+    if (method === 'lan') {
+      success = await syncToLanServer();
+    } else if (method === 'firebase') {
+      success = await syncToFirebase();
+    } else if (method === 'googlesheets') {
+      success = await syncToGoogleSheets();
+    } else if (method === 'jsonbin') {
+      success = await syncToJsonbin();
+    } else if (method === 'custom') {
+      success = await syncToCustomServer();
+    }
+    
+    if (success) {
+      notify('✅ Đồng bộ dữ liệu thành công!', 'success', 3000);
+    } else {
+      notify('❌ Đồng bộ dữ liệu thất bại!', 'error', 3000);
+    }
+  } catch (error) {
+    console.error('Lỗi đồng bộ:', error);
+    notify('❌ Lỗi đồng bộ: ' + error.message, 'error', 3000);
+  }
+}
+
+// Hàm đồng bộ với LAN Server
+async function syncToLanServer() {
+  const serverIp = serverConfig.lan.serverIp;
+  const port = serverConfig.lan.port;
+  
+  if (!serverIp) {
+    notify('❌ Chưa cấu hình IP máy Server!', 'error', 2000);
+    return false;
+  }
+  
+  try {
+    const serverUrl = `http://${serverIp}:${port}/api/sync`;
+    const response = await fetch(serverUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        data: duLieu,
+        timestamp: new Date().toISOString(),
+        total: duLieu.length,
+        clientId: getClientId()
+      })
+    });
+    
+    if (response.ok) {
+      const result = await response.json();
+      notify(`✅ Đã đồng bộ ${duLieu.length} đơn hàng lên server`, 'success', 3000);
+      return true;
+    } else {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error('Lỗi LAN Server:', error);
+    notify('❌ Không thể kết nối đến server LAN: ' + error.message, 'error', 3000);
+    return false;
+  }
+}
+
+// Hàm lấy Client ID duy nhất
+function getClientId() {
+  let clientId = localStorage.getItem('clientId');
+  if (!clientId) {
+    clientId = 'client_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    localStorage.setItem('clientId', clientId);
+  }
+  return clientId;
+}
+
+// Hàm test kết nối LAN
+async function testLanConnection() {
+  const serverIp = document.getElementById('lanServerIp').value;
+  const port = document.getElementById('lanServerPort').value;
+  
+  if (!serverIp) {
+    notify('❌ Vui lòng nhập IP máy Server!', 'error', 2000);
+    return;
+  }
+  
+  try {
+    const serverUrl = `http://${serverIp}:${port}/api/ping`;
+    const response = await fetch(serverUrl, { method: 'GET' });
+    
+    if (response.ok) {
+      notify('✅ Kết nối LAN thành công!', 'success', 2000);
+      document.getElementById('lanStatus').style.display = 'block';
+      document.getElementById('lanStatus').innerHTML = '<div style="color:#4caf50;">✅ Server đang hoạt động</div>';
+    } else {
+      throw new Error(`HTTP ${response.status}`);
+    }
+  } catch (error) {
+    notify('❌ Không thể kết nối đến server: ' + error.message, 'error', 3000);
+    document.getElementById('lanStatus').style.display = 'block';
+    document.getElementById('lanStatus').innerHTML = '<div style="color:#f44336;">❌ Server không phản hồi</div>';
+  }
+}
+
+// Hàm mở LAN Server
+function moLanServer() {
+  // Tạo URL để mở server
+  const currentUrl = window.location.href;
+  const serverUrl = currentUrl.replace('Qly_Donhang (4).html', 'lan_server.html');
+  
+  // Mở server trong tab mới
+  window.open(serverUrl, '_blank');
+  notify('🚀 Đã mở LAN Server trong tab mới', 'success', 2000);
+}
+
+// Hàm đồng bộ với Firebase
+async function syncToFirebase() {
+  // Đây là ví dụ cơ bản, cần cài đặt Firebase SDK
+  notify('🔥 Firebase: Cần cài đặt Firebase SDK để sử dụng', 'warn', 3000);
+  return false;
+}
+
+// Hàm đồng bộ với Google Sheets
+async function syncToGoogleSheets() {
+  const url = serverConfig.googlesheets.url;
+  if (!url) {
+    notify('❌ Chưa cấu hình Google Sheets URL!', 'error', 2000);
+    return false;
+  }
+  
+  try {
+    // Sử dụng Google Sheets API
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        data: duLieu,
+        timestamp: new Date().toISOString()
+      })
+    });
+    
+    return response.ok;
+  } catch (error) {
+    console.error('Lỗi Google Sheets:', error);
+    return false;
+  }
+}
+
+// Hàm đồng bộ với JSONBin
+async function syncToJsonbin() {
+  const apiKey = serverConfig.jsonbin.apiKey;
+  const binId = serverConfig.jsonbin.binId;
+  
+  if (!apiKey || !binId) {
+    notify('❌ Chưa cấu hình JSONBin API Key hoặc Bin ID!', 'error', 2000);
+    return false;
+  }
+  
+  try {
+    const response = await fetch(`https://api.jsonbin.io/v3/b/${binId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': apiKey
+      },
+      body: JSON.stringify({
+        data: duLieu,
+        timestamp: new Date().toISOString(),
+        total: duLieu.length
+      })
+    });
+    
+    return response.ok;
+  } catch (error) {
+    console.error('Lỗi JSONBin:', error);
+    return false;
+  }
+}
+
+// Hàm đồng bộ với Custom Server
+async function syncToCustomServer() {
+  const url = serverConfig.custom.url;
+  const apiKey = serverConfig.custom.apiKey;
+  
+  if (!url) {
+    notify('❌ Chưa cấu hình Custom Server URL!', 'error', 2000);
+    return false;
+  }
+  
+  try {
+    const headers = { 'Content-Type': 'application/json' };
+    if (apiKey) headers['Authorization'] = `Bearer ${apiKey}`;
+    
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({
+        data: duLieu,
+        timestamp: new Date().toISOString(),
+        total: duLieu.length
+      })
+    });
+    
+    return response.ok;
+  } catch (error) {
+    console.error('Lỗi Custom Server:', error);
+    return false;
+  }
+}
+
+// Hàm đồng bộ cloud (gọi từ nút chính)
+function dongBoCloud() {
+  if (serverConfig.method && serverConfig.method !== '') {
+    dongBoDuLieuLenServer();
+  } else {
+    hienThiCauHinhServer();
+    notify('⚙️ Vui lòng cấu hình server trước!', 'warn', 3000);
+  }
+}
+
+// Các hàm test kết nối
+function testFirebaseConnection() {
+  notify('🔥 Firebase: Cần cài đặt Firebase SDK', 'warn', 3000);
+}
+
+function testGoogleSheetsConnection() {
+  notify('📊 Google Sheets: Test kết nối...', 'info', 2000);
+}
+
+function testJsonbinConnection() {
+  notify('📦 JSONBin: Test kết nối...', 'info', 2000);
+}
+
+function testCustomConnection() {
+  notify('🔧 Custom Server: Test kết nối...', 'info', 2000);
+}
+
+function chonTatCa(cb){document.querySelectorAll(".row-check").forEach(c=>c.checked=cb.checked);}
+function xoaDongChon(){
+  const checks=document.querySelectorAll(".row-check:checked");
+  if(checks.length===0){notify("⚠️ Chưa chọn dòng nào!", "warn", 2200);return;}
+  if(!confirm("Xóa các dòng đã chọn?")) return;
+  const idx=[...checks].map(c=>+c.dataset.index).sort((a,b)=>b-a);
+  idx.forEach(i=>duLieu.splice(i,1));
+  hienThi();luuLocal();
+}
+function capNhatTrangThaiChon(){
+  const newTT=document.getElementById("bulkStatus").value;
+  if(!newTT){notify("⚠️ Chưa chọn trạng thái mới!", "warn", 2200);return;}
+  
+  
+  const checks=document.querySelectorAll(".row-check:checked");
+  if(checks.length===0){notify("⚠️ Chưa chọn dòng nào!", "warn", 2200);return;}
+  checks.forEach(c=>{
+    let i=+c.dataset.index;
+    duLieu[i].trangThai=newTT;
+    duLieu[i].lichSu.push({thoiGian:formatDateTime(new Date()),trangThai:newTT});
+  });
+  hienThi();luuLocal();
+}
+
+// Hàm hiển thị nút dọn dẹp dữ liệu cũ
+function showCleanupButton() {
+  const btnDonDep = document.getElementById("btnDonDep");
+  if (btnDonDep) {
+    btnDonDep.style.display = "inline-block";
+  }
+}
+
+// Hàm dọn dẹp dữ liệu cũ (xóa dữ liệu quá 30 ngày)
+function donDepDuLieuCu() {
+  const daysToKeep = 30; // Giữ lại dữ liệu trong 30 ngày gần nhất
+  const cutoffDate = new Date();
+  cutoffDate.setDate(cutoffDate.getDate() - daysToKeep);
+  
+  const beforeCount = duLieu.length;
+  const dataToKeep = [];
+  let removedCount = 0;
+  
+  duLieu.forEach(item => {
+    try {
+      // Parse ngày từ ngayQuet hoặc thời gian trong mã
+      let itemDate = null;
+      
+      // Thử parse từ ngayQuet
+      if (item.ngayQuet) {
+        // Format: "HH:MM:SS DD/MM/YYYY"
+        const dateMatch = item.ngayQuet.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+        if (dateMatch) {
+          const day = parseInt(dateMatch[1], 10);
+          const month = parseInt(dateMatch[2], 10) - 1;
+          const year = parseInt(dateMatch[3], 10);
+          itemDate = new Date(year, month, day);
+        }
+      }
+      
+      // Nếu không parse được, thử parse từ mã
+      if (!itemDate && item.ma) {
+        const dateMatch = item.ma.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+        if (dateMatch) {
+          const day = parseInt(dateMatch[1], 10);
+          const month = parseInt(dateMatch[2], 10) - 1;
+          const year = parseInt(dateMatch[3], 10);
+          itemDate = new Date(year, month, day);
+        }
+      }
+      
+      // Nếu parse được ngày và ngày >= cutoffDate thì giữ lại
+      // Nếu không parse được ngày, giữ lại (an toàn)
+      if (!itemDate || itemDate >= cutoffDate) {
+        dataToKeep.push(item);
+      } else {
+        removedCount++;
+      }
+    } catch (e) {
+      // Nếu có lỗi khi parse, giữ lại (an toàn)
+      dataToKeep.push(item);
+    }
+  });
+  
+  if (removedCount === 0) {
+    notify('✅ Không có dữ liệu cũ nào để xóa (tất cả dữ liệu đều trong vòng 30 ngày gần nhất).', 'info', 3000);
+    return;
+  }
+  
+  const confirmMessage = `⚠️ Bạn có muốn xóa ${removedCount} đơn hàng cũ hơn ${daysToKeep} ngày không?\n\n` +
+    `📊 Dữ liệu hiện tại: ${beforeCount} đơn hàng\n` +
+    `🗑️ Sẽ xóa: ${removedCount} đơn hàng\n` +
+    `✅ Giữ lại: ${dataToKeep.length} đơn hàng\n\n` +
+    `Lưu ý: Hành động này không thể hoàn tác!`;
+  
+  if (!confirm(confirmMessage)) {
+    return;
+  }
+  
+  // Xóa dữ liệu cũ
+  duLieu = dataToKeep;
+  updateDuLieuMap();
+  
+  // Thử lưu lại
+  try {
+    luuLocal();
+    hienThi();
+    
+    const dataSize = new Blob([JSON.stringify(duLieu)]).size;
+    const dataSizeMB = (dataSize / (1024 * 1024)).toFixed(2);
+    
+    notify(`✅ Đã xóa ${removedCount} đơn hàng cũ!\n📊 Dữ liệu hiện tại: ${dataToKeep.length} đơn hàng (khoảng ${dataSizeMB}MB)`, 'success', 5000);
+    
+    // Ẩn nút dọn dẹp nếu dữ liệu đã nhỏ
+    if (dataSize < 5 * 1024 * 1024) {
+      const btnDonDep = document.getElementById("btnDonDep");
+      if (btnDonDep) {
+        btnDonDep.style.display = "none";
+      }
+    }
+  } catch (error) {
+    console.error('Error saving after cleanup:', error);
+    notify('❌ Đã xóa dữ liệu cũ nhưng gặp lỗi khi lưu: ' + (error.message || error), 'error', 5000);
+  }
+}
+
+// Hàm hiển thị nút dọn dẹp dữ liệu cũ
+function showCleanupButton() {
+  const btnDonDep = document.getElementById("btnDonDep");
+  if (btnDonDep) {
+    btnDonDep.style.display = "inline-block";
+  }
+}
+
+// Hàm dọn dẹp dữ liệu cũ (xóa dữ liệu quá 30 ngày)
+function donDepDuLieuCu() {
+  const daysToKeep = 30; // Giữ lại dữ liệu trong 30 ngày gần nhất
+  const cutoffDate = new Date();
+  cutoffDate.setDate(cutoffDate.getDate() - daysToKeep);
+  
+  const beforeCount = duLieu.length;
+  const dataToKeep = [];
+  
+  duLieu.forEach(item => {
+    try {
+      // Parse ngày từ ngayQuet hoặc thời gian trong mã
+      let itemDate = null;
+      
+      // Thử parse từ ngayQuet
+      if (item.ngayQuet) {
+        // Format: "HH:MM:SS DD/MM/YYYY"
+        const dateMatch = item.ngayQuet.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+        if (dateMatch) {
+          const day = parseInt(dateMatch[1], 10);
+          const month = parseInt(dateMatch[2], 10) - 1;
+          const year = parseInt(dateMatch[3], 10);
+          itemDate = new Date(year, month, day);
+        }
+      }
+      
+      // Nếu không parse được, thử parse từ mã
+      if (!itemDate && item.ma) {
+        const dateMatch = item.ma.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+        if (dateMatch) {
+          const day = parseInt(dateMatch[1], 10);
+          const month = parseInt(dateMatch[2], 10) - 1;
+          const year = parseInt(dateMatch[3], 10);
+          itemDate = new Date(year, month, day);
+        }
+      }
+      
+      // Nếu parse được ngày và ngày >= cutoffDate thì giữ lại
+      // Nếu không parse được ngày, giữ lại (an toàn)
+      if (!itemDate || itemDate >= cutoffDate) {
+        dataToKeep.push(item);
+      }
+    } catch (e) {
+      // Nếu có lỗi khi parse, giữ lại (an toàn)
+      dataToKeep.push(item);
+    }
+  });
+  
+  const removedCount = beforeCount - dataToKeep.length;
+  
+  if (removedCount === 0) {
+    notify('✅ Không có dữ liệu cũ nào để xóa (tất cả dữ liệu đều trong vòng 30 ngày gần nhất).', 'info', 3000);
+    return;
+  }
+  
+  const confirmMessage = `⚠️ Bạn có muốn xóa ${removedCount} đơn hàng cũ hơn ${daysToKeep} ngày không?\n\n` +
+    `📊 Dữ liệu hiện tại: ${beforeCount} đơn hàng\n` +
+    `🗑️ Sẽ xóa: ${removedCount} đơn hàng\n` +
+    `✅ Giữ lại: ${dataToKeep.length} đơn hàng\n\n` +
+    `Lưu ý: Hành động này không thể hoàn tác!`;
+  
+  if (!confirm(confirmMessage)) {
+    return;
+  }
+  
+  // Xóa dữ liệu cũ
+  duLieu = dataToKeep;
+  updateDuLieuMap();
+  
+  // Thử lưu lại
+  try {
+    luuLocal();
+    hienThi();
+    
+    const dataSize = new Blob([JSON.stringify(duLieu)]).size;
+    const dataSizeMB = (dataSize / (1024 * 1024)).toFixed(2);
+    
+    notify(`✅ Đã xóa ${removedCount} đơn hàng cũ!\n📊 Dữ liệu hiện tại: ${dataToKeep.length} đơn hàng (khoảng ${dataSizeMB}MB)`, 'success', 5000);
+    
+    // Ẩn nút dọn dẹp nếu dữ liệu đã nhỏ
+    if (dataSize < 5 * 1024 * 1024) {
+      const btnDonDep = document.getElementById("btnDonDep");
+      if (btnDonDep) {
+        btnDonDep.style.display = "none";
+      }
+    }
+  } catch (error) {
+    console.error('Error saving after cleanup:', error);
+    notify('❌ Đã xóa dữ liệu cũ nhưng gặp lỗi khi lưu: ' + (error.message || error), 'error', 5000);
+  }
+}
+
+document.getElementById("btnXoaAll").onclick=()=>{
+  if(confirm("Xóa toàn bộ?")){
+    duLieu=[];
+    updateDuLieuMap();
+    hienThi();
+    luuLocal();
+  }
+};
+
+// Hàm refresh dữ liệu từ file JSON
+async function refreshData() {
+    notify('🔄 Đang tải lại dữ liệu từ file...', 'info', 2000);
+    await loadLocal();
+    hienThi();
+    notify('✅ Đã tải lại dữ liệu từ file donhang.json', 'success', 2000);
+}
+
+// auto thêm khi Enter (scanner input)
+document.getElementById("maVanDon").addEventListener("keydown", function(e){
+  if(e.key === "Enter"){ 
+    e.preventDefault();
+    themNhieu();
+  }
+});
+function exportExcel(){
+  if(duLieu.length===0){notify("⚠️ Không có dữ liệu để xuất!", "warn", 2200);return;}
+
+  const wb = XLSX.utils.book_new();
+
+ // --- Sheet 1: Thống_kê ---
+  const allTrangThai=["Đơn đi","Đơn hủy","Hết hàng","Thiếu hàng","Đơn hoàn","Shipper chưa lấy"];
+  let groupByShipper={};
+  duLieu.forEach(d=>{
+    if(!groupByShipper[d.shipper]) groupByShipper[d.shipper]={};
+    groupByShipper[d.shipper][d.trangThai]=(groupByShipper[d.shipper][d.trangThai]||0)+1;
+  });
+  let ws2Data=[];
+  for(const shipper in groupByShipper){
+    ws2Data.push([`Đơn vị vận chuyển ${shipper}`,"Số lượng"]);
+allTrangThai.forEach(tt=>{
+  const soLuong = groupByShipper[shipper][tt] || 0;
+  if (soLuong > 0) {            // ❌ bỏ qua dòng 0
+    ws2Data.push([tt, soLuong]);
+  }
+});
+ws2Data.push([]);
+  }
+  ws2Data.push(["Tổng số lượng đơn"]);
+  let tong={};
+  duLieu.forEach(d=>{tong[d.trangThai]=(tong[d.trangThai]||0)+1;});
+ allTrangThai.forEach(tt=>{
+  const soLuong = tong[tt] || 0;
+  if (soLuong > 0) {            // ❌ bỏ qua dòng 0
+    ws2Data.push([tt, soLuong]);
+  }
+});
+
+  const ws2 = XLSX.utils.aoa_to_sheet(ws2Data);
+  XLSX.utils.book_append_sheet(wb,ws2,"Thong_ke");
+
+  // --- Sheet 2: Đơn_đi ---
+const donDi = duLieu.filter(d => d.trangThai === "Đơn đi");
+const ws1 = XLSX.utils.json_to_sheet(donDi.map((d,i)=>({
+  STT: i+1,
+  "Mã vận đơn": d.ma,
+  "Đơn vị VC": d.shipper,
+  "Ngày quét": d.ngayQuet,
+  "Trạng thái": d.trangThai,
+  "Ghi chú": d.ghiChu || ""
+})));
+XLSX.utils.book_append_sheet(wb, ws1, "Don_di");
+
+  // --- Sheet 3: Đơn_hủy ---
+  const donHuy=duLieu.filter(d=>d.trangThai==="Đơn hủy");
+  const ws3=XLSX.utils.json_to_sheet(donHuy.map((d,i)=>({
+    STT:i+1,"Mã vận đơn":d.ma,"Đơn vị VC":d.shipper,"Ngày quét":d.ngayQuet,"Trạng thái":d.trangThai,"Ghi chú":d.ghiChu||""
+  })));
+  XLSX.utils.book_append_sheet(wb,ws3,"Don_huy");
+
+  // --- Sheet 4: Đơn_hoàn ---
+  const donHoan=duLieu.filter(d=>d.trangThai==="Đơn hoàn");
+  const ws4=XLSX.utils.json_to_sheet(donHoan.map((d,i)=>({
+    STT:i+1,"Mã vận đơn":d.ma,"Đơn vị VC":d.shipper,"Ngày quét":d.ngayQuet,"Trạng thái":d.trangThai,"Ghi chú":d.ghiChu||""
+  })));
+  XLSX.utils.book_append_sheet(wb,ws4,"Don_hoan");
+
+  // --- Sheet 5: Khác (Hết hàng, Thiếu hàng, Chưa lấy) ---
+  const khac = duLieu.filter(d => 
+    d.trangThai === "Hết hàng" || 
+    d.trangThai === "Thiếu hàng" || 
+    d.trangThai === "Shipper chưa lấy"
+  );
+  const ws5 = XLSX.utils.json_to_sheet(khac.map((d,i)=>({
+    STT: i+1,
+    "Mã vận đơn": d.ma,
+    "Đơn vị VC": d.shipper,
+    "Ngày quét": d.ngayQuet,
+    "Trạng thái": d.trangThai,
+    "Ghi chú": d.ghiChu || ""
+  })));
+  XLSX.utils.book_append_sheet(wb, ws5, "Khac");
+
+  // --- Áp dụng định dạng cho tất cả sheets ---
+  applyExcelFormatting(wb);
+
+  // --- Xuất file ---
+  const ngay=new Date().toLocaleDateString('vi-VN').replace(/\//g,"-");
+  XLSX.writeFile(wb,`DonHang_${ngay}.xlsx`);
+}
+
+// Hàm áp dụng định dạng Excel cho tất cả sheets
+function applyExcelFormatting(wb) {
+  // Lấy danh sách tất cả sheet names
+  const sheetNames = wb.SheetNames;
+  
+  sheetNames.forEach(sheetName => {
+    const ws = wb.Sheets[sheetName];
+    
+    // Lấy phạm vi dữ liệu
+    const range = XLSX.utils.decode_range(ws['!ref'] || 'A1:A1');
+    
+    // Áp dụng định dạng cho từng ô
+    for (let row = range.s.r; row <= range.e.r; row++) {
+      for (let col = range.s.c; col <= range.e.c; col++) {
+        const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+        
+        if (!ws[cellAddress]) continue;
+        
+        // Khởi tạo style nếu chưa có
+        if (!ws[cellAddress].s) ws[cellAddress].s = {};
+        
+        // Định dạng cơ bản cho tất cả ô: căn chỉnh đều, wrap text, viền mảnh
+        ws[cellAddress].s = {
+          alignment: {
+            horizontal: 'center',      // Căn giữa
+            vertical: 'center',         // Căn giữa theo chiều dọc
+            wrapText: true,             // Wrap text
+            indent: 0,
+            justifyLastLine: false,
+            readingOrder: 0,
+            shrinkToFit: false
+          },
+          border: {
+            top: { style: 'thin', color: { rgb: '000000' } },
+            bottom: { style: 'thin', color: { rgb: '000000' } },
+            left: { style: 'thin', color: { rgb: '000000' } },
+            right: { style: 'thin', color: { rgb: '000000' } }
+          },
+          font: {
+            name: 'Arial',
+            sz: 11,
+            color: { rgb: '000000' },
+            bold: false,
+            italic: false,
+            underline: false,
+            strike: false
+          }
+        };
+        
+        // Định dạng đặc biệt cho hàng tiêu đề (hàng đầu tiên)
+        if (row === range.s.r) {
+          ws[cellAddress].s = {
+            ...ws[cellAddress].s,
+            font: {
+              name: 'Arial',
+              sz: 11,
+              color: { rgb: 'FFFFFF' },  // Chữ trắng
+              bold: true,                 // In đậm
+              italic: false,
+              underline: false,
+              strike: false
+            },
+            fill: {
+              fgColor: { rgb: '4472C4' }, // Nền xanh nhạt
+              patternType: 'solid'
+            },
+            alignment: {
+              horizontal: 'center',
+              vertical: 'center',
+              wrapText: true,
+              indent: 0,
+              justifyLastLine: false,
+              readingOrder: 0,
+              shrinkToFit: false
+            }
+          };
+        }
+      }
+    }
+    
+    // Tự động điều chỉnh độ rộng cột theo nội dung
+    const colWidths = [];
+    for (let col = range.s.c; col <= range.e.c; col++) {
+      let maxWidth = 8; // Độ rộng tối thiểu
+      
+      for (let row = range.s.r; row <= range.e.r; row++) {
+        const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+        const cell = ws[cellAddress];
+        
+        if (cell && cell.v !== null && cell.v !== undefined) {
+          const cellValue = String(cell.v);
+          // Tính độ rộng dựa trên độ dài ký tự (có thể điều chỉnh cho tiếng Việt)
+          const cellWidth = cellValue.length;
+          // Đối với tiếng Việt, có thể cần nhân thêm 1.2-1.5
+          maxWidth = Math.max(maxWidth, cellWidth * 1.3);
+        }
+      }
+      
+      // Giới hạn độ rộng tối đa và tối thiểu
+      colWidths.push({ 
+        wch: Math.max(8, Math.min(Math.ceil(maxWidth) + 2, 60)) 
+      });
+    }
+    
+    ws['!cols'] = colWidths;
+    
+    // Cố định hàng tiêu đề trên cùng (freeze panes)
+    if (range.e.r > range.s.r) {
+      ws['!freeze'] = { 
+        xSplit: 0,      // Không chia cột
+        ySplit: 1,      // Cố định từ hàng thứ 2 (hàng 1 là tiêu đề)
+        topLeftCell: 'A2',
+        activePane: 'bottomLeft',
+        state: 'frozen'
+      };
+    }
+  });
+}
+
+// gán lại cho nút Export
+document.getElementById("btnExport").onclick=exportExcel;
+
+document.getElementById("filterTrangThai").addEventListener("change",function(){trangThaiFilter=this.value;hienThi();});
+document.getElementById("filterShipper").addEventListener("change",function(){shipperFilter=this.value;hienThi();});
+document.getElementById("tuKhoa").addEventListener("input", debounce(hienThi, 300)); // Debounce 300ms
+
+
+async function dayLenGoogleSheet() {
+  try {
+    if (!Array.isArray(duLieu) || duLieu.length === 0) {
+      notify("⚠️ Chưa có dữ liệu để đẩy!", "warn", 2200);
+      return;
+    }
+
+    // Chuẩn hoá payload gửi lên Apps Script
+    const payload = duLieu.map(d => ({
+      maGoc: d.maGoc || "",
+      ma: d.ma || "",
+      trangThai: d.trangThai || "",
+      dotHang: d.dotHang || "",
+      loaiHang: d.loaiHang || "",
+      loaiSX: d.loaiSX || "",
+      mau: d.mau || "",
+      size: (d.size || "").toUpperCase(),
+      thoiGian: d.thoiGian || "",
+      ghiChu: d.ghiChu || ""
+    }));
+
+    // Khoá nút trong lúc gửi
+    const btn = Array.from(document.querySelectorAll("button"))
+      .find(b => b.textContent.includes("Đẩy dữ liệu lên Google Sheets"));
+    if (btn) { btn.disabled = true; btn.textContent = "☁️ Đang đẩy..."; }
+
+    // Gửi theo lô để tránh giới hạn kích thước request
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyAqqCEYakDW5cMPbKSX3iN979dq2h3LVMdTPT6lGJceCaYroLoCvWMs78iZltPlgY/exec"; // ← THAY BẰNG LINK WEB APP
+    const BATCH_SIZE = 300;
+    let sent = 0;
+
+    for (let i = 0; i < payload.length; i += BATCH_SIZE) {
+      const chunk = payload.slice(i, i + BATCH_SIZE);
+
+      const res = await fetch(WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(chunk)
+      });
+
+      const text = await res.text();
+      if (!res.ok) throw new Error(text || `HTTP ${res.status}`);
+      sent += chunk.length;
+    }
+
+    notify(`✅ Đã đẩy ${sent} dòng lên Google Sheets!`, "warn", 2200);
+  } catch (err) {
+    console.error(err);
+    notify("❌ Lỗi khi đẩy dữ liệu: " + err.message +
+          "\nGợi ý: Kiểm tra URL Web App, quyền truy cập 'Anyone with the link', và đã Publish đúng chưa.", "warn", 2200);
+  } finally {
+    const btn = Array.from(document.querySelectorAll("button"))
+      .find(b => b.textContent.includes("Đẩy dữ liệu lên Google Sheets") || b.textContent.includes("Đang đẩy"));
+    if (btn) { btn.disabled = false; btn.textContent = "☁️ Đẩy dữ liệu lên Google Sheets"; }
+  }
+}
+
+</script>
+
+<div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+<script>
+
+// --- Notify helper (banner with conditional color) ---
+window.notify = function(msg, type='info', duration=2500){
+  var t = document.getElementById('toast');
+  if (!t) return;
+  // Auto-detect type by message content if not explicitly passed
+  var lower = (msg || '').toString().toLowerCase();
+  if (lower.includes('trùng')) {
+    type = 'success'; // xanh
+  } else if (lower.includes('cập nhật')) {
+    type = 'warn'; // cam
+  }
+  t.textContent = msg;
+  t.className = 'toast show ' + (type || 'info');
+  clearTimeout(window.__notify_to);
+  window.__notify_to = setTimeout(function(){
+    t.className = 'toast ' + (type || 'info');
+    t.textContent = '';
+  }, Math.max(800, duration || 2500));
+};
+
+</script>
+
+<script>
+// Load dữ liệu từ file JSON và hiển thị
+(async () => {
+    // Hiển thị loading indicator
+    const loadingIndicator = document.getElementById("loadingIndicator");
+    if (loadingIndicator) {
+      loadingIndicator.style.display = 'block';
+    }
+    
+    try {
+      await loadLocal();
+      console.log('📂 Loaded data:', duLieu.length, 'items');
+      hienThi();
+      
+      // Khởi tạo WebSocket sau khi load dữ liệu
+      initWebSocket();
+    } finally {
+      if (loadingIndicator) {
+        loadingIndicator.style.display = 'none';
+      }
+    }
+})();
+
+// Hàm để manually sync dữ liệu lên server (có thể gọi từ console)
+window.forceSyncDonhang = function() {
+    console.log('🔄 Manual sync triggered, duLieu.length =', duLieu.length);
+    if (duLieu.length > 0) {
+        syncToServer();
+    } else {
+        console.log('⚠️ Không có dữ liệu để sync');
+    }
+};
+
+// Auto-sync khi WebSocket sẵn sàng (interval kiểm tra mỗi giây)
+const syncCheckInterval = setInterval(() => {
+    if (duLieu.length > 0 && isConnected && ws && ws.readyState === WebSocket.OPEN) {
+        console.log('🔄 Auto-syncing local data to server (có ' + duLieu.length + ' items)...');
+        syncToServer();
+        clearInterval(syncCheckInterval);
+    }
+}, 1000);
+
+// Clear interval sau 20 giây
+setTimeout(() => {
+    clearInterval(syncCheckInterval);
+    if (duLieu.length > 0 && (!isConnected || !ws || ws.readyState !== WebSocket.OPEN)) {
+        console.log('⚠️ WebSocket chưa sẵn sàng sau 20 giây. Gọi forceSyncDonhang() để sync manually.');
+    }
+}, 20000);
+</script>
+
+</body>
+</html>

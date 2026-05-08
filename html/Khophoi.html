@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Khophoi - QR Sản phẩm</title>
+<style>
+body {font-family: Arial, sans-serif;background:#f4f6f8;margin:0;padding:20px;color:#333;}
+h2 {margin-top:0;color:#1976D2;}
+textarea,select,button,input {margin:5px;padding:8px;border-radius:6px;border:1px solid #ccc;}
+button {background:#2196F3;color:#fff;border:none;cursor:pointer;}
+button:hover {background:#1976D2;}
+#btnXoaAll {background:#f44336;}
+#btnXoaAll:hover {background:#c62828;}
+input[type=text] {width:240px;}
+#filterBar label {margin-right:5px;}
+#filterBar select {margin-right:15px;}
+#soDong {margin:5px 0;font-weight:bold;}
+.stat-block {background:#fff;padding:10px;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);margin-bottom:10px;}
+.stat-block h4 {margin:0 0 5px 0;color:#2196F3;font-size:14px;}
+.stat-block ul {list-style:none;padding-left:0;margin:0;}
+.stat-block ul li {display:flex;justify-content:space-between;border-bottom:1px dotted #ddd;font-size:13px;padding:2px 0;}
+.stat-container {margin-bottom:15px;}
+.stat-container h3 {margin-bottom:10px;}
+.update-count {color:#d32f2f;font-weight:bold;}
+table {width:100%;border-collapse:collapse;background:#fff;margin-top:10px;}
+th,td {border:1px solid #ddd;padding:6px;text-align:left;font-size:14px;}
+th {background:#2196F3;color:#fff;position:sticky;top:0;}
+tr:nth-child(even) {background:#f9f9f9;}
+.status-cell {padding:2px 6px;border-radius:4px;font-weight:bold;}
+.status-Bàngiao {background:#4caf50;color:#ffffff;}
+.status-Đangxửlý {background:#bbdefb;color:#0d47a1;}
+.status-Hoànthành {background:#c8e6c9;color:#1b5e20;}
+.status-Đợifile {background:#ffe0b2;color:#e65100;}
+.status-Thiếuhàng {background:#ffcdd2;color:#b71c1c;}
+.status-Xửlýlỗi {background:#f3e5f5;color:#6a1b9a;}
+
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.missing-data-message {
+  color: #d32f2f;
+  font-style: italic;
+  font-size: 12px;
+}
+
+/* Style cho dòng đã hoàn thành */
+.completed-row {
+  background: #e8f5e8 !important;
+  opacity: 0.8;
+}
+
+.completed-row td {
+  color: #2e7d32 !important;
+}
+
+/* Đảm bảo button trong completed-row vẫn có thể click được */
+.completed-row button {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.completed-badge {
+  background: #4caf50;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* Loading indicator */
+.loading-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000;
+  display: none;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 cột (bao gồm Trạng thái) */
+  gap: 10px;
+}
+
+.stat-cell {
+  background:#fff;
+  padding:10px;
+  border-radius:8px;
+  box-shadow:0 2px 4px rgba(0,0,0,0.1);
+  font-size:13px;
+}
+.stat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.stat-table td {
+  padding: 2px 4px;
+  border-bottom: 1px dotted #ddd;
+}
+
+.stat-table td.label {
+  text-align: left;
+  color: #333;
+}
+
+.stat-table td.value {
+  text-align: right;
+  font-weight: bold;
+  color: #1976D2;
+}
+
+.sync-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.sync-status.online {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.sync-status.offline {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.sync-status.error {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+
+.locked-row {
+  background: #f5f5f5 !important;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.locked-row td {
+  color: #999 !important;
+}
+
+.locked-badge {
+  background: #4caf50;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+</style>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+</head>
+<body>
+<h2>📦 Quản lý QR - Thống kê sản phẩm - Kho Phôi <span id="syncStatus" class="sync-status offline">🔴 Mất kết nối</span></h2>
+
+<!-- Nhập liệu -->
+<div class="stat-block" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+  <textarea id="maSanPham" rows="3" cols="70" placeholder="VD: Sp1=tee-in|Quan cc Wtnike/ tieu XL | 30/07/2025 14h08m20s"></textarea>
+  <button id="btnThem">✅ Thêm nhiều dòng</button>
+  <button id="btnExport">📄 Xuất Excel</button>
+  <button id="btnXoaAll">🗑️ Xóa toàn bộ</button>
+  <!-- Đã bỏ nút Nhật ký hoạt động -->
+</div>
+
+
+<!-- Thống kê -->
+<div id="soDong" class="stat-block" style="font-size:16px;background:#e3f2fd;"></div>
+<div id="thongKe" class="stat-container"></div>
+
+<!-- Bảng dữ liệu -->
+
+<div id="filterBar" class="stat-block" style="display:flex;flex-wrap:wrap;gap:15px;align-items:center;">
+  <label>🔍 Lọc trạng thái:</label><select id="filterTrangThai"><option value="">-- Tất cả --</option></select>
+  <label>📦 Đợt hàng:</label><select id="filterDotHang"><option value="">-- Tất cả --</option></select>
+  <label>🛍️ Loại hàng:</label><select id="filterLoaiHang"><option value="">-- Tất cả --</option></select>
+  <label>🏭 Loại SX:</label><select id="filterLoaiSX"><option value="">-- Tất cả --</option></select>
+  <input type="text" id="tuKhoa" placeholder="🔍 Tìm kiếm sản phẩm...">
+  <button onclick="xoaDongChon()">🗑️ Xóa các dòng chọn</button>
+</div>
+
+<table id="dataTable">
+  <thead>
+    <tr>
+      <th><input type='checkbox' id='selectAll' onclick='chonTatCa(this)'></th>
+      <th>#</th><th>Mã sản phẩm</th><th>Trạng thái</th>
+      <th>Đợt hàng</th><th>Loại hàng</th><th>Loại SX</th><th>Màu</th><th>Size</th>
+      <th>Thời gian</th><th>Ghi chú</th><th>Lịch sử</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<!-- Pagination controls -->
+<div id="paginationControls" class="stat-block" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:sticky;bottom:0;z-index:10;background:#fff;">
+  <button id="prevBtn" onclick="changePage(-1)">⬅️ Trước</button>
+  <span id="pageNumbers"></span>
+  <button id="nextBtn" onclick="changePage(1)">Tiếp ➡️</button>
+  <label for="itemsPerPageSelect">Hiển thị:</label>
+  <select id="itemsPerPageSelect" onchange="changeItemsPerPage()">
+    <option value="25">25</option>
+    <option value="50" selected>50</option>
+    <option value="100">100</option>
+    <option value="200">200</option>
+  </select>
+  <span style="font-size:12px;color:#666;">(Dùng phân trang để tải nhanh hơn)</span>
+</div>
+
+<!-- Loading indicator -->
+<div id="loadingIndicator" class="loading-indicator" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,255,255,0.95);padding:20px;border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,0.1);z-index:9999;text-align:center;">
+  <div class="loading-spinner" style="border:4px solid #f3f3f3;border-top:4px solid #2196F3;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite;margin:0 auto 10px;"></div>
+  <div>Đang tải dữ liệu...</div>
+</div>
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+  <div class="loading-spinner"></div>
+  <div>Đang tải dữ liệu...</div>
+</div>
+
+<script>
+let duLieu=[],soDongMoi=0,soDongCapNhat=0,tongSoCapNhat=0;
+let maGocToIndex = {};
+let dotHangFilter="",loaiHangFilter="",loaiSXFilter="",trangThaiFilter="";
+// Đã bỏ missingDataCache - các bộ phận độc lập
+// Đã bỏ nhật ký hoạt động
+
+function updateMaGocIndex() {
+  maGocToIndex = {};
+  duLieu.forEach((item, index) => {
+    if (item && item.maGoc) {
+      maGocToIndex[item.maGoc] = index;
+    }
+  });
+}
+
+// Danh sách loại hàng cố định theo thứ tự
+const LOAI_HANG_ORDER = ['tee', 'boxy', 'scc', 'skk', 'hd', 'zip', 'swt', 'bb', 'polo', 'khác'];
+
+// Danh sách loại sản xuất cố định theo thứ tự
+const LOAI_SX_ORDER = ['in', 'kt', 'theu', 'dtg', 'khác'];
+
+// Pagination variables
+let currentPage = 1;
+let itemsPerPage = 50; // Hiển thị 50 dòng mỗi trang
+let filteredData = [];
+
+// Debounce function để tối ưu tìm kiếm
+let searchDebounceTimer = null;
+function debounce(func, wait) {
+  return function(...args) {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
+// WebSocket connection for sync
+let ws = null;
+let isConnected = false;
+const MODULE_NAME = 'khophoi';
+
+// WebSocket functions
+function initWebSocket() {
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const wsUrl = `${protocol}//${window.location.host}`;
+    
+    try {
+        ws = new WebSocket(wsUrl);
+        
+        ws.onopen = function() {
+            console.log('WebSocket connected');
+            isConnected = true;
+            updateConnectionStatus('online');
+            
+            // Đăng ký module - kiểm tra trạng thái trước khi gửi
+            if (ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({
+                    type: 'register',
+                    module: MODULE_NAME
+                }));
+            }
+        };
+        
+        ws.onmessage = function(event) {
+            try {
+                const data = JSON.parse(event.data);
+                
+                if (data.type === 'sync' && data.module === MODULE_NAME) {
+                    // Nhận dữ liệu đồng bộ từ server
+                    duLieu = data.data || [];
+                    hienThi();
+                    // Đã bỏ tự động cập nhật trạng thái hoàn thành
+                    console.log('Data synced from server');
+                } else if (data.type === 'pong') {
+                    // Ping response
+                    console.log('Pong received');
+                }
+                // Đã bỏ xử lý missing_data_response
+            } catch (error) {
+                console.error('Error parsing WebSocket message:', error);
+            }
+        };
+        
+        ws.onclose = function() {
+            console.log('WebSocket disconnected');
+            isConnected = false;
+            updateConnectionStatus('offline');
+            
+            // Thử kết nối lại sau 3 giây
+            setTimeout(initWebSocket, 3000);
+        };
+        
+        ws.onerror = function(error) {
+            console.error('WebSocket error:', error);
+            updateConnectionStatus('error');
+        };
+        
+    } catch (error) {
+        console.error('Failed to create WebSocket connection:', error);
+        updateConnectionStatus('error');
+    }
+}
+
+function updateConnectionStatus(status) {
+    const statusEl = document.getElementById('syncStatus');
+    if (statusEl) {
+        statusEl.textContent = status === 'online' ? '🟢 Đã kết nối' : 
+                              status === 'offline' ? '🔴 Mất kết nối' : 
+                              '⚠️ Lỗi kết nối';
+        statusEl.className = `sync-status ${status}`;
+    }
+}
+
+function syncToServer() {
+    if (ws && isConnected && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({
+            type: 'update',
+            module: MODULE_NAME,
+            payload: duLieu
+        }));
+        console.log('Data synced to server');
+    }
+}
+
+// Đã bỏ chức năng phát hiện thiếu bước trước
+
+// Hàm kiểm tra sản phẩm có trong bộ phận sau (Sản xuất) không
+async function checkProductInNextDept(maGoc) {
+  try {
+    const response = await fetch('/api/sanxuat');
+    if (!response.ok) return false;
+    const data = await response.json();
+    if (!data || !Array.isArray(data)) return false;
+    const sanitize = (s) => (s || "").toString().replace(/\s+/g, '');
+    const maGocSanitized = sanitize(maGoc);
+    return data.some(p => sanitize(p.maGoc || p.ma) === maGocSanitized);
+  } catch (error) {
+    console.error('Error checking product in next dept:', error);
+    return false;
+  }
+}
+
+// Đã bỏ hàm canUpdateToCompleted - các bộ phận độc lập
+
+function luuLocal(){
+  try {
+    localStorage.setItem("duLieuKhophoi", JSON.stringify(duLieu));
+    localStorage.setItem("tongSoCapNhatKhophoi", String(tongSoCapNhat));
+    // Đã bỏ lưu nhật ký hoạt động
+  } catch (error) {
+    console.error('Error saving to localStorage:', error);
+  }
+  // Đồng bộ lên server
+  syncToServer();
+}
+
+// Đã bỏ hàm dọn dẹp nhật ký
+function donDepNhatKy(){
+  return; // Đã bỏ logic nhật ký
+}
+
+// Đã bỏ hàm ghi nhật ký hoạt động
+function ghiNhatKy(hanhDong, sanPham, chiTiet = ''){
+  return; // Đã bỏ logic nhật ký
+}
+
+// Đã bỏ hàm hiển thị nhật ký hoạt động
+function hienThiNhatKy(){
+  return; // Đã bỏ logic nhật ký hoạt động
+}
+
+// Đã bỏ hàm autoCapNhatHoanThanh - các bộ phận độc lập, không tự động cập nhật hoàn thành
+
+function thongKe(){
+  let thongKeDiv=document.getElementById("thongKe");
+  if(!thongKeDiv) return; // Nếu không tìm thấy div, return ngay
+  let groupDot={},groupLoai={},groupSX={},groupMau={},groupSize={},groupTrangThai={};
+  // Thống kê trạng thái cho từng nhóm
+  let statusByDot={},statusByLoai={},statusBySX={},statusByMau={},statusBySize={};
+  
+  duLieu.forEach(d=>{
+    const dot = d.dotHang || '';
+    const loai = d.loaiHang || '';
+    const sx = d.loaiSX || '';
+    const mau = d.mau || '';
+    const size = d.size || '';
+    const trangThai = d.trangThai || '';
+    const maGoc = d.maGoc || '';
+    
+    // Đếm số lượng
+    groupDot[dot]=(groupDot[dot]||0)+1;
+    groupLoai[loai]=(groupLoai[loai]||0)+1;
+    groupSX[sx]=(groupSX[sx]||0)+1;
+    if(mau) groupMau[mau]=(groupMau[mau]||0)+1;
+    if(size) groupSize[size]=(groupSize[size]||0)+1;
+    
+    // Khởi tạo object trạng thái nếu chưa có
+    if(!statusByDot[dot]) statusByDot[dot] = { hoanThanh: 0, banGiao: 0 };
+    if(!statusByLoai[loai]) statusByLoai[loai] = { hoanThanh: 0, banGiao: 0 };
+    if(!statusBySX[sx]) statusBySX[sx] = { hoanThanh: 0, banGiao: 0 };
+    if(mau && !statusByMau[mau]) statusByMau[mau] = { hoanThanh: 0, banGiao: 0 };
+    if(size && !statusBySize[size]) statusBySize[size] = { hoanThanh: 0, banGiao: 0 };
+    
+    // Đếm theo trạng thái
+    const trangThaiKey = trangThai || 'Chưa có';
+    groupTrangThai[trangThaiKey] = (groupTrangThai[trangThaiKey] || 0) + 1;
+    
+    // Đếm trạng thái
+    if(trangThai === 'Hoàn thành') {
+      statusByDot[dot].hoanThanh++;
+      statusByLoai[loai].hoanThanh++;
+      statusBySX[sx].hoanThanh++;
+      if(mau) statusByMau[mau].hoanThanh++;
+      if(size) statusBySize[size].hoanThanh++;
+    } else if(trangThai === 'Bàn giao') {
+      statusByDot[dot].banGiao++;
+      statusByLoai[loai].banGiao++;
+      statusBySX[sx].banGiao++;
+      if(mau) statusByMau[mau].banGiao++;
+      if(size) statusBySize[size].banGiao++;
+    }
+  });
+
+  // Gom thành 1 dòng 6 cột (thứ tự: Đợt hàng, Loại hàng, Trạng thái, Loại sản xuất, Màu, Size)
+  thongKeDiv.innerHTML = `
+    <div class="stat-row">
+      ${renderGroup("Đợt hàng",groupDot)}
+      ${renderGroup("Loại hàng",groupLoai)}
+      ${renderGroup("Trạng thái",groupTrangThai)}
+      ${renderGroup("Loại sản xuất",groupSX)}
+      ${renderGroup("Màu",groupMau)}
+      ${renderGroup("Size",groupSize)}
+    </div>
+  `;
+}
+
+// Hàm render dữ liệu từng batch để tránh đơ UI
+function renderDataInBatches(data, startIndex) {
+  // Tối ưu batch size dựa trên số lượng dữ liệu (giảm batch size cho dữ liệu lớn)
+  const BATCH_SIZE = data.length > 3000 ? 15 : (data.length > 2000 ? 20 : (data.length > 1000 ? 30 : 50));
+  const endIndex = Math.min(startIndex + BATCH_SIZE, data.length);
+  const tbody = document.getElementById("tbody");
+  const loadingIndicator = document.getElementById("loadingIndicator");
+  let stt = startIndex + 1;
+  
+  // Hiển thị loading indicator nếu đang render batch đầu tiên (hiển thị sớm hơn cho dữ liệu lớn)
+  if (startIndex === 0 && data.length > 50) {
+    loadingIndicator.style.display = 'block';
+    loadingIndicator.innerHTML = `
+      <div class="loading-spinner"></div>
+      <div>Đang tải dữ liệu... (${data.length} dòng)</div>
+      <div style="font-size: 12px; margin-top: 5px;">Đã tải: ${startIndex}/${data.length}</div>
+    `;
+  }
+  
+  // Tìm index gốc trong duLieu
+  // Tối ưu: Sử dụng map đã chuẩn bị sẵn từ duLieu
+  const originalIndices = data.map(item => maGocToIndex[item.maGoc] || -1);
+  
+  // Tính STT dựa trên trang hiện tại
+  const globalStartIndex = (currentPage - 1) * itemsPerPage;
+  
+  for (let i = startIndex; i < endIndex; i++) {
+    const item = data[i];
+    const originalIndex = originalIndices[i];
+    const globalStt = globalStartIndex + i + 1;
+    
+    const tr = document.createElement("tr");
+    const classTrangThai = item.trangThai.replace(/\s+/g,'');
+    
+    // Thêm class và style cho sản phẩm đã hoàn thành
+    if (item.trangThai === 'Hoàn thành') {
+      tr.classList.add('completed-row');
+    }
+    
+    // Xác định trạng thái hiển thị
+    const displayStatus = (item.trangThai === 'Hoàn thành' || !item.trangThai) ? 'Bàn giao' : item.trangThai;
+    const displayClass = displayStatus.replace(/\s+/g,'');
+    
+    tr.innerHTML = `<td><input type='checkbox' class='row-check' data-index='${originalIndex}'></td>
+    <td>${globalStt}</td>
+    <td>
+      <span>${item.maGoc}</span>
+      <button title="Copy" onclick="copyMa('${item.maGoc.replace(/'/g, "&#39;")}', this)" style="margin-left:6px;padding:2px 6px;border:1px solid #ccc;background:#f5f5f5;border-radius:4px;cursor:pointer;">📋</button>
+    </td>
+    <td><span class="status-cell status-${displayClass}" style="font-weight:bold;padding:2px 6px;border-radius:4px;">${displayStatus}</span></td>
+    
+    <td>${item.dotHang}</td>
+    <td>${item.loaiHang}</td>
+    <td>${item.loaiSX}</td>
+    <td>${item.mau||""}</td>
+    <td>${item.size||""}</td>
+    <td>${item.thoiGian}</td>
+    
+    <td><input type="text" value="${item.ghiChu||''}" onchange="capNhatGhiChu(${originalIndex}, this.value)" placeholder="Nhập ghi chú"></td>
+    <td><button onclick="xemLichSu(${originalIndex})">📜</button> <button onclick="xoaDong(${originalIndex})" style="background:#f44336;color:white;border:none;padding:2px 6px;border-radius:3px;cursor:pointer;">🗑️</button></td>
+    `;
+    
+    tbody.appendChild(tr);
+  }
+  
+  // Cập nhật progress trong loading indicator
+  if (loadingIndicator.style.display === 'block') {
+    loadingIndicator.innerHTML = `
+      <div class="loading-spinner"></div>
+      <div>Đang tải dữ liệu... (${data.length} dòng)</div>
+      <div style="font-size: 12px; margin-top: 5px;">Đã tải: ${endIndex}/${data.length}</div>
+    `;
+  }
+  
+  // Nếu còn dữ liệu, tiếp tục render batch tiếp theo
+  if (endIndex < data.length) {
+    // Tăng delay cho dữ liệu lớn để tránh đơ UI (tăng delay cho dữ liệu rất lớn)
+    const delay = data.length > 3000 ? 50 : (data.length > 2000 ? 30 : (data.length > 1000 ? 20 : 10));
+    setTimeout(() => renderDataInBatches(data, endIndex), delay);
+  } else {
+    // Ẩn loading indicator khi hoàn thành
+    loadingIndicator.style.display = 'none';
+  }
+}
+
+// Hàm render với pagination
+function renderWithPagination() {
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
+  const pageData = filteredData.slice(startIndex, endIndex);
+  
+  // Cập nhật pagination controls
+  updatePaginationControls(totalPages);
+  
+  // Dọn bảng trước khi render trang mới
+  const tbody = document.getElementById("tbody");
+  if (tbody) tbody.innerHTML = "";
+  
+  // Render dữ liệu trang hiện tại
+  renderDataInBatches(pageData, 0);
+}
+
+// Copy mã sản phẩm vào clipboard
+function copyMa(text, btn){
+  try {
+    const toCopy = (text || '').toString();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(toCopy).then(()=>{
+        if (btn) { btn.textContent = '✅'; setTimeout(()=>{ btn.textContent = '📋'; }, 1000); }
+      });
+    } else {
+      const temp = document.createElement('textarea');
+      temp.value = toCopy;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      if (btn) { btn.textContent = '✅'; setTimeout(()=>{ btn.textContent = '📋'; }, 1000); }
+    }
+  } catch(e) { console.warn('Copy failed', e); }
+}
+
+// Cập nhật pagination controls
+function updatePaginationControls(totalPages) {
+  const prevButton = document.getElementById("prevBtn");
+  const nextButton = document.getElementById("nextBtn");
+  const pageNumbers = document.getElementById("pageNumbers");
+  
+  // Cập nhật nút Previous/Next
+  prevButton.disabled = currentPage <= 1;
+  nextButton.disabled = currentPage >= totalPages;
+  
+  // Cập nhật số trang
+  let pageNumbersHtml = "";
+  const maxVisiblePages = 5;
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+  
+  if (endPage - startPage + 1 < maxVisiblePages) {
+    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+  }
+  
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbersHtml += `<button onclick="goToPage(${i})" ${i === currentPage ? 'style="background:#2196F3;color:white;"' : ''}>${i}</button> `;
+  }
+  pageNumbers.innerHTML = pageNumbersHtml;
+}
+
+// Thay đổi trang
+function changePage(direction) {
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const newPage = currentPage + direction;
+  
+  if (newPage >= 1 && newPage <= totalPages) {
+    currentPage = newPage;
+    renderWithPagination();
+  }
+}
+
+// Đi đến trang cụ thể
+function goToPage(page) {
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  if (page >= 1 && page <= totalPages) {
+    currentPage = page;
+    renderWithPagination();
+  }
+}
+
+// Thay đổi số dòng mỗi trang
+function changeItemsPerPage() {
+  itemsPerPage = parseInt(document.getElementById("itemsPerPageSelect").value);
+  currentPage = 1;
+  renderWithPagination();
+}
+
+function renderGroup(title,group){
+  if(!group || typeof group !== 'object') {
+    group = {};
+  }
+  let html=`<div class='stat-cell'><h4>${title}</h4>`;
+  html+=`<table class="stat-table">`;
+  
+  // Bỏ cột trạng thái, chỉ hiển thị tên và số lượng (2 cột: Tên và SL)
+  
+  // Sắp xếp đặc biệt cho đợt hàng và size
+  let sortedKeys = [];
+  if (title === "Đợt hàng") {
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const getOrder = (dot) => {
+        if (!dot) return 8000;
+        const lowerDot = dot.toLowerCase().trim();
+        
+        // sp1, sp2, sp3, sp4, sp5, sp6, sp7, sp8, sp9, spht, spthieu (theo số thứ tự)
+        if (lowerDot.startsWith('sp')) {
+          const num = lowerDot.match(/sp(\d+)/);
+          if (num) return parseInt(num[1]);
+          if (lowerDot.includes('thieu')) return 11; // spthieu sau spht
+          return 1000; // sp khác
+        }
+        
+        // ctv, mvd, bnv (theo thứ tự trong hình)
+        if (lowerDot === 'ctv') return 100;
+        if (lowerDot === 'mvd') return 200;
+        if (lowerDot === 'bnv') return 300;
+        
+        // si (bắt đầu bằng "si") - theo thứ tự trong hình
+        if (lowerDot.startsWith('si')) {
+          if (lowerDot === 'sihoang') return 400;
+          if (lowerDot === 'siminhhuong') return 500;
+          return 600; // si khác
+        }
+        
+        // lon (kết thúc bằng "lon") - theo thứ tự trong hình
+        if (lowerDot.endsWith('lon')) {
+          if (lowerDot === 'inlon') return 700;
+          if (lowerDot === 'phoisoanlon') return 800;
+          if (lowerDot === 'tonsoanlon') return 900;
+          return 1000; // lon khác
+        }
+        
+        // hu (kết thúc bằng "hu") và các đợt khác - theo thứ tự trong hình
+        if (lowerDot === 'lun') return 1100;
+        if (lowerDot === 'do') return 1200;
+        if (lowerDot === 'mayhu') return 1300;
+        if (lowerDot.endsWith('hu')) return 1400;
+        
+        // khác
+        return 7000;
+      };
+      
+      const orderA = getOrder(a);
+      const orderB = getOrder(b);
+      
+      // Nếu cùng thứ tự, sắp xếp theo tên
+      if (orderA === orderB) {
+        return a.localeCompare(b);
+      }
+      
+      return orderA - orderB;
+    });
+  } else if (title === "Loại hàng") {
+    // Sắp xếp Loại hàng theo thứ tự cố định
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const indexA = LOAI_HANG_ORDER.indexOf(a.toLowerCase());
+      const indexB = LOAI_HANG_ORDER.indexOf(b.toLowerCase());
+      
+      // Nếu cả hai đều có trong danh sách cố định
+      if (indexA !== -1 && indexB !== -1) {
+        return indexA - indexB;
+      }
+      // Nếu chỉ một có trong danh sách, ưu tiên nó
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      // Nếu cả hai đều không có, sắp xếp bình thường
+      return a.localeCompare(b);
+    });
+  } else if (title === "Loại sản xuất" || title === "Loại SX") {
+    // Sắp xếp Loại sản xuất theo thứ tự cố định
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const indexA = LOAI_SX_ORDER.indexOf(a.toLowerCase());
+      const indexB = LOAI_SX_ORDER.indexOf(b.toLowerCase());
+      
+      // Nếu cả hai đều có trong danh sách cố định
+      if (indexA !== -1 && indexB !== -1) {
+        return indexA - indexB;
+      }
+      // Nếu chỉ một có trong danh sách, ưu tiên nó
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      // Nếu cả hai đều không có, sắp xếp bình thường
+      return a.localeCompare(b);
+    });
+  } else if (title === "Màu") {
+    // Sắp xếp Màu theo số lượng giảm dần (từ lớn đến bé)
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const valueA = group[a] || 0;
+      const valueB = group[b] || 0;
+      
+      // Sắp xếp theo giá trị giảm dần
+      if (valueB !== valueA) {
+        return valueB - valueA;
+      }
+      // Nếu cùng giá trị, sắp xếp theo tên
+      return a.localeCompare(b);
+    });
+  } else if (title === "Size") {
+    // Sắp xếp Size theo thứ tự: S, M, L, XL, XXL
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const sizeOrder = { 'S': 1, 'M': 2, 'L': 3, 'XL': 4, 'XXL': 5 };
+      const orderA = sizeOrder[a] || 999;
+      const orderB = sizeOrder[b] || 999;
+      
+      if (orderA === orderB) {
+        return a.localeCompare(b);
+      }
+      
+      return orderA - orderB;
+    });
+  } else if (title === "Trạng thái") {
+    // Hiển thị đặc biệt cho bảng Trạng thái: mỗi trạng thái trên một dòng với emoji
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const order = { 'Bàn giao': 1, 'Hoàn thành': 2 };
+      const orderA = order[a] || 999;
+      const orderB = order[b] || 999;
+      if (orderA !== orderB) return orderA - orderB;
+      return a.localeCompare(b);
+    });
+    
+    sortedKeys.forEach(k=>{
+      const count = group[k] || 0;
+      let emoji = '';
+      if (k === 'Bàn giao') emoji = '📦';
+      else if (k === 'Hoàn thành') emoji = '✅';
+      html+=`<tr><td class="label">${emoji} ${k}</td><td class="value">${count}</td></tr>`;
+    });
+    html+=`</table></div>`;
+    return html;
+  } else {
+    // Sắp xếp bình thường cho các nhóm khác
+    sortedKeys = Object.keys(group).sort();
+  }
+  
+  sortedKeys.forEach(k=>{
+    const count = group[k] || 0;
+    // Bỏ cột trạng thái, chỉ hiển thị tên và số lượng
+    html+=`<tr><td class="label">${k}</td><td class="value">${count}</td></tr>`;
+  });
+  html+=`</table></div>`;
+  return html;
+}
+
+function layThoiGianTuMa(ma){
+  if(!ma) return "";
+  let m=ma.match(/(\d{1,2}\/\d{1,2}\/\d{4}.*)$/);
+  return m?m[1].trim():"";
+}
+
+// Khóa duy nhất theo mã sản phẩm (bỏ phần thời gian sau dấu '|' cuối)
+// (Giữ nguyên so trùng theo toàn bộ mã bao gồm thời gian ở cuối)
+
+function hienThi(){
+  updateMaGocIndex();
+  const tuKhoa = document.getElementById("tuKhoa").value.trim().toLowerCase();
+  currentPage = 1;
+  document.getElementById("soDong").innerText=`🔢 Đã thêm: ${soDongMoi} | Đã cập nhật: ${soDongCapNhat} | Tổng: ${duLieu.length}`;
+  const tbody=document.getElementById("tbody");
+  tbody.innerHTML="";
+  let setDot=new Set(), setLoai=new Set(), setSX=new Set(), setTT=new Set();
+  let stt = 1;
+  // Tối ưu: Lọc dữ liệu trước khi render
+  filteredData = duLieu.filter((item, i) => {
+    if(dotHangFilter&&item.dotHang!==dotHangFilter) return false;
+    if(loaiHangFilter&&item.loaiHang!==loaiHangFilter) return false;
+    if(loaiSXFilter&&item.loaiSX!==loaiSXFilter) return false;
+    
+    if(trangThaiFilter) {
+      if(item.trangThai !== trangThaiFilter) return false;
+    }
+    
+    if (tuKhoa) {
+      const norm = (s)=> (s||"").toString().toLowerCase().replace(/\s+/g,' ').trim();
+      const needle = norm(tuKhoa);
+      const haystack = norm([item.maGoc, item.ma, item.trangThai, item.dotHang, item.loaiHang, item.loaiSX, item.mau, item.size, item.thoiGian, item.ghiChu].join(' '));
+      if (!haystack.includes(needle)) return false;
+    }
+    return true;
+  });
+  
+  // Render theo phân trang
+  renderWithPagination();
+  
+  // Cập nhật filter dropdowns
+  duLieu.forEach((item,i)=>{
+    setDot.add(item.dotHang);setLoai.add(item.loaiHang);setSX.add(item.loaiSX);
+    
+    setTT.add(item.trangThai);
+  });
+  
+  // Sắp xếp đợt hàng theo thứ tự yêu cầu
+  const sortedDotHang = Array.from(setDot).sort((a, b) => {
+    const getOrder = (dot) => {
+      if (!dot) return 8000;
+      const lowerDot = dot.toLowerCase().trim();
+      
+      // sp1, sp2, sp3, sp4, sp5, sp6, sp7, sp8, sp9, spht, spthieu (theo số thứ tự)
+      if (lowerDot.startsWith('sp')) {
+        const num = lowerDot.match(/sp(\d+)/);
+        if (num) return parseInt(num[1]);
+        if (lowerDot.includes('thieu')) return 11; // spthieu sau spht
+        return 1000; // sp khác
+      }
+      
+      // mvd
+      if (lowerDot === 'mvd') return 2000;
+      
+      // ctv
+      if (lowerDot === 'ctv') return 3000;
+      
+      // si (bắt đầu bằng "si")
+      if (lowerDot.startsWith('si')) return 4000;
+      
+      // hu (kết thúc bằng "hu")
+      if (lowerDot.endsWith('hu')) return 5000;
+      
+      // lon (kết thúc bằng "lon")
+      if (lowerDot.endsWith('lon')) return 6000;
+      
+      // khác
+      return 7000;
+    };
+    
+    const orderA = getOrder(a);
+    const orderB = getOrder(b);
+    
+    // Nếu cùng thứ tự, sắp xếp theo tên
+    if (orderA === orderB) {
+      return a.localeCompare(b);
+    }
+    
+    return orderA - orderB;
+  });
+  
+  document.getElementById("filterTrangThai").innerHTML='<option value="">-- Tất cả --</option>'+Array.from(setTT).map(o=>`<option ${o===trangThaiFilter?'selected':''}>${o}</option>`).join('');
+  document.getElementById("filterDotHang").innerHTML='<option value="">-- Tất cả --</option>'+sortedDotHang.map(o=>`<option ${o===dotHangFilter?'selected':''}>${o}</option>`).join('');
+  
+  // Sắp xếp loại hàng theo thứ tự cố định
+  const sortedLoaiHang = Array.from(setLoai).sort((a, b) => {
+    const indexA = LOAI_HANG_ORDER.indexOf(a.toLowerCase());
+    const indexB = LOAI_HANG_ORDER.indexOf(b.toLowerCase());
+    
+    // Nếu cả hai đều có trong danh sách cố định
+    if (indexA !== -1 && indexB !== -1) {
+      return indexA - indexB;
+    }
+    // Nếu chỉ một có trong danh sách, ưu tiên nó
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    // Nếu cả hai đều không có, sắp xếp bình thường
+    return a.localeCompare(b);
+  });
+  document.getElementById("filterLoaiHang").innerHTML='<option value="">-- Tất cả --</option>'+sortedLoaiHang.map(o=>`<option ${o===loaiHangFilter?'selected':''}>${o}</option>`).join('');
+  
+  // Sắp xếp loại sản xuất theo thứ tự cố định
+  const sortedLoaiSX = Array.from(setSX).sort((a, b) => {
+    const indexA = LOAI_SX_ORDER.indexOf(a.toLowerCase());
+    const indexB = LOAI_SX_ORDER.indexOf(b.toLowerCase());
+    
+    // Nếu cả hai đều có trong danh sách cố định
+    if (indexA !== -1 && indexB !== -1) {
+      return indexA - indexB;
+    }
+    // Nếu chỉ một có trong danh sách, ưu tiên nó
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    // Nếu cả hai đều không có, sắp xếp bình thường
+    return a.localeCompare(b);
+  });
+  document.getElementById("filterLoaiSX").innerHTML='<option value="">-- Tất cả --</option>'+sortedLoaiSX.map(o=>`<option ${o===loaiSXFilter?'selected':''}>${o}</option>`).join('');
+  thongKe();
+}
+
+async function themNhieu(){
+  soDongMoi=0;soDongCapNhat=0;
+  const text=document.getElementById("maSanPham").value.trim();
+  if(!text)return;
+  const trangThai="Bàn giao"; // Trạng thái mặc định cho Kho phôi
+  const dong=text.split("\n");
+  const sanitize=(s)=> (s||"").toString().replace(/\s+/g,'');
+  const seenKeys = new Set((duLieu||[]).map(x=>sanitize(x.ma)));
+  const productsToCheck = []; // Lưu các sản phẩm mới thêm để kiểm tra sau
+  
+  for (const d of dong) {
+    if(!d.includes("="))continue; // Bỏ qua dòng không có dấu =
+    const parts = d.split("=");
+    if(parts.length < 2) continue; // Bỏ qua nếu không đủ phần
+    const [dotHang,rawMa]=parts;
+    let rawMaTrim=rawMa.trim();
+    const key = sanitize(rawMaTrim);
+    const foundIndex = duLieu.findIndex(it=>sanitize(it.ma)===key);
+    const found = foundIndex>=0 ? duLieu[foundIndex] : null;
+    if(found){
+      if(found.trangThai==='Hoàn thành'){
+        continue; // Bỏ qua nếu đã hoàn thành
+      }
+      if(found.trangThai!==trangThai){
+        found.trangThai=trangThai;
+        tongSoCapNhat++;
+        soDongCapNhat++;
+        if(!found.lichSu) found.lichSu=[];
+        found.lichSu.push({thoiGian: new Date().toLocaleString(), trangThai: trangThai});
+      }
+      continue; // Bỏ qua nếu đã tồn tại
+    }
+    const loaiSX=rawMaTrim.includes("|")?rawMaTrim.split("|")[0].split("-").pop().trim():"";
+    const loaiHang=rawMaTrim.includes("-")?rawMaTrim.split("-")[0].trim():"";
+
+  // Lấy màu & size
+let mau="", size="";
+if (rawMaTrim.includes("|")) {
+  const parts = rawMaTrim.split("|");
+  if (parts.length > 1) {
+    let desc = parts[1].split("/").pop().trim();
+
+    // Nếu có dấu phẩy thì bỏ phần trước, chỉ giữ sau dấu phẩy
+    if (desc.includes(",")) {
+      desc = desc.split(",")[1].trim();
+    }
+
+    // Bỏ hậu tố [1], [2], ...
+    let tokens = desc.split(" ")
+      .map(t => t.trim().replace(/,$/,""))
+      .filter(t => t && !/^\[\d+\]$/.test(t));
+
+    if(tokens.length >= 2){
+      size = tokens[tokens.length-1].toUpperCase(); // ✅ size cuối
+      mau = tokens[0].toLowerCase();               // ✅ lấy màu đầu tiên sau dấu phẩy
+    }
+  }
+}
+
+    const thoiGian=new Date().toLocaleString();
+    const newProduct = {
+      maGoc: d.trim(),
+      ma: rawMaTrim,
+      trangThai,
+      dotHang: dotHang.trim().toLowerCase(),   // ✅ luôn viết thường
+      loaiHang,
+      loaiSX,
+      mau,
+      size,
+      thoiGian,
+      ghiChu: "",
+      lichSu: [{ thoiGian: thoiGian, trangThai: trangThai }]
+    };
+    
+    // Bỏ qua nếu đã tồn tại trùng toàn bộ mã
+    if (seenKeys.has(key)) {
+      continue;
+    }
+    soDongMoi++;
+    duLieu.push(newProduct);
+    seenKeys.add(key);
+    productsToCheck.push({ product: newProduct, index: duLieu.length - 1 });
+    
+    // Đã bỏ ghi nhật ký hoạt động
+    
+    // Đã bỏ kiểm tra thiếu dữ liệu - các bộ phận độc lập
+  }
+  
+  // Kiểm tra và tự động hoàn thành các sản phẩm mới thêm nếu bộ phận sau đã có
+  for (const { product, index } of productsToCheck) {
+    const hasInNextDept = await checkProductInNextDept(product.maGoc);
+    if (hasInNextDept && duLieu[index].trangThai !== 'Hoàn thành') {
+      duLieu[index].trangThai = 'Hoàn thành';
+      tongSoCapNhat++;
+      soDongCapNhat++;
+      if (!duLieu[index].lichSu) duLieu[index].lichSu = [];
+      duLieu[index].lichSu.push({ 
+        thoiGian: new Date().toLocaleString(), 
+        trangThai: 'Hoàn thành' 
+      });
+    }
+  }
+  
+  document.getElementById("maSanPham").value="";
+  hienThi();
+  luuLocal();
+}
+
+function xoaDong(i){
+  const sanPham = duLieu[i];
+  if(sanPham){
+    // Đã bỏ ghi nhật ký hoạt động
+  }
+  duLieu.splice(i,1);
+  hienThi();
+  luuLocal();
+}
+
+// Kiểm tra tự động sau khi trang tải xong
+// Đã bỏ autoCapNhatHoanThanh khi load - các bộ phận độc lập
+function capNhatTrangThai(i,v){
+  if(duLieu[i].trangThai!==v){
+    duLieu[i].trangThai=v;
+    tongSoCapNhat++;
+    if(!duLieu[i].lichSu) duLieu[i].lichSu=[];
+    duLieu[i].lichSu.push({thoiGian: new Date().toLocaleString(), trangThai: v});
+  }
+  hienThi();
+  luuLocal();
+}
+function capNhatGhiChu(i,value){duLieu[i].ghiChu=value;luuLocal();}
+function xemLichSu(i){
+  const lichSu=duLieu[i].lichSu||[];
+  if(lichSu.length===0){alert("⚠️ Chưa có lịch sử cập nhật!");return;}
+  const noiDung=lichSu.map(l=>`- ${l.thoiGian}: ${l.trangThai}`).join("\n");
+  alert(`📜 Lịch sử cập nhật:\n${noiDung}`);
+}
+
+function chonTatCa(cb){document.querySelectorAll('.row-check').forEach(chk=>chk.checked = cb.checked);}
+function layChiSoChon(){const arr=[];document.querySelectorAll('.row-check:checked').forEach(chk=>arr.push(parseInt(chk.dataset.index)));return arr;}
+function capNhatTrangThaiChon(){
+  const trangThai=document.getElementById('bulkStatus').value;
+  if(!trangThai){alert("⚠️ Chọn trạng thái mới trước!");return;}
+  
+  const indexes=layChiSoChon();
+  if(indexes.length===0){alert("⚠️ Chưa chọn dòng nào!");return;}
+  indexes.forEach(i=>{
+    if(duLieu[i]){
+      duLieu[i].trangThai=trangThai;
+      tongSoCapNhat++;
+      if(!duLieu[i].lichSu) duLieu[i].lichSu=[];
+      duLieu[i].lichSu.push({thoiGian: new Date().toLocaleString(), trangThai: trangThai});
+    }
+  });
+  hienThi();luuLocal();
+  alert("✅ Đã cập nhật trạng thái cho " + indexes.length + " dòng!");
+}
+function xoaDongChon(){
+  const indexes=layChiSoChon().sort((a,b)=>b-a);
+  if(indexes.length===0){alert("⚠️ Chưa chọn dòng nào!");return;}
+  if(!confirm("⚠️ Bạn có chắc chắn muốn xóa " + indexes.length + " dòng đã chọn?")) return;
+  
+  // Ghi nhật ký hoạt động cho từng sản phẩm bị xóa
+  indexes.forEach(i=>{
+    if(i >= 0 && i < duLieu.length) {
+      const sanPham = duLieu[i];
+      if(sanPham){
+        // Đã bỏ ghi nhật ký hoạt động
+      }
+    }
+  });
+  
+  // Xóa từ cuối lên để tránh lỗi index
+  indexes.forEach(i=>{
+    if(i >= 0 && i < duLieu.length) {
+      duLieu.splice(i,1);
+    }
+  });
+  hienThi();luuLocal();
+  alert("✅ Đã xóa " + indexes.length + " dòng!");
+}
+
+window.addEventListener("load",()=>{
+  try {
+    // Hiển thị loading indicator ngay
+    const loadingIndicator = document.getElementById("loadingIndicator");
+    if (loadingIndicator) {
+      loadingIndicator.style.display = 'block';
+      loadingIndicator.innerHTML = `
+        <div class="loading-spinner" style="border:4px solid #f3f3f3;border-top:4px solid #2196F3;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite;margin:0 auto 10px;"></div>
+        <div>Đang tải dữ liệu...</div>
+      `;
+    }
+    
+    // Tải dữ liệu từ localStorage (fallback) - tối ưu bằng cách parse trong requestIdleCallback
+    if (window.requestIdleCallback) {
+      requestIdleCallback(() => {
+        try {
+          const data=localStorage.getItem("duLieuKhophoi");
+          if(data) duLieu=JSON.parse(data);
+        } catch (error) {
+          console.error('Error loading data from localStorage:', error);
+          duLieu = [];
+        }
+        
+        try {
+          const soCapNhat=localStorage.getItem("tongSoCapNhatKhophoi");
+          tongSoCapNhat=soCapNhat?parseInt(soCapNhat):0;
+        } catch (error) {
+          console.error('Error loading counter from localStorage:', error);
+          tongSoCapNhat = 0;
+        }
+        
+        // Hiển thị sau khi load xong
+        setTimeout(() => {
+          hienThi();
+          if (loadingIndicator) loadingIndicator.style.display = 'none';
+        }, 50);
+      }, { timeout: 1000 });
+    } else {
+      // Fallback cho browser không hỗ trợ requestIdleCallback
+      setTimeout(() => {
+        try {
+          const data=localStorage.getItem("duLieuKhophoi");
+          if(data) duLieu=JSON.parse(data);
+        } catch (error) {
+          console.error('Error loading data from localStorage:', error);
+          duLieu = [];
+        }
+        
+        try {
+          const soCapNhat=localStorage.getItem("tongSoCapNhatKhophoi");
+          tongSoCapNhat=soCapNhat?parseInt(soCapNhat):0;
+        } catch (error) {
+          console.error('Error loading counter from localStorage:', error);
+          tongSoCapNhat = 0;
+        }
+        
+        hienThi();
+        if (loadingIndicator) loadingIndicator.style.display = 'none';
+      }, 100);
+    }
+    
+    // Khởi tạo WebSocket sau khi UI đã render (defer để tăng tốc độ mở trang)
+    setTimeout(() => {
+      initWebSocket();
+    }, 500);
+  } catch (error) {
+    console.error('Lỗi khi khởi tạo trang:', error);
+    alert('⚠️ Có lỗi xảy ra khi tải trang. Vui lòng kiểm tra Console (F12) để xem chi tiết.');
+  }
+});
+document.getElementById("btnThem").addEventListener("click",themNhieu);
+document.getElementById("btnXoaAll").addEventListener("click",()=>{
+  if(confirm("⚠️ Bạn có chắc chắn muốn xóa toàn bộ dữ liệu không?")){
+    // Ghi nhật ký hoạt động - Xóa toàn bộ
+    const tongSo = duLieu.length;
+    // Đã bỏ ghi nhật ký hoạt động
+    duLieu=[];
+    tongSoCapNhat=0;
+    soDongMoi=0;
+    soDongCapNhat=0;
+    localStorage.removeItem("tongSoCapNhatKhophoi");
+    luuLocal();
+    hienThi();
+    alert("✅ Đã xóa toàn bộ dữ liệu!");
+  }
+});
+document.getElementById("tuKhoa").addEventListener("input", debounce(hienThi, 300)); // Debounce 300ms
+document.getElementById("filterTrangThai").addEventListener("change",e=>{trangThaiFilter=e.target.value;hienThi();});
+document.getElementById("filterDotHang").addEventListener("change",e=>{dotHangFilter=e.target.value;hienThi();});
+document.getElementById("filterLoaiHang").addEventListener("change",e=>{loaiHangFilter=e.target.value;hienThi();});
+document.getElementById("filterLoaiSX").addEventListener("change",e=>{loaiSXFilter=e.target.value;hienThi();});
+
+// --- Xuất Excel ---
+document.getElementById("btnExport").addEventListener("click", async ()=>{
+  try {
+    if(duLieu.length===0){alert("⚠️ Chưa có dữ liệu để xuất!");return;}
+
+    // Hàm trích xuất mã sản phẩm ngắn gọn (chỉ phần sau dấu | đầu tiên)
+    const getMaSanPhamNgan = (maGoc) => {
+      if (!maGoc) return '';
+      const maStr = maGoc.toString();
+      const index = maStr.indexOf('|');
+      if (index === -1) return maStr; // Nếu không có dấu |, trả về nguyên mã
+      return maStr.substring(index + 1).trim(); // Lấy phần sau dấu | và trim
+    };
+
+    // Tạo workbook mới với ExcelJS
+    const workbook = new ExcelJS.Workbook();
+    
+    // Hàm helper để xác định mức độ thụt lề từ nội dung
+    const getIndentLevel = (value) => {
+      if (!value || typeof value !== 'string') return 0;
+    
+    // Tính thụt lề dựa trên khoảng trắng đầu dòng
+    const leadingSpaces = value.length - value.trimStart().length;
+    const trimmed = value.trim();
+    
+    // Kiểm tra các trường hợp đặc biệt
+    if (trimmed.includes('Thống kê') || trimmed.includes('Tổng sản phẩm')) {
+      // Tiêu đề nhóm - không thụt lề
+      return 0;
+    }
+    
+    // Xác định thụt lề dựa trên số khoảng trắng và ký tự đặc biệt
+    if (trimmed.startsWith('•')) {
+      // Cấp 3: bắt đầu bằng bullet (thụt nhiều nhất)
+      if (leadingSpaces >= 9) return 3;
+      if (leadingSpaces >= 6) return 2;
+      return 2;
+    } else if (trimmed.startsWith('-')) {
+      // Cấp 2: bắt đầu bằng dấu gạch
+      if (leadingSpaces >= 6) return 2;
+      return 1;
+    }
+    
+    // Tính thụt lề dựa trên số khoảng trắng
+    if (leadingSpaces >= 9) return 3; // Cấp 3 (ví dụ: "         •")
+    if (leadingSpaces >= 6) return 2;  // Cấp 2 (ví dụ: "      -")
+    if (leadingSpaces >= 3) return 1;  // Cấp 1 (ví dụ: "   sp1")
+    
+    return 0;
+  };
+
+  // Hàm helper để làm sạch chuỗi (loại bỏ khoảng trắng thừa đầu dòng)
+  const cleanIndentString = (value) => {
+    if (!value || typeof value !== 'string') return value;
+    
+    // Loại bỏ khoảng trắng đầu dòng, giữ lại ký tự đặc biệt
+    return value.trimStart();
+  };
+
+  // Hàm helper để áp dụng style cho ô
+  const applyCellStyle = (cell, options = {}) => {
+    // Lấy giá trị để xác định thụt lề
+    const cellValue = cell.value;
+    const indentLevel = options.indent !== undefined ? options.indent : getIndentLevel(cellValue);
+    
+    // Căn chỉnh
+    cell.alignment = {
+      vertical: options.vertical || 'middle',
+      horizontal: options.horizontal || 'left',
+      wrapText: options.wrapText !== false, // Mặc định wrap text
+      indent: indentLevel // Thụt lề
+    };
+    
+    // Viền
+    cell.border = {
+      top: {style:'thin', color:{argb:'FF000000'}},
+      left: {style:'thin', color:{argb:'FF000000'}},
+      bottom: {style:'thin', color:{argb:'FF000000'}},
+      right: {style:'thin', color:{argb:'FF000000'}}
+    };
+    
+    // Font (nếu có)
+    if(options.font) {
+      cell.font = options.font;
+    }
+    
+    // Fill (nếu có)
+    if(options.fill) {
+      cell.fill = options.fill;
+    }
+    
+    // Cập nhật giá trị nếu cần làm sạch (chỉ cho ô đầu tiên trong hàng)
+    if (options.cleanValue && cellValue && typeof cellValue === 'string') {
+      cell.value = cleanIndentString(cellValue);
+    }
+  };
+
+  // Hàm helper để tự động điều chỉnh độ rộng cột
+  const autoFitColumns = (worksheet) => {
+    if (!worksheet || !worksheet.columns) return;
+    
+    // Duyệt qua tất cả các cột
+    worksheet.columns.forEach((column, colIndex) => {
+      if (!column) return;
+      
+      let maxLength = 0;
+      
+      // Lấy header nếu có
+      try {
+        const headerRow = worksheet.getRow(1);
+        if (headerRow) {
+          const headerCell = headerRow.getCell(colIndex + 1);
+          if (headerCell && headerCell.value !== null && headerCell.value !== undefined) {
+            maxLength = String(headerCell.value).length;
+          }
+        }
+      } catch (e) {
+        // Bỏ qua nếu không có header
+      }
+      
+      // Duyệt qua tất cả các ô trong cột
+      if (worksheet.rowCount > 1) {
+        for (let rowIndex = 2; rowIndex <= worksheet.rowCount; rowIndex++) {
+          try {
+            const row = worksheet.getRow(rowIndex);
+            if (row) {
+              const cell = row.getCell(colIndex + 1);
+              if (cell && cell.value !== null && cell.value !== undefined && cell.value !== '') {
+                const cellValue = String(cell.value);
+                // Tính toán độ dài (có thể tính theo số ký tự hoặc dòng)
+                const cellLength = cellValue.length;
+                if (cellLength > maxLength) {
+                  maxLength = cellLength;
+                }
+              }
+            }
+          } catch (e) {
+            // Bỏ qua nếu có lỗi
+            continue;
+          }
+        }
+      }
+      
+      // Đặt độ rộng cột (tối thiểu 10, tối đa 60, cộng thêm một chút để dễ đọc)
+      // ExcelJS sử dụng đơn vị là "character width"
+      if (column) {
+        column.width = Math.min(Math.max(maxLength + 2, 10), 60);
+      }
+    });
+  };
+
+  // --- Sheet 1: DSSP (Danh sách sản phẩm) ---
+  const wsChiTiet = workbook.addWorksheet('DSSP');
+  
+  // Thêm header
+  wsChiTiet.addRow(['STT', 'Mã sản phẩm', 'Trạng thái', 'Đợt hàng', 'Loại hàng', 'Loại SX', 'Màu', 'Size', 'Ghi chú', 'Lịch sử']);
+  
+  // Style header
+  const headerRow = wsChiTiet.getRow(1);
+  headerRow.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+  headerRow.fill = {
+    type: 'pattern',
+    pattern: 'solid',
+    fgColor: { argb: 'FF2196F3' }
+  };
+  headerRow.height = 25;
+  
+  headerRow.eachCell((cell) => {
+    applyCellStyle(cell, {
+      horizontal: 'center',
+      vertical: 'middle',
+      wrapText: true,
+      font: { bold: true, color: { argb: 'FFFFFFFF' } }
+    });
+  });
+
+  // Thêm dữ liệu
+  duLieu.forEach((d, i) => {
+    // Hiển thị "Bàn giao" thay vì "Hoàn thành" trong cột trạng thái
+    const trangThaiExcel = (d.trangThai === 'Hoàn thành') ? 'Bàn giao' : d.trangThai;
+    // Trích xuất mã sản phẩm ngắn gọn (chỉ phần sau dấu | đầu tiên)
+    const maGocNgan = getMaSanPhamNgan(d.maGoc);
+    const row = wsChiTiet.addRow([
+      i + 1,
+      maGocNgan,
+      trangThaiExcel,
+      d.dotHang,
+      d.loaiHang,
+      d.loaiSX,
+      d.mau || '',
+      d.size || '',
+      d.ghiChu || '',
+      (d.lichSu || []).map(l => `${l.thoiGian}: ${l.trangThai}`).join('\n')
+    ]);
+    
+    // Áp dụng style cho từng ô
+    row.eachCell((cell) => {
+      applyCellStyle(cell, {
+        horizontal: 'left',
+        vertical: 'middle',
+        wrapText: true
+      });
+    });
+    
+    // Cột STT căn giữa
+    row.getCell(1).alignment = { ...row.getCell(1).alignment, horizontal: 'center' };
+  });
+
+  // ====== CÁC HÀM NHÓM DỮ LIỆU DÙNG CHUNG ======
+  const group = (field, arr=duLieu) => {
+    const r={};
+    (arr||[]).forEach(d=>{
+      const k=d[field]||"(Trống)";
+      r[k]=(r[k]||0)+1;
+    });
+    return r;
+  };
+  const sumKeys = (obj, keys) => keys.reduce((s,k)=>s+(obj[k]||0),0);
+
+  // Chuẩn hóa tên nhóm đợt
+  const shopeeGroup=["sp1","sp2","sp3","sp4","sp5","sp6","sp7","sp8","sp9","spht","spthieu"];
+  const khacGroup=["mvd","ctv","sapo","bnv","sale"];
+  const lonGroup=["inlon","theulon","tonbaolon","dhbaolon","phoisoanlon","tonsoanlon","donglon"];
+  const huGroup=["inhu","theuhu","pethu","lotpethu","mayhu","do","lun"];
+  const groupDotHang = group("dotHang");
+
+  const tongShopee = sumKeys(groupDotHang, shopeeGroup);
+  const tongKhac    = sumKeys(groupDotHang, khacGroup);
+  const tongLon     = sumKeys(groupDotHang, lonGroup);
+  const tongHu      = sumKeys(groupDotHang, huGroup);
+  const siGroup     = Object.keys(groupDotHang).filter(n=>n?.toLowerCase().startsWith("si"));
+  const tongSi      = sumKeys(groupDotHang, siGroup);
+
+  // ====== Sheet 2: Thống kê (đang có) ======
+  // Giữ nguyên cách render chi tiết per-đợt như file hiện tại
+  const groupDotSX = {};
+  duLieu.forEach(d=>{
+    if(!groupDotSX[d.dotHang]) groupDotSX[d.dotHang]={};
+    groupDotSX[d.dotHang][d.loaiSX] = (groupDotSX[d.dotHang][d.loaiSX]||0)+1;
+  });
+
+  const renderDotHangChiTiet = (tenNhom, danhSachDot, tongNhom) => {
+    let rows=[];
+    rows.push([`Tổng sản phẩm ${tenNhom}`, tongNhom]);
+    danhSachDot.filter(n=>(groupDotHang[n]||0)>0).forEach(n=>{
+      rows.push(["   "+n, groupDotHang[n]]);
+      if(groupDotSX[n]){
+        Object.entries(groupDotSX[n]).sort((a, b) => {
+          const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+          const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+          if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+          if (indexA !== -1) return -1;
+          if (indexB !== -1) return 1;
+          return a[0].localeCompare(b[0]);
+        }).forEach(([sx,sl])=>{
+          rows.push(["      - "+sx, sl]);
+          const loaiHangCounts={};
+          duLieu.filter(d=>d.dotHang===n && d.loaiSX===sx).forEach(d=>{
+            if(d.loaiHang){
+              loaiHangCounts[d.loaiHang]=(loaiHangCounts[d.loaiHang]||0)+1;
+            }
+          });
+          Object.entries(loaiHangCounts).sort((a, b) => {
+            const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+            const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+            if (indexA !== -1) return -1;
+            if (indexB !== -1) return 1;
+            return a[0].localeCompare(b[0]);
+          }).forEach(([lh,slh])=>{
+            rows.push(["         • "+lh, slh]);
+          });
+        });
+      }
+    });
+    rows.push([]);
+    return rows;
+  };
+
+  const thongKe=[
+    ["🛍️ Thống kê đợt hàng:"],
+    ...renderDotHangChiTiet("Shopee", shopeeGroup, tongShopee),
+    ...renderDotHangChiTiet("Khác", khacGroup, tongKhac),
+    ...renderDotHangChiTiet("Lộn", lonGroup, tongLon),
+    ...renderDotHangChiTiet("Lỗi", huGroup, tongHu),
+    ...renderDotHangChiTiet("Sỉ", siGroup, tongSi),
+    [],
+    ["🛍️ Thống kê loại hàng:"],...Object.entries(group("loaiHang")).sort((a, b) => {
+      const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+      const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+      if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      return a[0].localeCompare(b[0]);
+    }),
+    [],
+    ["🏭 Thống kê loại SX:"],...Object.entries(group("loaiSX")).sort((a, b) => {
+      const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+      const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+      if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      return a[0].localeCompare(b[0]);
+    }),
+    [],
+    ["📊 Trạng thái:"],...Object.entries(group("trangThai"))
+  ];
+  
+  // Sheet 2: Thống kê với ExcelJS
+  const wsThongKe = workbook.addWorksheet('Chi_tiet');
+  thongKe.forEach(row => {
+    const excelRow = wsThongKe.addRow(row);
+    excelRow.eachCell((cell, colNumber) => {
+      // Ô đầu tiên: áp dụng thụt lề và làm sạch
+      if (colNumber === 1) {
+        applyCellStyle(cell, {
+          horizontal: 'left',
+          vertical: 'middle',
+          wrapText: true,
+          cleanValue: true
+        });
+      } else {
+        // Các ô khác: chỉ áp dụng style thông thường
+        applyCellStyle(cell, {
+          horizontal: typeof row[1] === 'number' ? 'right' : 'left',
+          vertical: 'middle',
+          wrapText: true,
+          indent: 0 // Không thụt lề cho cột số
+        });
+      }
+    });
+  });
+
+  // ====== Sheet 3: RÚT GỌN (mới) ======
+  // Yêu cầu: phần "Shopee" chỉ hiện TỔNG theo Loại SX -> Loại hàng (không tách sp1/sp2…),
+  // các nhóm khác vẫn tách theo từng đợt rồi liệt kê Loại SX -> Loại hàng.
+  const rowsRutGon = [];
+
+  // Header
+  rowsRutGon.push(["🛍️ Thống kê đợt hàng:"]);
+
+  // --- SHOPEE (rút gọn): tổng theo SX -> Loại hàng
+  rowsRutGon.push([`Tổng sản phẩm Shopee`, tongShopee]);
+
+  const duLieuShopee = duLieu.filter(d=>shopeeGroup.includes(d.dotHang));
+  const sxShopee = group("loaiSX", duLieuShopee); // { in:84, kt:6, theu:11, ... }
+
+  // Liệt kê theo SX và lồng Loại hàng
+  Object.entries(sxShopee).sort((a, b) => {
+    const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+    const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a[0].localeCompare(b[0]);
+  }).forEach(([sx, slSX])=>{
+    if(!sx || sx==="(Trống)") return;
+    rowsRutGon.push([`   - ${sx}`, slSX]);
+
+    // Đếm loại hàng trong phạm vi SX đó
+    const loaiHangBySX = {};
+    duLieuShopee.filter(d=>d.loaiSX===sx).forEach(d=>{
+      if(!d.loaiHang) return;
+      loaiHangBySX[d.loaiHang] = (loaiHangBySX[d.loaiHang]||0)+1;
+    });
+    Object.entries(loaiHangBySX).sort((a, b) => {
+      const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+      const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+      if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      return a[0].localeCompare(b[0]);
+    }).forEach(([lh, slLH])=>{
+      rowsRutGon.push([`      • ${lh}`, slLH]);
+    });
+  });
+  rowsRutGon.push([]);
+
+// ===== Sỉ: SX -> Loai Hang
+const duLieuSi = duLieu.filter(d=>siGroup.includes(d.dotHang));
+const sxSi = group("loaiSX", duLieuSi);
+rowsRutGon.push([`Tổng sản phẩm Sỉ`, tongSi]);
+Object.entries(sxSi).sort((a, b) => {
+  const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+  const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+  if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+  if (indexA !== -1) return -1;
+  if (indexB !== -1) return 1;
+  return a[0].localeCompare(b[0]);
+}).forEach(([sx, slSX])=>{
+  if(!sx || sx==="(Trống)") return;
+  rowsRutGon.push([`   - ${sx}`, slSX]);
+  const loaiHangBySX = {};
+  duLieuSi.filter(d=>d.loaiSX===sx).forEach(d=>{
+    if(!d.loaiHang) return;
+    loaiHangBySX[d.loaiHang] = (loaiHangBySX[d.loaiHang]||0)+1;
+  });
+  Object.entries(loaiHangBySX).sort((a, b) => {
+    const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+    const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a[0].localeCompare(b[0]);
+  }).forEach(([lh, slLH])=>{
+    rowsRutGon.push([`      • ${lh}`, slLH]);
+  });
+});
+rowsRutGon.push([]);
+
+  // --- HÀM render nhóm “còn lại”: tách theo từng đợt -> SX -> Loại hàng
+  const renderNhomDayDot = (tieuDe, danhSachDot, tongNhom) => {
+    rowsRutGon.push([`Tổng sản phẩm ${tieuDe}`, tongNhom]);
+    danhSachDot.filter(n=>(groupDotHang[n]||0)>0).forEach(n=>{
+      rowsRutGon.push([`   ${n}`, groupDotHang[n]]);
+      // SX trong đợt n
+      const bySX = {};
+      duLieu.filter(d=>d.dotHang===n).forEach(d=>{
+        if(!d.loaiSX) return;
+        bySX[d.loaiSX] = (bySX[d.loaiSX]||0)+1;
+      });
+      Object.entries(bySX).sort((a, b) => {
+        const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+        const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+        if (indexA !== -1) return -1;
+        if (indexB !== -1) return 1;
+        return a[0].localeCompare(b[0]);
+      }).forEach(([sx, slSX])=>{
+        rowsRutGon.push([`      - ${sx}`, slSX]);
+        // Loại hàng trong SX đó
+        const byLH = {};
+        duLieu.filter(d=>d.dotHang===n && d.loaiSX===sx).forEach(d=>{
+          if(!d.loaiHang) return;
+          byLH[d.loaiHang] = (byLH[d.loaiHang]||0)+1;
+        });
+        Object.entries(byLH).sort((a, b) => {
+          const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+          const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+          if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+          if (indexA !== -1) return -1;
+          if (indexB !== -1) return 1;
+          return a[0].localeCompare(b[0]);
+        }).forEach(([lh, slLH])=>{
+          rowsRutGon.push([`         • ${lh}`, slLH]);
+        });
+      });
+    });
+    rowsRutGon.push([]);
+  };
+
+  renderNhomDayDot("Khác", khacGroup, tongKhac);
+  renderNhomDayDot("Lộn", lonGroup, tongLon);
+  renderNhomDayDot("Lỗi", huGroup, tongHu);
+
+  // Các khối tổng hợp còn lại
+  rowsRutGon.push(["🛍️ Thống kê loại hàng:"]);
+  Object.entries(group("loaiHang")).sort((a, b) => {
+    const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+    const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a[0].localeCompare(b[0]);
+  }).forEach(([k,v])=>rowsRutGon.push([k,v]));
+  rowsRutGon.push([]);
+  rowsRutGon.push(["🏭 Thống kê loại SX:"]);
+  Object.entries(group("loaiSX")).sort((a, b) => {
+    const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+    const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a[0].localeCompare(b[0]);
+  }).forEach(([k,v])=>rowsRutGon.push([k,v]));
+  rowsRutGon.push([]);
+  rowsRutGon.push(["📊 Trạng thái:"]);
+  Object.entries(group("trangThai")).forEach(([k,v])=>rowsRutGon.push([k,v]));
+
+  // Sheet 3: Rút gọn với ExcelJS
+  const wsRutGon = workbook.addWorksheet('Rut_gon');
+  rowsRutGon.forEach(row => {
+    const excelRow = wsRutGon.addRow(row);
+    excelRow.eachCell((cell, colNumber) => {
+      // Ô đầu tiên: áp dụng thụt lề và làm sạch
+      if (colNumber === 1) {
+        applyCellStyle(cell, {
+          horizontal: 'left',
+          vertical: 'middle',
+          wrapText: true,
+          cleanValue: true
+        });
+      } else {
+        // Các ô khác: chỉ áp dụng style thông thường
+        applyCellStyle(cell, {
+          horizontal: typeof row[1] === 'number' ? 'right' : 'left',
+          vertical: 'middle',
+          wrapText: true,
+          indent: 0 // Không thụt lề cho cột số
+        });
+      }
+    });
+  });
+
+  // ====== Sheet 4: Pivot (giữ nguyên logic cũ) ======
+  const sizes=["S","M","L","XL","XXL"];
+  const pivot={};
+  duLieu.forEach(d=>{
+    if(!d.loaiHang||!d.mau||!d.size) return;
+    const loai=d.loaiHang,mau=d.mau,size=d.size.toUpperCase();
+    if(!pivot[loai]) pivot[loai]={};
+    if(!pivot[loai][mau]) pivot[loai][mau]={};
+    pivot[loai][mau][size]=(pivot[loai][mau][size]||0)+1;
+  });
+
+  const rows=[["Loại hàng","Màu",...sizes,"Tổng SL"]];
+  let tongTatCa=0;
+  const loaiHangKeys = Object.keys(pivot);
+  loaiHangKeys.forEach((loai, index)=>{
+    // Sắp xếp màu theo số lượng giảm dần (từ lớn đến bé)
+    const sortedMau = Object.keys(pivot[loai]).sort((mauA, mauB) => {
+      // Tính tổng số lượng cho mỗi màu
+      let tongA = 0;
+      let tongB = 0;
+      sizes.forEach(sz => {
+        tongA += pivot[loai][mauA][sz] || 0;
+        tongB += pivot[loai][mauB][sz] || 0;
+      });
+      // Sắp xếp theo số lượng giảm dần
+      if (tongB !== tongA) {
+        return tongB - tongA;
+      }
+      // Nếu cùng số lượng, sắp xếp theo tên
+      return mauA.localeCompare(mauB);
+    });
+    
+    sortedMau.forEach(mau=>{
+      const row=[loai,mau];
+      let tongDong=0;
+      sizes.forEach(sz=>{
+        const sl=pivot[loai][mau][sz]||0;
+        row.push(sl);
+        tongDong+=sl;
+      });
+      row.push(tongDong);
+      tongTatCa+=tongDong;
+      rows.push(row);
+    });
+    
+    // Thêm hàng trống để phân cách giữa các loại hàng (trừ loại hàng cuối cùng)
+    if (index < loaiHangKeys.length - 1) {
+      rows.push([]);
+    }
+  });
+  rows.push([]);
+  rows.push(["Tổng tất cả","","",...Array(sizes.length-1).fill(""),tongTatCa]);
+
+  // Sheet 4: Pivot với ExcelJS
+  const wsPivot = workbook.addWorksheet('Pivot');
+  
+  // Thêm header
+  const pivotHeaderRow = wsPivot.addRow(rows[0]);
+  pivotHeaderRow.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+  pivotHeaderRow.fill = {
+    type: 'pattern',
+    pattern: 'solid',
+    fgColor: { argb: 'FF2196F3' }
+  };
+  pivotHeaderRow.height = 25;
+  pivotHeaderRow.eachCell((cell) => {
+    applyCellStyle(cell, {
+      horizontal: 'center',
+      vertical: 'middle',
+      wrapText: true,
+      font: { bold: true, color: { argb: 'FFFFFFFF' } }
+    });
+  });
+  
+  // Thêm dữ liệu
+  rows.slice(1).forEach((row, index) => {
+    const excelRow = wsPivot.addRow(row);
+    excelRow.eachCell((cell, colNumber) => {
+      applyCellStyle(cell, {
+        horizontal: colNumber > 2 && colNumber <= 2 + sizes.length ? 'center' : 
+                   colNumber === 2 + sizes.length + 1 ? 'center' : 'left',
+        vertical: 'middle',
+        wrapText: true
+      });
+      // Style cho dòng tổng
+      if (index === rows.length - 2) {
+        cell.font = { bold: true };
+        cell.fill = {
+          type: 'pattern',
+          pattern: 'solid',
+          fgColor: { argb: 'FFE3F2FD' }
+        };
+      }
+    });
+  });
+
+  // Hàm helper để cố định hàng tiêu đề (freeze panes)
+  const freezeHeaderRow = (worksheet) => {
+    if (!worksheet) return;
+    // Cố định hàng đầu tiên (freeze panes)
+    worksheet.views = [
+      {
+        state: 'frozen',
+        ySplit: 1, // Cố định hàng đầu tiên
+        topLeftCell: 'A2', // Ô trên cùng bên trái sau khi freeze
+        activeCell: 'A2'
+      }
+    ];
+  };
+
+  // Tự động điều chỉnh độ rộng cột cho tất cả các sheet
+  autoFitColumns(wsChiTiet);
+  autoFitColumns(wsThongKe);
+  autoFitColumns(wsRutGon);
+  autoFitColumns(wsPivot);
+
+  // Cố định hàng tiêu đề chỉ cho sheet Chi_tiet và Pivot
+  freezeHeaderRow(wsChiTiet);
+  freezeHeaderRow(wsPivot);
+  // Sheet Chi_tiet và Rut_gon không cần cố định hàng tiêu đề
+
+    // --- Ghi file ---
+    const ngay = new Date().toLocaleDateString('vi-VN').replace(/\//g, "-");
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Khophoi_${ngay}.xlsx`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error('Lỗi khi xuất Excel:', error);
+    alert('⚠️ Có lỗi xảy ra khi xuất Excel: ' + (error.message || error));
+  }
+});
+
+</script>
+
+<!-- Tính năng offline và khôi phục dữ liệu -->
+<script src="offline-storage.js"></script>
+<script src="data-recovery.js"></script>
+<script src="offline-integration.js"></script>
+
+</body>
+</html>

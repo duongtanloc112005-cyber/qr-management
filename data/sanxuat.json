@@ -1,0 +1,4757 @@
+{
+  "timestamp": "2026-04-10T10:37:25.609Z",
+  "data": [
+    {
+      "maGoc": "spht=tee-theu|CHAM , trang L  | 07:57:19 10/04/2026",
+      "ma": "tee-theu|CHAM , trang L  | 07:57:19 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "08:04:28 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:04:28 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:21:11 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 152, den M  [1] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 152, den M  [1] | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:16:20 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 06, trang do M  [2] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 06, trang do M  [2] | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:28:48 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ST Daulau, trang L  | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST Daulau, trang L  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:50:34 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 06, be xam S  | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 06, be xam S  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "be",
+      "size": "S",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:50:34 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 06, trang do M  [1] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 06, trang do M  [1] | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:28:48 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 06, be xam XL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 06, be xam XL  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "be",
+      "size": "XL",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:51:28 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ST Hoaheo, trang L  [2] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST Hoaheo, trang L  [2] | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:18:39 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ST Hoaheo, trang L  [1] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST Hoaheo, trang L  [1] | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:18:39 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE 079, den hong S  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE 079, den hong S  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:39:44 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE 066, trang XXL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE 066, trang XXL  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XXL",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:15:45 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE 064, den M  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE 064, den M  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:31:35 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE 064, trang S  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE 064, trang S  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "S",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:25:13 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE Moi, den XXL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den XXL  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:55:36 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE 052, den XL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE 052, den XL  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:28:48 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE Moi, den L  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den L  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:55:36 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|MLB 055, den M  | 07:54:33 10/04/2026",
+      "ma": "tee-in|MLB 055, den M  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:32:13 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|BAPE Moi, den M  | 07:54:33 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den M  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:39:44 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|MLB 111, den XXL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|MLB 111, den XXL  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "08:07:09 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:07:09 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:16:37 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=scc-in| Dsq01, den XL  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Dsq01, den XL  | 07:51:27 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "08:10:11 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:10:11 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:33:04 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=scc-in| Wt, trang XL  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Wt, trang XL  | 07:51:27 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "08:10:11 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:10:11 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:41:50 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=scc-in| Cham, den M  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Cham, den M  | 07:51:27 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:10:11 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:10:11 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:39:11 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=scc-in| Adi03, den trang XL  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Adi03, den trang XL  | 07:51:27 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "08:10:11 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:10:11 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:57:28 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=scc-in| Ct1, tieu XL  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Ct1, tieu XL  | 07:51:27 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "XL",
+      "thoiGian": "08:10:11 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:10:11 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:41:50 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=scc-in| Bu, be XL  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Bu, be XL  | 07:51:27 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "be",
+      "size": "XL",
+      "thoiGian": "08:10:11 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:10:11 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:41:50 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=scc-in| Bu, trang M  | 07:51:27 10/04/2026",
+      "ma": "scc-in| Bu, trang M  | 07:51:27 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:10:11 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:10:11 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:41:50 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=skk-theu| Bapemoi, trang M  | 07:53:21 10/04/2026",
+      "ma": "skk-theu| Bapemoi, trang M  | 07:53:21 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "skk",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:10:11 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:10:11 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:39:11 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=skk-theu| Bapemoi, den M  | 07:53:21 10/04/2026",
+      "ma": "skk-theu| Bapemoi, den M  | 07:53:21 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "skk",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:10:11 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:10:11 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:41:50 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-kt|03 , den XL  | 07:55:23 10/04/2026",
+      "ma": "tee-kt|03 , den XL  | 07:55:23 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:28:48 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=boxy-in|TDN 033, navy M  | 07:55:02 10/04/2026",
+      "ma": "boxy-in|TDN 033, navy M  | 07:55:02 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "boxy",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "M",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:02:24 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|LON XON Lee, den XXL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|LON XON Lee, den XXL  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:51:28 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|LON XON Lee, den XL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|LON XON Lee, den XL  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:57:28 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|GC Ngang, dodo XXL  | 07:54:33 10/04/2026",
+      "ma": "tee-in|GC Ngang, dodo XXL  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "dodo",
+      "size": "XXL",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:25:13 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|DREW Cuoi, hongd L  | 07:54:33 10/04/2026",
+      "ma": "tee-in|DREW Cuoi, hongd L  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "hongd",
+      "size": "L",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:25:13 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|CHUOT 04, trang M  | 07:54:33 10/04/2026",
+      "ma": "tee-in|CHUOT 04, trang M  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:50:34 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|DREW Bu, nau S  | 07:54:33 10/04/2026",
+      "ma": "tee-in|DREW Bu, nau S  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "nau",
+      "size": "S",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:51:00 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ADI Ngang, trang hong M  | 07:54:33 10/04/2026",
+      "ma": "tee-in|ADI Ngang, trang hong M  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:17:58 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ADI 1B, do S  | 07:54:33 10/04/2026",
+      "ma": "tee-in|ADI 1B, do S  | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "do",
+      "size": "S",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:25:13 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp1=tee-in|ST 172, trang XL  [2] | 07:54:33 10/04/2026",
+      "ma": "tee-in|ST 172, trang XL  [2] | 07:54:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp1",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "08:11:57 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:11:57 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:16:37 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=scc-in| Wt, trang L  | 08:11:05 10/04/2026",
+      "ma": "scc-in| Wt, trang L  | 08:11:05 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:39:11 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=scc-in| Drewchu, den L  | 08:11:05 10/04/2026",
+      "ma": "scc-in| Drewchu, den L  | 08:11:05 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:39:11 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=scc-in| Chicago, den XXL  | 08:11:05 10/04/2026",
+      "ma": "scc-in| Chicago, den XXL  | 08:11:05 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:39:11 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-kt|02 , den M  | 08:14:06 10/04/2026",
+      "ma": "tee-kt|02 , den M  | 08:14:06 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:50:34 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-kt|DIOR 07, trang bac M  | 08:14:06 10/04/2026",
+      "ma": "tee-kt|DIOR 07, trang bac M  | 08:14:06 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:31:35 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-kt|NGOISAO 012, den S  | 08:14:06 10/04/2026",
+      "ma": "tee-kt|NGOISAO 012, den S  | 08:14:06 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:32:13 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-theu|CHAM , trang S  | 08:13:44 10/04/2026",
+      "ma": "tee-theu|CHAM , trang S  | 08:13:44 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "S",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:41:50 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-theu|CHAM , den S  | 08:13:44 10/04/2026",
+      "ma": "tee-theu|CHAM , den S  | 08:13:44 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:17:58 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=atd-in|CH 032, den M  | 08:13:24 10/04/2026",
+      "ma": "atd-in|CH 032, den M  | 08:13:24 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:36:37 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI Ngang, trang M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI Ngang, trang M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:44:31 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI Doc, trang L  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI Doc, trang L  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:51:28 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI Ngang, hongd M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI Ngang, hongd M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "hongd",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:53:42 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI Ngang, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI Ngang, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:57:28 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 064, trang S  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 064, trang S  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "S",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:51:00 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 061, den XL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 061, den XL  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:41:50 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 049, den XXL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 049, den XXL  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:32:13 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 039, tieu L  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 039, tieu L  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "L",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:53:42 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 039, tieu S  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 039, tieu S  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "S",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:51:28 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 039, den XXL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 039, den XXL  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:26:12 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 03, den xanh L  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 03, den xanh L  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:37:59 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE 01, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE 01, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:16:37 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE Moi, den XL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den XL  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:59:49 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE Moi, den L  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den L  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:58:52 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE Moi, den M  [2] | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den M  [2] | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:57:27 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BAPE Moi, den M  [1] | 08:11:48 10/04/2026",
+      "ma": "tee-in|BAPE Moi, den M  [1] | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:58:52 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|MLB 112, navy M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|MLB 112, navy M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:36:37 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|MLB 110, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|MLB 110, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:21:41 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:21:41 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:41:25 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=boxy-in|TDN 047, den S  | 08:12:28 10/04/2026",
+      "ma": "boxy-in|TDN 047, den S  | 08:12:28 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "boxy",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "08:25:48 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:25:48 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:57:27 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=boxy-in|TDN 030, den M  | 08:12:28 10/04/2026",
+      "ma": "boxy-in|TDN 030, den M  | 08:12:28 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "boxy",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:25:48 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:25:48 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:15:45 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|CAOSU 04, trang M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|CAOSU 04, trang M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:25:48 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:25:48 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:02:24 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|LON XON Lvs01, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|LON XON Lvs01, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:25:48 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:25:48 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:50:34 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|DREW Cuoi, trang M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|DREW Cuoi, trang M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:25:48 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:25:48 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:51:00 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BALEN 114, navy M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BALEN 114, navy M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "M",
+      "thoiGian": "08:25:48 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:25:48 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:50:34 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|BALEN Wave, trang M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|BALEN Wave, trang M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "08:25:48 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:25:48 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:51:28 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|CHUOT 04, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|CHUOT 04, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "08:25:48 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:25:48 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:37:59 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|ADLV 03, navy S  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADLV 03, navy S  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "S",
+      "thoiGian": "08:25:48 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:25:48 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "08:41:50 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|JD 06, dodo L  | 08:11:48 10/04/2026",
+      "ma": "tee-in|JD 06, dodo L  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "dodo",
+      "size": "L",
+      "thoiGian": "08:25:48 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "08:25:48 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "09:36:37 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "spht=tee-in|NGUAV3 , den M  | 09:51:56 10/04/2026",
+      "ma": "tee-in|NGUAV3 , den M  | 09:51:56 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "09:52:59 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "09:52:59 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:35:37 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=atd-in|CN05 , den XL  [1] | 10:17:47 10/04/2026",
+      "ma": "atd-in|CN05 , den XL  [1] | 10:17:47 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "10:30:15 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:30:15 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:03:45 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=atd-in|CN05 , den XL  [2] | 10:17:47 10/04/2026",
+      "ma": "atd-in|CN05 , den XL  [2] | 10:17:47 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "10:30:15 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:30:15 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:04:43 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=scc-in| Stress01, den L  | 08:11:05 10/04/2026",
+      "ma": "scc-in| Stress01, den L  | 08:11:05 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "10:30:36 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:30:36 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:39:12 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=scc-in| Adi021, den trang L  | 08:11:05 10/04/2026",
+      "ma": "scc-in| Adi021, den trang L  | 08:11:05 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "10:30:36 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:30:36 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:37:04 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=scc-in| Cham, den L  [3] | 08:11:05 10/04/2026",
+      "ma": "scc-in| Cham, den L  [3] | 08:11:05 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "10:30:36 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:30:36 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:39:12 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=scc-in| Cham, den L  [2] | 08:11:05 10/04/2026",
+      "ma": "scc-in| Cham, den L  [2] | 08:11:05 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "10:30:36 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:30:36 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:42:10 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=scc-in| Cham, den L  [1] | 08:11:05 10/04/2026",
+      "ma": "scc-in| Cham, den L  [1] | 08:11:05 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "10:30:36 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:30:36 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:40:42 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "spht=tee-in|BAPE 078, trang xanh L  | 10:32:31 10/04/2026",
+      "ma": "tee-in|BAPE 078, trang xanh L  | 10:32:31 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "10:33:53 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:33:53 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:56:02 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=scc-in| Nyvien, den L  | 10:38:28 10/04/2026",
+      "ma": "scc-in| Nyvien, den L  | 10:38:28 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "10:41:45 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:41:45 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:46:43 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=atd-in|TRAFFY , trang M  | 10:39:35 10/04/2026",
+      "ma": "atd-in|TRAFFY , trang M  | 10:39:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "10:46:39 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:46:39 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:21:39 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=tee-kt|STRESS 011, trang M  | 10:40:05 10/04/2026",
+      "ma": "tee-kt|STRESS 011, trang M  | 10:40:05 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "10:46:39 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:46:39 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:51:29 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=boxy-in|WHEN 05, trang M  | 10:39:09 10/04/2026",
+      "ma": "boxy-in|WHEN 05, trang M  | 10:39:09 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "boxy",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "10:46:39 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:46:39 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:19:11 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=tee-in|CAOSU 02, hongn S  | 10:38:45 10/04/2026",
+      "ma": "tee-in|CAOSU 02, hongn S  | 10:38:45 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "hongn",
+      "size": "S",
+      "thoiGian": "10:46:39 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:46:39 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:24:17 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=tee-in|CAOSU 02, xam L  | 10:38:45 10/04/2026",
+      "ma": "tee-in|CAOSU 02, xam L  | 10:38:45 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "xam",
+      "size": "L",
+      "thoiGian": "10:46:39 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:46:39 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:08:34 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=tee-in|LON XON Fogair, den L  | 10:38:45 10/04/2026",
+      "ma": "tee-in|LON XON Fogair, den L  | 10:38:45 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "10:46:39 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:46:39 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:08:08 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=tee-in|ADI Doc, trang hong S  | 10:38:45 10/04/2026",
+      "ma": "tee-in|ADI Doc, trang hong S  | 10:38:45 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "S",
+      "thoiGian": "10:46:39 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:46:39 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "13:30:21 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=tee-in|ADI Doc, den XL  | 10:38:45 10/04/2026",
+      "ma": "tee-in|ADI Doc, den XL  | 10:38:45 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "10:46:39 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:46:39 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:20:03 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=tee-in|ADI Ngang, trang XXL  | 10:38:45 10/04/2026",
+      "ma": "tee-in|ADI Ngang, trang XXL  | 10:38:45 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XXL",
+      "thoiGian": "10:46:39 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:46:39 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:12:28 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=tee-in|MLB 055, den XL  | 10:38:45 10/04/2026",
+      "ma": "tee-in|MLB 055, den XL  | 10:38:45 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "10:46:39 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:46:39 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:08:08 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI 020, trang M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI 020, trang M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "10:55:35 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:55:35 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:56:02 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|ADI 021, den do XXL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|ADI 021, den do XXL  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "10:55:35 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:55:35 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:56:02 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|CH 03, den XXL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|CH 03, den XXL  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "10:55:35 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:55:35 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:56:02 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|CH 023, den XL  | 08:11:48 10/04/2026",
+      "ma": "tee-in|CH 023, den XL  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "10:55:35 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:55:35 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:56:02 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp2=tee-in|CH 04, den M  | 08:11:48 10/04/2026",
+      "ma": "tee-in|CH 04, den M  | 08:11:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp2",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "10:55:35 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "10:55:35 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "10:56:02 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "pethu=tee-in|ADI ngang, trang M  | 08:52:08 10/04/2026",
+      "ma": "tee-in|ADI ngang, trang M  | 08:52:08 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "pethu",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "4/10/2026, 10:57:39 AM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 10:57:39 AM",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:01:28 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp3=atd-in|CN05 , den M  | 10:17:47 10/04/2026",
+      "ma": "atd-in|CN05 , den M  | 10:17:47 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp3",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "11:01:45 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "11:01:45 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "11:08:08 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "spht=tee-theu|CHAM , trang M  | 13:14:09 10/04/2026",
+      "ma": "tee-theu|CHAM , trang M  | 13:14:09 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "13:15:06 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "13:15:06 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "13:25:48 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "spht=tee-in|LON XON Nguav3, dodo M  | 13:14:39 10/04/2026",
+      "ma": "tee-in|LON XON Nguav3, dodo M  | 13:14:39 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "dodo",
+      "size": "M",
+      "thoiGian": "13:16:49 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "13:16:49 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "13:34:07 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|CN 05, den L  [2] | 13:28:37 10/04/2026",
+      "ma": "tee-in|CN 05, den L  [2] | 13:28:37 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "13:45:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "13:45:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:01:04 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|CN 05, den L  [1] | 13:28:37 10/04/2026",
+      "ma": "tee-in|CN 05, den L  [1] | 13:28:37 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "13:45:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "13:45:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:01:04 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=skk-theu| Rlaph, den XL  | 14:15:06 10/04/2026",
+      "ma": "skk-theu| Rlaph, den XL  | 14:15:06 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "skk",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "14:21:25 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:21:25 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "15:26:29 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=scc-in| Cham, den L  [1] | 14:14:32 10/04/2026",
+      "ma": "scc-in| Cham, den L  [1] | 14:14:32 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "14:21:25 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:21:25 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:25:50 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=scc-in| Cham, den L  [2] | 14:14:32 10/04/2026",
+      "ma": "scc-in| Cham, den L  [2] | 14:14:32 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "14:21:25 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:21:25 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:08:15 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=scc-in| Cham, tieu L  | 14:14:32 10/04/2026",
+      "ma": "scc-in| Cham, tieu L  | 14:14:32 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "L",
+      "thoiGian": "14:21:25 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:21:25 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:28:21 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=atd-kt|NGOISAO 012, trang M  | 14:16:56 10/04/2026",
+      "ma": "atd-kt|NGOISAO 012, trang M  | 14:16:56 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "atd",
+      "loaiSX": "kt",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "14:25:06 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:25:06 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:56:47 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=atd-in|CH 01, den M  | 14:16:04 10/04/2026",
+      "ma": "atd-in|CH 01, den M  | 14:16:04 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "14:25:06 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:25:06 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:56:47 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=atd-in|CH 01, den XL  | 14:16:04 10/04/2026",
+      "ma": "atd-in|CH 01, den XL  | 14:16:04 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "14:25:06 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:25:06 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:58:55 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-kt|NGOISAO 012, den S  | 14:18:04 10/04/2026",
+      "ma": "tee-kt|NGOISAO 012, den S  | 14:18:04 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "14:25:26 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:25:26 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "15:27:17 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-theu|CHAM , trang L  | 14:17:34 10/04/2026",
+      "ma": "tee-theu|CHAM , trang L  | 14:17:34 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "14:25:26 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:25:26 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:56:47 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-theu|CK , den S  | 14:17:34 10/04/2026",
+      "ma": "tee-theu|CK , den S  | 14:17:34 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "S",
+      "thoiGian": "14:25:26 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:25:26 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:58:55 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-theu|CK , den XL  | 14:17:34 10/04/2026",
+      "ma": "tee-theu|CK , den XL  | 14:17:34 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "14:25:26 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:25:26 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:56:47 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "spht=tee-in|CAOSU 02, tieu M | 07:57:29 10/04/2026",
+      "ma": "tee-in|CAOSU 02, tieu M | 07:57:29 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "M",
+      "thoiGian": "4/10/2026, 2:26:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:26:55 PM",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:27:43 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "spht=atd-in| 032, trang XL | 07:56:57 10/04/2026",
+      "ma": "atd-in| 032, trang XL | 07:56:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "spht",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 2:26:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:26:55 PM",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:27:43 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "spht=skk-theu| Ralph, den XL | 07:56:38 10/04/2026",
+      "ma": "skk-theu| Ralph, den XL | 07:56:38 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "spht",
+      "loaiHang": "skk",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 2:26:55 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 2:26:55 PM",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:27:43 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|LON XON Maison, trang XL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|LON XON Maison, trang XL  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "15:47:07 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|BALEN Wave, den M  | 14:15:35 10/04/2026",
+      "ma": "tee-in|BALEN Wave, den M  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:08:15 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|CN 026, den XXL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CN 026, den XXL  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:06:59 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|CH 020, den L  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CH 020, den L  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:59:23 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|CH 018, den XXL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CH 018, den XXL  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "15:42:53 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|CH 017, den XXL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CH 017, den XXL  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XXL",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "15:39:11 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|CH Thanhgia, trang XL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CH Thanhgia, trang XL  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "15:42:53 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|CH Hong, den L  | 14:15:35 10/04/2026",
+      "ma": "tee-in|CH Hong, den L  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "15:39:11 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|ADI ngang, den M  [2] | 14:15:35 10/04/2026",
+      "ma": "tee-in|ADI ngang, den M  [2] | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:58:55 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|ADI ngang, den M  [1] | 14:15:35 10/04/2026",
+      "ma": "tee-in|ADI ngang, den M  [1] | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:56:47 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|ADLV 03, be do XXL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|ADLV 03, be do XXL  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "be",
+      "size": "XXL",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "15:39:11 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|ST Ct2, den XL  | 14:15:35 10/04/2026",
+      "ma": "tee-in|ST Ct2, den XL  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:37:40 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp4=tee-in|BAPE 064, trang M  | 14:15:35 10/04/2026",
+      "ma": "tee-in|BAPE 064, trang M  | 14:15:35 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp4",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "14:27:16 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "14:27:16 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "14:37:40 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "spht=tee-kt|DIOR 07, trang bac M  | 16:00:47 10/04/2026",
+      "ma": "tee-kt|DIOR 07, trang bac M  | 16:00:47 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "spht",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "16:03:08 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:03:08 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:11:03 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=scc-in| Adi021, trang xanh M  | 16:13:48 10/04/2026",
+      "ma": "scc-in| Adi021, trang xanh M  | 16:13:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "16:21:26 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:21:26 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:48:41 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=scc-in| Wt, den L  | 16:13:48 10/04/2026",
+      "ma": "scc-in| Wt, den L  | 16:13:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "L",
+      "thoiGian": "16:21:26 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:21:26 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:37:27 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=scc-in| Bu, tieu L  | 16:13:48 10/04/2026",
+      "ma": "scc-in| Bu, tieu L  | 16:13:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "tieu",
+      "size": "L",
+      "thoiGian": "16:21:26 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:21:26 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:37:27 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=scc-in| ADLV, den M  | 16:13:48 10/04/2026",
+      "ma": "scc-in| ADLV, den M  | 16:13:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "16:21:26 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:21:26 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:37:27 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=scc-in| Adi021, den vang M  | 16:13:48 10/04/2026",
+      "ma": "scc-in| Adi021, den vang M  | 16:13:48 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "scc",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "16:21:26 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:21:26 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:37:27 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|ADLV 03, den vang XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADLV 03, den vang XL  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "16:22:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:22:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:59:23 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|CHUOT 03, den XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|CHUOT 03, den XL  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "16:22:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:22:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:08:15 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|ADLV Basic, trang XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADLV Basic, trang XL  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "16:22:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:22:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:41:31 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|CHUOT 03, trang XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|CHUOT 03, trang XL  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "16:22:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:22:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:41:31 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|ADI 021, navy M  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADI 021, navy M  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "M",
+      "thoiGian": "16:22:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:22:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:41:31 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|ADLV Basic, trang M  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADLV Basic, trang M  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "16:22:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:22:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:41:31 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|ADI 021, trang xanh M  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADI 021, trang xanh M  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "16:22:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:22:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:06:30 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|ADLV Basic, den XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|ADLV Basic, den XL  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "16:22:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:22:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:41:31 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|ST 180, trang M  [2] | 16:14:15 10/04/2026",
+      "ma": "tee-in|ST 180, trang M  [2] | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "16:22:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:22:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:02:25 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|ST 180, trang M  [1] | 16:14:15 10/04/2026",
+      "ma": "tee-in|ST 180, trang M  [1] | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "M",
+      "thoiGian": "16:22:03 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:22:03 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:57:10 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|CHUOT 03, navy XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|CHUOT 03, navy XL  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "navy",
+      "size": "XL",
+      "thoiGian": "16:24:44 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:24:44 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:03:56 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [1] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [1] | 14:43:14 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [2] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [2] | 14:43:14 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [3] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [3] | 14:43:14 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [4] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [4] | 14:43:14 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [5] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [5] | 14:43:14 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [6] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [6] | 14:43:14 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [7] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [7] | 14:43:14 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [8] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [8] | 14:43:14 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [9] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [9] | 14:43:14 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=tee-in|1004 , red M  [10] | 14:43:14 10/04/2026",
+      "ma": "tee-in|1004 , red M  [10] | 14:43:14 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=hd-in|1004 , red M  | 14:11:37 10/04/2026",
+      "ma": "hd-in|1004 , red M  | 14:11:37 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "hd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [1] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [1] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [2] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [2] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [3] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [3] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [4] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [4] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [5] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [5] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [6] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [6] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [7] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [7] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [8] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [8] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [9] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [9] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [10] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [10] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [11] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [11] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [12] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [12] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [13] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [13] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [14] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [14] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [15] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [15] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [16] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [16] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [17] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [17] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [18] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [18] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [19] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [19] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [20] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [20] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [21] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [21] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [22] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [22] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [23] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [23] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [24] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [24] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [25] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [25] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [26] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [26] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [27] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [27] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [28] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [28] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [29] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [29] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sihoang=atd-in|1004 , red M  [30] | 14:11:57 10/04/2026",
+      "ma": "atd-in|1004 , red M  [30] | 14:11:57 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sihoang",
+      "loaiHang": "atd",
+      "loaiSX": "in",
+      "mau": "red",
+      "size": "M",
+      "thoiGian": "16:25:34 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:25:34 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:43:54 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "tonsoanlon=tee-theu|NGUA , den XL  | 16:30:28 10/04/2026",
+      "ma": "tee-theu|NGUA , den XL  | 16:30:28 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "tonsoanlon",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "16:31:46 10/4/2026",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "16:31:46 10/4/2026",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:44:22 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|CH 04, den M  | 16:14:15 10/04/2026",
+      "ma": "tee-in|CH 04, den M  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "den",
+      "size": "M",
+      "thoiGian": "4/10/2026, 4:47:24 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:24 PM",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "16:59:23 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|LON XON Kap01, trang L  | 16:14:15 10/04/2026",
+      "ma": "tee-in|LON XON Kap01, trang L  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "L",
+      "thoiGian": "4/10/2026, 4:47:27 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:27 PM",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:06:30 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-in|CH 01, trang XL  | 16:14:15 10/04/2026",
+      "ma": "tee-in|CH 01, trang XL  | 16:14:15 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "in",
+      "mau": "trang",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 4:47:31 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:31 PM",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:00:23 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-theu|CHAM 014, den XL  | 16:14:33 10/04/2026",
+      "ma": "tee-theu|CHAM 014, den XL  | 16:14:33 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "theu",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 4:47:58 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:47:58 PM",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:03:56 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "maGoc": "sp5=tee-kt|NGOISAO 012, den XL  | 16:14:47 10/04/2026",
+      "ma": "tee-kt|NGOISAO 012, den XL  | 16:14:47 10/04/2026",
+      "trangThai": "Hoàn thành",
+      "dotHang": "sp5",
+      "loaiHang": "tee",
+      "loaiSX": "kt",
+      "mau": "den",
+      "size": "XL",
+      "thoiGian": "4/10/2026, 4:48:02 PM",
+      "ghiChu": "",
+      "lichSu": [
+        {
+          "thoiGian": "4/10/2026, 4:48:02 PM",
+          "trangThai": "In & thêu"
+        },
+        {
+          "thoiGian": "17:06:59 10/4/2026",
+          "trangThai": "Hoàn thành",
+          "note": "Tự động cập nhật khi sản phẩm đã được thêm vào thanhpham"
+        }
+      ],
+      "locked": true
+    }
+  ]
+}

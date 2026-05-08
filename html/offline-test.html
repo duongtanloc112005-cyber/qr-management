@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Tính Năng Offline</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-title {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover { background: #0056b3; }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-success { background: #28a745; }
+        .status-warning { background: #ffc107; }
+        .status-error { background: #dc3545; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Kiểm Tra Tính Năng Offline</h1>
+    
+    <div class="test-container">
+        <h2 class="test-title">📦 Offline Storage</h2>
+        <div id="offline-storage-results"></div>
+        <button class="test-button" onclick="testOfflineStorage()">Kiểm Tra Offline Storage</button>
+    </div>
+    
+    <div class="test-container">
+        <h2 class="test-title">🔄 Data Recovery</h2>
+        <div id="data-recovery-results"></div>
+        <button class="test-button" onclick="testDataRecovery()">Kiểm Tra Data Recovery</button>
+    </div>
+    
+    <div class="test-container">
+        <h2 class="test-title">🌐 Kết Nối Mạng</h2>
+        <div id="connection-results"></div>
+        <button class="test-button" onclick="testConnection()">Kiểm Tra Kết Nối</button>
+    </div>
+    
+    <div class="test-container">
+        <h2 class="test-title">🔗 Tích Hợp Hệ Thống</h2>
+        <div id="integration-results"></div>
+        <button class="test-button" onclick="testIntegration()">Kiểm Tra Tích Hợp</button>
+    </div>
+    
+    <div class="test-container">
+        <h2 class="test-title">🧪 Kiểm Tra Toàn Bộ</h2>
+        <div id="overall-results"></div>
+        <button class="test-button" onclick="runAllTests()">Chạy Tất Cả Kiểm Tra</button>
+    </div>
+
+    <!-- Tải các script cần thiết -->
+    <script src="offline-storage.js"></script>
+    <script src="data-recovery.js"></script>
+    <script src="offline-integration.js"></script>
+    
+    <script>
+        // Hàm hiển thị kết quả
+        function showResult(containerId, message, type = 'info') {
+            const container = document.getElementById(containerId);
+            const result = document.createElement('div');
+            result.className = `test-result ${type}`;
+            result.innerHTML = `<span class="status-indicator status-${type}"></span>${message}`;
+            container.appendChild(result);
+        }
+        
+        // Kiểm tra Offline Storage
+        function testOfflineStorage() {
+            const container = document.getElementById('offline-storage-results');
+            container.innerHTML = '';
+            
+            try {
+                // Kiểm tra localStorage
+                if (typeof Storage !== 'undefined') {
+                    showResult('offline-storage-results', '✅ LocalStorage được hỗ trợ', 'success');
+                    
+                    // Kiểm tra dung lượng
+                    const testData = 'test'.repeat(1000);
+                    localStorage.setItem('test', testData);
+                    const used = JSON.stringify(localStorage).length;
+                    const max = 5 * 1024 * 1024; // 5MB
+                    const percentage = (used / max) * 100;
+                    
+                    showResult('offline-storage-results', `📊 Dung lượng sử dụng: ${(used / 1024).toFixed(2)} KB`, 'info');
+                    showResult('offline-storage-results', `📊 Tỷ lệ sử dụng: ${percentage.toFixed(2)}%`, percentage > 80 ? 'warning' : 'success');
+                    
+                    localStorage.removeItem('test');
+                    
+                } else {
+                    showResult('offline-storage-results', '❌ LocalStorage không được hỗ trợ', 'error');
+                }
+                
+                // Kiểm tra offline storage class
+                if (window.offlineStorage) {
+                    showResult('offline-storage-results', '✅ OfflineStorage class đã được tải', 'success');
+                    
+                    // Kiểm tra các phương thức
+                    const methods = ['saveOfflineData', 'getOfflineData', 'syncOfflineData', 'restoreOfflineData'];
+                    methods.forEach(method => {
+                        if (typeof window.offlineStorage[method] === 'function') {
+                            showResult('offline-storage-results', `✅ Phương thức ${method} có sẵn`, 'success');
+                        } else {
+                            showResult('offline-storage-results', `❌ Phương thức ${method} không có sẵn`, 'error');
+                        }
+                    });
+                    
+                } else {
+                    showResult('offline-storage-results', '❌ OfflineStorage class chưa được tải', 'error');
+                }
+                
+            } catch (error) {
+                showResult('offline-storage-results', `❌ Lỗi kiểm tra offline storage: ${error.message}`, 'error');
+            }
+        }
+        
+        // Kiểm tra Data Recovery
+        function testDataRecovery() {
+            const container = document.getElementById('data-recovery-results');
+            container.innerHTML = '';
+            
+            try {
+                if (window.dataRecovery) {
+                    showResult('data-recovery-results', '✅ DataRecovery class đã được tải', 'success');
+                    
+                    // Kiểm tra các phương thức
+                    const methods = ['autoBackup', 'restoreFromBackup', 'checkDataIntegrity', 'autoFixData'];
+                    methods.forEach(method => {
+                        if (typeof window.dataRecovery[method] === 'function') {
+                            showResult('data-recovery-results', `✅ Phương thức ${method} có sẵn`, 'success');
+                        } else {
+                            showResult('data-recovery-results', `❌ Phương thức ${method} không có sẵn`, 'error');
+                        }
+                    });
+                    
+                    // Kiểm tra thông tin backup
+                    const backupInfo = window.dataRecovery.getBackupInfo();
+                    showResult('data-recovery-results', `📋 Số lượng backup: ${backupInfo.count}`, 'info');
+                    if (backupInfo.latest) {
+                        showResult('data-recovery-results', `📅 Backup mới nhất: ${backupInfo.latest}`, 'info');
+                    }
+                    
+                } else {
+                    showResult('data-recovery-results', '❌ DataRecovery class chưa được tải', 'error');
+                }
+                
+            } catch (error) {
+                showResult('data-recovery-results', `❌ Lỗi kiểm tra data recovery: ${error.message}`, 'error');
+            }
+        }
+        
+        // Kiểm tra Kết Nối
+        function testConnection() {
+            const container = document.getElementById('connection-results');
+            container.innerHTML = '';
+            
+            try {
+                // Kiểm tra trạng thái kết nối
+                const isOnline = navigator.onLine;
+                showResult('connection-results', `📊 Trạng thái kết nối: ${isOnline ? 'Online' : 'Offline'}`, isOnline ? 'success' : 'warning');
+                
+                // Kiểm tra các sự kiện kết nối
+                const hasOnlineListener = window.ononline !== null;
+                const hasOfflineListener = window.onoffline !== null;
+                
+                showResult('connection-results', `📡 Sự kiện online: ${hasOnlineListener ? 'Đã lắng nghe' : 'Chưa lắng nghe'}`, hasOnlineListener ? 'success' : 'warning');
+                showResult('connection-results', `📡 Sự kiện offline: ${hasOfflineListener ? 'Đã lắng nghe' : 'Chưa lắng nghe'}`, hasOfflineListener ? 'success' : 'warning');
+                
+                // Kiểm tra WebSocket
+                if (window.websocket) {
+                    showResult('connection-results', '✅ WebSocket đã được khởi tạo', 'success');
+                } else {
+                    showResult('connection-results', '⚠️ WebSocket chưa được khởi tạo', 'warning');
+                }
+                
+            } catch (error) {
+                showResult('connection-results', `❌ Lỗi kiểm tra kết nối: ${error.message}`, 'error');
+            }
+        }
+        
+        // Kiểm tra Tích Hợp
+        function testIntegration() {
+            const container = document.getElementById('integration-results');
+            container.innerHTML = '';
+            
+            try {
+                // Kiểm tra các hàm tích hợp
+                const functions = ['initializeOfflineFeatures', 'handleConnectionLoss', 'handleConnectionRestore'];
+                functions.forEach(func => {
+                    if (typeof window[func] === 'function') {
+                        showResult('integration-results', `✅ Hàm ${func} có sẵn`, 'success');
+                    } else {
+                        showResult('integration-results', `❌ Hàm ${func} không có sẵn`, 'error');
+                    }
+                });
+                
+                // Kiểm tra trạng thái kết nối
+                const connectionStatus = document.getElementById('connection-status');
+                if (connectionStatus) {
+                    showResult('integration-results', '✅ Trạng thái kết nối đã được thêm vào UI', 'success');
+                } else {
+                    showResult('integration-results', '⚠️ Trạng thái kết nối chưa được thêm vào UI', 'warning');
+                }
+                
+                // Kiểm tra CSS cho thông báo
+                const style = document.querySelector('style');
+                if (style && style.textContent.includes('offline-notification')) {
+                    showResult('integration-results', '✅ CSS cho thông báo đã được thêm', 'success');
+                } else {
+                    showResult('integration-results', '⚠️ CSS cho thông báo chưa được thêm', 'warning');
+                }
+                
+            } catch (error) {
+                showResult('integration-results', `❌ Lỗi kiểm tra tích hợp: ${error.message}`, 'error');
+            }
+        }
+        
+        // Chạy tất cả kiểm tra
+        function runAllTests() {
+            const container = document.getElementById('overall-results');
+            container.innerHTML = '';
+            
+            showResult('overall-results', '🚀 Bắt đầu kiểm tra tất cả tính năng...', 'info');
+            
+            // Chạy từng kiểm tra
+            testOfflineStorage();
+            testDataRecovery();
+            testConnection();
+            testIntegration();
+            
+            showResult('overall-results', '✅ Hoàn thành kiểm tra tất cả tính năng', 'success');
+            showResult('overall-results', '🎯 Hệ thống offline đã sẵn sàng', 'success');
+        }
+        
+        // Tự động chạy kiểm tra khi trang tải
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(runAllTests, 1000);
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

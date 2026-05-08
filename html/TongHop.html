@@ -1,0 +1,4162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>TongHop - QR Sản phẩm</title>
+<style>
+html {
+  scroll-behavior: auto !important; /* Tắt smooth scroll để tránh giật */
+  -webkit-overflow-scrolling: touch; /* Smooth scroll cho iOS */
+}
+html, body {
+  height: auto !important;
+  min-height: 100vh;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  position: relative;
+  /* Tối ưu performance cho scrolling */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 20px;
+  padding-bottom: 90px !important; /* Thêm padding-bottom để tránh nội dung bị che bởi thanh phân trang */
+  color: #333;
+  /* Tối ưu rendering */
+  will-change: scroll-position;
+  contain: layout style paint;
+}
+h2 {margin-top:0;color:#1976D2;}
+textarea,select,button,input {margin:5px;padding:8px;border-radius:6px;border:1px solid #ccc;}
+button {background:#2196F3;color:#fff;border:none;cursor:pointer;}
+button:hover {background:#1976D2;}
+#btnXoaAll {background:#f44336;}
+#btnXoaAll:hover {background:#c62828;}
+input[type=text] {width:240px;}
+#filterBar label {margin-right:5px;}
+#filterBar select {margin-right:15px;}
+#soDong {margin:5px 0;font-weight:bold;}
+.stat-block {background:#fff;padding:10px;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);margin-bottom:10px;}
+.stat-block h4 {margin:0 0 5px 0;color:#2196F3;font-size:14px;}
+.stat-block ul {list-style:none;padding-left:0;margin:0;}
+.stat-block ul li {display:flex;justify-content:space-between;border-bottom:1px dotted #ddd;font-size:13px;padding:2px 0;}
+.stat-container {margin-bottom:15px;}
+.stat-container h3 {margin-bottom:10px;}
+.update-count {color:#d32f2f;font-weight:bold;}
+
+/* Tối ưu table container để scroll mượt */
+.table-container {
+  contain: layout style paint;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+table {width:100%;border-collapse:collapse;background:#fff;margin-top:10px;}
+th,td {border:1px solid #ddd;padding:6px;text-align:left;font-size:14px;}
+th {
+  background:#2196F3;
+  color:#fff;
+  position:sticky;
+  top:0;
+  /* Tối ưu sticky header */
+  z-index: 100;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+tr:nth-child(even) {background:#fff;}
+.status-cell {padding:2px 6px;border-radius:4px;font-weight:bold;}
+.status-Hoànthành {font-weight:bold;}
+.status-Chưahoànthành {font-weight:bold;}
+.status-Bàngiao {background:#4caf50;color:#ffffff;}
+.status-In&thêu {background:#2196f3;color:#ffffff;}
+.status-Inthêu {background:#2196f3;color:#ffffff;} /* Fallback nếu & bị xóa */
+.status-Hoànthiện {background:#ff9800;color:#ffffff;}
+.status-Đangxửlý {background:#bbdefb;color:#0d47a1;}
+.status-Đợifile {background:#ffe0b2;color:#e65100;}
+.status-Thiếuhàng {background:#ffcdd2;color:#b71c1c;}
+.status-Xửlýlỗi {background:#f3e5f5;color:#6a1b9a;}
+.status-Thiếubướctrước {background:#fff3e0;color:#e65100;}
+
+/* Styles cho sản phẩm thiếu dữ liệu */
+.missing-data-row {
+  background: #ffebee !important;
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+.missing-data-badge {
+  background: #f44336;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.missing-data-message {
+  color: #d32f2f;
+  font-style: italic;
+  font-size: 12px;
+}
+
+/* Style cho dòng đã hoàn thành */
+.completed-row {
+  background: #fff !important;
+}
+
+.completed-row td {
+  color: #333 !important;
+}
+
+.completed-badge {
+  background: #4caf50;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* Loading indicator */
+.loading-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000;
+  display: none;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 cột */
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f4f6f8;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+.stat-cell {
+  background:#fff;
+  padding:10px;
+  border-radius:8px;
+  box-shadow:0 2px 4px rgba(0,0,0,0.1);
+  font-size:13px;
+}
+.stat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.stat-table td {
+  padding: 2px 4px;
+  border-bottom: 1px dotted #ddd;
+}
+
+.stat-table td.label {
+  text-align: left;
+  color: #333;
+}
+
+.stat-table td.value {
+  text-align: right;
+  font-weight: bold;
+  color: #1976D2;
+}
+
+.sync-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.sync-status.online {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.sync-status.offline {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.sync-status.error {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+
+.locked-row {
+  background: #f5f5f5 !important;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.locked-row td {
+  color: #999 !important;
+}
+
+.locked-badge {
+  background: #4caf50;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+td, th {
+  user-select: text !important;
+}
+
+
+/* Trạng thái bộ phận */
+.dept-status { display:flex; gap:6px; align-items:center; font-size:12px; }
+.dept-pill { display:inline-flex; align-items:center; gap:4px; padding:2px 6px; border-radius:12px; background:#eef2f7; }
+.dept-pill span { font-weight:bold; }
+.kp { background:#e3f2fd; }
+.sx { background:#e8f5e9; }
+.tp { background:#fff3e0; }
+.dh { background:#ede7f6; }
+
+.tab-content { 
+  display: none; 
+  overflow: visible !important; 
+  height: auto !important;
+  min-height: auto !important;
+}
+.tab-content.active { 
+  display: block !important; 
+  overflow: visible !important; 
+  height: auto !important;
+  min-height: auto !important;
+}
+#tab-data {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Pagination sticky - Fixed ở bottom khi cuộn */
+#paginationControls {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  background: #fff !important;
+  padding: 10px 20px !important;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.15) !important;
+  border-top: 1px solid #e0e0e0 !important;
+  margin: 0 !important;
+  /* Tối ưu performance cho fixed position - GPU acceleration */
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  will-change: transform !important;
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  /* Loại bỏ contain để fixed position hoạt động đúng */
+  /* Tránh reflow khi scroll */
+  isolation: isolate !important;
+}
+
+/* Đảm bảo parent không ảnh hưởng đến fixed position */
+.tab-content #paginationControls,
+#tab-data #paginationControls {
+  position: fixed !important;
+  bottom: 0 !important;
+}
+.tab-button { padding: 10px 20px; background: #2196F3; color: white; border: none; cursor: pointer; margin-right: 5px; border-radius: 5px 5px 0 0; }
+.tab-button.active { background: #1976D2; }
+.tab-buttons { margin-bottom: 10px; }
+.user-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.user-table th, .user-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+.user-table th { background: #1976D2; color: white; }
+.user-form { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 15px; }
+.user-form input, .user-form select { width: 200px; padding: 8px; margin: 5px; border: 1px solid #ddd; border-radius: 4px; }
+.user-form button { padding: 8px 15px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.user-form button.delete { background: #f44336; }
+</style>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+<!-- Script đăng nhập bắt buộc -->
+<script src="/auth.js"></script>
+</head>
+<body style="display:none;">
+<h2>📦 Quản lý QR - Thống kê sản phẩm - Tổng Hợp 
+  <span id="syncStatus" class="sync-status offline">🔴 Mất kết nối</span>
+</h2>
+
+<!-- Tabs -->
+<div class="tab-buttons">
+  <button class="tab-button active" onclick="showTab('data')">📊 Dữ liệu</button>
+  <button class="tab-button" onclick="showTab('users')">👥 Quản lý Users</button>
+</div>
+
+<!-- Tab Quản lý Users -->
+<div id="tab-users" class="tab-content">
+  <div class="user-form">
+    <h3>➕ Thêm User Mới</h3>
+    <input type="text" id="newUsername" placeholder="Tên đăng nhập">
+    <span style="display:inline-flex;align-items:center;gap:6px;">
+      <input type="password" id="newPassword" placeholder="Mật khẩu" style="width:200px;">
+      <button type="button" onclick="togglePasswordVisible('newPassword', this)" title="Hiện/Ẩn mật khẩu" style="padding:6px 8px;">👁️</button>
+    </span>
+    <select id="newRole">
+      <option value="kho_phoi">Kho Phôi</option>
+      <option value="san_xuat">Sản Xuất</option>
+      <option value="thanh_pham">Thành Phẩm</option>
+      <option value="dong_hang">Đóng Hàng</option>
+      <option value="hang_san">Hàng Sẵn</option>
+      <option value="hang_ton">Hàng Tồn</option>
+      <option value="admin">Admin (Tổng Hợp)</option>
+    </select>
+    <input type="text" id="newDisplay" placeholder="Tên hiển thị">
+    <button onclick="addUser()">➕ Thêm</button>
+  </div>
+  
+  <h3>📋 Danh sách Users</h3>
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>Tên đăng nhập</th>
+        <th>Mật khẩu</th>
+        <th>Role</th>
+        <th>Tên hiển thị</th>
+        <th>Module</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+    <tbody id="usersTableBody"></tbody>
+  </table>
+</div>
+
+<!-- Tab Dữ liệu -->
+<div id="tab-data" class="tab-content active">
+
+<!-- Nhập liệu: Ẩn trong Tổng Hợp theo yêu cầu -->
+
+
+<!-- Thống kê -->
+<div id="soDong" class="stat-block" style="font-size:16px;background:#e3f2fd;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+  <span id="soDongText"></span>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+    <label style="margin-left:15px;">📅 Từ ngày:</label><input type="date" id="filterTuNgay" style="width:150px;">
+    <label>📅 Đến ngày:</label><input type="date" id="filterDenNgay" style="width:150px;">
+    <button onclick="xoaFilterThoiGian()" style="padding:6px 12px;background:#ff9800;font-size:12px;">🗑️ Xóa lọc thời gian</button>
+    <button id="btnExport">📄 Xuất Excel</button>
+    <button id="btnXoaAll">🗑️ Xóa toàn bộ</button>
+  </div>
+  
+</div>
+
+<!-- Thống kê đợt hàng theo bộ phận -->
+<div id="thongKe" class="stat-container"></div>
+
+<!-- Bảng dữ liệu -->
+<div id="filterBar" class="stat-block" style="display:flex;flex-wrap:wrap;gap:15px;align-items:center;">
+  <label>🏷️ Bộ phận:</label>
+  <select id="filterDayChuyen">
+    <option value="">-- Tất cả --</option>
+    <option value="HS-ĐH">HS - ĐH</option>
+    <option value="HT-ĐH">HT - ĐH</option>
+    <option value="KP-SX-TP-ĐH">KP - SX - TP - ĐH</option>
+  </select>
+  <label>🔍 Lọc trạng thái:</label><select id="filterTrangThai"><option value="">-- Tất cả --</option></select>
+  <label>📦 Đợt hàng:</label><select id="filterDotHang"><option value="">-- Tất cả --</option></select>
+  <label>🛍️ Loại hàng:</label><select id="filterLoaiHang"><option value="">-- Tất cả --</option></select>
+  <label>🏭 Loại SX:</label><select id="filterLoaiSX"><option value="">-- Tất cả --</option></select>
+  <input type="text" id="tuKhoa" placeholder="🔍 Tìm kiếm sản phẩm...">
+</div>
+
+<div class="table-container" style="contain: layout style paint;">
+<table id="dataTable" style="contain: layout style;">
+  <thead>
+    <tr>
+      <th><input type='checkbox' id='selectAll' onclick='chonTatCa(this)'></th>
+      <th>#</th><th>Mã sản phẩm</th><th>Bộ phận</th><th>Trạng thái</th>
+      <th>Đợt hàng</th><th>Loại hàng</th><th>Loại SX</th>
+      <th>Thời gian</th><th>Ghi chú</th><th>Lịch sử</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">  </tbody>
+</table>
+</div>
+<!-- Pagination controls - Fixed ở bottom -->
+<div id="paginationControls" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:#fff;padding:10px 20px;box-shadow:0 -2px 8px rgba(0,0,0,0.15);border-top:1px solid #e0e0e0;margin:0;">
+  <button id="prevBtn" onclick="changePage(-1)">⬅️ Trước</button>
+  <span id="pageNumbers"></span>
+  <button id="nextBtn" onclick="changePage(1)">Tiếp ➡️</button>
+  <label for="itemsPerPageSelect">Hiển thị:</label>
+<select id="itemsPerPageSelect" onchange="changeItemsPerPage()">
+  <option value="25" selected>25</option>
+  <option value="50">50</option>
+  <option value="100">100</option>
+</select>
+  <span style="font-size:12px;color:#666;">(Dùng phân trang để tải nhanh hơn)</span>
+</div>
+
+</div> <!-- End tab-data -->
+<!-- Loading indicator -->
+<div id="loadingIndicator" class="loading-indicator">
+  <div class="loading-spinner"></div>
+  <div>Đang tải dữ liệu...</div>
+</div>
+
+<script>
+let duLieu=[],soDongMoi=0,soDongCapNhat=0,tongSoCapNhat=0;
+// ✅ Biến global để lưu mergedData cho hàm xemLichSuMa()
+let mergedData = [];
+let exportData=[];   // dữ liệu dùng để xuất Excel (khớp giao diện)
+
+// 🔥 CACHE VÀ TỐI ƯU THỐNG KÊ
+let statsCache = {
+    data: null,
+    dataHash: null,
+    timestamp: null,
+    cacheDuration: 3000 // Giảm cache duration xuống 3 giây để cập nhật nhanh hơn
+};
+
+// Hàm tạo hash nhanh cho dữ liệu để kiểm tra thay đổi
+function createDataHash() {
+    // Hash dựa trên số lượng sản phẩm trong các module và filter ngày
+    return `${presenceMaps.khophoi.size}_${presenceMaps.sanxuat.size}_${presenceMaps.thanhpham.size}_${presenceMaps.donghang.size}_${presenceMaps.hangsan.size}_${presenceMaps.hangton.size}_${tuNgayFilter}_${denNgayFilter}`;
+}
+
+// Danh sách loại hàng cố định theo thứ tự
+const LOAI_HANG_ORDER = ['tee', 'boxy', 'scc', 'skk', 'hd', 'zip', 'swt', 'bb', 'polo', 'khác'];
+
+// Danh sách loại sản xuất cố định theo thứ tự
+const LOAI_SX_ORDER = ['in', 'kt', 'theu', 'dtg', 'khác'];
+let dayChuyenFilter="",dotHangFilter="",loaiHangFilter="",loaiSXFilter="",trangThaiFilter="";
+let tuNgayFilter="",denNgayFilter=""; // Filter theo thời gian
+// Đã bỏ missingDataCache - các bộ phận độc lập
+
+// Bản đồ hiện diện theo bộ phận (maGoc -> boolean)
+const presenceMaps = {
+  khophoi: new Set(),
+  sanxuat: new Set(),
+  thanhpham: new Set(),
+  donghang: new Set(),
+  hangsan: new Set(),   // Thêm dòng này
+  hangton: new Set()    // Thêm dòng này
+};
+
+// Lưu dotHang của từng bộ phận để thống kê chéo 6 bộ phận
+const moduleDots = {
+  khophoi: {},
+  sanxuat: {},
+  thanhpham: {},
+  hangsan: {},
+  hangton: {},
+  donghang: {}
+};
+
+// Lưu toàn bộ dữ liệu của từng module để tính toán thống kê
+const moduleData = {
+  khophoi: [],
+  sanxuat: [],
+  thanhpham: [],
+  hangsan: [],
+  hangton: [],
+  donghang: []
+};
+
+// Lưu thời gian theo bộ phận (thời điểm bộ phận thêm sản phẩm)
+const moduleTimes = {
+  khophoi: new Map(),
+  sanxuat: new Map(),
+  thanhpham: new Map(),
+  donghang: new Map(),
+  hangsan: new Map(),
+  hangton: new Map()
+};
+
+// 🔥 TỐI ƯU HÀM LOAD PRESENCE MAPS VỚI CACHE
+let presenceMapsCache = {
+  data: null,
+  timestamp: null,
+  cacheDuration: 2000 // Giảm cache duration xuống 2 giây để cập nhật nhanh hơn
+};
+
+async function loadPresenceMaps(forceRefresh = false) {
+  // Kiểm tra cache - nếu còn trong thời gian cache và không force refresh, dùng cache
+  const now = Date.now();
+  if (!forceRefresh && presenceMapsCache.data !== null && presenceMapsCache.timestamp !== null) {
+    const cacheAge = now - presenceMapsCache.timestamp;
+    if (cacheAge < presenceMapsCache.cacheDuration) {
+      // Cache còn hiệu lực, không cần load lại
+      return Promise.resolve();
+    }
+  }
+  
+  try {
+    const startTime = performance.now();
+    const modules = ['khophoi','sanxuat','thanhpham','donghang','hangsan','hangton']; // Thêm đủ các module
+    const results = await Promise.all(modules.map(m => fetch(`/api/${m}`).then(r=>r.ok?r.json():[]).catch(()=>[])));
+    
+    // Tối ưu: Sử dụng for loop thay vì forEach
+    for (let idx = 0; idx < modules.length; idx++) {
+      const m = modules[idx];
+      presenceMaps[m].clear();
+      if (moduleTimes[m]) moduleTimes[m].clear();
+      if (moduleDots[m]) moduleDots[m] = {};
+      moduleData[m] = []; // Reset dữ liệu module
+      
+      let arr = [];
+      if (Array.isArray(results[idx])) arr = results[idx];
+      else if (results[idx] && Array.isArray(results[idx].data)) arr = results[idx].data;
+      
+      // Tối ưu: Sử dụng for loop thay vì forEach
+      const arrLength = arr.length;
+      for (let i = 0; i < arrLength; i++) {
+        const p = arr[i];
+        if (!p) continue;
+        const key = (p.maGoc || p.ma || '').toString().trim();
+        if (!key) continue;
+        presenceMaps[m].add(key);
+        const tg = p.thoiGian || p.time || p.createdAt || p.ngayGio || '';
+        if (tg && moduleTimes[m]) moduleTimes[m].set(key, tg);
+        if (moduleDots[m] !== undefined) {
+          moduleDots[m][key] = (p.dotHang || '').toString().trim().toLowerCase();
+        }
+        // Lưu toàn bộ dữ liệu để tính toán thống kê
+        if (moduleData[m] !== undefined) {
+          moduleData[m].push(p);
+        }
+      }
+    }
+    
+    // Cập nhật cache
+    presenceMapsCache.data = results;
+    presenceMapsCache.timestamp = now;
+    
+    // Invalid cache khi dữ liệu thay đổi
+    statsCache.dataHash = null;
+    statsCache.data = null;
+    
+    const endTime = performance.now();
+    const totalLoaded = results.reduce((sum, r) => {
+      const arr = Array.isArray(r) ? r : (Array.isArray(r?.data) ? r.data : []);
+      return sum + arr.length;
+    }, 0);
+    
+    if (totalLoaded > 1000) {
+      console.log(`⚡ Loaded ${totalLoaded} products in ${(endTime - startTime).toFixed(2)}ms`);
+    }
+  } catch(e) { 
+    console.error('Load presence failed', e);
+    // Invalid cache khi có lỗi
+    statsCache.dataHash = null;
+    statsCache.data = null;
+    presenceMapsCache.data = null;
+    presenceMapsCache.timestamp = null;
+  }
+}
+
+function renderDepartmentStatus(maGoc){
+  const ok = '✅';
+  const no = '❌';
+  const kpPresent = presenceMaps.khophoi.has(maGoc);
+  const sxPresent = presenceMaps.sanxuat.has(maGoc);
+  const tpPresent = presenceMaps.thanhpham.has(maGoc);
+  const dhPresent = presenceMaps.donghang.has(maGoc);
+  const kp = kpPresent ? ok : no;
+  const sx = sxPresent ? ok : no;
+  const tp = tpPresent ? ok : no;
+  const dh = dhPresent ? ok : no;
+  return `<div class="dept-status">
+    <span class="dept-pill kp"><span>KP</span> ${kp}</span>
+    <span class="dept-pill sx"><span>SX</span> ${sx}</span>
+    <span class="dept-pill tp"><span>TP</span> ${tp}</span>
+    <span class="dept-pill dh"><span>ĐH</span> ${dh}</span>
+  </div>`;
+}
+
+// Xác định dây chuyền hiển thị từ mã sản phẩm
+function getProductChain(item){
+  const code = (item.ma || item.maGoc || '').toLowerCase();
+  const isHS = code.startsWith('hssp') || code.startsWith('hs');
+  const isHT = code.startsWith('htsp') || code.startsWith('ht');
+  if (isHS) return 'HS-ĐH';
+  if (isHT) return 'HT-ĐH';
+  return 'KP-SX-TP-ĐH';
+}
+
+// Suy ra Đợt hàng / Loại hàng / Loại SX từ mã sản phẩm
+function deriveFieldsFromCode(maString){
+  const result = { dotHang: '', loaiHang: '', loaiSX: '' };
+  if (!maString || typeof maString !== 'string') return result;
+  const base = maString.trim();
+  // Lấy phần trước dấu '|' đầu tiên
+  const leftOfPipe = base.split('|')[0];
+  // dotHang: trước dấu '='
+  if (leftOfPipe.includes('=')) {
+    const partsEq = leftOfPipe.split('=');
+    result.dotHang = (partsEq[0] || '').trim().toLowerCase();
+    // phần sau '=' để bóc tách loaiHang-loaiSX
+    const afterEq = (partsEq[1] || '').trim();
+    if (afterEq.includes('-')) {
+      const idx = afterEq.indexOf('-');
+      result.loaiHang = afterEq.substring(0, idx).trim().toLowerCase();
+      // loaiSX nằm giữa '-' và '|', hiện tại ta đã cắt trước '|'
+      result.loaiSX = afterEq.substring(idx + 1).trim().toLowerCase();
+    }
+  }
+  return result;
+}
+
+// 🔥 TỐI ƯU: Tự động cập nhật trạng thái hoàn thành theo dây chuyền
+function autoUpdateStatuses(items){
+  let changed = false;
+  if (!items || items.length === 0) return false;
+  
+  // Tối ưu: Sử dụng for loop thay vì forEach
+  const itemsLength = items.length;
+  for (let i = 0; i < itemsLength; i++) {
+    const item = items[i];
+    if (!item) continue;
+    // Bỏ qua nếu đã hoàn thành
+    if (item.trangThai === 'Hoàn thành') continue;
+    const id = item.maGoc;
+    const code = (item.ma || item.maGoc || '').toLowerCase();
+    // Xác định dây chuyền: HS, HT, mặc định KP
+    const isHS = code.startsWith('hs');
+    const isHT = code.startsWith('ht');
+    // Điều kiện đủ theo dây chuyền
+    let done = false;
+    if (isHS) {
+      done = presenceMaps.hangsan.has(id) && presenceMaps.donghang.has(id);
+    } else if (isHT) {
+      done = presenceMaps.hangton.has(id) && presenceMaps.donghang.has(id);
+    } else {
+      // Chỉ hoàn thành khi có đầy đủ hiện diện thực tế từ các bộ phận
+      // KHÔNG cần theo thứ tự thêm sản phẩm - chỉ cần đảm bảo có đủ 4 bộ phận (KP, SX, TP, ĐH)
+      done = presenceMaps.khophoi.has(id) && presenceMaps.sanxuat.has(id) && presenceMaps.thanhpham.has(id) && presenceMaps.donghang.has(id);
+    }
+    if (done) {
+      item.trangThai = 'Hoàn thành';
+      if (!item.lichSu) item.lichSu = [];
+      item.lichSu.push({ thoiGian: new Date().toLocaleString(), trangThai: 'Hoàn thành' });
+      changed = true;
+    }
+  }
+  return changed;
+}
+
+// Pagination variables
+let currentPage = 1;
+let itemsPerPage = 25; // Hiển thị 25 dòng mỗi trang (mặc định)
+let filteredData = [];
+
+// WebSocket connection for sync
+let ws = null;
+let isConnected = false;
+const MODULE_NAME = 'tonghop';
+
+// User Management Functions
+function showTab(tabName) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Show selected tab
+    document.getElementById(`tab-${tabName}`).classList.add('active');
+    
+    // Set active button - tìm button có onclick chứa tabName
+    document.querySelectorAll('.tab-button').forEach(btn => {
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${tabName}'`)) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Load dữ liệu khi tab được mở
+    if (tabName === 'users') {
+        loadUsers();
+    }
+}
+
+const ROLE_MODULE_MAP = {
+    'kho_phoi': 'Kho Phôi',
+    'san_xuat': 'Sản Xuất',
+    'thanh_pham': 'Thành Phẩm',
+            'dong_hang': 'Đóng Hàng',
+        'hang_san': 'Hàng Sẵn',
+        'hang_ton': 'Hàng Tồn',
+        'admin': 'Admin (Tổng Hợp)'
+};
+
+async function loadUsers() {
+    try {
+        const response = await fetch('/api/users');
+        const users = await response.json();
+        const tbody = document.getElementById('usersTableBody');
+        tbody.innerHTML = '';
+        
+        users.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.username}</td>
+                <td>
+                  <span style="display:inline-flex;align-items:center;gap:6px;">
+                    <input type="password" value="${user.password}" style="width:100px;padding:4px;" readonly id="pass-${user.username}">
+                    <button type="button" onclick="togglePasswordVisible('pass-${user.username}', this)" title="Hiện/Ẩn mật khẩu" style="padding:4px 6px;">👁️</button>
+                  </span>
+                </td>
+                <td>${user.role}</td>
+                <td>${user.display || ''}</td>
+                <td>${ROLE_MODULE_MAP[user.role] || user.role}</td>
+                <td>
+                    <button onclick="editUser('${user.username}')" style="padding:4px 8px;background:#2196F3;color:white;border:none;border-radius:3px;cursor:pointer;margin-right:5px;">✏️ Sửa</button>
+                    <button onclick="deleteUser('${user.username}')" class="delete" style="padding:4px 8px;background:#f44336;color:white;border:none;border-radius:3px;cursor:pointer;">🗑️ Xóa</button>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error loading users:', error);
+        alert('Lỗi khi tải danh sách users!');
+    }
+}
+
+async function addUser() {
+    const username = document.getElementById('newUsername').value.trim();
+    const password = document.getElementById('newPassword').value;
+    const role = document.getElementById('newRole').value;
+    const display = document.getElementById('newDisplay').value.trim();
+    
+    if (!username || !password || !role) {
+        alert('Vui lòng điền đầy đủ thông tin!');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/api/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password, role, display })
+        });
+        
+        const result = await response.json();
+        if (result.error) {
+            alert('Lỗi: ' + result.error);
+        } else {
+            alert('Thêm user thành công!');
+            document.getElementById('newUsername').value = '';
+            document.getElementById('newPassword').value = '';
+            document.getElementById('newDisplay').value = '';
+            loadUsers();
+        }
+    } catch (error) {
+        console.error('Error adding user:', error);
+        alert('Lỗi khi thêm user!');
+    }
+}
+
+function editUser(username) {
+    const row = event.target.closest('tr');
+    const passwordCell = row.querySelector('td:nth-child(2)');
+    const passwordInput = passwordCell.querySelector('input');
+    
+    if (passwordInput.hasAttribute('readonly')) {
+        // Enable editing
+        passwordInput.removeAttribute('readonly');
+        passwordInput.style.background = '#fff';
+        event.target.textContent = '💾 Lưu';
+    } else {
+        // Save changes
+        const newPassword = passwordInput.value;
+        updateUser(username, newPassword);
+        passwordInput.setAttribute('readonly', '');
+        passwordInput.style.background = '';
+        event.target.textContent = '✏️ Sửa';
+    }
+}
+
+// Hiện/ẩn mật khẩu cho input theo id; đồng thời đổi biểu tượng nút
+function togglePasswordVisible(inputId, btn){
+  try {
+    const el = document.getElementById(inputId);
+    if (!el) return;
+    const isHidden = el.type === 'password';
+    el.type = isHidden ? 'text' : 'password';
+    if (btn) {
+      btn.textContent = isHidden ? '🙈' : '👁️';
+      btn.title = isHidden ? 'Ẩn mật khẩu' : 'Hiện mật khẩu';
+    }
+  } catch(e) { /* noop */ }
+}
+
+async function updateUser(username, password) {
+    try {
+        // Get current user data
+        const response = await fetch('/api/users');
+        const users = await response.json();
+        const user = users.find(u => u.username === username);
+        
+        if (!user) {
+            alert('Không tìm thấy user!');
+            return;
+        }
+        
+        user.password = password;
+        
+        const updateResponse = await fetch('/api/users', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user)
+        });
+        
+        const result = await updateResponse.json();
+        if (result.error) {
+            alert('Lỗi: ' + result.error);
+        } else {
+            alert('Cập nhật mật khẩu thành công!');
+        }
+    } catch (error) {
+        console.error('Error updating user:', error);
+        alert('Lỗi khi cập nhật user!');
+    }
+}
+
+async function deleteUser(username) {
+    if (!confirm(`Bạn có chắc muốn xóa user "${username}"?`)) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/users/${username}`, {
+            method: 'DELETE'
+        });
+        
+        const result = await response.json();
+        if (result.error) {
+            alert('Lỗi: ' + result.error);
+        } else {
+            alert('Xóa user thành công!');
+            loadUsers();
+        }
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        alert('Lỗi khi xóa user!');
+    }
+}
+
+// Load users when page loads
+window.addEventListener('DOMContentLoaded', () => {
+    // BẮT BUỘC đăng nhập trước khi load nội dung
+    if (typeof requireLogin === 'function') {
+        requireLogin('tonghop');
+    } else {
+        // Nếu auth.js chưa load, đợi một chút rồi thử lại
+        setTimeout(() => {
+            if (typeof requireLogin === 'function') {
+                requireLogin('tonghop');
+            } else {
+                console.error('auth.js không tải được!');
+                alert('Lỗi: Không thể tải hệ thống đăng nhập. Vui lòng reload trang.');
+            }
+        }, 500);
+    }
+    
+    // Users tab will load on demand when clicked
+    
+    // Thêm scroll listener để phát hiện người dùng cuộn (passive để tối ưu)
+    window.addEventListener('scroll', scrollListener, { passive: true });
+    
+    // Tối ưu: Sử dụng Intersection Observer cho lazy loading nếu cần
+    if ('IntersectionObserver' in window) {
+      // Có thể thêm lazy loading cho các phần tử ngoài viewport
+    }
+});
+
+// WebSocket functions
+function initWebSocket() {
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const wsUrl = `${protocol}//${window.location.host}`;
+    
+    try {
+        ws = new WebSocket(wsUrl);
+        
+        ws.onopen = function() {
+            console.log('WebSocket connected');
+            isConnected = true;
+            updateConnectionStatus('online');
+            
+            // Đăng ký module - kiểm tra trạng thái trước khi gửi
+            if (ws.readyState === WebSocket.OPEN) {
+                // Đăng ký với module chính (tonghop)
+                ws.send(JSON.stringify({
+                    type: 'register',
+                    module: MODULE_NAME
+                }));
+            }
+        };
+        
+        ws.onmessage = function(event) {
+            try {
+                const data = JSON.parse(event.data);
+                
+                if (data.type === 'sync' && data.module === MODULE_NAME) {
+                    // Nhận dữ liệu đồng bộ từ server
+                    duLieu = data.data || [];
+                    
+                    // 🔥 TỐI ƯU: Invalid cache khi nhận dữ liệu mới
+                    statsCache.dataHash = null;
+                    statsCache.data = null;
+                    presenceMapsCache.data = null;
+                    presenceMapsCache.timestamp = null;
+                    
+                    // Render với requestIdleCallback để không block UI
+                    const scheduleUpdate = (callback) => {
+                      if (window.requestIdleCallback) {
+                        requestIdleCallback(callback, { timeout: 100 });
+                      } else {
+                        requestAnimationFrame(callback);
+                      }
+                    };
+                    
+                    scheduleUpdate(() => {
+                      hienThiImmediate();
+                    });
+                    console.log('Data synced from server');
+                } else if (data.type === 'pong') {
+                    // Ping response
+                    console.log('Pong received');
+                }
+            } catch (error) {
+                console.error('Error parsing WebSocket message:', error);
+            }
+        };
+        
+        ws.onclose = function() {
+            console.log('WebSocket disconnected');
+            isConnected = false;
+            updateConnectionStatus('offline');
+            
+            // Thử kết nối lại sau 3 giây
+            setTimeout(initWebSocket, 3000);
+        };
+        
+        ws.onerror = function(error) {
+            console.error('WebSocket error:', error);
+            updateConnectionStatus('error');
+        };
+        
+    } catch (error) {
+        console.error('Failed to create WebSocket connection:', error);
+        updateConnectionStatus('error');
+    }
+}
+
+function updateConnectionStatus(status) {
+    const statusEl = document.getElementById('syncStatus');
+    if (statusEl) {
+        statusEl.textContent = status === 'online' ? '🟢 Đã kết nối' : 
+                              status === 'offline' ? '🔴 Mất kết nối' : 
+                              '⚠️ Lỗi kết nối';
+        statusEl.className = `sync-status ${status}`;
+    }
+}
+
+function syncToServer() {
+    if (ws && isConnected && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({
+            type: 'update',
+            module: MODULE_NAME,
+            payload: duLieu
+        }));
+        console.log('Data synced to server');
+    }
+}
+
+// Đã bỏ chức năng phát hiện thiếu bước trước
+
+// Hàm kiểm tra xem có thể cập nhật trạng thái hoàn thành không
+function canUpdateToCompleted() {
+    return false; // Các bộ phận không thể tự cập nhật trạng thái hoàn thành
+}
+
+function luuLocal(){
+  try {
+    localStorage.setItem("duLieuTongHop", JSON.stringify(duLieu));
+    localStorage.setItem("tongSoCapNhatTongHop", String(tongSoCapNhat));
+  } catch (error) {
+    console.error('Error saving to localStorage:', error);
+  }
+  // Đồng bộ lên server
+  syncToServer();
+}
+
+// 🔥 HÀM THỐNG KÊ TỐI ƯU VỚI CACHE
+function thongKe(){
+  // CHỈ hiển thị thống kê nếu đã đăng nhập
+  const authenticated = window.isAuthenticated || isAuthenticated;
+  if (!authenticated) {
+    const thongKeDiv=document.getElementById("thongKe");
+    if (thongKeDiv) {
+      thongKeDiv.innerHTML = '';
+    }
+    return;
+  }
+  const thongKeDiv=document.getElementById("thongKe");
+  if (!thongKeDiv) return;
+  
+  // Kiểm tra cache
+  const currentHash = createDataHash();
+  const now = Date.now();
+  
+  if (statsCache.data && 
+      statsCache.dataHash === currentHash && 
+      statsCache.timestamp && 
+      (now - statsCache.timestamp) < statsCache.cacheDuration) {
+    // Sử dụng cache
+    thongKeDiv.innerHTML = statsCache.data;
+    return;
+  }
+  
+  // Tính toán thống kê mới với tối ưu hiệu suất
+  const startTime = performance.now();
+  
+  // Render 6 bảng riêng cho từng bộ phận
+  const htmlContent = `
+    <div class="stat-row">
+      ${renderDotHangFor('khophoi','Đợt hàng - Kho phôi')}
+      ${renderDotHangFor('sanxuat','Đợt hàng - Sản xuất')}
+      ${renderDotHangFor('thanhpham','Đợt hàng - Thành phẩm')}
+      ${renderDotHangFor('donghang','Đợt hàng - Đóng hàng')}
+      ${renderDotHangFor('hangton','Đợt hàng - Hàng tồn')}
+      ${renderDotHangFor('hangsan','Đợt hàng - Hàng sẵn')}
+    </div>
+  `;
+  
+  // Lưu vào cache
+  statsCache.data = htmlContent;
+  statsCache.dataHash = currentHash;
+  statsCache.timestamp = now;
+  
+  // Hiển thị
+  thongKeDiv.innerHTML = htmlContent;
+  
+  // Log hiệu suất (chỉ trong development)
+  const endTime = performance.now();
+  const totalProducts = presenceMaps.khophoi.size + presenceMaps.sanxuat.size + presenceMaps.thanhpham.size + 
+                        presenceMaps.donghang.size + presenceMaps.hangsan.size + presenceMaps.hangton.size;
+  if (totalProducts > 1000) {
+    console.log(`⚡ Thống kê tính toán trong ${(endTime - startTime).toFixed(2)}ms cho ${totalProducts} sản phẩm`);
+  }
+}
+
+// Hàm render dữ liệu từng batch để tránh đơ UI
+function renderDataInBatches(data, startIndex, shouldRestoreScroll = false) {
+  // 🔥 TỐI ƯU: Với <= 100 items, render trực tiếp không batch để tránh lag
+  // Chỉ batch render khi > 100 items
+  let BATCH_SIZE;
+  if (data.length <= 100) {
+    // Render tất cả cùng lúc cho <= 100 items (không batch)
+    BATCH_SIZE = data.length;
+  } else if (itemsPerPage >= 200) {
+    BATCH_SIZE = 50; // Tăng batch size cho hiệu suất tốt hơn
+  } else if (itemsPerPage >= 100) {
+    BATCH_SIZE = 75; // Tăng batch size cho 100+ items
+  } else if (data.length > 3000) {
+    BATCH_SIZE = 50; // Tăng batch size
+  } else if (data.length > 2000) {
+    BATCH_SIZE = 60; // Tăng batch size
+  } else if (data.length > 1000) {
+    BATCH_SIZE = 75; // Tăng batch size
+  } else {
+    BATCH_SIZE = data.length; // Render tất cả nếu ít
+  }
+  
+  const endIndex = Math.min(startIndex + BATCH_SIZE, data.length);
+  const tbody = document.getElementById("tbody");
+  const loadingIndicator = document.getElementById("loadingIndicator");
+  let stt = startIndex + 1;
+  
+  // Chỉ hiển thị loading indicator khi batch render (không hiển thị cho render trực tiếp)
+  if (startIndex === 0 && data.length > 100 && BATCH_SIZE < data.length) {
+    loadingIndicator.style.display = 'block';
+    loadingIndicator.innerHTML = `
+      <div class="loading-spinner"></div>
+      <div>Đang tải dữ liệu... (${data.length} dòng)</div>
+      <div style="font-size: 12px; margin-top: 5px;">Đã tải: ${startIndex}/${data.length}</div>
+    `;
+  } else {
+    // Ẩn loading indicator khi render trực tiếp hoặc không cần
+    loadingIndicator.style.display = 'none';
+  }
+  
+  // 🔥 TỐI ƯU: Tạo Map một lần duy nhất thay vì findIndex nhiều lần (O(n*m) -> O(n+m))
+  // Chỉ tạo map nếu chưa có hoặc đã thay đổi (cache map)
+  if (!window._maGocToIndexMap || window._duLieuLength !== duLieu.length) {
+    window._maGocToIndexMap = new Map();
+    for (let idx = 0; idx < duLieu.length; idx++) {
+      const maGoc = duLieu[idx]?.maGoc;
+      if (maGoc) {
+        window._maGocToIndexMap.set(maGoc, idx);
+      }
+    }
+    window._duLieuLength = duLieu.length;
+  }
+  
+  // Tìm index gốc trong duLieu sử dụng Map (nhanh hơn nhiều)
+  const originalIndices = new Array(endIndex - startIndex);
+  for (let i = startIndex; i < endIndex; i++) {
+    originalIndices[i - startIndex] = window._maGocToIndexMap.get(data[i]?.maGoc) ?? -1;
+  }
+  
+  // Tính STT dựa trên trang hiện tại
+  const globalStartIndex = (currentPage - 1) * itemsPerPage;
+  
+  // Sử dụng DocumentFragment để thêm nhiều element cùng lúc, tránh cuộn nhảy
+  // Tối ưu: Pre-allocate fragment với ước tính số lượng
+  const fragment = document.createDocumentFragment();
+  fragment.reserve = endIndex - startIndex; // Hint cho browser (không phải API chính thức nhưng giúp tối ưu)
+  
+  // Lưu vị trí cuộn trước khi render (chỉ một lần cho toàn bộ batch)
+  const tabData = document.getElementById("tab-data");
+  const isTabActive = tabData && tabData.classList.contains('active');
+  let scrollBeforeBatch = null;
+  
+  if (isTabActive && !isRestoringScroll && startIndex === 0) {
+    // Lưu scroll position từ window/documentElement (scroll chính của trang)
+    scrollBeforeBatch = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
+  
+  for (let i = startIndex; i < endIndex; i++) {
+    const item = data[i];
+    const originalIndex = originalIndices[i - startIndex]; // Sửa index vì originalIndices chỉ chứa từ startIndex
+    const globalStt = globalStartIndex + i + 1;
+    
+    // Nhận diện dây chuyền từ mã sản phẩm
+    const maGoc = item.maGoc || '';
+    const maNguon = (item.ma || item.maGoc || "").toLowerCase();
+    let labelDayChuyen = '';
+    
+    const tr = document.createElement("tr");
+    
+    if(maNguon.startsWith('hs')) {
+      tr.style.backgroundColor = '#fff'; // trắng cho Hàng Sản
+      labelDayChuyen = '<span style="font-weight:bold;color:#e65100;margin-left:6px;">HS ĐH</span>';
+    } else if(maNguon.startsWith('ht')) {
+      tr.style.backgroundColor = '#fff'; // trắng cho Hàng Tồn
+      labelDayChuyen = '<span style="font-weight:bold;color:#0277bd;margin-left:6px;">HT ĐH</span>';
+    } else if(maNguon.startsWith('kp')) {
+      tr.style.backgroundColor = '#fff'; // trắng cho Kho phôi
+      labelDayChuyen = '<span style="font-weight:bold;color:#8e24aa;margin-left:6px;">KP</span>';
+    } else {
+      // Dây chuyền chính: 4 bộ phận (KP, SX, TP, ĐH) - KHÔNG cần theo thứ tự thêm sản phẩm
+    }
+    const classTrangThai = (item.trangThai || "").replace(/\s+/g,'');
+    
+    // Thêm class và style cho sản phẩm đã hoàn thành
+    if (item.trangThai === 'Hoàn thành') {
+      tr.classList.add('completed-row');
+    }
+    
+    // Xác định trạng thái: Hoàn thành hoặc Chưa hoàn thành
+    // Logic: Kiểm tra xem sản phẩm có đủ ở tất cả bộ phận trong dây chuyền không
+    let isHoanThanhFullChain = false;
+    const isHS = maNguon.startsWith('hssp') || maNguon.startsWith('hs');
+    const isHT = maNguon.startsWith('htsp') || maNguon.startsWith('ht');
+    
+    if (isHS) {
+      // Dây chuyền HS -> ĐH: Hoàn thành nếu có đủ ở HS và ĐH
+      isHoanThanhFullChain = presenceMaps.hangsan.has(maGoc) && presenceMaps.donghang.has(maGoc);
+    } else if (isHT) {
+      // Dây chuyền HT -> ĐH: Hoàn thành nếu có đủ ở HT và ĐH
+      isHoanThanhFullChain = presenceMaps.hangton.has(maGoc) && presenceMaps.donghang.has(maGoc);
+    } else {
+      // Dây chuyền chính: Hoàn thành nếu có đủ ở tất cả 4 bộ phận (KP, SX, TP, ĐH)
+      // KHÔNG cần theo thứ tự thêm sản phẩm - chỉ cần đảm bảo có đủ 4 bộ phận
+      isHoanThanhFullChain = presenceMaps.khophoi.has(maGoc) &&
+                             presenceMaps.sanxuat.has(maGoc) &&
+                             presenceMaps.thanhpham.has(maGoc) &&
+                             presenceMaps.donghang.has(maGoc);
+    }
+    
+    // Xác định trạng thái hiển thị
+    let displayStatus, displayClass;
+    if (isHoanThanhFullChain) {
+      displayStatus = 'Hoàn thành';
+      displayClass = 'Hoànthành';
+    } else {
+      displayStatus = 'Chưa hoàn thành';
+      displayClass = 'Chưahoànthành';
+    }
+    
+    // 🔥 TỐI ƯU: Cache kết quả has() để tránh gọi nhiều lần
+    // Nhận diện dây chuyền theo tiền tố mã: HS -> HS-ĐH, HT -> HT-ĐH, còn lại KP-SX-TP-ĐH
+    let deptCustomHtml = '';
+    
+    if (isHS) {
+      const hasHS = presenceMaps.hangsan.has(maGoc);
+      const hasDH = presenceMaps.donghang.has(maGoc);
+      deptCustomHtml = `<span class="dept-pill hs">HS ${hasHS ? '✅' : '❌'}</span> <span class="dept-pill dh">ĐH ${hasDH ? '✅' : '❌'}</span>`;
+    } else if (isHT) {
+      const hasHT = presenceMaps.hangton.has(maGoc);
+      const hasDH = presenceMaps.donghang.has(maGoc);
+      deptCustomHtml = `<span class="dept-pill ht">HT ${hasHT ? '✅' : '❌'}</span> <span class="dept-pill dh">ĐH ${hasDH ? '✅' : '❌'}</span>`;
+    } else {
+      const hasKP = presenceMaps.khophoi.has(maGoc);
+      const hasSX = presenceMaps.sanxuat.has(maGoc);
+      const hasTP = presenceMaps.thanhpham.has(maGoc);
+      const hasDH = presenceMaps.donghang.has(maGoc);
+      deptCustomHtml = `<span class="dept-pill kp">KP ${hasKP ? '✅' : '❌'}</span> <span class="dept-pill sx">SX ${hasSX ? '✅' : '❌'}</span> <span class="dept-pill tp">TP ${hasTP ? '✅' : '❌'}</span> <span class="dept-pill dh">ĐH ${hasDH ? '✅' : '❌'}</span>`;
+    }
+    
+    // 🔥 TỐI ƯU: Escape HTML và cache giá trị để tránh tính toán lại
+    const maGocEscaped = (item.maGoc || '').replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+    const ghiChuEscaped = (item.ghiChu || '').replace(/"/g, "&quot;");
+    const dotHangVal = item.dotHang || "";
+    const loaiHangVal = item.loaiHang || "";
+    const loaiSXVal = item.loaiSX || "";
+    const thoiGianVal = moduleTimes.donghang.get(maGoc) || item.thoiGian || "";
+    
+    // Trạng thái tự động, không cần dropdown - chỉ hiển thị text
+    tr.innerHTML = `<td><input type='checkbox' class='row-check' data-index='${originalIndex}'></td>
+    <td>${globalStt}</td>
+    <td>
+      <span>${item.maGoc}</span>
+      <button title="Copy" class="btn-copy-ma" data-ma="${maGocEscaped.replace(/"/g, '&quot;')}" onclick="event.stopPropagation(); event.stopImmediatePropagation(); event.preventDefault(); return handleCopyClick(this, event);" style="margin-left:6px;padding:2px 6px;border:1px solid #ccc;background:#f5f5f5;border-radius:4px;cursor:pointer;">📋</button>
+    </td>
+    <td>${deptCustomHtml}</td>
+    <td><span class="status-cell status-${displayClass}" style="font-weight:bold;padding:2px 6px;border-radius:4px;">${displayStatus}</span></td>
+    <td>${dotHangVal}</td>
+    <td>${loaiHangVal}</td>
+    <td>${loaiSXVal}</td>
+    <td>${thoiGianVal}</td>
+    <td><input type="text" value="${ghiChuEscaped}" onchange="capNhatGhiChu(${originalIndex}, this.value)" placeholder="Nhập ghi chú"></td>
+    <td><button class="btn-xem-lich-su" data-ma="${maGocEscaped.replace(/"/g, '&quot;')}" onclick="event.stopPropagation(); event.stopImmediatePropagation(); event.preventDefault(); return handleXemLichSuClick(this, event);">📜</button></td>
+    `;
+    
+    // Thêm vào fragment thay vì appendChild trực tiếp
+    fragment.appendChild(tr);
+  }
+  
+  // Thêm tất cả các element cùng lúc vào DOM (chỉ một lần reflow)
+  // Tối ưu: Append trực tiếp fragment (nhanh hơn requestAnimationFrame cho batch lớn)
+  tbody.appendChild(fragment);
+  
+  // Khôi phục vị trí cuộn sau khi thêm xong batch (chỉ khi render batch đầu tiên và còn batch tiếp theo)
+  // Chỉ khôi phục nếu đang trong quá trình render batch (chưa xong)
+  // TỐI ƯU: Chỉ restore một lần khi render xong batch đầu tiên, không restore trong từng batch
+  // (Đã loại bỏ để tránh giật - sẽ chỉ restore một lần ở cuối)
+  
+  // Cập nhật progress trong loading indicator
+  if (loadingIndicator.style.display === 'block') {
+    loadingIndicator.innerHTML = `
+      <div class="loading-spinner"></div>
+      <div>Đang tải dữ liệu... (${data.length} dòng)</div>
+      <div style="font-size: 12px; margin-top: 5px;">Đã tải: ${endIndex}/${data.length}</div>
+    `;
+  }
+  
+  // Nếu còn dữ liệu, tiếp tục render batch tiếp theo (chỉ khi batch render)
+  if (endIndex < data.length && BATCH_SIZE < data.length) {
+    // Sử dụng requestIdleCallback nếu có, fallback về requestAnimationFrame
+    const scheduleNextBatch = (callback) => {
+      if (window.requestIdleCallback) {
+        requestIdleCallback(callback, { timeout: 16 }); // Timeout 16ms để đảm bảo chạy trong frame
+      } else {
+        requestAnimationFrame(() => {
+          setTimeout(callback, 0); // Delay 0ms để yield cho browser
+        });
+      }
+    };
+    
+    scheduleNextBatch(() => {
+      renderDataInBatches(data, endIndex, shouldRestoreScroll);
+    });
+  } else {
+    // Ẩn loading indicator khi hoàn thành
+    loadingIndicator.style.display = 'none';
+    
+    // Thêm event listener cho các button copy và xem lịch sử (event delegation)
+    setupButtonEventListeners();
+    
+    // TỐI ƯU: Khôi phục vị trí cuộn chỉ một lần khi render xong hoàn toàn và người dùng không đang cuộn
+    if (shouldRestoreScroll && savedScrollPosition !== null && savedScrollPosition > 0 && !isRestoringScroll && !isUserScrolling) {
+      isRestoringScroll = true;
+      const tabData = document.getElementById("tab-data");
+      const isTabActive = tabData && tabData.classList.contains('active');
+      
+      // Chỉ restore một lần sau khi DOM đã render xong
+      requestAnimationFrame(() => {
+        if (isTabActive && savedScrollPosition !== null && savedScrollPosition > 0 && !isUserScrolling) {
+          // Scroll một lần duy nhất với instant behavior để tránh giật
+          const scrollEl = window.pageYOffset !== undefined ? window : document.documentElement;
+          scrollEl.scrollTop = savedScrollPosition;
+          
+          // Reset sau một frame
+          requestAnimationFrame(() => {
+            isRestoringScroll = false;
+            savedScrollPosition = null;
+          });
+        } else {
+          isRestoringScroll = false;
+          savedScrollPosition = null;
+        }
+      });
+    }
+  }
+}
+
+// Setup event listeners cho các button copy và xem lịch sử (chỉ thêm một lần)
+let buttonListenersSetup = false;
+function setupButtonEventListeners() {
+  if (buttonListenersSetup) return; // Đã setup rồi, không cần setup lại
+  buttonListenersSetup = true;
+  
+  // ✅ Event delegation với capture phase để bắt event TRƯỚC TẤT CẢ các listener khác
+  // Xử lý CẢ HAI button (xem lịch sử và copy) với priority cao nhất
+  document.addEventListener('click', function(e) {
+    const target = e.target;
+    if (!target) return;
+    
+    // ✅ Tìm button xem lịch sử (có thể là target hoặc parent)
+    let btnLichSu = null;
+    if (target.classList && target.classList.contains('btn-xem-lich-su')) {
+      btnLichSu = target;
+    } else if (target.closest) {
+      btnLichSu = target.closest('.btn-xem-lich-su');
+    }
+    
+    if (btnLichSu) {
+      // ✅ Chặn NGAY LẬP TỨC để không bị listener khác xử lý
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+      e.preventDefault();
+      
+      const maGoc = btnLichSu.getAttribute('data-ma');
+      if (maGoc) {
+        // Decode HTML entities
+        const temp = document.createElement('div');
+        temp.innerHTML = maGoc;
+        const decodedMa = temp.textContent || temp.innerText || maGoc;
+        // Gọi hàm xem lịch sử
+        xemLichSuMa(decodedMa);
+      }
+      return false;
+    }
+    
+    // ✅ Tìm button copy (có thể là target hoặc parent)
+    let btnCopy = null;
+    if (target.classList && target.classList.contains('btn-copy-ma')) {
+      btnCopy = target;
+    } else if (target.closest) {
+      btnCopy = target.closest('.btn-copy-ma');
+    }
+    
+    if (btnCopy) {
+      // ✅ Chặn NGAY LẬP TỨC để không bị listener khác xử lý
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+      e.preventDefault();
+      
+      const maGoc = btnCopy.getAttribute('data-ma');
+      if (maGoc) {
+        // Decode HTML entities
+        const temp = document.createElement('div');
+        temp.innerHTML = maGoc;
+        const decodedMa = temp.textContent || temp.innerText || maGoc;
+        // Gọi hàm copy
+        copyMa(decodedMa, btnCopy);
+      }
+      return false;
+    }
+  }, true); // ✅ Capture phase - bắt event TRƯỚC TẤT CẢ các listener khác
+}
+
+// Copy mã sản phẩm vào clipboard
+function copyMa(text, btn){
+  try {
+    const toCopy = (text || '').toString();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(toCopy).then(()=>{
+        if (btn) { btn.textContent = '✅'; setTimeout(()=>{ btn.textContent = '📋'; }, 1000); }
+      }).catch(() => {
+        // Fallback nếu clipboard API thất bại
+        const temp = document.createElement('textarea');
+        temp.value = toCopy;
+        temp.style.position = 'fixed';
+        temp.style.opacity = '0';
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        if (btn) { btn.textContent = '✅'; setTimeout(()=>{ btn.textContent = '📋'; }, 1000); }
+      });
+    } else {
+      const temp = document.createElement('textarea');
+      temp.value = toCopy;
+      temp.style.position = 'fixed';
+      temp.style.opacity = '0';
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      if (btn) { btn.textContent = '✅'; setTimeout(()=>{ btn.textContent = '📋'; }, 1000); }
+    }
+  } catch(e) { 
+    console.warn('Copy failed', e);
+    alert('⚠️ Không thể copy mã sản phẩm. Vui lòng thử lại.');
+  }
+}
+
+// Biến lưu vị trí cuộn cần khôi phục
+let savedScrollPosition = null;
+let isRestoringScroll = false;
+let lastFilterStateForScroll = null; // Lưu filter state để so sánh
+let isUserScrolling = false; // Flag để phát hiện người dùng đang cuộn
+let scrollTimeout = null; // Timeout để reset flag sau khi người dùng ngừng cuộn
+
+// Theo dõi khi người dùng cuộn thủ công - tránh restore scroll khi đang cuộn
+// Sử dụng passive listener để tối ưu performance
+const scrollListener = throttle(() => {
+  if (!isRestoringScroll) {
+    isUserScrolling = true;
+    clearTimeout(scrollTimeout);
+    // Reset flag sau 150ms khi người dùng ngừng cuộn (giảm từ 200ms)
+    scrollTimeout = setTimeout(() => {
+      isUserScrolling = false;
+    }, 150);
+  }
+}, 16); // Throttle 16ms (~60fps)
+
+// Hàm render với pagination
+function renderWithPagination() {
+  // Lưu vị trí cuộn hiện tại trước khi render (chỉ khi đang ở tab-data và không phải filter thay đổi)
+  const tabData = document.getElementById("tab-data");
+  const isTabActive = tabData && tabData.classList.contains('active');
+  
+  // Kiểm tra filter state để quyết định có khôi phục cuộn không
+  const tuKhoa = document.getElementById("tuKhoa")?.value.trim().toLowerCase() || '';
+  const selectedTrangThai = document.getElementById('filterTrangThai')?.value || '';
+  const selectedDotHang = document.getElementById('filterDotHang')?.value || '';
+  const selectedLoaiHang = document.getElementById('filterLoaiHang')?.value || '';
+  const selectedLoaiSX = document.getElementById('filterLoaiSX')?.value || '';
+  const selectedDayChuyen = document.getElementById('filterDayChuyen')?.value || '';
+  const currentFilterState = `${tuKhoa}_${selectedTrangThai}_${selectedDotHang}_${selectedLoaiHang}_${selectedLoaiSX}_${selectedDayChuyen}_${tuNgayFilter}_${denNgayFilter}`;
+  
+  const filterChanged = currentFilterState !== lastFilterStateForScroll;
+  lastFilterStateForScroll = currentFilterState;
+  
+  // Chỉ lưu vị trí cuộn nếu filter không thay đổi và người dùng không đang cuộn
+  if (isTabActive && !isRestoringScroll && !filterChanged && !isUserScrolling) {
+    // Lấy vị trí cuộn từ window/documentElement (scroll chính của trang)
+    savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  } else if (filterChanged || isUserScrolling) {
+    // Filter thay đổi hoặc người dùng đang cuộn, reset vị trí cuộn
+    savedScrollPosition = null;
+  }
+  
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
+  const pageData = filteredData.slice(startIndex, endIndex);
+  
+  // Cập nhật pagination controls
+  updatePaginationControls(totalPages);
+  
+  // Dọn bảng trước khi render trang mới
+  // Lưu vị trí cuộn trước khi clear tbody (nếu filter không thay đổi)
+  const tbody = document.getElementById("tbody");
+  let scrollBeforeClear = null;
+  
+  if (isTabActive && !filterChanged && !isRestoringScroll) {
+    // Lấy scroll position từ window/documentElement (scroll chính của trang)
+    scrollBeforeClear = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    // Nếu không có vị trí cuộn được lưu, lấy từ hiện tại
+    if (!savedScrollPosition && scrollBeforeClear > 0) {
+      savedScrollPosition = scrollBeforeClear;
+    }
+  }
+  
+  if (tbody) {
+    // Tối ưu: Sử dụng requestAnimationFrame để batch DOM updates
+    requestAnimationFrame(() => {
+      // Tạm thời ẩn tbody để tránh cuộn nhảy khi clear
+      const originalDisplay = tbody.style.display;
+      tbody.style.display = 'none';
+      tbody.innerHTML = "";
+      // Khôi phục display ngay sau khi clear
+      tbody.style.display = originalDisplay || '';
+    });
+  }
+  
+  // Render dữ liệu trang hiện tại (đảm bảo presence đã tải)
+  // Chỉ khôi phục cuộn nếu filter không thay đổi và không phải khi thay đổi itemsPerPage
+  const shouldRestore = !filterChanged && savedScrollPosition !== null && !isRestoringScroll;
+  
+  // Tối ưu: Sử dụng requestIdleCallback nếu có
+  const scheduleRender = (callback) => {
+    if (window.requestIdleCallback && pageData.length > 50) {
+      requestIdleCallback(callback, { timeout: 50 });
+    } else {
+      requestAnimationFrame(callback);
+    }
+  };
+  
+  scheduleRender(() => {
+    renderDataInBatches(pageData, 0, shouldRestore);
+  });
+}
+
+// Cập nhật pagination controls
+function updatePaginationControls(totalPages) {
+  const prevButton = document.getElementById("prevBtn");
+  const nextButton = document.getElementById("nextBtn");
+  const pageNumbers = document.getElementById("pageNumbers");
+  
+  // Cập nhật nút Previous/Next
+  prevButton.disabled = currentPage <= 1;
+  nextButton.disabled = currentPage >= totalPages;
+  
+  // Cập nhật số trang
+  let pageNumbersHtml = "";
+  const maxVisiblePages = 5;
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+  
+  if (endPage - startPage + 1 < maxVisiblePages) {
+    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+  }
+  
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbersHtml += `<button onclick="goToPage(${i})" ${i === currentPage ? 'style="background:#2196F3;color:white;"' : ''}>${i}</button> `;
+  }
+  pageNumbers.innerHTML = pageNumbersHtml;
+}
+
+// Thay đổi trang
+function changePage(direction) {
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const newPage = currentPage + direction;
+  
+  if (newPage >= 1 && newPage <= totalPages) {
+    currentPage = newPage;
+    renderWithPagination();
+  }
+}
+
+// Đi đến trang cụ thể
+function goToPage(page) {
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  if (page >= 1 && page <= totalPages) {
+    currentPage = page;
+    renderWithPagination();
+  }
+}
+
+// Thay đổi số dòng mỗi trang
+function changeItemsPerPage() {
+  const newItemsPerPage = parseInt(document.getElementById("itemsPerPageSelect").value);
+  // Reset scroll position và flag khi thay đổi itemsPerPage để tránh giật
+  savedScrollPosition = null;
+  isUserScrolling = false;
+  isRestoringScroll = false;
+  itemsPerPage = newItemsPerPage;
+  currentPage = 1;
+  // Scroll lên đầu trang ngay lập tức để tránh giật
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  // Render với debounce nhỏ
+  requestAnimationFrame(() => {
+    renderWithPagination();
+  });
+}
+
+// Hàm đăng xuất cho Tổng Hợp
+function logoutTongHop() {
+  if (confirm('Bạn có chắc chắn muốn đăng xuất?')) {
+    // Xóa thông tin đăng nhập (cả localStorage và sessionStorage)
+    localStorage.removeItem('login_tonghop');
+    sessionStorage.removeItem('login_tonghop');
+    // Reload trang để bắt buộc đăng nhập lại
+    window.location.reload();
+  }
+}
+
+function renderGroup(title,group){
+  let html=`<div class='stat-cell'><h4>${title}</h4>`;
+  html+=`<table class="stat-table">`;
+  
+  // Sắp xếp đặc biệt cho đợt hàng và size
+  let sortedKeys;
+  if (title === "Đợt hàng") {
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const getOrder = (dot) => {
+        if (!dot) return 8000;
+        const lowerDot = dot.toLowerCase().trim();
+        
+        // sp1, sp2, sp3, sp4, sp5, sp6, sp7, sp8, sp9, sp10, spthieu (theo số thứ tự)
+        if (lowerDot.startsWith('sp')) {
+          const num = lowerDot.match(/sp(\d+)/);
+          if (num) return parseInt(num[1]);
+          if (lowerDot.includes('thieu')) return 11; // spthieu sau sp10
+          return 1000; // sp khác
+        }
+        
+        // ctv, mvd, bnv (theo thứ tự trong hình)
+        if (lowerDot === 'ctv') return 100;
+        if (lowerDot === 'mvd') return 200;
+        if (lowerDot === 'bnv') return 300;
+        
+        // si (bắt đầu bằng "si") - theo thứ tự trong hình
+        if (lowerDot.startsWith('si')) {
+          if (lowerDot === 'sihoang') return 400;
+          if (lowerDot === 'siminhhuong') return 500;
+          return 600; // si khác
+        }
+        
+        // lon (kết thúc bằng "lon") - theo thứ tự trong hình
+        if (lowerDot.endsWith('lon')) {
+          if (lowerDot === 'inlon') return 700;
+          if (lowerDot === 'phoisoanlon') return 800;
+          if (lowerDot === 'tonsoanlon') return 900;
+          return 1000; // lon khác
+        }
+        
+        // hu (kết thúc bằng "hu") và các đợt khác - theo thứ tự trong hình
+        if (lowerDot === 'lun') return 1100;
+        if (lowerDot === 'do') return 1200;
+        if (lowerDot === 'mayhu') return 1300;
+        if (lowerDot.endsWith('hu')) return 1400;
+        
+        // khác
+        return 7000;
+      };
+      
+      const orderA = getOrder(a);
+      const orderB = getOrder(b);
+      
+      // Nếu cùng thứ tự, sắp xếp theo tên
+      if (orderA === orderB) {
+        return a.localeCompare(b);
+      }
+      
+      return orderA - orderB;
+    });
+  } else if (title === "Loại hàng") {
+    // Sắp xếp Loại hàng theo thứ tự cố định
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const indexA = LOAI_HANG_ORDER.indexOf(a.toLowerCase());
+      const indexB = LOAI_HANG_ORDER.indexOf(b.toLowerCase());
+      if (indexA !== -1 && indexB !== -1) {
+        return indexA - indexB;
+      }
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      return a.localeCompare(b);
+    });
+  } else if (title === "Loại sản xuất" || title === "Loại SX") {
+    // Sắp xếp Loại sản xuất theo thứ tự cố định
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const indexA = LOAI_SX_ORDER.indexOf(a.toLowerCase());
+      const indexB = LOAI_SX_ORDER.indexOf(b.toLowerCase());
+      if (indexA !== -1 && indexB !== -1) {
+        return indexA - indexB;
+      }
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      return a.localeCompare(b);
+    });
+  } else if (title === "Màu") {
+    // Sắp xếp Màu theo số lượng giảm dần (từ lớn đến bé)
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const valueA = group[a] || 0;
+      const valueB = group[b] || 0;
+      if (valueB !== valueA) {
+        return valueB - valueA;
+      }
+      return a.localeCompare(b);
+    });
+  } else if (title === "Size") {
+    // Sắp xếp Size theo thứ tự: S, M, L, XL, XXL
+    sortedKeys = Object.keys(group).sort((a, b) => {
+      const sizeOrder = { 'S': 1, 'M': 2, 'L': 3, 'XL': 4, 'XXL': 5 };
+      const orderA = sizeOrder[a] || 999;
+      const orderB = sizeOrder[b] || 999;
+      
+      if (orderA === orderB) {
+        return a.localeCompare(b);
+      }
+      
+      return orderA - orderB;
+    });
+  } else {
+    // Sắp xếp bình thường cho các nhóm khác
+    sortedKeys = Object.keys(group).sort();
+  }
+  
+  // 🔥 TỐI ƯU: Sử dụng for loop thay vì forEach
+  for (let i = 0; i < sortedKeys.length; i++) {
+    const k = sortedKeys[i];
+    html+=`<tr><td class="label">${k}</td><td class="value">${group[k]}</td></tr>`;
+  }
+  html+=`</table></div>`;
+  return html;
+}
+
+// Bảng thống kê Đợt hàng theo 4 bộ phận: KP, HS, HT, ĐH
+function renderDotHang4BoPhan(){
+  // Gom số lượng theo đợt cho từng bộ phận
+  const counts = {}; // dot -> {kp, hs, ht, dh}
+  const ensure = (dot) => {
+    const key = (dot || '').toString().trim().toLowerCase();
+    if (!counts[key]) counts[key] = { kp: 0, hs: 0, ht: 0, dh: 0 };
+    return key;
+  };
+  // 🔥 TỐI ƯU: Sử dụng for loop thay vì forEach
+  const kpEntries = Object.entries(moduleDots.khophoi);
+  for (let i = 0; i < kpEntries.length; i++) {
+    const [, dot] = kpEntries[i];
+    counts[ensure(dot)].kp++;
+  }
+  const hsEntries = Object.entries(moduleDots.hangsan);
+  for (let i = 0; i < hsEntries.length; i++) {
+    const [, dot] = hsEntries[i];
+    counts[ensure(dot)].hs++;
+  }
+  const htEntries = Object.entries(moduleDots.hangton);
+  for (let i = 0; i < htEntries.length; i++) {
+    const [, dot] = htEntries[i];
+    counts[ensure(dot)].ht++;
+  }
+  const dhEntries = Object.entries(moduleDots.donghang);
+  for (let i = 0; i < dhEntries.length; i++) {
+    const [, dot] = dhEntries[i];
+    counts[ensure(dot)].dh++;
+  }
+
+  // Sắp xếp đợt hàng giống logic renderGroup("Đợt hàng")
+  const getOrder = (dot) => {
+    if (!dot) return 8000;
+    const lowerDot = dot.toLowerCase().trim();
+    if (lowerDot.startsWith('sp')) {
+      const num = lowerDot.match(/sp(\d+)/);
+      if (num) return parseInt(num[1]);
+      if (lowerDot.includes('thieu')) return 11;
+      return 1000;
+    }
+    if (lowerDot === 'ctv') return 100;
+    if (lowerDot === 'mvd') return 200;
+    if (lowerDot === 'bnv') return 300;
+    if (lowerDot.startsWith('si')) {
+      if (lowerDot === 'sihoang') return 400;
+      if (lowerDot === 'siminhhuong') return 500;
+      return 600;
+    }
+    if (lowerDot.endsWith('lon')) {
+      if (lowerDot === 'inlon') return 700;
+      if (lowerDot === 'phoisoanlon') return 800;
+      if (lowerDot === 'tonsoanlon') return 900;
+      return 1000;
+    }
+    if (lowerDot === 'lun') return 1100;
+    if (lowerDot === 'do') return 1200;
+    if (lowerDot === 'mayhu') return 1300;
+    if (lowerDot.endsWith('hu')) return 1400;
+    return 7000;
+  };
+
+  const dots = Object.keys(counts).sort((a,b)=>{
+    const oa = getOrder(a); const ob = getOrder(b);
+    if (oa === ob) return a.localeCompare(b);
+    return oa - ob;
+  });
+
+  let html = `<div class='stat-cell'><h4>Đợt hàng</h4>`;
+  html += `<table class="stat-table"><thead><tr><th>Đợt hàng</th><th style="text-align:right">KP</th><th style="text-align:right">HS</th><th style="text-align:right">HT</th><th style="text-align:right">ĐH</th></tr></thead><tbody>`;
+  // 🔥 TỐI ƯU: Sử dụng for loop thay vì forEach
+  for (let i = 0; i < dots.length; i++) {
+    const dot = dots[i];
+    const c = counts[dot];
+    html += `<tr><td class="label">${dot || ''}</td>` +
+            `<td class="value">${c.kp}</td>` +
+            `<td class="value">${c.hs}</td>` +
+            `<td class="value">${c.ht}</td>` +
+            `<td class="value">${c.dh}</td></tr>`;
+  }
+  html += `</tbody></table></div>`;
+  return html;
+}
+
+// Bảng đợt hàng cho một bộ phận cụ thể (khophoi | sanxuat | thanhpham | hangsan | hangton | donghang)
+function renderDotHangFor(moduleKey, title){
+  // Hàm lọc dữ liệu theo ngày
+  const filterByDate = (item) => {
+    if(!tuNgayFilter && !denNgayFilter) return true;
+    
+    const maSanPham = (item.maGoc || item.ma || "").toString();
+    const itemThoiGian = layThoiGianTuMa(maSanPham);
+    
+    if(itemThoiGian) {
+      const parseDate = (dateStr) => {
+        if(!dateStr) return null;
+        const match1 = dateStr.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+        if(match1) {
+          const day = parseInt(match1[1], 10);
+          const month = parseInt(match1[2], 10) - 1;
+          const year = parseInt(match1[3], 10);
+          return new Date(year, month, day);
+        }
+        const match2 = dateStr.match(/(\d{1,2})\/(\d{1,2})\/(\d{4}),?\s*(\d{1,2}):(\d{1,2}):(\d{1,2})/);
+        if(match2) {
+          const day = parseInt(match2[1], 10);
+          const month = parseInt(match2[2], 10) - 1;
+          const year = parseInt(match2[3], 10);
+          return new Date(year, month, day);
+        }
+        const match3 = dateStr.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+        if(match3) {
+          const year = parseInt(match3[1], 10);
+          const month = parseInt(match3[2], 10) - 1;
+          const day = parseInt(match3[3], 10);
+          return new Date(year, month, day);
+        }
+        const parsed = new Date(dateStr);
+        if(!isNaN(parsed.getTime())) return parsed;
+        return null;
+      };
+      
+      const itemDate = parseDate(itemThoiGian);
+      if(itemDate) {
+        if(tuNgayFilter) {
+          const tuNgay = new Date(tuNgayFilter);
+          tuNgay.setHours(0, 0, 0, 0);
+          if(itemDate < tuNgay) return false;
+        }
+        if(denNgayFilter) {
+          const denNgay = new Date(denNgayFilter);
+          denNgay.setHours(23, 59, 59, 999);
+          if(itemDate > denNgay) return false;
+        }
+        return true;
+      }
+    }
+    
+    // Nếu không có thời gian và có filter, bỏ qua
+    if(tuNgayFilter || denNgayFilter) return false;
+    return true;
+  };
+  
+  const counts = {};
+  // Thống kê trạng thái theo đợt hàng: { dot: { banGiao: 0, hoanThanh: 0 } }
+  const statusStats = {};
+  const ensure = (dot) => {
+    const key = (dot || '').toString().trim().toLowerCase();
+    if (!counts[key]) {
+      // Đối với donghang, counts là object với 3 cột: kp, hs, ht
+      // Các module khác giữ nguyên là số
+      counts[key] = (moduleKey === 'donghang') ? { kp: 0, hs: 0, ht: 0 } : 0;
+      // Khởi tạo thống kê trạng thái cho đợt hàng
+      statusStats[key] = { banGiao: 0, inTheu: 0, hoanThien: 0, hoanThanh: 0, chuaHoanThanh: 0 };
+    }
+    return key;
+  };
+  
+  // Lọc moduleDots theo ngày
+  const mod = moduleDots[moduleKey] || {};
+  const filteredMod = {};
+  if(tuNgayFilter || denNgayFilter) {
+    Object.entries(mod).forEach(([maGoc, dot]) => {
+      const item = { maGoc, ma: maGoc };
+      if(filterByDate(item)) {
+        filteredMod[maGoc] = dot;
+      }
+    });
+  } else {
+    Object.assign(filteredMod, mod);
+  }
+  
+  // Đối với donghang, tính riêng theo 3 dây chuyền
+  if (moduleKey === 'donghang') {
+    // Hàm chuẩn hóa đợt hàng: loại bỏ tiền tố "hs" hoặc "ht" nếu có
+    const normalizeDot = (dot) => {
+      if (!dot) return '';
+      const lowerDot = dot.toLowerCase().trim();
+      // Loại bỏ tiền tố "hs" hoặc "ht" nếu có
+      if (lowerDot.startsWith('hs')) {
+        return lowerDot.substring(2).trim();
+      }
+      if (lowerDot.startsWith('ht')) {
+        return lowerDot.substring(2).trim();
+      }
+      return lowerDot;
+    };
+    
+    const modEntries = Object.entries(filteredMod);
+    for (let i = 0; i < modEntries.length; i++) {
+      const [maGoc, dot] = modEntries[i];
+      if (!maGoc) continue;
+      const code = maGoc.toLowerCase();
+      const isHS = code.startsWith('hs');
+      const isHT = code.startsWith('ht');
+      // Chuẩn hóa đợt hàng: loại bỏ tiền tố "hs" hoặc "ht" để nhóm chung
+      const normalizedDot = normalizeDot(dot);
+      // Bỏ qua nếu đợt hàng rỗng sau khi chuẩn hóa
+      if (!normalizedDot || normalizedDot.trim() === '') continue;
+      const key = ensure(normalizedDot);
+      
+      if (isHS) {
+        counts[key].hs++;
+      } else if (isHT) {
+        counts[key].ht++;
+      } else {
+        counts[key].kp++;
+      }
+    }
+  } else {
+    // Các module khác: giữ nguyên logic cũ
+    const modValues = Object.values(filteredMod);
+    for (let i = 0; i < modValues.length; i++) {
+      counts[ensure(modValues[i])]++;
+    }
+  }
+
+  // Tính toán thống kê từ moduleData - lọc theo ngày
+  const allData = moduleData[moduleKey] || [];
+  const data = (tuNgayFilter || denNgayFilter) ? allData.filter(filterByDate) : allData;
+  const tongSo = data.length;
+  
+  // Tính thống kê trạng thái cho từng bộ phận
+  let banGiaoCount = 0;      // Số sản phẩm có trạng thái "Bàn giao" (cho KP, HS, HT)
+  let inTheuCount = 0;       // Số sản phẩm có trạng thái "In & thêu" (cho Sản xuất)
+  let hoanThienCount = 0;    // Số sản phẩm có trạng thái "Hoàn thiện" (cho Thành phẩm)
+  let hoanThanhCount = 0;    // Số sản phẩm có trạng thái "Hoàn thành" hoặc trạng thái hoàn thành của từng bộ phận
+  // Thống kê "Chưa hoàn thành" theo đợt hàng: { dot: count }
+  const chuaHoanThanhByDot = {};
+  
+  // Tính trạng thái hoàn thành cho từng bộ phận - ĐỌC TRỰC TIẾP TỪ DỮ LIỆU CỦA TỪNG MODULE
+  // Dữ liệu đã được lấy từ moduleData[moduleKey] - đây là dữ liệu trực tiếp từ các file module
+  data.forEach(p => {
+    const maGoc = (p.maGoc || p.ma || '').toString().trim();
+    if (!maGoc) return;
+    
+    const trangThai = (p.trangThai || '').trim();
+    
+    // Lấy đợt hàng của sản phẩm này - đảm bảo khớp với cách tính counts
+    let dot = '';
+    if (moduleDots[moduleKey] && moduleDots[moduleKey][maGoc]) {
+      dot = moduleDots[moduleKey][maGoc].toString().trim().toLowerCase();
+    } else if (p.dotHang) {
+      dot = (p.dotHang || '').toString().trim().toLowerCase();
+    }
+    
+    // Chuẩn hóa đợt hàng (loại bỏ tiền tố hs/ht nếu có) - giống như logic trong counts
+    if (moduleKey === 'donghang') {
+      const code = maGoc.toLowerCase();
+      const isHS = code.startsWith('hs');
+      const isHT = code.startsWith('ht');
+      
+      // Chuẩn hóa đợt hàng: loại bỏ tiền tố "hs" hoặc "ht" để nhóm chung
+      if (dot.startsWith('hs')) {
+        dot = dot.substring(2).trim();
+      }
+      if (dot.startsWith('ht')) {
+        dot = dot.substring(2).trim();
+      }
+    }
+    
+    // Đảm bảo dotKey khớp với key trong counts (lowercase, trimmed)
+    const dotKey = dot || '';
+    // Đảm bảo statusStats có entry cho đợt hàng này
+    if (dotKey && !statusStats[dotKey]) {
+      statusStats[dotKey] = { banGiao: 0, inTheu: 0, hoanThien: 0, hoanThanh: 0, chuaHoanThanh: 0 };
+    }
+    // Đảm bảo chuaHoanThanhByDot có entry cho đợt hàng này
+    if (dotKey && !chuaHoanThanhByDot[dotKey]) {
+      chuaHoanThanhByDot[dotKey] = 0;
+    }
+    
+    // Đếm "Bàn giao", "In & thêu", "Hoàn thiện", "Hoàn thành" - ĐỌC TRỰC TIẾP TỪ TRẠNG THÁI TRONG DỮ LIỆU
+    if (moduleKey === 'khophoi' || moduleKey === 'hangsan' || moduleKey === 'hangton') {
+        // Kho phôi, Hàng sẵn, Hàng tồn: "Bàn giao" và "Hoàn thành" là hai trạng thái riêng biệt
+        // "Bàn giao" = đã bàn giao (chưa hoàn thành, KHÔNG tính vào "Hoàn thành")
+        // "Hoàn thành" = đã hoàn thành (chỉ tính sản phẩm có trạng thái "Hoàn thành")
+        if (trangThai === 'Bàn giao') {
+          banGiaoCount++;
+          // "Bàn giao" KHÔNG được tính vào "Hoàn thành" (là trạng thái riêng)
+          // Cập nhật thống kê theo đợt hàng
+          if (statusStats[dotKey]) {
+            statusStats[dotKey].banGiao++;
+          }
+        } else if (trangThai === 'Hoàn thành') {
+          hoanThanhCount++;
+          if (statusStats[dotKey]) {
+            statusStats[dotKey].hoanThanh++;
+          }
+        }
+      } else if (moduleKey === 'sanxuat') {
+        // Sản xuất: "In & thêu" và "Hoàn thành" là hai trạng thái riêng biệt
+        // "In & thêu" = đang ở giai đoạn in thêu (chưa hoàn thành, KHÔNG tính vào "Hoàn thành")
+        // "Hoàn thành" = đã hoàn thành (chỉ tính sản phẩm có trạng thái "Hoàn thành")
+        if (trangThai === 'In & thêu' || trangThai === 'Inthêu') {
+          inTheuCount++;
+          // "In & thêu" KHÔNG được tính vào "Hoàn thành" (là trạng thái riêng)
+          if (dotKey && statusStats[dotKey]) {
+            statusStats[dotKey].inTheu = (statusStats[dotKey].inTheu || 0) + 1;
+          }
+        } else if (trangThai === 'Hoàn thành') {
+          hoanThanhCount++;
+          if (dotKey && statusStats[dotKey]) {
+            statusStats[dotKey].hoanThanh++;
+          }
+        }
+      } else if (moduleKey === 'thanhpham') {
+        // Thành phẩm: "Hoàn thiện" và "Hoàn thành" là hai trạng thái riêng biệt
+        // "Hoàn thiện" = đang ở giai đoạn hoàn thiện (chưa hoàn thành, KHÔNG tính vào "Hoàn thành")
+        // "Hoàn thành" = đã hoàn thành (chỉ tính sản phẩm có trạng thái "Hoàn thành")
+        if (trangThai === 'Hoàn thiện') {
+          hoanThienCount++;
+          // "Hoàn thiện" KHÔNG được tính vào "Hoàn thành" (là trạng thái riêng)
+          if (dotKey && statusStats[dotKey]) {
+            statusStats[dotKey].hoanThien = (statusStats[dotKey].hoanThien || 0) + 1;
+          }
+        } else if (trangThai === 'Hoàn thành') {
+          hoanThanhCount++;
+          if (dotKey && statusStats[dotKey]) {
+            statusStats[dotKey].hoanThanh++;
+          }
+        }
+      }
+    
+    // Không tính "Hoàn thành" cho Đóng hàng ở đây (sẽ tính theo dây chuyền riêng)
+  });
+  
+  // Tính "Chưa hoàn thành" cho từng đợt hàng
+  // Chưa hoàn thành = Tổng đợt hàng - Hoàn thành
+  Object.keys(counts).forEach(dot => {
+    // Lấy tổng số sản phẩm trong đợt hàng này
+    let dotTotal = 0;
+    if (moduleKey === 'donghang') {
+      const c = counts[dot];
+      dotTotal = (c.kp || 0) + (c.hs || 0) + (c.ht || 0);
+    } else {
+      dotTotal = counts[dot] || 0;
+    }
+    
+    const stats = statusStats[dot] || { banGiao: 0, inTheu: 0, hoanThien: 0, hoanThanh: 0, chuaHoanThanh: 0 };
+    
+    // Tính "Chưa hoàn thành" = Tổng - Hoàn thành
+    // Đảm bảo: Tổng = Hoàn thành + Chưa hoàn thành
+    const chuaHoanThanh = dotTotal - stats.hoanThanh;
+    // Đảm bảo giá trị không âm
+    const chuaHoanThanhFinal = Math.max(0, chuaHoanThanh);
+    chuaHoanThanhByDot[dot] = chuaHoanThanhFinal;
+    if (statusStats[dot]) {
+      statusStats[dot].chuaHoanThanh = chuaHoanThanhFinal;
+    }
+    
+    // Kiểm tra: Tổng phải bằng tổng các trạng thái
+    // Tổng = Hoàn thành + Chưa hoàn thành
+    const tongKiemTra = stats.hoanThanh + chuaHoanThanhFinal;
+    // Nếu không khớp, điều chỉnh "Chưa hoàn thành" để đảm bảo tổng bằng Tổng
+    if (tongKiemTra !== dotTotal && dotTotal > 0) {
+      const chuaHoanThanhAdjusted = dotTotal - stats.hoanThanh;
+      chuaHoanThanhByDot[dot] = Math.max(0, chuaHoanThanhAdjusted);
+      if (statusStats[dot]) {
+        statusStats[dot].chuaHoanThanh = Math.max(0, chuaHoanThanhAdjusted);
+      }
+    }
+  });
+  
+  // Tính tổng "Chưa hoàn thành" cho toàn bộ module
+  // Đảm bảo: Tổng = Hoàn thành + Chưa hoàn thành
+  let chuaHoanThanhCount = 0;
+  if (moduleKey === 'donghang') {
+    // Đóng hàng: Tổng - (3 dây chuyền hoàn thành)
+    // Sẽ tính sau khi tính hoàn thành theo dây chuyền
+  } else {
+    // Các module khác: Chưa hoàn thành = Tổng - Hoàn thành
+    // Đảm bảo: Tổng = Hoàn thành + Chưa hoàn thành
+    chuaHoanThanhCount = tongSo - hoanThanhCount;
+    // Đảm bảo giá trị không âm
+    if (chuaHoanThanhCount < 0) chuaHoanThanhCount = 0;
+  }
+  
+  // Tính hoàn thành theo 3 dây chuyền riêng biệt (chỉ cho Đóng hàng)
+  let hoanThanhKP_SX_TP_DH = 0; // KP -> SX -> TP -> ĐH
+  let hoanThanhHS_DH = 0;        // HS -> ĐH
+  let hoanThanhHT_DH = 0;        // HT -> ĐH
+  
+  // Chỉ tính khi moduleKey là 'donghang'
+  if (moduleKey === 'donghang') {
+    // Duyệt qua tất cả sản phẩm có trong Đóng hàng (đã lọc theo ngày)
+    data.forEach(p => {
+      const maGoc = (p.maGoc || p.ma || '').toString().trim();
+      if (!maGoc) return;
+      const code = maGoc.toLowerCase();
+      const isHS = code.startsWith('hs');
+      const isHT = code.startsWith('ht');
+      
+      if (isHS) {
+        // Dây chuyền HS -> ĐH: hoàn thành khi có ở HS và ĐH
+        if (presenceMaps.hangsan.has(maGoc)) {
+          hoanThanhHS_DH++;
+        }
+      } else if (isHT) {
+        // Dây chuyền HT -> ĐH: hoàn thành khi có ở HT và ĐH
+        if (presenceMaps.hangton.has(maGoc)) {
+          hoanThanhHT_DH++;
+        }
+      } else {
+        // Dây chuyền chính: hoàn thành khi có ở cả 4 bộ phận (KP, SX, TP, ĐH)
+        // KHÔNG cần theo thứ tự thêm sản phẩm - chỉ cần đảm bảo có đủ 4 bộ phận
+        if (presenceMaps.khophoi.has(maGoc) && 
+            presenceMaps.sanxuat.has(maGoc) && 
+            presenceMaps.thanhpham.has(maGoc)) {
+          hoanThanhKP_SX_TP_DH++;
+        }
+      }
+    });
+    
+    // Tính "Chưa hoàn thành" cho Đóng hàng sau khi đã tính hoàn thành theo dây chuyền
+    const totalHoanThanh = hoanThanhKP_SX_TP_DH + hoanThanhHS_DH + hoanThanhHT_DH;
+    chuaHoanThanhCount = tongSo - totalHoanThanh;
+    
+    // Cập nhật lại "Chưa hoàn thành" cho từng đợt hàng của Đóng hàng
+    Object.keys(counts).forEach(dot => {
+      const c = counts[dot];
+      const dotTotal = (c.kp || 0) + (c.hs || 0) + (c.ht || 0);
+      const stats = statusStats[dot] || { banGiao: 0, inTheu: 0, hoanThien: 0, hoanThanh: 0, chuaHoanThanh: 0 };
+      
+      // Tính hoàn thành của đợt hàng này (tổng 3 dây chuyền)
+      const dotData = data.filter(p => {
+        const maGoc = (p.maGoc || p.ma || '').toString().trim();
+        if (!maGoc) return false;
+        const code = maGoc.toLowerCase();
+        
+        let pDot = '';
+        if (moduleDots[moduleKey] && moduleDots[moduleKey][maGoc]) {
+          pDot = moduleDots[moduleKey][maGoc].toString().trim().toLowerCase();
+        } else if (p.dotHang) {
+          pDot = (p.dotHang || '').toString().trim().toLowerCase();
+        }
+        
+        if (pDot.startsWith('hs')) {
+          pDot = pDot.substring(2).trim();
+        }
+        if (pDot.startsWith('ht')) {
+          pDot = pDot.substring(2).trim();
+        }
+        
+        return pDot === dot;
+      });
+      
+      let dotHoanThanh = 0;
+      dotData.forEach(p => {
+        const maGoc = (p.maGoc || p.ma || '').toString().trim();
+        if (!maGoc) return;
+        const code = maGoc.toLowerCase();
+        const isHS = code.startsWith('hs');
+        const isHT = code.startsWith('ht');
+        
+        if (isHS && presenceMaps.hangsan.has(maGoc)) {
+          dotHoanThanh++;
+        } else if (isHT && presenceMaps.hangton.has(maGoc)) {
+          dotHoanThanh++;
+        } else if (!isHS && !isHT && 
+                   presenceMaps.khophoi.has(maGoc) && 
+                   presenceMaps.sanxuat.has(maGoc) && 
+                   presenceMaps.thanhpham.has(maGoc)) {
+          dotHoanThanh++;
+        }
+      });
+      
+      const dotChuaHoanThanh = dotTotal - dotHoanThanh;
+      if (statusStats[dot]) {
+        statusStats[dot].chuaHoanThanh = Math.max(0, dotChuaHoanThanh);
+      }
+      chuaHoanThanhByDot[dot] = Math.max(0, dotChuaHoanThanh);
+    });
+  } else {
+    // Các module khác: Tính "Hoàn thành" dựa trên việc tất cả sản phẩm trong đợt hàng đã có mặt ở module hiện tại
+    // Lấy tất cả sản phẩm từ tất cả các module để đảm bảo tính đầy đủ
+    const allModulesData = [
+      ...(moduleData.khophoi || []),
+      ...(moduleData.sanxuat || []),
+      ...(moduleData.thanhpham || []),
+      ...(moduleData.donghang || []),
+      ...(moduleData.hangsan || []),
+      ...(moduleData.hangton || [])
+    ];
+    
+    // Lọc theo ngày nếu có
+    const allDataFiltered = (tuNgayFilter || denNgayFilter) ? allModulesData.filter(filterByDate) : allModulesData;
+    
+    // Tạo Set để loại bỏ trùng lặp mã sản phẩm
+    const allProductsSet = new Set();
+    const productsByDot = {};
+    
+    for (let i = 0; i < allDataFiltered.length; i++) {
+      const p = allDataFiltered[i];
+      const maGoc = (p.maGoc || p.ma || '').toString().trim();
+      if (!maGoc) continue;
+      
+      // Chỉ xử lý mỗi mã một lần
+      if (allProductsSet.has(maGoc)) continue;
+      allProductsSet.add(maGoc);
+      
+      // Lấy đợt hàng từ dữ liệu hoặc từ moduleDots
+      let dot = (p.dotHang || '').toString().trim().toLowerCase();
+      if (!dot) {
+        // Thử lấy từ moduleDots
+        for (let modKey in moduleDots) {
+          if (moduleDots[modKey] && moduleDots[modKey][maGoc]) {
+            dot = moduleDots[modKey][maGoc].toLowerCase().trim();
+            break;
+          }
+        }
+      }
+      
+      // Chuẩn hóa đợt hàng (loại bỏ tiền tố hs/ht nếu có)
+      const code = maGoc.toLowerCase();
+      if (code.startsWith('hs') && dot.startsWith('hs')) {
+        dot = dot.substring(2).trim();
+      } else if (code.startsWith('ht') && dot.startsWith('ht')) {
+        dot = dot.substring(2).trim();
+      }
+      
+      if (!dot) continue;
+      
+      if (!productsByDot[dot]) {
+        productsByDot[dot] = [];
+      }
+      productsByDot[dot].push(maGoc);
+    }
+    
+    // Đếm số sản phẩm "Hoàn thành": sản phẩm có trong đợt hàng VÀ đã có mặt ở module hiện tại
+    let hoanThanh = 0;
+    const dotKeys = Object.keys(productsByDot);
+    for (let i = 0; i < dotKeys.length; i++) {
+      const dot = dotKeys[i];
+      const products = productsByDot[dot];
+      
+      // Đếm số sản phẩm trong đợt hàng này đã có mặt ở module hiện tại
+      for (let j = 0; j < products.length; j++) {
+        const maGoc = products[j];
+        if (presenceMaps[moduleKey].has(maGoc)) {
+          hoanThanh++;
+        }
+      }
+    }
+    
+    hoanThanhKP_SX_TP_DH = hoanThanh;
+  }
+  
+  // Tính "Đang xử lý": sản phẩm KHÔNG hoàn thành và chưa hoàn thành toàn bộ dây chuyền
+  // SỬ DỤNG CÙNG LOGIC với thanh thống kê tổng để đảm bảo khớp 100%
+  const dangXuLy = data.filter(p => {
+    const trangThai = (p.trangThai || '').toString().trim();
+    const maGoc = (p.maGoc || p.ma || '').toString().trim();
+    if (!maGoc) return false;
+    
+    // Kiểm tra hoàn thành theo trạng thái đúng của từng bộ phận (không dùng "Hoàn thành" nữa)
+    let isHoanThanh = false;
+    if (moduleKey === 'khophoi' || moduleKey === 'hangsan' || moduleKey === 'hangton') {
+      isHoanThanh = trangThai === 'Bàn giao';
+    } else if (moduleKey === 'sanxuat') {
+      isHoanThanh = trangThai === 'In & thêu' || trangThai === 'Inthêu';
+    } else if (moduleKey === 'thanhpham') {
+      isHoanThanh = trangThai === 'Hoàn thiện';
+    }
+    
+    // Phải không hoàn thành
+    if (isHoanThanh) return false;
+    
+    // Kiểm tra hoàn thành toàn bộ dây chuyền (giống logic thanh thống kê tổng)
+    const code = maGoc.toLowerCase();
+    const isHS = code.startsWith('hs');
+    const isHT = code.startsWith('ht');
+    
+    let isCompletedFullChain = false;
+    if (isHS) {
+      isCompletedFullChain = presenceMaps.hangsan.has(maGoc) && presenceMaps.donghang.has(maGoc);
+    } else if (isHT) {
+      isCompletedFullChain = presenceMaps.hangton.has(maGoc) && presenceMaps.donghang.has(maGoc);
+    } else {
+      isCompletedFullChain = presenceMaps.khophoi.has(maGoc) &&
+                             presenceMaps.sanxuat.has(maGoc) &&
+                             presenceMaps.thanhpham.has(maGoc) &&
+                             presenceMaps.donghang.has(maGoc);
+    }
+    
+    // Đang xử lý = không hoàn thành và chưa hoàn thành toàn bộ dây chuyền
+    return !isCompletedFullChain;
+  }).length;
+
+  const getOrder = (dot) => {
+    if (!dot) return 8000;
+    const lowerDot = dot.toLowerCase().trim();
+    if (lowerDot.startsWith('sp')) {
+      const num = lowerDot.match(/sp(\d+)/);
+      if (num) return parseInt(num[1]);
+      if (lowerDot.includes('thieu')) return 11;
+      return 1000;
+    }
+    if (lowerDot === 'ctv') return 100;
+    if (lowerDot === 'mvd') return 200;
+    if (lowerDot === 'bnv') return 300;
+    if (lowerDot.startsWith('si')) {
+      if (lowerDot === 'sihoang') return 400;
+      if (lowerDot === 'siminhhuong') return 500;
+      return 600;
+    }
+    if (lowerDot.endsWith('lon')) {
+      if (lowerDot === 'inlon') return 700;
+      if (lowerDot === 'phoisoanlon') return 800;
+      if (lowerDot === 'tonsoanlon') return 900;
+      return 1000;
+    }
+    if (lowerDot === 'lun') return 1100;
+    if (lowerDot === 'do') return 1200;
+    if (lowerDot === 'mayhu') return 1300;
+    if (lowerDot.endsWith('hu')) return 1400;
+    return 7000;
+  };
+
+  const dots = Object.keys(counts).sort((a,b)=>{
+    const oa = getOrder(a); const ob = getOrder(b);
+    if (oa === ob) return a.localeCompare(b);
+    return oa - ob;
+  });
+
+  let html = `<div class='stat-cell'><h4>${title}</h4>`;
+  // Hiển thị thống kê trạng thái: Tổng, Bàn giao, Hoàn thành
+  html += `<div style="background:#f5f5f5;padding:8px;border-radius:4px;margin-bottom:8px;font-size:12px;">
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+      <span style="font-weight:bold;">Tổng:</span>
+      <span style="color:#1976D2;font-weight:bold;">${tongSo}</span>
+    </div>`;
+  
+  // Hiển thị "Bàn giao" cho KP, HS, HT
+  if (moduleKey === 'khophoi' || moduleKey === 'hangsan' || moduleKey === 'hangton') {
+    html += `
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+      <span style="color:#ff9800;">📦 Bàn giao:</span>
+      <span style="color:#ff9800;font-weight:bold;">${banGiaoCount}</span>
+    </div>`;
+  }
+  
+  // Hiển thị "In & thêu" cho Sản xuất
+  if (moduleKey === 'sanxuat') {
+    html += `
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+      <span style="color:#2196f3;">🖨️ In & thêu:</span>
+      <span style="color:#2196f3;font-weight:bold;">${inTheuCount}</span>
+    </div>`;
+  }
+  
+  // Hiển thị "Hoàn thiện" cho Thành phẩm
+  if (moduleKey === 'thanhpham') {
+    html += `
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+      <span style="color:#9c27b0;">✨ Hoàn thiện:</span>
+      <span style="color:#9c27b0;font-weight:bold;">${hoanThienCount}</span>
+    </div>`;
+  }
+  
+  // Hiển thị "Hoàn thành" của từng bộ phận
+  if (moduleKey === 'donghang') {
+    // Đóng hàng: Hiển thị 3 dây chuyền hoàn thành
+    html += `
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+      <span style="color:#2e7d32;">✅ Hoàn thành (KP-SX-TP-ĐH):</span>
+      <span style="color:#2e7d32;font-weight:bold;">${hoanThanhKP_SX_TP_DH}</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+      <span style="color:#2e7d32;">✅ Hoàn thành (HS-ĐH):</span>
+      <span style="color:#2e7d32;font-weight:bold;">${hoanThanhHS_DH}</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+      <span style="color:#2e7d32;">✅ Hoàn thành (HT-ĐH):</span>
+      <span style="color:#2e7d32;font-weight:bold;">${hoanThanhHT_DH}</span>
+    </div>`;
+  } else {
+    // Các module khác: Hiển thị hoàn thành của từng bộ phận (luôn hiển thị, kể cả = 0)
+    html += `
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+      <span style="color:#2e7d32;">✅ Hoàn thành:</span>
+      <span style="color:#2e7d32;font-weight:bold;">${hoanThanhCount}</span>
+    </div>`;
+  }
+  
+  
+  html += `</div>`;
+  // Đối với donghang, hiển thị 3 cột riêng: KP, HS, HT + cột Trạng thái
+  if (moduleKey === 'donghang') {
+    html += `<table class="stat-table"><thead><tr><th>Đợt hàng</th><th style=\"text-align:right\">KP</th><th style=\"text-align:right\">HS</th><th style=\"text-align:right\">HT</th><th style=\"text-align:left\">Trạng thái</th></tr></thead><tbody>`;
+    for (let i = 0; i < dots.length; i++) {
+      const dot = dots[i];
+      const c = counts[dot];
+      const stats = statusStats[dot] || { banGiao: 0, inTheu: 0, hoanThien: 0, hoanThanh: 0, chuaHoanThanh: 0 };
+      const statusText = [];
+      if (stats.hoanThanh > 0) statusText.push(`✅ ${stats.hoanThanh}`);
+      if (stats.banGiao > 0) statusText.push(`📦 ${stats.banGiao}`);
+      if (stats.inTheu > 0) statusText.push(`🖨️ ${stats.inTheu}`);
+      if (stats.hoanThien > 0) statusText.push(`✨ ${stats.hoanThien}`);
+      html += `<tr><td class=\"label\">${dot || ''}</td>` +
+              `<td class=\"value\">${c.kp || 0}</td>` +
+              `<td class=\"value\">${c.hs || 0}</td>` +
+              `<td class=\"value\">${c.ht || 0}</td>` +
+              `<td style=\"font-size:11px;color:#666;\">${statusText.length > 0 ? statusText.join(' | ') : '-'}</td></tr>`;
+    }
+  } else {
+    // Các module khác: hiển thị SL + cột Trạng thái
+    html += `<table class="stat-table"><thead><tr><th>Đợt hàng</th><th style=\"text-align:right\">SL</th><th style=\"text-align:left\">Trạng thái</th></tr></thead><tbody>`;
+    for (let i = 0; i < dots.length; i++) {
+      const dot = dots[i];
+      const stats = statusStats[dot] || { banGiao: 0, inTheu: 0, hoanThien: 0, hoanThanh: 0, chuaHoanThanh: 0 };
+      const statusText = [];
+      if (stats.hoanThanh > 0) statusText.push(`✅ ${stats.hoanThanh}`);
+      if (stats.banGiao > 0) statusText.push(`📦 ${stats.banGiao}`);
+      if (stats.inTheu > 0) statusText.push(`🖨️ ${stats.inTheu}`);
+      if (stats.hoanThien > 0) statusText.push(`✨ ${stats.hoanThien}`);
+      html += `<tr><td class=\"label\">${dot || ''}</td><td class=\"value\">${counts[dot]}</td><td style=\"font-size:11px;color:#666;\">${statusText.length > 0 ? statusText.join(' | ') : '-'}</td></tr>`;
+    }
+  }
+  html += `</tbody></table></div>`;
+  return html;
+}
+
+function layThoiGianTuMa(ma){
+  if(!ma) return "";
+  let m=ma.match(/(\d{1,2}\/\d{1,2}\/\d{4}.*)$/);
+  return m?m[1].trim():"";
+}
+
+// 🔥 TỐI ƯU HÀM HIỂN THỊ VỚI DEBOUNCE VÀ CACHE
+let filterTimeout = null;
+let lastFilterState = null;
+let isRendering = false; // Flag để tránh render đồng thời
+
+// Debounce function tối ưu
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Throttle function cho scroll và resize
+function throttle(func, limit) {
+  let inThrottle;
+  return function(...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+}
+
+const hienThiDebounced = debounce(() => {
+  if (!isRendering) {
+    hienThiImmediate();
+  }
+}, 100); // Giảm từ 150ms xuống 100ms cho phản hồi nhanh hơn
+
+function hienThi() {
+  // CHỈ hiển thị nếu đã đăng nhập
+  const authenticated = window.isAuthenticated || isAuthenticated;
+  if (!authenticated) {
+    console.log('🔒 Chưa đăng nhập - Không hiển thị dữ liệu');
+    return;
+  }
+  hienThiDebounced();
+}
+
+function hienThiImmediate() {
+  // CHỈ hiển thị nếu đã đăng nhập
+  const authenticated = window.isAuthenticated || isAuthenticated;
+  if (!authenticated) {
+    return;
+  }
+  
+  if (isRendering) return; // Tránh render đồng thời
+  isRendering = true;
+  
+  loadPresenceMaps().then(() => {
+    // Lưu vị trí cuộn trước khi xử lý (chỉ khi đang ở tab-data và không phải filter thay đổi)
+    const tabData = document.getElementById("tab-data");
+    const isTabActive = tabData && tabData.classList.contains('active');
+    
+    const tuKhoa = document.getElementById("tuKhoa").value.trim().toLowerCase();
+    // Đọc giá trị bộ lọc trực tiếp từ DOM để tránh trạng thái cache cũ
+    const selectedTrangThai = (document.getElementById('filterTrangThai') && document.getElementById('filterTrangThai').value) || '';
+    const selectedDotHang   = (document.getElementById('filterDotHang') && document.getElementById('filterDotHang').value) || '';
+    const selectedLoaiHang  = (document.getElementById('filterLoaiHang') && document.getElementById('filterLoaiHang').value) || '';
+    const selectedLoaiSX    = (document.getElementById('filterLoaiSX') && document.getElementById('filterLoaiSX').value) || '';
+    const selectedDayChuyen = (document.getElementById('filterDayChuyen') && document.getElementById('filterDayChuyen').value) || '';
+
+    // 🔥 TỐI ƯU: Kiểm tra filter state trước khi tính toán lại
+    const currentFilterState = `${tuKhoa}_${selectedTrangThai}_${selectedDotHang}_${selectedLoaiHang}_${selectedLoaiSX}_${selectedDayChuyen}_${tuNgayFilter}_${denNgayFilter}`;
+    
+    const filterChanged = currentFilterState !== lastFilterState;
+    
+    // Lưu vị trí cuộn trước khi clear (chỉ khi filter không thay đổi và không đang restore)
+    if (isTabActive && !filterChanged && !isRestoringScroll) {
+      // Lấy scroll position từ window/documentElement (scroll chính của trang)
+      savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    } else if (filterChanged) {
+      // Filter thay đổi, reset scroll position
+      savedScrollPosition = null;
+    }
+    
+    // Chỉ reset về trang 1 khi filter thay đổi (không phải khi dữ liệu tự động cập nhật)
+    if (filterChanged) {
+      currentPage = 1;
+    }
+    
+      // Cập nhật khối thống kê (bao gồm Đợt hàng 4 bộ phận) - chỉ khi cần
+    try { 
+      // Invalid cache khi filter thay đổi hoặc dữ liệu thay đổi
+      if (currentFilterState !== lastFilterState || !statsCache.data) {
+        // Sử dụng requestIdleCallback để render thống kê khi browser rảnh
+        const scheduleStats = (callback) => {
+          if (window.requestIdleCallback) {
+            requestIdleCallback(callback, { timeout: 100 });
+          } else {
+            requestAnimationFrame(callback);
+          }
+        };
+        
+        scheduleStats(() => {
+          thongKe();
+        });
+        lastFilterState = currentFilterState;
+      }
+    } catch(e) { console.warn('thongKe() error', e); }
+
+    // Lấy danh sách tất cả mã xuất hiện ở bất kỳ bộ phận nào
+    const allMaSet = new Set([
+      ...presenceMaps.khophoi,
+      ...presenceMaps.sanxuat,
+      ...presenceMaps.thanhpham,
+      ...presenceMaps.donghang,
+      ...presenceMaps.hangsan,
+      ...presenceMaps.hangton
+    ]);
+    // ✅ Cập nhật mergedData global để hàm xemLichSuMa() có thể truy cập
+    mergedData = Array.from(allMaSet).map(maGoc => {
+      const item = duLieu.find(d => d.maGoc === maGoc) || { maGoc };
+      // Nếu thiếu đợt hàng/loại hàng/loại SX thì suy ra từ mã
+      if (!item.dotHang || !item.loaiHang || !item.loaiSX) {
+        const fromMa = deriveFieldsFromCode(item.ma || item.maGoc || '');
+        if (!item.dotHang && fromMa.dotHang) item.dotHang = fromMa.dotHang;
+        if (!item.loaiHang && fromMa.loaiHang) item.loaiHang = fromMa.loaiHang;
+        if (!item.loaiSX && fromMa.loaiSX) item.loaiSX = fromMa.loaiSX;
+      }
+      return item;
+    });
+
+    // Tự động cập nhật trạng thái Hoàn thành dựa trên bộ phận đã đủ (trước khi lọc)
+    const needSync = autoUpdateStatuses(mergedData);
+    // Tổng sản phẩm của toàn bộ dữ liệu (không phụ thuộc bộ lọc)
+    const totalAllProducts = mergedData.length;
+
+    // Lọc theo từ khoá nếu có
+    if (tuKhoa) {
+      const norm = (s) => (s || "").toString().toLowerCase().replace(/\s+/g,' ').trim();
+      const needle = norm(tuKhoa);
+      mergedData = mergedData.filter(item => {
+        const haystack = norm([
+          item.maGoc, item.ma, item.trangThai, item.dotHang, item.loaiHang, item.loaiSX, item.mau, item.size, item.thoiGian, item.ghiChu
+        ].join(' '));
+        return haystack.includes(needle);
+      });
+    }
+
+    // Cập nhật danh sách tuỳ chọn cho các bộ lọc từ dữ liệu hiện tại
+    try {
+      const setOptions = (selectId, values) => {
+        const sel = document.getElementById(selectId);
+        if (!sel) return;
+        const current = sel.value;
+        const opts = [''].concat(Array.from(values)).map(v => ({ val: v, text: v || '-- Tất cả --' }));
+        sel.innerHTML = opts.map(o => `<option value="${o.val}">${o.text || o.val}</option>`).join('');
+        if (current && values.has(current)) sel.value = current; // giữ lựa chọn nếu còn tồn tại
+      };
+      // Trạng thái: có 2 trạng thái: Hoàn thành, Chưa hoàn thành
+      const valsTrangThai = new Set(['Hoàn thành','Chưa hoàn thành']);
+      const valsDotHang = new Set();
+      const valsLoaiHang = new Set();
+      const valsLoaiSX = new Set();
+      
+      // 🔥 TỐI ƯU: Sử dụng for loop thay vì forEach
+      for (let i = 0; i < mergedData.length; i++) {
+        const d = mergedData[i];
+        if (!d) continue;
+        if (d.dotHang) valsDotHang.add(d.dotHang);
+        if (d.loaiHang) valsLoaiHang.add(d.loaiHang);
+        if (d.loaiSX) valsLoaiSX.add(d.loaiSX);
+      }
+      setOptions('filterTrangThai', valsTrangThai);
+      setOptions('filterDotHang', valsDotHang);
+      setOptions('filterLoaiHang', valsLoaiHang);
+      setOptions('filterLoaiSX', valsLoaiSX);
+    } catch(e) { console.warn('Populate filters failed', e); }
+
+    // Lưu mergedData trước khi lọc trạng thái để tính "Tổng sản phẩm" (không phụ thuộc vào filter trạng thái)
+    // mergedDataBeforeStatusFilter: đã lọc theo từ khóa, dây chuyền, đợt hàng, loại hàng, loại SX, ngày (nhưng CHƯA lọc trạng thái)
+    let mergedDataBeforeStatusFilter = mergedData.slice();
+    
+    // Áp dụng các bộ lọc đã chọn (bao gồm cả trạng thái)
+    mergedData = mergedData.filter(d => {
+      const rawStatus = (d.trangThai || '').trim();
+      const maGoc = d.maGoc || '';
+      // Lọc theo dây chuyền
+      const dayChuyenValue = selectedDayChuyen || dayChuyenFilter || '';
+      if (dayChuyenValue) {
+        const chain = getProductChain(d);
+        if (chain !== dayChuyenValue) return false;
+      }
+      
+      // Lọc theo đợt hàng, loại hàng, loại SX, ngày TRƯỚC KHI lọc trạng thái
+      const dotVal = selectedDotHang || dotHangFilter || '';
+      const lhVal  = selectedLoaiHang || loaiHangFilter || '';
+      const lxVal  = selectedLoaiSX || loaiSXFilter || '';
+      if (dotVal && (d.dotHang || '') !== dotVal) return false;
+      if (lhVal && (d.loaiHang || '') !== lhVal) return false;
+      if (lxVal && (d.loaiSX || '') !== lxVal) return false;
+      
+      // Lọc theo thời gian (từ ngày đến ngày) - lấy từ mã sản phẩm
+      if(tuNgayFilter || denNgayFilter) {
+        // Lấy thời gian từ mã sản phẩm (maGoc hoặc ma)
+        const maSanPham = d.maGoc || d.ma || "";
+        const itemThoiGian = layThoiGianTuMa(maSanPham);
+        
+        if(itemThoiGian) {
+          // Parse thời gian từ mã sản phẩm (hỗ trợ nhiều format)
+          const parseDate = (dateStr) => {
+            if(!dateStr) return null;
+            
+            // Format 1: DD/MM/YYYY hoặc DD/MM/YYYY HH:mm:ss (từ mã sản phẩm)
+            const match1 = dateStr.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+            if(match1) {
+              const day = parseInt(match1[1], 10);
+              const month = parseInt(match1[2], 10) - 1;
+              const year = parseInt(match1[3], 10);
+              return new Date(year, month, day);
+            }
+            
+            // Format 2: DD/MM/YYYY, HH:mm:ss (từ toLocaleString() - locale vi-VN)
+            const match2 = dateStr.match(/(\d{1,2})\/(\d{1,2})\/(\d{4}),?\s*(\d{1,2}):(\d{1,2}):(\d{1,2})/);
+            if(match2) {
+              const day = parseInt(match2[1], 10);
+              const month = parseInt(match2[2], 10) - 1;
+              const year = parseInt(match2[3], 10);
+              return new Date(year, month, day);
+            }
+            
+            // Format 3: ISO format (YYYY-MM-DD hoặc YYYY-MM-DDTHH:mm:ss)
+            const match3 = dateStr.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+            if(match3) {
+              const year = parseInt(match3[1], 10);
+              const month = parseInt(match3[2], 10) - 1;
+              const day = parseInt(match3[3], 10);
+              return new Date(year, month, day);
+            }
+            
+            // Format 4: Thử parse bằng Date constructor (fallback)
+            const parsed = new Date(dateStr);
+            if(!isNaN(parsed.getTime())) {
+              return parsed;
+            }
+            
+            return null;
+          };
+          
+          const itemDate = parseDate(itemThoiGian);
+          if(itemDate) {
+            // So sánh với từ ngày
+            if(tuNgayFilter) {
+              const tuNgay = new Date(tuNgayFilter);
+              tuNgay.setHours(0, 0, 0, 0);
+              if(itemDate < tuNgay) return false;
+            }
+            // So sánh với đến ngày
+            if(denNgayFilter) {
+              const denNgay = new Date(denNgayFilter);
+              denNgay.setHours(23, 59, 59, 999);
+              if(itemDate > denNgay) return false;
+            }
+          } else {
+            // Nếu không parse được thời gian và có filter, bỏ qua item này
+            if(tuNgayFilter || denNgayFilter) return false;
+          }
+        } else {
+          // Nếu không có thời gian trong mã sản phẩm và có filter, bỏ qua item này
+          if(tuNgayFilter || denNgayFilter) return false;
+        }
+      }
+      
+      // Lọc theo trạng thái - sử dụng logic giống tính thống kê
+      const normalizedFilter = ((selectedTrangThai || trangThaiFilter || '') === 'Hoàn thành (Tự động)') ? 'Hoàn thành' : ((selectedTrangThai || trangThaiFilter || ''));
+      
+      // Logic filter: Có 2 trạng thái - Hoàn thành và Chưa hoàn thành
+      if (normalizedFilter === 'Hoàn thành') {
+        // Kiểm tra hoàn thành theo dây chuyền (giống logic tính thống kê)
+        const code = maGoc.toLowerCase();
+        const isHS = code.startsWith('hs');
+        const isHT = code.startsWith('ht');
+        
+        let isCompleted = false;
+        if (isHS) {
+          isCompleted = presenceMaps.hangsan.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else if (isHT) {
+          isCompleted = presenceMaps.hangton.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else {
+          isCompleted = presenceMaps.khophoi.has(maGoc) &&
+                       presenceMaps.sanxuat.has(maGoc) &&
+                       presenceMaps.thanhpham.has(maGoc) &&
+                       presenceMaps.donghang.has(maGoc);
+        }
+        if (!isCompleted) return false;
+      } else if (normalizedFilter === 'Chưa hoàn thành' || normalizedFilter === 'Đang xử lý') {
+        // Kiểm tra "Chưa hoàn thành": không hoàn thành toàn bộ dây chuyền
+        // Kiểm tra hoàn thành toàn bộ dây chuyền
+        const code = maGoc.toLowerCase();
+        const isHS = code.startsWith('hs');
+        const isHT = code.startsWith('ht');
+        
+        let isCompletedFullChain = false;
+        if (isHS) {
+          isCompletedFullChain = presenceMaps.hangsan.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else if (isHT) {
+          isCompletedFullChain = presenceMaps.hangton.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else {
+          isCompletedFullChain = presenceMaps.khophoi.has(maGoc) &&
+                                 presenceMaps.sanxuat.has(maGoc) &&
+                                 presenceMaps.thanhpham.has(maGoc) &&
+                                 presenceMaps.donghang.has(maGoc);
+        }
+        
+        // Nếu hoàn thành toàn bộ dây chuyền → không phải "Chưa hoàn thành"
+        if (isCompletedFullChain) return false;
+      }
+      
+      return true;
+    });
+    
+    // Cập nhật mergedDataBeforeStatusFilter: lọc theo tất cả filter TRỪ trạng thái
+    mergedDataBeforeStatusFilter = mergedDataBeforeStatusFilter.filter(d => {
+      const maGoc = d.maGoc || '';
+      // Lọc theo dây chuyền
+      const dayChuyenValue = selectedDayChuyen || dayChuyenFilter || '';
+      if (dayChuyenValue) {
+        const chain = getProductChain(d);
+        if (chain !== dayChuyenValue) return false;
+      }
+      
+      // Lọc theo đợt hàng, loại hàng, loại SX
+      const dotVal = selectedDotHang || dotHangFilter || '';
+      const lhVal  = selectedLoaiHang || loaiHangFilter || '';
+      const lxVal  = selectedLoaiSX || loaiSXFilter || '';
+      if (dotVal && (d.dotHang || '') !== dotVal) return false;
+      if (lhVal && (d.loaiHang || '') !== lhVal) return false;
+      if (lxVal && (d.loaiSX || '') !== lxVal) return false;
+      
+      // Lọc theo thời gian (từ ngày đến ngày) - lấy từ mã sản phẩm
+      if(tuNgayFilter || denNgayFilter) {
+        const maSanPham = d.maGoc || d.ma || "";
+        const itemThoiGian = layThoiGianTuMa(maSanPham);
+        
+        if(itemThoiGian) {
+          const parseDate = (dateStr) => {
+            if(!dateStr) return null;
+            const match1 = dateStr.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+            if(match1) {
+              const day = parseInt(match1[1], 10);
+              const month = parseInt(match1[2], 10) - 1;
+              const year = parseInt(match1[3], 10);
+              return new Date(year, month, day);
+            }
+            const match2 = dateStr.match(/(\d{1,2})\/(\d{1,2})\/(\d{4}),?\s*(\d{1,2}):(\d{1,2}):(\d{1,2})/);
+            if(match2) {
+              const day = parseInt(match2[1], 10);
+              const month = parseInt(match2[2], 10) - 1;
+              const year = parseInt(match2[3], 10);
+              return new Date(year, month, day);
+            }
+            const match3 = dateStr.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+            if(match3) {
+              const year = parseInt(match3[1], 10);
+              const month = parseInt(match3[2], 10) - 1;
+              const day = parseInt(match3[3], 10);
+              return new Date(year, month, day);
+            }
+            const parsed = new Date(dateStr);
+            if(!isNaN(parsed.getTime())) return parsed;
+            return null;
+          };
+          
+          const itemDate = parseDate(itemThoiGian);
+          if(itemDate) {
+            if(tuNgayFilter) {
+              const tuNgay = new Date(tuNgayFilter);
+              tuNgay.setHours(0, 0, 0, 0);
+              if(itemDate < tuNgay) return false;
+            }
+            if(denNgayFilter) {
+              const denNgay = new Date(denNgayFilter);
+              denNgay.setHours(23, 59, 59, 999);
+              if(itemDate > denNgay) return false;
+            }
+          } else {
+            if(tuNgayFilter || denNgayFilter) return false;
+          }
+        } else {
+          if(tuNgayFilter || denNgayFilter) return false;
+        }
+      }
+      
+      return true;
+    });
+
+    // Tính số liệu tổng quan theo dữ liệu đã lọc
+    try {
+      // LƯU Ý: "Tổng sản phẩm" sẽ được tính từ tổng các trạng thái
+      // để đảm bảo: Tổng = Đang xử lý + Hoàn thành
+      // KHÔNG dùng mergedData.length vì "Đang xử lý" tính từ tổng các module (có thể đếm trùng)
+      
+      // Tính "Đang xử lý", "Hoàn thành" từ mergedData (sản phẩm unique)
+      // Để đảm bảo tổng = Đang xử lý + Hoàn thành + Bàn giao = Tổng sản phẩm
+      let completedCount = 0;
+      let inProgressCount = 0;
+      let banGiaoCount = 0; // Đếm "Bàn giao" từ các module KP, HS, HT
+      
+      // 🔥 TỐI ƯU: Duyệt qua mergedData (mỗi mã chỉ xuất hiện 1 lần)
+      for (let i = 0; i < mergedData.length; i++) {
+        const item = mergedData[i];
+        const maGoc = (item.maGoc || item.ma || '').toString().trim();
+        if (!maGoc) continue;
+        
+        const displayStatus = ((item.trangThai || '').trim());
+        
+        // Kiểm tra trạng thái "Hoàn thành" theo dây chuyền (giống autoUpdateStatuses)
+        // KHÔNG chỉ dựa vào trạng thái trong module, mà phải kiểm tra presence thực tế
+        // Điều này đảm bảo tính chính xác: một sản phẩm chỉ "Hoàn thành" khi có đủ ở tất cả bước trong dây chuyền
+        const code = maGoc.toLowerCase();
+        const isHS = code.startsWith('hs');
+        const isHT = code.startsWith('ht');
+        
+        let isCompleted = false;
+        if (isHS) {
+          // Dây chuyền HS -> ĐH: phải có ở Hàng sẵn VÀ Đóng hàng
+          isCompleted = presenceMaps.hangsan.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else if (isHT) {
+          // Dây chuyền HT -> ĐH: phải có ở Hàng tồn VÀ Đóng hàng
+          isCompleted = presenceMaps.hangton.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else {
+          // Dây chuyền chính: phải có đủ ở tất cả 4 bộ phận (KP, SX, TP, ĐH)
+          // KHÔNG cần theo thứ tự thêm sản phẩm - chỉ cần đảm bảo có đủ 4 bộ phận
+          isCompleted = presenceMaps.khophoi.has(maGoc) && 
+                       presenceMaps.sanxuat.has(maGoc) && 
+                       presenceMaps.thanhpham.has(maGoc) && 
+                       presenceMaps.donghang.has(maGoc);
+        }
+        
+        // Nếu hoàn thành, đếm vào "Hoàn thành" (ưu tiên cao nhất)
+        if (isCompleted) {
+          completedCount++;
+          continue;
+        }
+        
+        // Kiểm tra "Bàn giao" (ưu tiên thứ ba) - từ các module KP, HS, HT
+        // "Bàn giao" là trạng thái của sản phẩm ở các module này khi chưa hoàn thành toàn bộ dây chuyền
+        const codeLower = maGoc.toLowerCase();
+        const isKP_Check = codeLower.startsWith('kp') || (!codeLower.startsWith('hs') && !codeLower.startsWith('ht'));
+        const isHS_Check = codeLower.startsWith('hs');
+        const isHT_Check = codeLower.startsWith('ht');
+        
+        let isBanGiao = false;
+        if (isKP_Check && presenceMaps.khophoi.has(maGoc)) {
+          // Kiểm tra trạng thái "Bàn giao" trong module khophoi
+          const kpItem = moduleData.khophoi.find(p => (p.maGoc || p.ma || '').toString().trim() === maGoc);
+          if (kpItem && (kpItem.trangThai || '').trim() === 'Bàn giao') {
+            isBanGiao = true;
+          }
+        } else if (isHS_Check && presenceMaps.hangsan.has(maGoc)) {
+          // Kiểm tra trạng thái "Bàn giao" trong module hangsan
+          const hsItem = moduleData.hangsan.find(p => (p.maGoc || p.ma || '').toString().trim() === maGoc);
+          if (hsItem && (hsItem.trangThai || '').trim() === 'Bàn giao') {
+            isBanGiao = true;
+          }
+        } else if (isHT_Check && presenceMaps.hangton.has(maGoc)) {
+          // Kiểm tra trạng thái "Bàn giao" trong module hangton
+          const htItem = moduleData.hangton.find(p => (p.maGoc || p.ma || '').toString().trim() === maGoc);
+          if (htItem && (htItem.trangThai || '').trim() === 'Bàn giao') {
+            isBanGiao = true;
+          }
+        }
+        
+        if (isBanGiao) {
+          banGiaoCount++;
+          continue;
+        }
+        
+        // Tất cả sản phẩm không hoàn thành, không thiếu bước trước và không bàn giao đều là "Chưa hoàn thành"
+      }
+      
+      // Tính "Đang xử lý" theo DÂY CHUYỀN sản xuất
+      // Sử dụng Set để tránh đếm trùng sản phẩm "Đang xử lý"
+      const inProgressProductsSet = new Set();
+      
+      // 🔥 TỐI ƯU: Duyệt qua mergedData (dữ liệu đã lọc)
+      for (let i = 0; i < mergedData.length; i++) {
+        const item = mergedData[i];
+        const maGoc = (item.maGoc || item.ma || '').toString().trim();
+        if (!maGoc) continue;
+        
+        // Kiểm tra xem có phải "Hoàn thành" toàn bộ dây chuyền không
+        const code = maGoc.toLowerCase();
+        const isHS = code.startsWith('hs');
+        const isHT = code.startsWith('ht');
+        
+        let isCompletedFullChain = false;
+        if (isHS) {
+          isCompletedFullChain = presenceMaps.hangsan.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else if (isHT) {
+          isCompletedFullChain = presenceMaps.hangton.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else {
+          isCompletedFullChain = presenceMaps.khophoi.has(maGoc) &&
+                                 presenceMaps.sanxuat.has(maGoc) &&
+                                 presenceMaps.thanhpham.has(maGoc) &&
+                                 presenceMaps.donghang.has(maGoc);
+        }
+        
+        // Nếu KHÔNG hoàn thành toàn bộ dây chuyền → "Đang xử lý"
+        if (!isCompletedFullChain) {
+          
+          // Đảm bảo sản phẩm này có ở ít nhất 1 module trong dây chuyền
+          const hasInChain = presenceMaps.khophoi.has(maGoc) ||
+                             presenceMaps.sanxuat.has(maGoc) ||
+                             presenceMaps.thanhpham.has(maGoc) ||
+                             presenceMaps.donghang.has(maGoc) ||
+                             presenceMaps.hangsan.has(maGoc) ||
+                             presenceMaps.hangton.has(maGoc);
+          
+          if (hasInChain) {
+            inProgressProductsSet.add(maGoc);
+          }
+        }
+      }
+      
+      // "Đang xử lý" = số lượng unique sản phẩm trong mergedData (đã lọc)
+      // Khớp với số lượng hiển thị trong danh sách
+      inProgressCount = inProgressProductsSet.size;
+      
+      // Debug: số lượng từ mergedData (đã lọc) để so sánh với thống kê đợt hàng
+      const sanxuatInProgress = Array.from(inProgressProductsSet).filter(maGoc => {
+        if (!presenceMaps.sanxuat.has(maGoc)) return false;
+        const sxItem = (moduleData.sanxuat || []).find(p => (p.maGoc || p.ma || '').toString().trim() === maGoc);
+        if (!sxItem) return false;
+        const sxStatus = (sxItem.trangThai || '').toString().trim();
+        if (sxStatus === 'Hoàn thành') return false;
+        // Đã bỏ kiểm tra thiếu bước trước
+        // Kiểm tra hoàn thành toàn bộ dây chuyền
+        const code = maGoc.toLowerCase();
+        const isHS = code.startsWith('hs');
+        const isHT = code.startsWith('ht');
+        let isCompletedFullChain = false;
+        if (isHS) {
+          isCompletedFullChain = presenceMaps.hangsan.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else if (isHT) {
+          isCompletedFullChain = presenceMaps.hangton.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else {
+          isCompletedFullChain = presenceMaps.khophoi.has(maGoc) &&
+                                 presenceMaps.sanxuat.has(maGoc) &&
+                                 presenceMaps.thanhpham.has(maGoc) &&
+                                 presenceMaps.donghang.has(maGoc);
+        }
+        return !isCompletedFullChain;
+      }).length;
+      
+      const thanhphamInProgress = Array.from(inProgressProductsSet).filter(maGoc => {
+        if (!presenceMaps.thanhpham.has(maGoc)) return false;
+        const tpItem = (moduleData.thanhpham || []).find(p => (p.maGoc || p.ma || '').toString().trim() === maGoc);
+        if (!tpItem) return false;
+        const tpStatus = (tpItem.trangThai || '').toString().trim();
+        if (tpStatus === 'Hoàn thành') return false;
+        const isTpMissing = !presenceMaps.sanxuat.has(maGoc);
+        if (isTpMissing) return false;
+        // Kiểm tra hoàn thành toàn bộ dây chuyền
+        const code = maGoc.toLowerCase();
+        const isHS = code.startsWith('hs');
+        const isHT = code.startsWith('ht');
+        let isCompletedFullChain = false;
+        if (isHS) {
+          isCompletedFullChain = presenceMaps.hangsan.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else if (isHT) {
+          isCompletedFullChain = presenceMaps.hangton.has(maGoc) && presenceMaps.donghang.has(maGoc);
+        } else {
+          isCompletedFullChain = presenceMaps.khophoi.has(maGoc) &&
+                                 presenceMaps.sanxuat.has(maGoc) &&
+                                 presenceMaps.thanhpham.has(maGoc) &&
+                                 presenceMaps.donghang.has(maGoc);
+        }
+        return !isCompletedFullChain;
+      }).length;
+      
+      // Tính "Tổng sản phẩm" từ mergedDataBeforeStatusFilter (KHÔNG lọc theo trạng thái)
+      // mergedDataBeforeStatusFilter đã được lọc theo từ khóa, dây chuyền, đợt hàng, loại hàng, loại SX, ngày
+      // NHƯNG CHƯA lọc theo trạng thái - để "Tổng sản phẩm" không thay đổi khi lọc trạng thái
+      // QUAN TRỌNG: "Tổng sản phẩm" không phụ thuộc vào filter trạng thái, chỉ phụ thuộc vào các filter khác
+      const total = mergedDataBeforeStatusFilter.length;
+      
+      // Debug log để kiểm tra
+      console.log('🔍 Debug thống kê "Đang xử lý":', {
+        'Tổng sản phẩm (danh sách unique)': mergedData.length,
+        'Sản xuất - Đang xử lý (từ mergedData)': sanxuatInProgress,
+        'Thành phẩm - Đang xử lý (từ mergedData)': thanhphamInProgress,
+        'Tổng "Đang xử lý" (unique từ mergedData)': inProgressCount,
+        'Tổng "Đang xử lý" (SX + TP từ mergedData)': sanxuatInProgress + thanhphamInProgress,
+        'Hoàn thành': completedCount,
+        'Tổng các trạng thái (ĐXL + HT)': inProgressCount + completedCount,
+        'Chênh lệch với danh sách': mergedData.length - (inProgressCount + completedCount),
+        note: '"Đang xử lý" = unique từ mergedData (khớp với danh sách). SX + TP có thể > unique nếu sản phẩm có ở cả 2 module.'
+      });
+      
+      const soDongText = document.getElementById("soDongText") || document.getElementById("soDong");
+      if (soDongText) {
+        // Hiển thị thống kê với các trạng thái: Tổng, Hoàn thành, Chưa hoàn thành
+        // Tổng sản phẩm = mergedData.length (sau khi lọc) để đảm bảo khớp với danh sách hiển thị
+        // Khi lọc trạng thái, total sẽ thay đổi theo mergedData đã lọc
+        soDongText.textContent = `Tổng: ${total} | Hoàn thành: ${completedCount} | Chưa hoàn thành: ${inProgressCount}`;
+      }
+    } catch(e) {}
+
+    // 🔥 TỐI ƯU: Lưu filtered để dùng với phân trang nếu cần, sau đó render với requestAnimationFrame
+    filteredData = mergedData;
+    exportData = filteredData.slice();
+    
+    // Sử dụng requestIdleCallback nếu có để render khi browser rảnh
+    const scheduleRender = (callback) => {
+      if (window.requestIdleCallback) {
+        requestIdleCallback(callback, { timeout: 100 });
+      } else {
+        requestAnimationFrame(callback);
+      }
+    };
+    
+    scheduleRender(() => {
+      renderWithPagination();
+      isRendering = false; // Reset flag sau khi render xong
+    });
+    
+    if (needSync) { 
+      luuLocal(); 
+      // Invalid cache khi dữ liệu thay đổi
+      statsCache.dataHash = null;
+      statsCache.data = null;
+    }
+  }).catch((error) => {
+    console.error('Error in hienThiImmediate:', error);
+    isRendering = false; // Reset flag khi có lỗi
+  });
+}
+
+function themNhieu(){
+  soDongMoi=0;soDongCapNhat=0;
+  const text=document.getElementById("maSanPham").value.trim();
+  if(!text)return;
+  const trangThai=document.getElementById("trangThai").value;
+  const dong=text.split("\n");
+  dong.forEach(d=>{
+    if(!d.includes("="))return;
+    const parts = d.split("=");
+    if(parts.length < 2) return; // Bỏ qua nếu không đủ phần
+    const [dotHang,rawMa]=parts;
+    const rawMaTrim=rawMa.trim();
+    const maTime=layThoiGianTuMa(rawMaTrim);
+    const found=duLieu.find(it=>it.ma.replace(/\s+/g,'')===rawMaTrim.replace(/\s+/g,'')&&layThoiGianTuMa(it.ma)===maTime);
+    if(found){
+      if(found.trangThai!==trangThai){
+        found.trangThai=trangThai;
+        tongSoCapNhat++;
+        soDongCapNhat++;
+        if(!found.lichSu) found.lichSu=[];
+        found.lichSu.push({thoiGian: new Date().toLocaleString(), trangThai: trangThai});
+      }
+      return;
+    }
+    const loaiSX=rawMaTrim.includes("|")?rawMaTrim.split("|")[0].split("-").pop().trim():"";
+    const loaiHang=rawMaTrim.includes("-")?rawMaTrim.split("-")[0].trim():"";
+
+  // Lấy màu & size
+let mau="", size="";
+if (rawMaTrim.includes("|")) {
+  const parts = rawMaTrim.split("|");
+  if (parts.length > 1) {
+    let desc = parts[1].split("/").pop().trim();
+
+    // Nếu có dấu phẩy thì bỏ phần trước, chỉ giữ sau dấu phẩy
+    if (desc.includes(",")) {
+      desc = desc.split(",")[1].trim();
+    }
+
+    // Bỏ hậu tố [1], [2], ...
+    let tokens = desc.split(" ")
+      .map(t => t.trim().replace(/,$/,""))
+      .filter(t => t && !/^\[\d+\]$/.test(t));
+
+    if(tokens.length >= 2){
+      size = tokens[tokens.length-1].toUpperCase(); // ✅ size cuối
+      mau = tokens[0].toLowerCase();               // ✅ lấy màu đầu tiên sau dấu phẩy
+    }
+  }
+}
+
+    const thoiGian=new Date().toLocaleString();
+    soDongMoi++;
+    const newProduct = {
+      maGoc: d.trim(),
+      ma: rawMaTrim,
+      trangThai,
+      dotHang: dotHang.trim().toLowerCase(),   // ✅ luôn viết thường
+      loaiHang,
+      loaiSX,
+      mau,
+      size,
+      thoiGian,
+      ghiChu: "",
+      lichSu: [{ thoiGian: thoiGian, trangThai: trangThai }]
+    };
+    
+    duLieu.push(newProduct);
+    // Invalidate cache map khi thêm dữ liệu mới
+    window._maGocToIndexMap = null;
+    window._duLieuLength = null;
+    
+    // Kiểm tra dữ liệu thiếu cho sản phẩm mới (chỉ áp dụng cho các module không phải khophoi)
+    if (MODULE_NAME !== 'khophoi') {
+    }
+  });
+  document.getElementById("maSanPham").value="";
+  hienThi();
+  luuLocal();
+}
+
+function xoaDong(i){
+  duLieu.splice(i,1);
+  // Invalidate cache map khi xóa dữ liệu
+  window._maGocToIndexMap = null;
+  window._duLieuLength = null;
+  hienThi();
+  luuLocal();
+}
+function capNhatTrangThai(i,v){
+  // Ngăn cập nhật trạng thái hoàn thành
+  if(v === 'Hoàn thành' && !canUpdateToCompleted()) {
+    alert("⚠️ Bộ phận này không thể tự cập nhật trạng thái hoàn thành!\nTrạng thái hoàn thành sẽ được cập nhật tự động khi bộ phận sau nhận hàng.");
+    // Reset về trạng thái cũ
+    hienThi();
+    return;
+  }
+  
+  if(duLieu[i].trangThai!==v){
+    duLieu[i].trangThai=v;
+    tongSoCapNhat++;
+    if(!duLieu[i].lichSu) duLieu[i].lichSu=[];
+    duLieu[i].lichSu.push({thoiGian: new Date().toLocaleString(), trangThai: v});
+  }
+  hienThi();
+  luuLocal();
+}
+function capNhatGhiChu(i,value){duLieu[i].ghiChu=value;luuLocal();}
+// ✅ Hàm helper để xử lý click button copy (gọi từ onclick)
+function handleCopyClick(btn, event) {
+  // ✅ Chặn event ngay từ đầu để không bị listener khác chặn
+  if (event) {
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    event.preventDefault();
+  }
+  
+  if (!btn) return false;
+  const maGoc = btn.getAttribute('data-ma');
+  if (!maGoc) return false;
+  
+  // Decode HTML entities
+  const temp = document.createElement('div');
+  temp.innerHTML = maGoc;
+  const decodedMa = temp.textContent || temp.innerText || maGoc;
+  
+  // Gọi hàm copy
+  copyMa(decodedMa, btn);
+  return false;
+}
+
+// ✅ Hàm helper để xử lý click button xem lịch sử (gọi từ onclick)
+function handleXemLichSuClick(btn, event) {
+  // ✅ Chặn event ngay từ đầu để không bị listener khác chặn
+  if (event) {
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    event.preventDefault();
+  }
+  
+  if (!btn) return false;
+  const maGoc = btn.getAttribute('data-ma');
+  if (!maGoc) return false;
+  
+  // Decode HTML entities
+  const temp = document.createElement('div');
+  temp.innerHTML = maGoc;
+  const decodedMa = temp.textContent || temp.innerText || maGoc;
+  
+  // ✅ Gọi hàm xem lịch sử với setTimeout để đảm bảo chạy sau khi event đã được xử lý
+  setTimeout(() => {
+    xemLichSuMa(decodedMa);
+  }, 0);
+  
+  return false;
+}
+
+function xemLichSuMa(maGoc){
+  const id = (maGoc || '').toString().trim();
+  if (!id) {
+    alert('⚠️ Không tìm thấy mã sản phẩm!');
+    return;
+  }
+  
+  const log = [];
+  
+  // 1. Lịch sử thời gian các bộ phận thêm sản phẩm
+  const pushIf = (label, map) => {
+    if (!map) return;
+    try {
+      const t = map.get(id);
+      if (t) log.push(`📅 ${label} (thêm sản phẩm): ${t}`);
+    } catch(e) {}
+  };
+  
+  pushIf('KP', moduleTimes.khophoi);
+  pushIf('SX', moduleTimes.sanxuat);
+  pushIf('TP', moduleTimes.thanhpham);
+  pushIf('HS', moduleTimes.hangsan);
+  pushIf('HT', moduleTimes.hangton);
+  pushIf('ĐH', moduleTimes.donghang);
+  
+  // 2. Lịch sử trạng thái từ item.lichSu (tìm trong mergedData, duLieu, hoặc các module)
+  let item = null;
+  
+  // Tìm trong mergedData trước (dữ liệu đã merge từ tất cả các module)
+  if (mergedData && Array.isArray(mergedData) && mergedData.length > 0) {
+    item = mergedData.find(p => {
+      const maGocItem = (p.maGoc || p.ma || '').toString().trim();
+      return maGocItem === id;
+    });
+  }
+  
+  // Nếu không tìm thấy, tìm trong duLieu
+  if (!item && duLieu && Array.isArray(duLieu) && duLieu.length > 0) {
+    item = duLieu.find(p => {
+      const maGocItem = (p.maGoc || p.ma || '').toString().trim();
+      return maGocItem === id;
+    });
+  }
+  
+  // Nếu vẫn không tìm thấy, tìm trong tất cả các module data
+  if (!item && typeof moduleData !== 'undefined') {
+    for (const moduleName in moduleData) {
+      if (moduleData[moduleName] && Array.isArray(moduleData[moduleName])) {
+        item = moduleData[moduleName].find(p => {
+          const maGocItem = (p.maGoc || p.ma || '').toString().trim();
+          return maGocItem === id;
+        });
+        if (item) break; // Tìm thấy rồi thì dừng
+      }
+    }
+  }
+  
+  if (item && item.lichSu && Array.isArray(item.lichSu) && item.lichSu.length > 0) {
+    log.push('\n📋 Lịch sử trạng thái:');
+    item.lichSu.forEach(ls => {
+      if (ls.thoiGian && ls.trangThai) {
+        log.push(`  • ${ls.thoiGian}: ${ls.trangThai}`);
+      }
+    });
+  }
+  
+  if (log.length === 0) {
+    alert('⚠️ Chưa có lịch sử cho sản phẩm này!');
+    return;
+  }
+  
+  // Hiển thị trong alert hoặc có thể dùng modal đẹp hơn
+  alert(`📜 Lịch sử sản phẩm: ${id}\n\n${log.join("\n")}`);
+}
+
+function chonTatCa(cb){document.querySelectorAll('.row-check').forEach(chk=>chk.checked = cb.checked);}
+function layChiSoChon(){const arr=[];document.querySelectorAll('.row-check:checked').forEach(chk=>arr.push(parseInt(chk.dataset.index)));return arr;}
+function capNhatTrangThaiChon(){
+  const trangThai=document.getElementById('bulkStatus').value;
+  if(!trangThai){alert("⚠️ Chọn trạng thái mới trước!");return;}
+  
+  // Ngăn cập nhật trạng thái hoàn thành
+  if(trangThai === 'Hoàn thành' && !canUpdateToCompleted()) {
+    alert("⚠️ Bộ phận này không thể tự cập nhật trạng thái hoàn thành!\nTrạng thái hoàn thành sẽ được cập nhật tự động khi bộ phận sau nhận hàng.");
+    return;
+  }
+  
+  const indexes=layChiSoChon();
+  if(indexes.length===0){alert("⚠️ Chưa chọn dòng nào!");return;}
+  indexes.forEach(i=>{
+    if(duLieu[i]){
+      duLieu[i].trangThai=trangThai;
+      tongSoCapNhat++;
+      if(!duLieu[i].lichSu) duLieu[i].lichSu=[];
+      duLieu[i].lichSu.push({thoiGian: new Date().toLocaleString(), trangThai: trangThai});
+    }
+  });
+  hienThi();luuLocal();
+  alert("✅ Đã cập nhật trạng thái cho " + indexes.length + " dòng!");
+}
+function xoaDongChon(){
+  const indexes=layChiSoChon().sort((a,b)=>b-a);
+  if(indexes.length===0){alert("⚠️ Chưa chọn dòng nào!");return;}
+  if(!confirm("⚠️ Bạn có chắc chắn muốn xóa " + indexes.length + " dòng đã chọn?")) return;
+  
+  // Xóa từ cuối lên để tránh lỗi index
+  indexes.forEach(i=>{
+    if(i >= 0 && i < duLieu.length) {
+      duLieu.splice(i,1);
+    }
+  });
+  // Invalidate cache map khi xóa dữ liệu
+  window._maGocToIndexMap = null;
+  window._duLieuLength = null;
+  hienThi();luuLocal();
+  alert("✅ Đã xóa " + indexes.length + " dòng!");
+}
+
+// Interval ID để quản lý auto-refresh (tránh memory leak)
+let presenceMapIntervalId = null;
+
+// Flag để kiểm tra đã đăng nhập chưa - sử dụng window để có thể truy cập từ auth.js
+window.isAuthenticated = false;
+let isAuthenticated = false; // Alias cho dễ sử dụng
+
+window.addEventListener("load",()=>{
+  // Đảm bảo itemsPerPage mặc định là 25 khi trang load
+  itemsPerPage = 25;
+  const itemsPerPageSelect = document.getElementById("itemsPerPageSelect");
+  if (itemsPerPageSelect) {
+    itemsPerPageSelect.value = "25";
+  }
+  
+  // CHỈ khởi tạo và load dữ liệu khi đã đăng nhập
+  // Kiểm tra sessionStorage để xem đã đăng nhập chưa
+  try {
+    const savedLogin = sessionStorage.getItem('login_tonghop');
+    if (savedLogin) {
+      const loginData = JSON.parse(savedLogin);
+      if (loginData.authenticated && loginData.username) {
+        isAuthenticated = true;
+        window.isAuthenticated = true; // Đồng bộ với window
+        // Khởi tạo WebSocket
+        initWebSocket();
+        // Tải bản đồ hiện diện các bộ phận và làm mới định kỳ
+        loadPresenceMaps().then(()=>{
+          hienThi();
+          // Gọi thống kê sau khi hiển thị
+          if (typeof thongKe === 'function') {
+            thongKe();
+          }
+        });
+      }
+    }
+  } catch (e) {
+    console.error('Error checking authentication:', e);
+  }
+  
+  // Nếu chưa đăng nhập, KHÔNG load dữ liệu
+  if (!isAuthenticated) {
+    console.log('🔒 Chưa đăng nhập - Không load dữ liệu');
+    return;
+  }
+  
+  // Clear interval cũ nếu có (tránh memory leak khi reload trang)
+  if (presenceMapIntervalId !== null) {
+    clearInterval(presenceMapIntervalId);
+  }
+  
+  // Tạo interval mới và lưu ID - tối ưu với requestIdleCallback
+  // CHỈ chạy interval nếu đã đăng nhập
+  if (isAuthenticated) {
+    presenceMapIntervalId = setInterval(()=>{ 
+      // Chỉ refresh nếu tab đang active và không đang render để tránh lag không cần thiết
+      const tabData = document.getElementById("tab-data");
+      if (tabData && tabData.classList.contains('active') && !isRendering && isAuthenticated) {
+        // Sử dụng requestIdleCallback để refresh khi browser rảnh
+        const scheduleRefresh = (callback) => {
+          if (window.requestIdleCallback) {
+            requestIdleCallback(callback, { timeout: 200 });
+          } else {
+            setTimeout(callback, 0);
+          }
+        };
+        
+        scheduleRefresh(() => {
+          loadPresenceMaps().then(()=>hienThi()); 
+        });
+      }
+    }, 10000);
+  }
+  
+  // Tải dữ liệu từ localStorage (fallback)
+  try {
+    const data=localStorage.getItem("duLieuTongHop");
+    if(data) duLieu=JSON.parse(data);
+    // Invalidate cache map khi load dữ liệu mới
+    window._maGocToIndexMap = null;
+    window._duLieuLength = null;
+  } catch (error) {
+    console.error('Error loading data from localStorage:', error);
+    duLieu = [];
+    // Invalidate cache map khi có lỗi
+    window._maGocToIndexMap = null;
+    window._duLieuLength = null;
+  }
+  
+  try {
+    const soCapNhat=localStorage.getItem("tongSoCapNhatTongHop");
+    tongSoCapNhat=soCapNhat?parseInt(soCapNhat):0;
+  } catch (error) {
+    console.error('Error loading counter from localStorage:', error);
+    tongSoCapNhat = 0;
+  }
+  hienThi();
+});
+const btnThemEl = document.getElementById("btnThem");
+if (btnThemEl) btnThemEl.addEventListener("click",themNhieu);
+document.getElementById("btnXoaAll").addEventListener("click",()=>{if(confirm("⚠️ Bạn có chắc chắn muốn xóa toàn bộ dữ liệu không?")){duLieu=[];tongSoCapNhat=0;soDongMoi=0;soDongCapNhat=0;localStorage.removeItem("tongSoCapNhatTongHop");window._maGocToIndexMap=null;window._duLieuLength=null;luuLocal();hienThi();alert("✅ Đã xóa toàn bộ dữ liệu!");}});
+document.getElementById("tuKhoa").addEventListener("input", hienThiDebounced); // Sử dụng debounce đã có
+document.getElementById("filterDayChuyen").addEventListener("change",e=>{dayChuyenFilter=e.target.value;hienThi();});
+document.getElementById("filterTrangThai").addEventListener("change",e=>{trangThaiFilter=e.target.value;hienThi();});
+document.getElementById("filterDotHang").addEventListener("change",e=>{dotHangFilter=e.target.value;hienThi();});
+document.getElementById("filterLoaiHang").addEventListener("change",e=>{loaiHangFilter=e.target.value;hienThi();});
+document.getElementById("filterLoaiSX").addEventListener("change",e=>{loaiSXFilter=e.target.value;hienThi();});
+
+    // Setup filter theo ngày
+    const filterTuNgay = document.getElementById("filterTuNgay");
+    if (filterTuNgay) filterTuNgay.addEventListener("change", e=>{
+      tuNgayFilter=e.target.value;
+      if(tuNgayFilter && denNgayFilter && tuNgayFilter > denNgayFilter) {
+        alert("⚠️ Từ ngày phải nhỏ hơn hoặc bằng Đến ngày!");
+        filterTuNgay.value = "";
+        tuNgayFilter = "";
+      }
+      hienThi();
+    });
+
+    const filterDenNgay = document.getElementById("filterDenNgay");
+    if (filterDenNgay) filterDenNgay.addEventListener("change", e=>{
+      denNgayFilter=e.target.value;
+      if(tuNgayFilter && denNgayFilter && tuNgayFilter > denNgayFilter) {
+        alert("⚠️ Từ ngày phải nhỏ hơn hoặc bằng Đến ngày!");
+        filterDenNgay.value = "";
+        denNgayFilter = "";
+      }
+      hienThi();
+    });
+
+    window.xoaFilterThoiGian = function() {
+      tuNgayFilter = "";
+      denNgayFilter = "";
+      const filterTuNgay = document.getElementById("filterTuNgay");
+      const filterDenNgay = document.getElementById("filterDenNgay");
+      if (filterTuNgay) filterTuNgay.value = "";
+      if (filterDenNgay) filterDenNgay.value = "";
+      hienThi();
+    };
+    
+
+// --- Xuất Excel ---
+async function exportExcel(){
+  try {
+    const dataSrc = (Array.isArray(exportData) && exportData.length >= 0) ? exportData : filteredData;
+    if(!dataSrc || dataSrc.length===0){alert("⚠️ Không có dữ liệu phù hợp bộ lọc để xuất!");return;}
+
+  // Hàm trích xuất mã sản phẩm ngắn gọn (chỉ phần sau dấu | đầu tiên)
+  const getMaSanPhamNgan = (maGoc) => {
+    if (!maGoc) return '';
+    const maStr = maGoc.toString();
+    const index = maStr.indexOf('|');
+    if (index === -1) return maStr; // Nếu không có dấu |, trả về nguyên mã
+    return maStr.substring(index + 1).trim(); // Lấy phần sau dấu | và trim
+  };
+
+  // Tạo workbook mới với ExcelJS
+  const workbook = new ExcelJS.Workbook();
+  
+  // Hàm helper để xác định mức độ thụt lề từ nội dung
+  const getIndentLevel = (value) => {
+    if (!value || typeof value !== 'string') return 0;
+    const leadingSpaces = value.length - value.trimStart().length;
+    const trimmed = value.trim();
+    if (trimmed.includes('Thống kê') || trimmed.includes('Tổng sản phẩm')) {
+      return 0;
+    }
+    if (trimmed.startsWith('•')) {
+      if (leadingSpaces >= 9) return 3;
+      if (leadingSpaces >= 6) return 2;
+      return 2;
+    } else if (trimmed.startsWith('-')) {
+      if (leadingSpaces >= 6) return 2;
+      return 1;
+    }
+    if (leadingSpaces >= 9) return 3;
+    if (leadingSpaces >= 6) return 2;
+    if (leadingSpaces >= 3) return 1;
+    return 0;
+  };
+
+  const cleanIndentString = (value) => {
+    if (!value || typeof value !== 'string') return value;
+    return value.trimStart();
+  };
+
+  const applyCellStyle = (cell, options = {}) => {
+    const cellValue = cell.value;
+    const indentLevel = options.indent !== undefined ? options.indent : getIndentLevel(cellValue);
+    cell.alignment = {
+      vertical: options.vertical || 'middle',
+      horizontal: options.horizontal || 'left',
+      wrapText: options.wrapText !== false,
+      indent: indentLevel
+    };
+    cell.border = {
+      top: {style:'thin', color:{argb:'FF000000'}},
+      left: {style:'thin', color:{argb:'FF000000'}},
+      bottom: {style:'thin', color:{argb:'FF000000'}},
+      right: {style:'thin', color:{argb:'FF000000'}}
+    };
+    if(options.font) { cell.font = options.font; }
+    if(options.fill) { cell.fill = options.fill; }
+    if (options.cleanValue && cellValue && typeof cellValue === 'string') {
+      cell.value = cleanIndentString(cellValue);
+    }
+  };
+
+  const autoFitColumns = (worksheet) => {
+    if (!worksheet || !worksheet.columns) return;
+    worksheet.columns.forEach((column, colIndex) => {
+      if (!column) return;
+      let maxLength = 0;
+      try {
+        const headerRow = worksheet.getRow(1);
+        if (headerRow) {
+          const headerCell = headerRow.getCell(colIndex + 1);
+          if (headerCell && headerCell.value !== null && headerCell.value !== undefined) {
+            maxLength = String(headerCell.value).length;
+          }
+        }
+      } catch (e) {}
+      if (worksheet.rowCount > 1) {
+        for (let rowIndex = 2; rowIndex <= worksheet.rowCount; rowIndex++) {
+          try {
+            const row = worksheet.getRow(rowIndex);
+            if (row) {
+              const cell = row.getCell(colIndex + 1);
+              if (cell && cell.value !== null && cell.value !== undefined && cell.value !== '') {
+                const cellValue = String(cell.value);
+                const cellLength = cellValue.length;
+                if (cellLength > maxLength) {
+                  maxLength = cellLength;
+                }
+              }
+            }
+          } catch (e) { continue; }
+        }
+      }
+      if (column) {
+        column.width = Math.min(Math.max(maxLength + 2, 10), 60);
+      }
+    });
+  };
+
+  // --- Sheet 1: Chi tiết ---
+  const wsChiTiet = workbook.addWorksheet('Chi_tiet');
+  wsChiTiet.addRow(['STT', 'Mã sản phẩm', 'Trạng thái', 'Đợt hàng', 'Loại hàng', 'Loại SX', 'Màu', 'Size', 'Ghi chú', 'Lịch sử']);
+  const headerRow = wsChiTiet.getRow(1);
+  headerRow.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+  headerRow.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2196F3' } };
+  headerRow.height = 25;
+  headerRow.eachCell((cell) => {
+    applyCellStyle(cell, {
+      horizontal: 'center',
+      vertical: 'middle',
+      wrapText: true,
+      font: { bold: true, color: { argb: 'FFFFFFFF' } }
+    });
+  });
+  // Hàm xác định trạng thái đúng theo bộ phận
+  const getTrangThaiTheoBoPhan = (maGoc, trangThaiMacDinh = '') => {
+    const code = (maGoc || '').toString().toLowerCase();
+    const isHS = code.startsWith('hs');
+    const isHT = code.startsWith('ht');
+    
+    // Xác định bộ phận cuối cùng mà sản phẩm đã đi qua
+    // Ưu tiên: Đóng hàng > Thành phẩm > Sản xuất > Kho phôi > Hàng sẵn > Hàng tồn
+    if (presenceMaps.donghang.has(maGoc)) {
+      return 'Nhận hàng';
+    } else if (presenceMaps.thanhpham.has(maGoc)) {
+      return 'Hoàn thiện';
+    } else if (presenceMaps.sanxuat.has(maGoc)) {
+      return 'In & thêu';
+    } else if (presenceMaps.khophoi.has(maGoc)) {
+      return 'Bàn giao';
+    } else if (isHS && presenceMaps.hangsan.has(maGoc)) {
+      return 'Bàn giao';
+    } else if (isHT && presenceMaps.hangton.has(maGoc)) {
+      return 'Bàn giao';
+    }
+    // Mặc định: trả về trạng thái hiện tại nếu không xác định được
+    return trangThaiMacDinh || '';
+  };
+  
+  dataSrc.forEach((d, i) => {
+    const trangThaiExcel = getTrangThaiTheoBoPhan(d.maGoc, d.trangThai);
+    // Trích xuất mã sản phẩm ngắn gọn (chỉ phần sau dấu | đầu tiên)
+    const maGocNgan = getMaSanPhamNgan(d.maGoc);
+    const row = wsChiTiet.addRow([
+      i + 1, maGocNgan, trangThaiExcel, d.dotHang, d.loaiHang, d.loaiSX, d.mau || '', d.size || '',
+      d.ghiChu || '', (d.lichSu || []).map(l => `${l.thoiGian}: ${l.trangThai}`).join('\n')
+    ]);
+    row.eachCell((cell) => {
+      applyCellStyle(cell, { horizontal: 'left', vertical: 'middle', wrapText: true });
+    });
+    row.getCell(1).alignment = { ...row.getCell(1).alignment, horizontal: 'center' };
+  });
+
+  // ====== CÁC HÀM NHÓM DỮ LIỆU DÙNG CHUNG ======
+  const group = (field, arr=dataSrc) => {
+    const r={};
+    (arr||[]).forEach(d=>{
+      const k=d[field]||"(Trống)";
+      r[k]=(r[k]||0)+1;
+    });
+    return r;
+  };
+  const sumKeys = (obj, keys) => keys.reduce((s,k)=>s+(obj[k]||0),0);
+
+  // Chuẩn hóa tên nhóm đợt
+  const shopeeGroup=["sp1","sp2","sp3","sp4","sp5","sp6","sp7","sp8","sp9","sp10","spthieu"];
+  const khacGroup=["mvd","ctv","sapo","bnv","sale"];
+  const lonGroup=["inlon","theulon","tonbaolon","dhbaolon","phoisoanlon","tonsoanlon","donglon"];
+  const huGroup=["inhu","theuhu","pethu","lotpethu","mayhu","do","lun"];
+  const groupDotHang = group("dotHang");
+
+  const tongShopee = sumKeys(groupDotHang, shopeeGroup);
+  const tongKhac    = sumKeys(groupDotHang, khacGroup);
+  const tongLon     = sumKeys(groupDotHang, lonGroup);
+  const tongHu      = sumKeys(groupDotHang, huGroup);
+  const siGroup     = Object.keys(groupDotHang).filter(n=>n?.toLowerCase().startsWith("si"));
+  const tongSi      = sumKeys(groupDotHang, siGroup);
+
+  // ====== Sheet 2: Thống kê (đang có) ======
+  // Giữ nguyên cách render chi tiết per-đợt như file hiện tại
+  const groupDotSX = {};
+  dataSrc.forEach(d=>{
+    if(!groupDotSX[d.dotHang]) groupDotSX[d.dotHang]={};
+    groupDotSX[d.dotHang][d.loaiSX] = (groupDotSX[d.dotHang][d.loaiSX]||0)+1;
+  });
+
+  const renderDotHangChiTiet = (tenNhom, danhSachDot, tongNhom) => {
+    let rows=[];
+    rows.push([`Tổng sản phẩm ${tenNhom}`, tongNhom]);
+    danhSachDot.filter(n=>(groupDotHang[n]||0)>0).forEach(n=>{
+      rows.push(["   "+n, groupDotHang[n]]);
+      if(groupDotSX[n]){
+        Object.entries(groupDotSX[n]).sort((a, b) => {
+          const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+          const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+          if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+          if (indexA !== -1) return -1;
+          if (indexB !== -1) return 1;
+          return a[0].localeCompare(b[0]);
+        }).forEach(([sx,sl])=>{
+          rows.push(["      - "+sx, sl]);
+          const loaiHangCounts={};
+          dataSrc.filter(d=>d.dotHang===n && d.loaiSX===sx).forEach(d=>{
+            if(d.loaiHang){
+              loaiHangCounts[d.loaiHang]=(loaiHangCounts[d.loaiHang]||0)+1;
+            }
+          });
+          Object.entries(loaiHangCounts).sort((a, b) => {
+            const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+            const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+            if (indexA !== -1) return -1;
+            if (indexB !== -1) return 1;
+            return a[0].localeCompare(b[0]);
+          }).forEach(([lh,slh])=>{
+            rows.push(["         • "+lh, slh]);
+          });
+        });
+      }
+    });
+    rows.push([]);
+    return rows;
+  };
+
+  const thongKe=[
+    ["🛍️ Thống kê đợt hàng:"],
+    ...renderDotHangChiTiet("Shopee", shopeeGroup, tongShopee),
+    ...renderDotHangChiTiet("Khác", khacGroup, tongKhac),
+    ...renderDotHangChiTiet("Lộn", lonGroup, tongLon),
+    ...renderDotHangChiTiet("Lỗi", huGroup, tongHu),
+    ...renderDotHangChiTiet("Sỉ", siGroup, tongSi),
+    [],
+    ["🛍️ Thống kê loại hàng:"],...Object.entries(group("loaiHang")).sort((a, b) => {
+      const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+      const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+      if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      return a[0].localeCompare(b[0]);
+    }),
+    [],
+    ["🏭 Thống kê loại SX:"],...Object.entries(group("loaiSX")).sort((a, b) => {
+      const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+      const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+      if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      return a[0].localeCompare(b[0]);
+    }),
+    [],
+    ["📊 Trạng thái:"],...Object.entries(group("trangThai"))
+  ];
+  
+  // Sheet 2: Thống kê với ExcelJS
+  const wsThongKe = workbook.addWorksheet('Thong_ke');
+  thongKe.forEach(row => {
+    const excelRow = wsThongKe.addRow(row);
+    excelRow.eachCell((cell, colNumber) => {
+      if (colNumber === 1) {
+        applyCellStyle(cell, {
+          horizontal: 'left',
+          vertical: 'middle',
+          wrapText: true,
+          cleanValue: true
+        });
+      } else {
+        applyCellStyle(cell, {
+          horizontal: typeof row[1] === 'number' ? 'right' : 'left',
+          vertical: 'middle',
+          wrapText: true,
+          indent: 0
+        });
+      }
+    });
+  });
+
+  // ====== Sheet 3: RÚT GỌN (mới) ======
+  // Yêu cầu: phần "Shopee" chỉ hiện TỔNG theo Loại SX -> Loại hàng (không tách sp1/sp2…),
+  // các nhóm khác vẫn tách theo từng đợt rồi liệt kê Loại SX -> Loại hàng.
+  const rowsRutGon = [];
+
+  // Header
+  rowsRutGon.push(["🛍️ Thống kê đợt hàng:"]);
+
+  // --- SHOPEE (rút gọn): tổng theo SX -> Loại hàng
+  rowsRutGon.push([`Tổng sản phẩm Shopee`, tongShopee]);
+
+  const duLieuShopee = dataSrc.filter(d=>shopeeGroup.includes(d.dotHang));
+  const sxShopee = group("loaiSX", duLieuShopee); // { in:84, kt:6, theu:11, ... }
+
+  // Liệt kê theo SX và lồng Loại hàng
+  Object.entries(sxShopee).sort((a, b) => {
+    const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+    const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a[0].localeCompare(b[0]);
+  }).forEach(([sx, slSX])=>{
+    if(!sx || sx==="(Trống)") return;
+    rowsRutGon.push([`   - ${sx}`, slSX]);
+
+    // Đếm loại hàng trong phạm vi SX đó
+    const loaiHangBySX = {};
+    duLieuShopee.filter(d=>d.loaiSX===sx).forEach(d=>{
+      if(!d.loaiHang) return;
+      loaiHangBySX[d.loaiHang] = (loaiHangBySX[d.loaiHang]||0)+1;
+    });
+    Object.entries(loaiHangBySX).sort((a, b) => {
+      const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+      const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+      if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      return a[0].localeCompare(b[0]);
+    }).forEach(([lh, slLH])=>{
+      rowsRutGon.push([`      • ${lh}`, slLH]);
+    });
+  });
+  rowsRutGon.push([]);
+
+// ===== Sỉ: SX -> Loai Hang
+const duLieuSi = duLieu.filter(d=>siGroup.includes(d.dotHang));
+const sxSi = group("loaiSX", duLieuSi);
+rowsRutGon.push([`Tổng sản phẩm Sỉ`, tongSi]);
+Object.entries(sxSi).sort((a, b) => {
+  const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+  const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+  if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+  if (indexA !== -1) return -1;
+  if (indexB !== -1) return 1;
+  return a[0].localeCompare(b[0]);
+}).forEach(([sx, slSX])=>{
+  if(!sx || sx==="(Trống)") return;
+  rowsRutGon.push([`   - ${sx}`, slSX]);
+  const loaiHangBySX = {};
+  duLieuSi.filter(d=>d.loaiSX===sx).forEach(d=>{
+    if(!d.loaiHang) return;
+    loaiHangBySX[d.loaiHang] = (loaiHangBySX[d.loaiHang]||0)+1;
+  });
+  Object.entries(loaiHangBySX).sort((a, b) => {
+    const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+    const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a[0].localeCompare(b[0]);
+  }).forEach(([lh, slLH])=>{
+    rowsRutGon.push([`      • ${lh}`, slLH]);
+  });
+});
+rowsRutGon.push([]);
+
+  // --- HÀM render nhóm "còn lại": tách theo từng đợt -> SX -> Loại hàng
+  const renderNhomDayDot = (tieuDe, danhSachDot, tongNhom) => {
+    rowsRutGon.push([`Tổng sản phẩm ${tieuDe}`, tongNhom]);
+    danhSachDot.filter(n=>(groupDotHang[n]||0)>0).forEach(n=>{
+      rowsRutGon.push([`   ${n}`, groupDotHang[n]]);
+      // SX trong đợt n
+      const bySX = {};
+      dataSrc.filter(d=>d.dotHang===n).forEach(d=>{
+        if(!d.loaiSX) return;
+        bySX[d.loaiSX] = (bySX[d.loaiSX]||0)+1;
+      });
+      Object.entries(bySX).sort((a, b) => {
+        const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+        const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+        if (indexA !== -1) return -1;
+        if (indexB !== -1) return 1;
+        return a[0].localeCompare(b[0]);
+      }).forEach(([sx, slSX])=>{
+        rowsRutGon.push([`      - ${sx}`, slSX]);
+        // Loại hàng trong SX đó
+        const byLH = {};
+        dataSrc.filter(d=>d.dotHang===n && d.loaiSX===sx).forEach(d=>{
+          if(!d.loaiHang) return;
+          byLH[d.loaiHang] = (byLH[d.loaiHang]||0)+1;
+        });
+        Object.entries(byLH).sort((a, b) => {
+          const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+          const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+          if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+          if (indexA !== -1) return -1;
+          if (indexB !== -1) return 1;
+          return a[0].localeCompare(b[0]);
+        }).forEach(([lh, slLH])=>{
+          rowsRutGon.push([`         • ${lh}`, slLH]);
+        });
+      });
+    });
+    rowsRutGon.push([]);
+  };
+
+  renderNhomDayDot("Khác", khacGroup, tongKhac);
+  renderNhomDayDot("Lộn", lonGroup, tongLon);
+  renderNhomDayDot("Lỗi", huGroup, tongHu);
+
+  // Các khối tổng hợp còn lại
+  rowsRutGon.push(["🛍️ Thống kê loại hàng:"]);
+  Object.entries(group("loaiHang")).sort((a, b) => {
+    const indexA = LOAI_HANG_ORDER.indexOf(a[0].toLowerCase());
+    const indexB = LOAI_HANG_ORDER.indexOf(b[0].toLowerCase());
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a[0].localeCompare(b[0]);
+  }).forEach(([k,v])=>rowsRutGon.push([k,v]));
+  rowsRutGon.push([]);
+  rowsRutGon.push(["🏭 Thống kê loại SX:"]);
+  Object.entries(group("loaiSX")).sort((a, b) => {
+    const indexA = LOAI_SX_ORDER.indexOf(a[0].toLowerCase());
+    const indexB = LOAI_SX_ORDER.indexOf(b[0].toLowerCase());
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a[0].localeCompare(b[0]);
+  }).forEach(([k,v])=>rowsRutGon.push([k,v]));
+  rowsRutGon.push([]);
+  rowsRutGon.push(["📊 Trạng thái:"]);
+  Object.entries(group("trangThai")).forEach(([k,v])=>rowsRutGon.push([k,v]));
+
+  // Sheet 3: Rút gọn với ExcelJS
+  const wsRutGon = workbook.addWorksheet('Rut_gon');
+  rowsRutGon.forEach(row => {
+    const excelRow = wsRutGon.addRow(row);
+    excelRow.eachCell((cell, colNumber) => {
+      if (colNumber === 1) {
+        applyCellStyle(cell, {
+          horizontal: 'left',
+          vertical: 'middle',
+          wrapText: true,
+          cleanValue: true
+        });
+      } else {
+        applyCellStyle(cell, {
+          horizontal: typeof row[1] === 'number' ? 'right' : 'left',
+          vertical: 'middle',
+          wrapText: true,
+          indent: 0
+        });
+      }
+    });
+  });
+
+  // Ẩn các dòng không có số lượng (cột 2 trống hoặc = 0) để rút gọn sheet Rut_gon
+  try {
+    for (let r = 1; r <= wsRutGon.rowCount; r++) {
+      const row = wsRutGon.getRow(r);
+      const c2 = row.getCell(2).value;
+      let num = undefined;
+      if (typeof c2 === 'number') {
+        num = c2;
+      } else if (c2 && typeof c2 === 'object' && 'result' in c2) {
+        // Trường hợp công thức
+        num = Number(c2.result);
+      } else if (c2 !== null && c2 !== undefined && c2 !== '') {
+        num = Number(c2);
+      }
+      if (num === undefined || !Number.isFinite(num) || num === 0) {
+        row.hidden = true;
+      }
+    }
+  } catch (e) { /* noop */ }
+
+  // ====== Sheet 4: Pivot (giữ nguyên logic cũ) ======
+  const sizes=["S","M","L","XL","XXL"];
+  const pivot={};
+  dataSrc.forEach(d=>{
+    if(!d.loaiHang||!d.mau||!d.size) return;
+    const loai=d.loaiHang,mau=d.mau,size=d.size.toUpperCase();
+    if(!pivot[loai]) pivot[loai]={};
+    if(!pivot[loai][mau]) pivot[loai][mau]={};
+    pivot[loai][mau][size]=(pivot[loai][mau][size]||0)+1;
+  });
+
+  const rows=[["Loại hàng","Màu",...sizes,"Tổng SL"]];
+  let tongTatCa=0;
+  const loaiHangKeys = Object.keys(pivot);
+  loaiHangKeys.forEach((loai, index)=>{
+    // Sắp xếp màu theo số lượng giảm dần (từ lớn đến bé)
+    const sortedMau = Object.keys(pivot[loai]).sort((mauA, mauB) => {
+      let tongA = 0;
+      let tongB = 0;
+      sizes.forEach(sz => {
+        tongA += pivot[loai][mauA][sz] || 0;
+        tongB += pivot[loai][mauB][sz] || 0;
+      });
+      if (tongB !== tongA) {
+        return tongB - tongA;
+      }
+      return mauA.localeCompare(mauB);
+    });
+    
+    sortedMau.forEach(mau=>{
+      const row=[loai,mau];
+      let tongDong=0;
+      sizes.forEach(sz=>{
+        const sl=pivot[loai][mau][sz]||0;
+        row.push(sl);
+        tongDong+=sl;
+      });
+      row.push(tongDong);
+      tongTatCa+=tongDong;
+      rows.push(row);
+    });
+    
+    // Thêm hàng trống để phân cách giữa các loại hàng (trừ loại hàng cuối cùng)
+    if (index < loaiHangKeys.length - 1) {
+      rows.push([]);
+    }
+  });
+  rows.push([]);
+  rows.push(["Tổng tất cả","","",...Array(sizes.length-1).fill(""),tongTatCa]);
+
+  // Sheet 4: Pivot với ExcelJS
+  const wsPivot = workbook.addWorksheet('Pivot');
+  const pivotHeaderRow = wsPivot.addRow(rows[0]);
+  pivotHeaderRow.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+  pivotHeaderRow.fill = {
+    type: 'pattern',
+    pattern: 'solid',
+    fgColor: { argb: 'FF2196F3' }
+  };
+  pivotHeaderRow.height = 25;
+  pivotHeaderRow.eachCell((cell) => {
+    applyCellStyle(cell, {
+      horizontal: 'center',
+      vertical: 'middle',
+      wrapText: true,
+      font: { bold: true, color: { argb: 'FFFFFFFF' } }
+    });
+  });
+  
+  rows.slice(1).forEach((row, index) => {
+    const excelRow = wsPivot.addRow(row);
+    excelRow.eachCell((cell, colNumber) => {
+      applyCellStyle(cell, {
+        horizontal: colNumber > 2 && colNumber <= 2 + sizes.length ? 'center' : 
+                   colNumber === 2 + sizes.length + 1 ? 'center' : 'left',
+        vertical: 'middle',
+        wrapText: true
+      });
+      if (index === rows.length - 2) {
+        cell.font = { bold: true };
+        cell.fill = {
+          type: 'pattern',
+          pattern: 'solid',
+          fgColor: { argb: 'FFE3F2FD' }
+        };
+      }
+    });
+  });
+
+  // Hàm helper để cố định hàng tiêu đề (freeze panes)
+  const freezeHeaderRow = (worksheet) => {
+    if (!worksheet) return;
+    worksheet.views = [
+      {
+        state: 'frozen',
+        ySplit: 1,
+        topLeftCell: 'A2',
+        activeCell: 'A2'
+      }
+    ];
+  };
+
+  // Tự động điều chỉnh độ rộng cột cho tất cả các sheet
+  autoFitColumns(wsChiTiet);
+  autoFitColumns(wsThongKe);
+  autoFitColumns(wsRutGon);
+  autoFitColumns(wsPivot);
+
+  // Cố định hàng tiêu đề chỉ cho sheet Chi_tiet và Pivot
+  freezeHeaderRow(wsChiTiet);
+  freezeHeaderRow(wsPivot);
+  // Sheet Chi_tiet và Rut_gon không cần cố định hàng tiêu đề
+
+  // --- Ghi file ---
+  let fileName = 'TongHop';
+  if(tuNgayFilter || denNgayFilter) {
+    if(tuNgayFilter && denNgayFilter) {
+      const tuNgay = tuNgayFilter.replace(/-/g, '');
+      const denNgay = denNgayFilter.replace(/-/g, '');
+      fileName = `TongHop_${tuNgay}_${denNgay}`;
+    } else if(tuNgayFilter) {
+      const tuNgay = tuNgayFilter.replace(/-/g, '');
+      fileName = `TongHop_tu_${tuNgay}`;
+    } else if(denNgayFilter) {
+      const denNgay = denNgayFilter.replace(/-/g, '');
+      fileName = `TongHop_den_${denNgay}`;
+    }
+  } else {
+    const ngay = new Date().toLocaleDateString('vi-VN').replace(/\//g, "-");
+    fileName = `TongHop_${ngay}`;
+  }
+  const buffer = await workbook.xlsx.writeBuffer();
+  const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${fileName}.xlsx`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  window.URL.revokeObjectURL(url);
+  } catch(err) {
+    console.error('Export Excel failed', err);
+    alert('⚠️ Xuất Excel thất bại: ' + (err && err.message ? err.message : err));
+  }
+}
+
+// Gắn listener an toàn (kể cả khi DOM thay đổi)
+document.addEventListener('click', (e)=>{
+  const target = e.target;
+  if (!target) return;
+  if (target.id === 'btnExport') {
+    exportExcel();
+  }
+});
+
+</script>
+
+<!-- Tính năng offline và khôi phục dữ liệu -->
+<script src="offline-storage.js"></script>
+<script src="data-recovery.js"></script>
+<script src="offline-integration.js"></script>
+
+</body>
+</html>
