@@ -941,28 +941,21 @@ function initWebSocket() {
                 const data = JSON.parse(event.data);
                 
                 if (data.type === 'sync' && data.module === MODULE_NAME) {
-                    // Nhận dữ liệu đồng bộ từ server
-                    duLieu = data.data || [];
-                    
-                    // 🔥 TỐI ƯU: Invalid cache khi nhận dữ liệu mới
-                    statsCache.dataHash = null;
-                    statsCache.data = null;
+                    // TongHop lấy dữ liệu từ API các module, không dùng WebSocket sync
+                    // Chỉ refresh presenceMaps khi có thông báo sync
+                    console.log('TongHop: nhận sync signal, refresh dữ liệu từ API...');
+
+                    // Invalid cache để buộc load lại từ API
                     presenceMapsCache.data = null;
                     presenceMapsCache.timestamp = null;
-                    
-                    // Render với requestIdleCallback để không block UI
-                    const scheduleUpdate = (callback) => {
-                      if (window.requestIdleCallback) {
-                        requestIdleCallback(callback, { timeout: 100 });
-                      } else {
-                        requestAnimationFrame(callback);
-                      }
-                    };
-                    
-                    scheduleUpdate(() => {
-                      hienThiImmediate();
+                    statsCache.dataHash = null;
+                    statsCache.data = null;
+
+                    // Load lại dữ liệu từ API các module
+                    loadPresenceMaps(true).then(() => {
+                      hienThi();
+                      if (typeof thongKe === 'function') thongKe();
                     });
-                    console.log('Data synced from server');
                 } else if (data.type === 'pong') {
                     // Ping response
                     console.log('Pong received');
