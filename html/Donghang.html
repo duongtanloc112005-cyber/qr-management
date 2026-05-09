@@ -641,7 +641,7 @@ function renderDataInBatches(data, startIndex) {
   duLieu.forEach((item, index) => {
     maGocToIndex[item.maGoc] = index;
   });
-  const originalIndices = data.map(item => maGocToIndex[item.maGoc] || -1);
+  const originalIndices = data.map(item => maGocToIndex[item.maGoc] !== undefined ? maGocToIndex[item.maGoc] : -1);
   
   // Tính STT dựa trên trang hiện tại
   const globalStartIndex = (currentPage - 1) * itemsPerPage;
