@@ -12,6 +12,120 @@ const authModule = require('./auth-server');
 const logger = require('./logger');
 const database = config.USE_DATABASE ? require('./database') : null;
 
+// 📊 Google Sheets sync
+const GOOGLE_SHEETS_URL = process.env.GOOGLE_SHEETS_URL || '';
+const GOOGLE_SHEETS_SYNC_DELAY = 5000; // Đợi 5 giây sau update rồi mới sync
+const pendingSheetsSync = {};
+
+async function syncToGoogleSheets(module) {
+    if (!GOOGLE_SHEETS_URL) return;
+
+    try {
+        const items = (syncData[module] || []).map(d => ({
+            maGoc: d.maGoc || '',
+            ma: d.ma || '',
+            trangThai: d.trangThai || '',
+            dotHang: d.dotHang || '',
+            loaiHang: d.loaiHang || '',
+            loaiSX: d.loaiSX || '',
+            mau: d.mau || '',
+            size: (d.size || '').toString().toUpperCase(),
+            thoiGian: d.thoiGian || '',
+            ghiChu: d.ghiChu || ''
+        }));
+
+        const res = await fetch(GOOGLE_SHEETS_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ module, items })
+        });
+
+        const result = await res.text();
+        logger.info(`📊 Google Sheets sync: ${module} - ${items.length} items`, { result });
+    } catch (err) {
+        logger.error(`❌ Google Sheets sync error: ${module}`, { error: err.message });
+    }
+}
+
+// Debounced sync - đợi 5 giây sau update cuối cùng rồi mới sync
+function scheduleSheetsSync(module) {
+    if (!GOOGLE_SHEETS_URL) return;
+
+    if (pendingSheetsSync[module]) {
+        clearTimeout(pendingSheetsSync[module]);
+    }
+    pendingSheetsSync[module] = setTimeout(() => {
+        syncToGoogleSheets(module);
+        delete pendingSheetsSync[module];
+    }, GOOGLE_SHEETS_SYNC_DELAY);
+}
+
+// 🗑️ Tự động xóa dữ liệu lúc 00:00 hàng ngày (Google Sheets giữ nguyên)
+function scheduleMiddnightCleanup() {
+    const now = new Date();
+    const midnight = new Date(now);
+    midnight.setHours(24, 0, 0, 0); // 00:00 ngày mai
+    const msUntilMidnight = midnight.getTime() - now.getTime();
+
+    logger.info(`🕐 Lên lịch xóa dữ liệu lúc 00:00 (còn ${Math.round(msUntilMidnight / 60000)} phút)`);
+
+    setTimeout(() => {
+        performMidnightCleanup();
+        // Lên lịch lại cho ngày tiếp theo
+        setInterval(performMidnightCleanup, 24 * 60 * 60 * 1000);
+    }, msUntilMidnight);
+}
+
+function performMidnightCleanup() {
+    logger.info('🗑️ BẮT ĐẦU XÓA DỮ LIỆU TỰ ĐỘNG LÚC 00:00');
+
+    // Sync lên Google Sheets trước khi xóa (đảm bảo dữ liệu đã được lưu)
+    const syncPromises = Object.keys(syncData).map(module => {
+        if (syncData[module].length > 0) {
+            return syncToGoogleSheets(module);
+        }
+        return Promise.resolve();
+    });
+
+    Promise.all(syncPromises).then(() => {
+        // Xóa dữ liệu trên hệ thống
+        Object.keys(syncData).forEach(module => {
+            const count = syncData[module].length;
+            syncData[module] = [];
+            markIndexDirty(module);
+
+            // Clear API cache
+            if (typeof apiRoutes !== 'undefined' && apiRoutes.clearModuleCache) {
+                apiRoutes.clearModuleCache(module);
+            }
+
+            logger.info(`🗑️ Đã xóa ${count} items của module ${module}`);
+        });
+
+        // Lưu dữ liệu trống vào file/database
+        saveAllData();
+
+        // Broadcast cho tất cả clients biết dữ liệu đã bị xóa
+        Object.keys(connections).forEach(module => {
+            if (connections[module]) {
+                connections[module].forEach(client => {
+                    if (client.readyState === WebSocket.OPEN) {
+                        client.send(JSON.stringify({
+                            type: 'data',
+                            module: module,
+                            data: []
+                        }));
+                    }
+                });
+            }
+        });
+
+        logger.info('✅ XÓA DỮ LIỆU TỰ ĐỘNG HOÀN TẤT - Google Sheets vẫn giữ nguyên');
+    }).catch(err => {
+        logger.error('❌ Lỗi khi xóa dữ liệu tự động', { error: err.message });
+    });
+}
+
 // 📁 Cấu hình lưu trữ dữ liệu
 const DATA_DIR = './data';
 const DATA_FILES = {
@@ -660,8 +774,11 @@ wss.on('connection', (ws, req) => {
                         // 🚀 TỐI ƯU: Chỉ rebuild index khi cần (lazy update)
                         // updateProductIndex sẽ được gọi khi cần tìm sản phẩm
                         
+                        // 📊 Sync lên Google Sheets (debounced)
+                        scheduleSheetsSync(module);
+
                         console.log(`Data updated for module: ${module}`);
-                        
+
                         // 🚀 TỐI ƯU NÂNG CAO: Broadcast với chunked transfer và optimization
                         const moduleData = syncData[module] || [];
                         if (connections[module]) {
@@ -1146,4 +1263,16 @@ server.listen(PORT, '0.0.0.0', () => {
     console.log(`   - Auto-save every 30 seconds`);
     console.log(`   - Data directory: ${DATA_DIR}`);
     console.log(`   - Safe shutdown with Ctrl+C`);
+
+    // 📊 Google Sheets sync
+    if (GOOGLE_SHEETS_URL) {
+        console.log(`\n📊 Google Sheets sync: ENABLED`);
+        console.log(`   - URL: ${GOOGLE_SHEETS_URL.substring(0, 50)}...`);
+    } else {
+        console.log(`\n📊 Google Sheets sync: DISABLED (set GOOGLE_SHEETS_URL env var)`);
+    }
+
+    // 🗑️ Lên lịch xóa dữ liệu tự động lúc 00:00
+    scheduleMiddnightCleanup();
+    console.log(`🗑️ Auto cleanup: Hàng ngày lúc 00:00`);
 });
