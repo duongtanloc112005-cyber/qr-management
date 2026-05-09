@@ -2582,8 +2582,17 @@ function hienThiImmediate() {
       ...presenceMaps.hangton
     ]);
     // ✅ Cập nhật mergedData global để hàm xemLichSuMa() có thể truy cập
+    // Tìm item trong moduleData (dữ liệu từ API) thay vì duLieu
     mergedData = Array.from(allMaSet).map(maGoc => {
-      const item = duLieu.find(d => d.maGoc === maGoc) || { maGoc };
+      // Tìm trong tất cả moduleData
+      let item = null;
+      for (const mod of ['khophoi','sanxuat','thanhpham','donghang','hangsan','hangton']) {
+        if (moduleData[mod] && Array.isArray(moduleData[mod])) {
+          item = moduleData[mod].find(d => (d.maGoc || d.ma || '') === maGoc);
+          if (item) break;
+        }
+      }
+      if (!item) item = duLieu.find(d => d.maGoc === maGoc) || { maGoc };
       // Nếu thiếu đợt hàng/loại hàng/loại SX thì suy ra từ mã
       if (!item.dotHang || !item.loaiHang || !item.loaiSX) {
         const fromMa = deriveFieldsFromCode(item.ma || item.maGoc || '');
