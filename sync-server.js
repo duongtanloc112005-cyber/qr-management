@@ -663,9 +663,8 @@ function optimizeDataForTransmission(data) {
             mau: item.mau,
             size: item.size,
             ghiChu: item.ghiChu,
-            thoiGian: item.thoiGian
-            // Bỏ lichSu nếu không cần (có thể thêm lại nếu cần)
-            // lichSu: item.lichSu
+            thoiGian: item.thoiGian,
+            lichSu: item.lichSu
         };
         return optimized;
     });
