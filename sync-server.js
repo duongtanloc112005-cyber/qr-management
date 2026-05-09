@@ -323,6 +323,17 @@ apiRoutes.initRoutes({
 });
 app.use('/api/modules', apiLimiter, apiRoutes.router);
 
+// 📌 Alias: /api/:module -> /api/modules/:module (cho TongHop compatibility)
+app.use('/api', (req, res, next) => {
+    const moduleNames = ['donghang','khophoi','sanxuat','thanhpham','hangsan','hangton'];
+    const firstPart = req.path.split('/')[1];
+    if (moduleNames.includes(firstPart)) {
+        req.url = '/modules' + req.url;
+        return app.handle(req, res);
+    }
+    next();
+});
+
 // 📁 Serve static files (HTML, JS, CSS)
 app.use(express.static('.'));
 
