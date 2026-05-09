@@ -727,7 +727,11 @@ const connections = {
     donghang: new Set(),
     khophoi: new Set(),
     sanxuat: new Set(),
-    thanhpham: new Set()
+    thanhpham: new Set(),
+    hangsan: new Set(),
+    hangton: new Set(),
+    tonghop: new Set(),
+    donhang: new Set()
 };
 
 wss.on('connection', (ws, req) => {
@@ -745,7 +749,10 @@ wss.on('connection', (ws, req) => {
                         connections[module].add(ws);
                         ws.module = module;
                         console.log(`Client registered for module: ${module}`);
-                        
+
+                        // TongHop/Donhang không có syncData riêng, không gửi sync data
+                        if (!syncData[module]) break;
+
                         // 🚀 TỐI ƯU NÂNG CAO: Gửi dữ liệu với chunked transfer và optimization
                         const moduleData = syncData[module] || [];
                         if (moduleData.length > CHUNK_SIZE) {
