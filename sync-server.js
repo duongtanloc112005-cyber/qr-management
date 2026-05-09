@@ -12,42 +12,49 @@ const authModule = require('./auth-server');
 const logger = require('./logger');
 const database = config.USE_DATABASE ? require('./database') : null;
 
-// 📊 Google Sheets sync
+// 📊 Google Sheets sync - Realtime mirror
 const GOOGLE_SHEETS_URL = process.env.GOOGLE_SHEETS_URL || '';
-const GOOGLE_SHEETS_SYNC_DELAY = 5000; // Đợi 5 giây sau update rồi mới sync
+const GOOGLE_SHEETS_SYNC_DELAY = 3000; // Đợi 3 giây sau update rồi mới sync
 const pendingSheetsSync = {};
+const previousSyncData = {}; // Lưu dữ liệu trước đó để so sánh tìm thêm/xóa
 
-async function syncToGoogleSheets(module) {
+function mapItem(d) {
+    return {
+        maGoc: d.maGoc || '',
+        ma: d.ma || '',
+        trangThai: d.trangThai || '',
+        dotHang: d.dotHang || '',
+        loaiHang: d.loaiHang || '',
+        loaiSX: d.loaiSX || '',
+        mau: d.mau || '',
+        size: (d.size || '').toString().toUpperCase(),
+        thoiGian: d.thoiGian || '',
+        ghiChu: d.ghiChu || ''
+    };
+}
+
+// Sync realtime: gửi action "sync" để mirror chính xác (thêm/sửa/xóa)
+async function syncToGoogleSheets(module, action) {
     if (!GOOGLE_SHEETS_URL) return;
+    action = action || 'sync';
 
     try {
-        const items = (syncData[module] || []).map(d => ({
-            maGoc: d.maGoc || '',
-            ma: d.ma || '',
-            trangThai: d.trangThai || '',
-            dotHang: d.dotHang || '',
-            loaiHang: d.loaiHang || '',
-            loaiSX: d.loaiSX || '',
-            mau: d.mau || '',
-            size: (d.size || '').toString().toUpperCase(),
-            thoiGian: d.thoiGian || '',
-            ghiChu: d.ghiChu || ''
-        }));
+        const items = (syncData[module] || []).map(mapItem);
 
         const res = await fetch(GOOGLE_SHEETS_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ module, items })
+            body: JSON.stringify({ module, items, action })
         });
 
         const result = await res.text();
-        logger.info(`📊 Google Sheets sync: ${module} - ${items.length} items`, { result });
+        logger.info(`📊 Google Sheets ${action}: ${module} - ${items.length} items`, { result });
     } catch (err) {
         logger.error(`❌ Google Sheets sync error: ${module}`, { error: err.message });
     }
 }
 
-// Debounced sync - đợi 5 giây sau update cuối cùng rồi mới sync
+// Debounced sync - đợi 3 giây sau update cuối cùng rồi mới sync
 function scheduleSheetsSync(module) {
     if (!GOOGLE_SHEETS_URL) return;
 
@@ -55,7 +62,7 @@ function scheduleSheetsSync(module) {
         clearTimeout(pendingSheetsSync[module]);
     }
     pendingSheetsSync[module] = setTimeout(() => {
-        syncToGoogleSheets(module);
+        syncToGoogleSheets(module, 'sync'); // action=sync: mirror chính xác
         delete pendingSheetsSync[module];
     }, GOOGLE_SHEETS_SYNC_DELAY);
 }
@@ -79,10 +86,11 @@ function scheduleMiddnightCleanup() {
 function performMidnightCleanup() {
     logger.info('🗑️ BẮT ĐẦU XÓA DỮ LIỆU TỰ ĐỘNG LÚC 00:00');
 
-    // Sync lên Google Sheets trước khi xóa (đảm bảo dữ liệu đã được lưu)
+    // Sync lên Google Sheets với action "archive" trước khi xóa
+    // action=archive: chỉ lưu/cập nhật, KHÔNG xóa dòng nào trên Sheets
     const syncPromises = Object.keys(syncData).map(module => {
         if (syncData[module].length > 0) {
-            return syncToGoogleSheets(module);
+            return syncToGoogleSheets(module, 'archive');
         }
         return Promise.resolve();
     });
