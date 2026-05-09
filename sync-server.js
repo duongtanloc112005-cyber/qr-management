@@ -199,6 +199,65 @@ const productSchema = Joi.object({
     loaiSX: Joi.string().max(50).allow('')
 });
 
+// 👥 API: Users management
+const USERS_FILE = './users.json';
+
+app.get('/api/users', (req, res) => {
+    fs.readFile(USERS_FILE, 'utf8', (error, content) => {
+        if (error) return res.status(500).json({ error: 'Cannot read users file' });
+        try {
+            res.json(JSON.parse(content));
+        } catch (e) {
+            res.status(500).json({ error: 'Invalid users file' });
+        }
+    });
+});
+
+app.post('/api/users', (req, res) => {
+    const newUser = req.body;
+    fs.readFile(USERS_FILE, 'utf8', (error, content) => {
+        if (error) return res.status(500).json({ error: 'Cannot read users file' });
+        const users = JSON.parse(content);
+        if (users.find(u => u.username === newUser.username)) {
+            return res.status(400).json({ error: 'Username already exists' });
+        }
+        users.push(newUser);
+        fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), (err) => {
+            if (err) return res.status(500).json({ error: 'Cannot write users file' });
+            res.json({ success: true, user: newUser });
+        });
+    });
+});
+
+app.put('/api/users', (req, res) => {
+    const updatedUser = req.body;
+    fs.readFile(USERS_FILE, 'utf8', (error, content) => {
+        if (error) return res.status(500).json({ error: 'Cannot read users file' });
+        const users = JSON.parse(content);
+        const index = users.findIndex(u => u.username === updatedUser.username);
+        if (index === -1) return res.status(404).json({ error: 'User not found' });
+        users[index] = updatedUser;
+        fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), (err) => {
+            if (err) return res.status(500).json({ error: 'Cannot write users file' });
+            res.json({ success: true, user: updatedUser });
+        });
+    });
+});
+
+app.delete('/api/users/:username', (req, res) => {
+    const username = req.params.username;
+    fs.readFile(USERS_FILE, 'utf8', (error, content) => {
+        if (error) return res.status(500).json({ error: 'Cannot read users file' });
+        const users = JSON.parse(content);
+        const filtered = users.filter(u => u.username !== username);
+        if (users.length === filtered.length) return res.status(404).json({ error: 'User not found' });
+        fs.writeFile(USERS_FILE, JSON.stringify(filtered, null, 2), (err) => {
+            if (err) return res.status(500).json({ error: 'Cannot write users file' });
+            res.json({ success: true });
+        });
+    });
+});
+
 // 🔐 API: Authentication endpoint
 app.post('/api/auth/login', authLimiter, async (req, res) => {
     try {
